@@ -1,0 +1,40 @@
+<header class="navbar app-header">
+  <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
+  <a class="navbar-brand" href="#"></a>
+  <ul class="nav navbar-nav mr-auto d-md-down-none">
+    <li class="nav-item row">
+      <a class="nav-link navbar-toggler" href="#" appSidebarToggler> &#9776; </a>
+    </li>
+  </ul>
+</header>
+
+<div class="app-body">
+  <div class="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pr-2" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-user"></i> Users</a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+      <app-breadcrumbs></app-breadcrumbs>
+    </ol>
+
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.conainer-fluid -->
+  </main>
+</div>
+
+

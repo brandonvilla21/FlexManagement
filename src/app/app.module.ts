@@ -25,6 +25,10 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ProductComponent } from './components/product/product.component';
+import { CreateComponent } from './components/employee/create/create.component';
+import { EditComponent } from './components/employee/edit/edit.component';
+import { EmployeeComponent } from './components/employee/employee/employee.component';
+import { EmployeesComponent } from './components/employee/employees/employees.component';
 
 @NgModule({
   imports: [
@@ -47,7 +51,11 @@ import { ProductComponent } from './components/product/product.component';
     ProductComponent,
     ProductCreateComponent,
     ProductShowComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    CreateComponent,
+    EditComponent,
+    EmployeeComponent,
+    EmployeesComponent
   ],
   providers: [
     {

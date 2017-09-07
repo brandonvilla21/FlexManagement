@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class ProductShowComponent implements OnInit {
     public productId: String;
+    public product: Product;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -18,7 +19,10 @@ export class ProductShowComponent implements OnInit {
     ) {
         this.activatedRoute.params.subscribe( parameters => {
             this.productId = parameters['id'];
-            // Call method this.productService.findByid( => bla bla)
+            this.productService.findById( this.productId )
+                .subscribe( product => {
+                    this.product = product;
+                });
         });
     }
 

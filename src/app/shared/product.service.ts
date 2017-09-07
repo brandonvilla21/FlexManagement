@@ -12,7 +12,7 @@ export class ProductService {
 
   constructor( private http: Http ) { }
 
-  public all(): Observable<any[]> {
+  public all(): Observable<Product[]> {
     return this.http.get(`${this.endPoint}`)
       .map(res => res.json() || { })
       .catch(err =>  JSON.stringify(err));
@@ -23,6 +23,26 @@ export class ProductService {
     return this.http.post(`${this.endPoint}`, product, {headers: headers})
       .map( res => res.json() || {})
       .catch( error => JSON.stringify(error));
+  }
+
+  public findById( id ): Observable<Product> {
+    return this.http.get(`${this.endPoint}/${id}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
+  public update( product: Product ): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.put(`${this.endPoint}/${product.product_id}`, product, {headers: headers})
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
+  public delete( id ): Observable<any> { // Not sure if this method works
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.delete(`${this.endPoint}/id`, { headers: headers})
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
   }
 
 }

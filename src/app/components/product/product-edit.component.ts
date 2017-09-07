@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from './../../interfaces/product';
+import { ProductService } from './../../shared/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-product-edit',
@@ -7,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ProductEditComponent implements OnInit {
-    constructor() { }
+    public productId: string;
+    public product: Product;
+
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private productService: ProductService
+    ) {
+        this.activatedRoute.params.subscribe( parameters => {
+            this.productId = parameters['id'];
+            this.productService.findById( this.productId )
+                .subscribe( product => {
+                    this.product = product;
+                });
+        });
+    }
 
     ngOnInit() { }
 }

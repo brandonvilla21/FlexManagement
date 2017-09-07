@@ -1,0 +1,36 @@
+<div class="animated fadeIn">
+  <h1 class="display-3 text-center">Productos</h1>
+  <div class="line__bottom-container mb-3">
+    <span class="line__bottom"></span>
+  </div>
+  <div class="table">
+    <tr>
+      <th>Descripción</th>
+      <th>Marca</th>
+      <th>Sabor</th>
+      <th>Fecha de caducidad</th>
+      <th>Precio de venta</th>
+      <th>Existencias</th>
+      <th></th>
+    </tr>
+
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.description }}</td>  
+        <td>{{ product.brand }}</td>  
+        <td>{{ product.flavor }}</td>  
+        <td>{{ product.expiration_date | date: 'fullDate' }}</td>  
+        <td>{{ product.sale_price }}</td>  
+        <td>{{ product.existence }}</td>  
+        <td>
+          <button type="button" class="btn  btn-outline-primary">Consultar</button>
+        </td>  
+        <td>
+          <button type="button" class="btn btn-outline-warning">Editar</button>
+        </td>  
+      </tr>
+    </tbody>
+  </div>
+</div>
+
+

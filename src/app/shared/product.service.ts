@@ -8,16 +8,21 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProductService {
-  private endPoint = 'http://localhost:3000/products';
+  private endPoint = 'http://localhost:3000/product';
 
   constructor( private http: Http ) { }
 
-  public all(): Observable<Product[]> {
-    // const headers = new Headers({'Contet-Type': 'application/json'});
-
+  public all(): Observable<any[]> {
     return this.http.get(`${this.endPoint}`)
       .map(res => res.json() || { })
       .catch(err =>  JSON.stringify(err));
+  }
+
+  public create(product: Product): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.endPoint}`, product, {headers: headers})
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
   }
 
 }

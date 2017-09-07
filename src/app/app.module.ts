@@ -1,8 +1,10 @@
+import { ProductCreateComponent } from './components/product/product-create.component';
 import { ProductService } from './shared/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -19,6 +21,8 @@ import { AppRoutingModule } from './app.routing';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   imports: [
@@ -27,7 +31,8 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
   ],
   declarations: [
     AppComponent,
@@ -35,7 +40,10 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective
+    AsideToggleDirective,
+    CustomerComponent,
+    ProductComponent,
+    ProductCreateComponent
   ],
   providers: [
     {

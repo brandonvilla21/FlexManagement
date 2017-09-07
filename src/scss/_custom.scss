@@ -1,1 +1,15 @@
 // Here you can add other styles
+/* Line bottom */
+.line__bottom-container {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+.line__bottom {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    width           : 13%;
+    border          : 2px solid $gray-700;
+    margin-bottom   : .5em;    
+}

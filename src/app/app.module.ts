@@ -1,3 +1,5 @@
+import { ProductEditComponent } from './components/product/product-edit.component';
+import { ProductShowComponent } from './components/product/product-show.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
 import { ProductService } from './shared/product.service';
 import { NgModule } from '@angular/core';
@@ -43,7 +45,9 @@ import { ProductComponent } from './components/product/product.component';
     AsideToggleDirective,
     CustomerComponent,
     ProductComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductShowComponent,
+    ProductEditComponent
   ],
   providers: [
     {

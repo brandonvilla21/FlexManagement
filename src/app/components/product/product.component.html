@@ -23,10 +23,10 @@
         <td>{{ product.sale_price }}</td>  
         <td>{{ product.existence }}</td>  
         <td>
-          <button type="button" class="btn  btn-outline-primary">Consultar</button>
+          <a [routerLink]="['/product-show', product.product_id]" class="btn  btn-outline-primary">Consultar</a>
         </td>  
         <td>
-          <button type="button" class="btn btn-outline-warning">Editar</button>
+          <a [routerLink]="['/product-edit', product.product_id]" class="btn btn-outline-warning">Editar</a>
         </td>  
       </tr>
     </tbody>

@@ -1,7 +1,14 @@
 import { ProductEditComponent } from './components/product/product-edit.component';
 import { ProductShowComponent } from './components/product/product-show.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
+
+//Model services.
 import { ProductService } from './shared/product.service';
+import { CustomerService } from './services/customer/customer.service';
+
+//Url service configuration.
+import { ConfigUrlService } from './services/config-url/config.url.service';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -23,7 +30,11 @@ import { AppRoutingModule } from './app.routing';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
-import { CustomerComponent } from './components/customer/customer.component';
+
+//Customer Components
+import { CustomerComponent } from './components/customer/customers/customer.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+
 import { ProductComponent } from './components/product/product.component';
 import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent } from './components/employee/edit/edit.component';
@@ -55,14 +66,17 @@ import { EmployeesComponent } from './components/employee/employees/employees.co
     CreateComponent,
     EditComponent,
     EmployeeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    CustomerCreateComponent
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ProductService
+    ProductService,
+    ConfigUrlService,
+    CustomerService
   ],
   bootstrap: [ AppComponent ]
 })

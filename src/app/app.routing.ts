@@ -3,8 +3,13 @@ import { ProductShowComponent } from './components/product/product-show.componen
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+//Product
 import { ProductComponent } from './components/product/product.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
+
+//Customer
+import { CustomerComponent } from './components/customer/customers/customer.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -42,7 +47,15 @@ export const routes: Routes = [
       {
         path: 'product-edit/:id',
         component: ProductEditComponent
-      }
+      },
+      {
+        path: 'customers',
+        component: CustomerComponent
+      },
+      {
+        path: 'customer-create',
+        component: CustomerCreateComponent
+      },
     ]
   },
   { path: '**', redirectTo: 'dashboard'}

@@ -8,7 +8,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
 
 //Customer
-import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerComponent } from './components/customer/customers/customer.component';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';

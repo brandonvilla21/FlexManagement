@@ -30,7 +30,7 @@ import { AppRoutingModule } from './app.routing';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
-import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerComponent } from './components/customer/customers/customer.component';
 import { ProductComponent } from './components/product/product.component';
 import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent } from './components/employee/edit/edit.component';

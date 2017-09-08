@@ -11,6 +11,7 @@ import { ProductShowComponent } from './components/product/product-show.componen
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+import { CustomerShowComponent } from './components/customer/customer-show/customer-show.component';
 
 // Provider
 import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
@@ -67,8 +68,12 @@ export const routes: Routes = [
         component: CustomerCreateComponent
       },
       {
-        path: 'customer-edit',
+        path: 'customer-edit/:id',
         component: CustomerEditComponent
+      },
+      {
+        path: 'customer-show/:id',
+        component: CustomerShowComponent
       },
       
 

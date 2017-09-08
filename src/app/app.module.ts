@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './shared/product.service';
 import { CustomerService } from './services/customer/customer.service';
 import { ProviderService } from './services/provider/provider.service';
+import { EmployeeService } from './services/employee/employee.service';
 
 // Url service configuration.
 import { ConfigUrlService } from './services/config-url/config.url.service';
@@ -43,6 +44,8 @@ import { ProductComponent } from './components/product/product.component';
 // Provider components
 import { ProvidersComponent } from './components/provider/providers/providers.component';
 import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
+import { EmployeesComponent } from './components/employee/employees/employees.component';
+import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 
 @NgModule({
   imports: [
@@ -68,7 +71,10 @@ import { ProviderCreateComponent } from './components/provider/provider-create/p
     ProductEditComponent,
     CustomerCreateComponent,
     ProvidersComponent,
-    ProviderCreateComponent
+    ProviderCreateComponent,
+    EmployeesComponent,
+    CustomerCreateComponent,
+    EmployeeCreateComponent
   ],
   providers: [
     {
@@ -78,7 +84,8 @@ import { ProviderCreateComponent } from './components/provider/provider-create/p
     ProductService,
     ConfigUrlService,
     CustomerService,
-    ProviderService
+    ProviderService,
+    EmployeeService
   ],
   bootstrap: [ AppComponent ]
 })

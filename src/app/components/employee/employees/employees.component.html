@@ -1,0 +1,35 @@
+<div class="animated fadeIn">
+    <h1 class="display-3 text-center">Empleados</h1>
+    <div class="line__bottom-container mb-3">
+      <span class="line__bottom"></span>
+    </div>
+    <div class="table">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido(s)</th>
+        <th>Domicilio</th>
+        <th>Whatsapp</th>
+        <th></th>
+      </tr>
+  
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.employee_id }}</td>  
+          <td>{{ employee.name }}</td>  
+          <td>{{ employee.lastname }}</td>  
+          <td>{{ employee.address }}</td>  
+          <td>{{ employee.whatsapp }}</td>  
+          <td>
+            <a [routerLink]="['/employee-show', employee.employee_id]" class="btn  btn-outline-primary">Consultar</a>
+          </td>  
+          <td>
+            <a [routerLink]="['/employee-edit', employee.employee_id]" class="btn btn-outline-warning">Editar</a>
+          </td>  
+        </tr>
+      </tbody>
+    </div>
+  </div>
+  
+  
+  

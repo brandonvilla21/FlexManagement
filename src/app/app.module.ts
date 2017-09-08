@@ -1,19 +1,18 @@
-import { ProductEditComponent } from './components/product/product-edit.component';
-import { ProductShowComponent } from './components/product/product-show.component';
-import { ProductCreateComponent } from './components/product/product-create.component';
-
-//Model services.
-import { ProductService } from './shared/product.service';
-import { CustomerService } from './services/customer/customer.service';
-
-//Url service configuration.
-import { ConfigUrlService } from './services/config-url/config.url.service';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+
+
+// Services.
+import { ProductService } from './shared/product.service';
+import { CustomerService } from './services/customer/customer.service';
+import { ProviderService } from './services/provider/provider.service';
+
+// Url service configuration.
+import { ConfigUrlService } from './services/config-url/config.url.service';
+
 
 import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -31,13 +30,19 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
-//Customer Components
+// Customer Components
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
+// Product components
+import { ProductEditComponent } from './components/product/product-edit.component';
+import { ProductShowComponent } from './components/product/product-show.component';
+import { ProductCreateComponent } from './components/product/product-create.component';
 import { ProductComponent } from './components/product/product.component';
-import { CreateComponent } from './components/employee/create/create.component';
-import { EditComponent } from './components/employee/edit/edit.component';
+
+// Provider components
+import { ProvidersComponent } from './components/provider/providers/providers.component';
+import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
 
 @NgModule({
   imports: [
@@ -61,9 +66,9 @@ import { EditComponent } from './components/employee/edit/edit.component';
     ProductCreateComponent,
     ProductShowComponent,
     ProductEditComponent,
-    CreateComponent,
-    EditComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    ProvidersComponent,
+    ProviderCreateComponent
   ],
   providers: [
     {
@@ -72,7 +77,8 @@ import { EditComponent } from './components/employee/edit/edit.component';
     },
     ProductService,
     ConfigUrlService,
-    CustomerService
+    CustomerService,
+    ProviderService
   ],
   bootstrap: [ AppComponent ]
 })

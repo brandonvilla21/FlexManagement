@@ -1,15 +1,19 @@
-import { ProductEditComponent } from './components/product/product-edit.component';
-import { ProductShowComponent } from './components/product/product-show.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-//Product
+// Product
 import { ProductComponent } from './components/product/product.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
+import { ProductEditComponent } from './components/product/product-edit.component';
+import { ProductShowComponent } from './components/product/product-show.component';
 
-//Customer
+// Customer
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+
+// Provider
+import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
+import { ProvidersComponent } from './components/provider/providers/providers.component';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -55,6 +59,14 @@ export const routes: Routes = [
       {
         path: 'customer-create',
         component: CustomerCreateComponent
+      },
+      {
+        path: 'providers',
+        component: ProvidersComponent
+      },
+      {
+        path: 'provider-create',
+        component: ProviderCreateComponent
       },
     ]
   },

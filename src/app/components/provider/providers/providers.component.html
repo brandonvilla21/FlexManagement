@@ -1,0 +1,35 @@
+<div class="animated fadeIn">
+  <h1 class="display-3 text-center">Proveedores</h1>
+  <div class="line__bottom-container mb-3">
+    <span class="line__bottom"></span>
+  </div>
+  <div class="table">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Contacto</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <tbody>
+      <tr *ngFor="let provider of providers">
+        <td>{{ provider.name }}</td>  
+        <td>{{ provider.description }}</td>  
+        <td>{{ provider.contact }}</td>  
+        <td>{{ provider.email }}</td>  
+        <td>{{ provider.phone }}</td>  
+        <td>
+          <a class="btn  btn-outline-primary">Consultar</a>
+        </td>  
+        <td>
+          <a class="btn btn-outline-warning">Editar</a>
+        </td>  
+      </tr>
+    </tbody>
+  </div>
+</div>
+
+

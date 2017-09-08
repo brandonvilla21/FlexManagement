@@ -25,7 +25,7 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmitProduct(value: NgForm) {
+  onSubmitProvider(value: NgForm) {
     if (value.valid) {
       this.productService.create( this.product )
         .subscribe( res => {

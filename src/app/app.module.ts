@@ -38,6 +38,7 @@ import { CustomerCreateComponent } from './components/customer/customer-create/c
 
 import { ProductComponent } from './components/product/product.component';
 import { EmployeesComponent } from './components/employee/employees/employees.component';
+import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { EmployeesComponent } from './components/employee/employees/employees.co
     ProductShowComponent,
     ProductEditComponent,
     EmployeesComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    EmployeeCreateComponent
   ],
   providers: [
     {

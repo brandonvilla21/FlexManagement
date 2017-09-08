@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel, NgForm } from '@angular/forms';
 import { Product } from './../../interfaces/product';
 import { ProductService } from './../../shared/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,6 +22,7 @@ export class ProductEditComponent implements OnInit {
             this.productId = parameters['id'];
             this.productService.findById( this.productId )
                 .subscribe( product => {
+                    console.log(product);
                     this.product = product;
                 });
         });

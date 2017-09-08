@@ -1,7 +1,13 @@
 import { ProductEditComponent } from './components/product/product-edit.component';
 import { ProductShowComponent } from './components/product/product-show.component';
 import { ProductCreateComponent } from './components/product/product-create.component';
+
+//Model services.
 import { ProductService } from './shared/product.service';
+
+//Url service configuration.
+import { ConfigUrlService } from './services/config-url/config.url.service';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -62,7 +68,8 @@ import { EmployeesComponent } from './components/employee/employees/employees.co
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ProductService
+    ProductService,
+    ConfigUrlService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -11,6 +11,9 @@ import { ProductCreateComponent } from './components/product/product-create.comp
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
+//Employee
+import { EmployeesComponent } from './components/employee/employees/employees.component'
+
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
@@ -48,6 +51,8 @@ export const routes: Routes = [
         path: 'product-edit/:id',
         component: ProductEditComponent
       },
+
+
       {
         path: 'customers',
         component: CustomerComponent
@@ -55,6 +60,12 @@ export const routes: Routes = [
       {
         path: 'customer-create',
         component: CustomerCreateComponent
+      },
+
+
+      {
+        path: 'employees',
+        component: EmployeesComponent
       },
     ]
   },

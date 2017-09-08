@@ -36,8 +36,7 @@ import { CustomerComponent } from './components/customer/customers/customer.comp
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 import { ProductComponent } from './components/product/product.component';
-import { CreateComponent } from './components/employee/create/create.component';
-import { EditComponent } from './components/employee/edit/edit.component';
+import { EmployeesComponent } from './components/employee/employees/employees.component';
 
 @NgModule({
   imports: [
@@ -61,9 +60,8 @@ import { EditComponent } from './components/employee/edit/edit.component';
     ProductCreateComponent,
     ProductShowComponent,
     ProductEditComponent,
-    CreateComponent,
-    EditComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    EmployeesComponent
   ],
   providers: [
     {

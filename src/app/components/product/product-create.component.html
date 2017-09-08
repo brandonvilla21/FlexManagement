@@ -8,72 +8,72 @@
                         <h2>Registrar producto</h2>
                     </div>
                     <div class="card-block">
-                            <div class="form-group row has-danger">
-                                <label class="col-md-3 form-control-label">Descripción</label>
-                                <div class="col-md-9">
-                                    <input [(ngModel)]="product.description" #description="ngModel" type="text" name="description" class="form-control" placeholder="Descripción del producto" required>
-                                    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
-                                        <div *ngIf="description.errors.required"> Debes ingresar una <strong>descripción</strong> </div>
-                                    </div>
+                        <div class="form-group row has-danger">
+                            <label class="col-md-3 form-control-label">Descripción</label>
+                            <div class="col-md-9">
+                                <input [(ngModel)]="product.description" #description="ngModel" type="text" name="description" class="form-control" placeholder="Descripción del producto" required>
+                                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                                    <div *ngIf="description.errors.required"> Debes ingresar una <strong>descripción</strong> </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Marca</label>
-                                <div class="col-md-9">
-                                    <select [(ngModel)]="product.brand" #brand="ngModel"  name="brand" class="form-control">
-                                        <option value="ON">OPTIMUN NUTRITION (ON)</option>
-                                        <option value="MUSCLE TECH">MUSCLE TECH</option>
-                                        <option value="MUSCLE PHARM">MUSCLE PHARM</option>
-                                        <option value="DYMATIZE">DYMATIZE</option>
-                                        <option value="BHP ULTRA">BHP ULTRA</option>
-                                        <option value="BHN">BHN</option>
-                                        <option value="INSANE LABZ">INSANE LABZ</option>
-                                        <option value="COBRA LABZ">COBRA LABZ</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Marca</label>
+                            <div class="col-md-9">
+                                <select [(ngModel)]="product.brand" #brand="ngModel"  name="brand" class="form-control">
+                                    <option value="ON">OPTIMUN NUTRITION (ON)</option>
+                                    <option value="MUSCLE TECH">MUSCLE TECH</option>
+                                    <option value="MUSCLE PHARM">MUSCLE PHARM</option>
+                                    <option value="DYMATIZE">DYMATIZE</option>
+                                    <option value="BHP ULTRA">BHP ULTRA</option>
+                                    <option value="BHN">BHN</option>
+                                    <option value="INSANE LABZ">INSANE LABZ</option>
+                                    <option value="COBRA LABZ">COBRA LABZ</option>
+                                </select>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Sabor</label>
-                                <div class="col-md-9">
-                                    <input type="text" [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control" placeholder="Sabor del producto...">
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Sabor</label>
+                            <div class="col-md-9">
+                                <input type="text" [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control" placeholder="Sabor del producto...">
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Fecha de caducidad</label>
-                                <div class="col-md-9">
-                                    <input type="date" [(ngModel)]="product.expiration_date" #expirationdate="ngModel" name="expiration_date" class="form-control" >
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Fecha de caducidad</label>
+                            <div class="col-md-9">
+                                <input type="date" [(ngModel)]="product.expiration_date" #expirationdate="ngModel" name="expiration_date" class="form-control" >
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Precio de venta</label>
-                                <div class="col-md-9">
-                                    <input type="number" [(ngModel)]="product.sale_price" #saleprice="ngModel" name="sale_price" class="form-control" value="0.00" min="0" minlength="1" required>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Precio de venta</label>
+                            <div class="col-md-9">
+                                <input type="number" [(ngModel)]="product.sale_price" #saleprice="ngModel" name="sale_price" class="form-control" value="0.00" min="0" minlength="1" required>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Precio de compra</label>
-                                <div class="col-md-9">
-                                    <input type="number" [(ngModel)]="product.buy_price" #buyprice="ngModel" name="buy_price" class="form-control" value="0.00" min="0" minlength="1" required>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Precio de compra</label>
+                            <div class="col-md-9">
+                                <input type="number" [(ngModel)]="product.buy_price" #buyprice="ngModel" name="buy_price" class="form-control" value="0.00" min="0" minlength="1" required>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Existencia</label>
-                                <div class="col-md-9">
-                                    <input type="number" [(ngModel)]="product.existence" #existence="ngModel" name="existence" class="form-control" value="0" min="0" required>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Existencia</label>
+                            <div class="col-md-9">
+                                <input type="number" [(ngModel)]="product.existence" #existence="ngModel" name="existence" class="form-control" value="0" min="0" required>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Producto máximo</label>
-                                <div class="col-md-9">
-                                    <input type="number" [(ngModel)]="product.max" #max="ngModel" name="max" class="form-control" value="1" min="1"  minlength="1" required>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Producto máximo</label>
+                            <div class="col-md-9">
+                                <input type="number" [(ngModel)]="product.max" #max="ngModel" name="max" class="form-control" value="1" min="1"  minlength="1" required>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label">Producto mínimo</label>
-                                <div class="col-md-9">
-                                    <input type="number" [(ngModel)]="product.min" #min="ngModel" name="min" class="form-control" value="0" min="0" required>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Producto mínimo</label>
+                            <div class="col-md-9">
+                                <input type="number" [(ngModel)]="product.min" #min="ngModel" name="min" class="form-control" value="0" min="0" required>
                             </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="col-md-6 pull-right">

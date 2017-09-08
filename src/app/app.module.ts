@@ -30,7 +30,11 @@ import { AppRoutingModule } from './app.routing';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
+
+//Customer Components
 import { CustomerComponent } from './components/customer/customers/customer.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+
 import { ProductComponent } from './components/product/product.component';
 import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent } from './components/employee/edit/edit.component';
@@ -62,7 +66,8 @@ import { EmployeesComponent } from './components/employee/employees/employees.co
     CreateComponent,
     EditComponent,
     EmployeeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    CustomerCreateComponent
   ],
   providers: [
     {

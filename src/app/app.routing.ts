@@ -9,6 +9,7 @@ import { ProductCreateComponent } from './components/product/product-create.comp
 
 //Customer
 import { CustomerComponent } from './components/customer/customers/customer.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -50,6 +51,10 @@ export const routes: Routes = [
       {
         path: 'customers',
         component: CustomerComponent
+      },
+      {
+        path: 'customer-create',
+        component: CustomerCreateComponent
       },
     ]
   },

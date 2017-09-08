@@ -4,6 +4,7 @@ import { ProductCreateComponent } from './components/product/product-create.comp
 
 //Model services.
 import { ProductService } from './shared/product.service';
+import { CustomerService } from './services/customer/customer.service';
 
 //Url service configuration.
 import { ConfigUrlService } from './services/config-url/config.url.service';
@@ -69,7 +70,8 @@ import { EmployeesComponent } from './components/employee/employees/employees.co
       useClass: PathLocationStrategy
     },
     ProductService,
-    ConfigUrlService
+    ConfigUrlService,
+    CustomerService
   ],
   bootstrap: [ AppComponent ]
 })

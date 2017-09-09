@@ -37,6 +37,10 @@ export const routes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },
       {
+        path: 'providers',
+        loadChildren: './provider/provider.module#ProviderModule'
+      },
+      {
         path: 'products',
         component: ProductComponent
       },

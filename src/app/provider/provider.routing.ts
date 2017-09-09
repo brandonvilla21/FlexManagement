@@ -1,12 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { ProviderComponent } from './provider.component';
 import { ProvidersComponent } from './components/providers/providers.component';
 import { ProviderCreateComponent } from './components/provider-create/provider-create.component';
 
 const routes: Routes = [
-  { path: 'providers', component: ProvidersComponent },
-  { path: 'provider-create', component: ProviderCreateComponent },
+  {
+    path: '',
+    component: ProviderComponent,
+    data: {
+      title: 'Proveedores'
+    },
+    children : [
+      {
+        path: 'all',
+        component: ProvidersComponent,
+        data: {
+          title: 'Consulta General'
+        }
+      },
+      {
+        path: 'create',
+        component: ProviderCreateComponent,
+        data: {
+          title: 'Registro'
+        }
+      },
+    ]
+  },
 ];
 
 @NgModule({
@@ -14,5 +36,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ProviderRoutingModule { }
-
-// export const routedComponents = [ProviderComponent];

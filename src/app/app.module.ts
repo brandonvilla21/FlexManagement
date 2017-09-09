@@ -1,4 +1,4 @@
-import { ProviderModule } from './components/provider/provider.module';
+import { ProviderModule } from './provider/provider.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';

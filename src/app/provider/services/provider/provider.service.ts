@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { ConfigUrlService } from './../../../../services/config-url/config.url.service';
+import { ConfigUrlService } from './../../../services/config-url/config.url.service';
 import { Provider } from '../../provider.model';
 import { Observable } from 'rxjs/Observable';
 

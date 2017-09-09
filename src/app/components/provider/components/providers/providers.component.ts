@@ -1,5 +1,5 @@
-import { ProviderService } from './../../../services/provider/provider.service';
-import { Provider } from './../../../interfaces/provider';
+import { ProviderService } from './../../services/provider/provider.service';
+import { Provider } from './../../provider.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

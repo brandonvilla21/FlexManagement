@@ -11,9 +11,6 @@ import { ProductShowComponent } from './components/product/product-show.componen
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
-// Provider
-import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
-import { ProvidersComponent } from './components/provider/providers/providers.component';
 // Employee
 import { EmployeesComponent } from './components/employee/employees/employees.component'
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
@@ -55,8 +52,6 @@ export const routes: Routes = [
         path: 'product-edit/:id',
         component: ProductEditComponent
       },
-
-
       {
         path: 'customers',
         component: CustomerComponent
@@ -64,15 +59,6 @@ export const routes: Routes = [
       {
         path: 'customer-create',
         component: CustomerCreateComponent
-      },
-      {
-        path: 'providers',
-        component: ProvidersComponent
-      },
-      {
-        path: 'provider-create',
-        component: ProviderCreateComponent
-
       },
       {
         path: 'employees',

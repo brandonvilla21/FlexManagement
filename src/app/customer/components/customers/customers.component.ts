@@ -10,6 +10,7 @@ import { Customer } from '../../customer.model';
 export class CustomersComponent implements OnInit {
 
   public customers: Customer[];
+  public customer_id: number;
 
   constructor(private customerService: CustomerService) { }
 

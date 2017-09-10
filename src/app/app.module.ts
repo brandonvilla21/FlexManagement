@@ -9,9 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductModule } from './product/product.module';
 import { ProviderModule } from './provider/provider.module';
 import { CustomerModule } from './customer/customer.module';
+import { EmployeeModule } from './employee/employee.module';
 
-// Services.
-import { EmployeeService } from './services/employee/employee.service';
 
 // Url service configuration.
 import { ConfigUrlService } from './services/config-url/config.url.service';
@@ -32,9 +31,6 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
-// Provider components
-import { EmployeesComponent } from './components/employee/employees/employees.component';
-import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 
 @NgModule({
   imports: [
@@ -47,7 +43,8 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     FormsModule,
     ProviderModule,
     CustomerModule,
-    ProductModule
+    ProductModule,
+    EmployeeModule
   ],
   declarations: [
     AppComponent,
@@ -56,16 +53,13 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    EmployeesComponent,
-    EmployeeCreateComponent,
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ConfigUrlService,
-    EmployeeService
+    ConfigUrlService
   ],
   bootstrap: [ AppComponent ]
 })

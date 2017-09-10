@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Employee
-import { EmployeesComponent } from './components/employee/employees/employees.component'
-import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
-
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
@@ -38,16 +34,10 @@ export const routes: Routes = [
         path: 'products',
         loadChildren: './product/product.module#ProductModule'
       },
-
-
       {
         path: 'employees',
-        component: EmployeesComponent
-      },
-      {
-        path: 'employee-create',
-        component: EmployeeCreateComponent
-      },
+        loadChildren: './employee/employee.module#EmployeeModule'
+      }
     ]
   },
   { path: '**', redirectTo: 'dashboard'}

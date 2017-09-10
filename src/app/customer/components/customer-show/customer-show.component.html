@@ -1,4 +1,26 @@
 <div class="animated fadeIn">
+  <div class="animated fadeIn" *ngIf="!customer">
+    <div class="row">
+      <div class="col-sm-2 col-md-2">
+      </div>
+      <div class="col-sm-7 col-md-7">
+        <div class="card">
+          <div class="card-header">
+            <strong>Información</strong>
+          </div>
+          <div class="card-block row">
+            <div class="col-md-8">
+              <p>El registro que estás buscando no se ha podido encontrar :(</p>
+            </div>
+            <div class="col-md-4">
+              <button [routerLink]="['/customers/all']" class="btn btn-sm btn-primary pull-right">Regresar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="row" *ngIf="customer">
     <div class="col-md-2"></div>
     <div class="col-md-8 col-xs-12">

@@ -9,8 +9,8 @@ import { EmployeeRoutingModule } from './employee.routing';
 
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
-// import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
-// import { EmployeeShowComponent } from './components/employee-show/employee-show.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
+import { EmployeeShowComponent } from './components/employee-show/employee-show.component';
 
 @NgModule({
     imports: [
@@ -22,9 +22,11 @@ import { EmployeeCreateComponent } from './components/employee-create/employee-c
     declarations: [
         EmployeeComponent,
         EmployeesComponent,
-        // EmployeeEditComponent,
-        // EmployeeShowComponent,
-        EmployeeCreateComponent
+        EmployeeEditComponent,
+        EmployeeShowComponent,
+        EmployeeCreateComponent,
+        EmployeeEditComponent,
+        EmployeeShowComponent
     ],
     providers: [
         EmployeeService

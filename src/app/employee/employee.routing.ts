@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { EmployeeComponent } from './employee.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
-// import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
-// import { EmployeeShowComponent } from './components/employee-show/employee-show.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
+import { EmployeeShowComponent } from './components/employee-show/employee-show.component';
 
 const routes: Routes = [
   {
@@ -29,20 +29,20 @@ const routes: Routes = [
           title: 'Registro'
         }
       },
-      // {
-      //   path: 'edit/:id',
-      //   component: EmployeeEditComponent,
-      //   data: {
-      //     title: 'Edición'
-      //   }
-      // },
-      // {
-      //   path: 'show/:id',
-      //   component: EmployeeShowComponent,
-      //   data: {
-      //     title: 'Consulta Individual'
-      //   }
-      // },
+      {
+        path: 'edit/:id',
+        component: EmployeeEditComponent,
+        data: {
+          title: 'Edición'
+        }
+      },
+      {
+        path: 'show/:id',
+        component: EmployeeShowComponent,
+        data: {
+          title: 'Consulta Individual'
+        }
+      }
     ]
   },
 ];

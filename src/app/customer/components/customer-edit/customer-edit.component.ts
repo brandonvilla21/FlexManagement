@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { Customer } from './../../customer.model';
 import { CustomerService } from './../../services/customer/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-edit',
@@ -14,7 +14,10 @@ export class CustomerEditComponent implements OnInit {
   public customerId: string;
   public customer: Customer;
 
-  constructor(private activatedRoute: ActivatedRoute, private customerService: CustomerService) {
+  constructor(private activatedRoute: ActivatedRoute, 
+              private customerService: CustomerService,
+              private router: Router) {
+
     this.activatedRoute.params.subscribe( parameters => {
         this.customerId = parameters['id'];
         this.customerService.findById( this.customerId )
@@ -22,6 +25,7 @@ export class CustomerEditComponent implements OnInit {
                 this.customer = customer[0];
             });
     });
+
   }
 
   onSubmitCustomerEdit(value: NgForm) {
@@ -29,6 +33,7 @@ export class CustomerEditComponent implements OnInit {
       this.customerService.update( this.customer )
         .subscribe( res => {
           console.log(res);
+          this.router.navigate(['/customers/all']);
         })
     }
   }

@@ -47,4 +47,54 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+      <div class="col-sm-1 col-md-1">
+      </div>  
+
+      <div class="col-sm-5">
+          <div class="card">
+              <div class="card-header">
+                  <strong>Consulta individual: </strong> Empleado
+              </div>
+              <div class="card-block">
+                  <form class="form-horizontal ">
+                      <div class="form-group row">
+                          <div class="col-md-12">
+                              <div class="input-group">
+                                  <span class="input-group-btn">
+                                      <button [routerLink]="['../show/', employee_id]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                  </span>
+                                  <input type="text" [(ngModel)]="employee_id" name="employee_id" class="form-control" placeholder="Id del empleado">
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      
+      <div class="col-sm-5">
+          <div class="card">
+              <div class="card-header">
+                  <strong>Editar: </strong> Empleado
+              </div>
+              <div class="card-block">
+                  <form class="form-horizontal ">
+                      <div class="form-group row">
+                          <div class="col-md-12">
+                              <div class="input-group">
+                                  <span class="input-group-btn">
+                                      <button [routerLink]="['../edit/', employee_id]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                  </span>
+                                  <input type="text" [(ngModel)]="employee_id" name="employee_id" class="form-control" placeholder="Id del empleado">
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
 </div>

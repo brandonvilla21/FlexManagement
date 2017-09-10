@@ -10,6 +10,7 @@ import { Employee } from '../../employee.model';
 export class EmployeesComponent implements OnInit {
 
   public employees: Employee[];
+  public employee_id: number;
 
   constructor(private employeeService: EmployeeService) { }
 

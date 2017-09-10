@@ -1,7 +1,4 @@
 <div class="animated fadeIn">
-  <pre>
-    {{ customer | json }}
-  </pre>
   <div class="row" *ngIf="customer">
       <div class="col-md-2"></div>
       <div class="col-md-8 col-xs-12">
@@ -66,7 +63,7 @@
                   </div>
                   <div class="card-footer">
                       <div class="col-md-6 pull-right">
-                          <button [disabled]="formCustomer.invalid" type="submit" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Registrar</button>
+                          <button [disabled]="formCustomer.invalid" type="submit" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Editar</button>
                       </div>
                   </div>
               </div>

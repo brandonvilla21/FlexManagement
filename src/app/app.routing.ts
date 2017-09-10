@@ -13,9 +13,6 @@ import { CustomerCreateComponent } from './components/customer/customer-create/c
 import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
 import { CustomerShowComponent } from './components/customer/customer-show/customer-show.component';
 
-// Provider
-import { ProviderCreateComponent } from './components/provider/provider-create/provider-create.component';
-import { ProvidersComponent } from './components/provider/providers/providers.component';
 // Employee
 import { EmployeesComponent } from './components/employee/employees/employees.component'
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
@@ -42,6 +39,10 @@ export const routes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },
       {
+        path: 'providers',
+        loadChildren: './provider/provider.module#ProviderModule'
+      },
+      {
         path: 'products',
         component: ProductComponent
       },
@@ -57,8 +58,6 @@ export const routes: Routes = [
         path: 'product-edit/:id',
         component: ProductEditComponent
       },
-
-
       {
         path: 'customers',
         component: CustomerComponent
@@ -76,16 +75,7 @@ export const routes: Routes = [
         component: CustomerShowComponent
       },
       
-
-      {
-        path: 'providers',
-        component: ProvidersComponent
-      },
-      {
-        path: 'provider-create',
-        component: ProviderCreateComponent
-
-      },
+      
       {
         path: 'employees',
         component: EmployeesComponent

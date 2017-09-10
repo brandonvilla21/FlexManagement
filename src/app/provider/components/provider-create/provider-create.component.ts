@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { ProviderService } from './../../../services/provider/provider.service';
-import { Provider } from './../../../interfaces/provider';
+import { ProviderService } from './../../services/provider/provider.service';
+import { Provider } from './../../provider.model';
 
 @Component({
   selector: 'app-provider-create',

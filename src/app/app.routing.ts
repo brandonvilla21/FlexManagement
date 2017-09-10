@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Product
-import { ProductComponent } from './components/product/product.component';
-import { ProductCreateComponent } from './components/product/product-create.component';
-import { ProductEditComponent } from './components/product/product-edit.component';
-import { ProductShowComponent } from './components/product/product-show.component';
-
 // Employee
 import { EmployeesComponent } from './components/employee/employees/employees.component'
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
@@ -42,19 +36,7 @@ export const routes: Routes = [
       },
       {
         path: 'products',
-        component: ProductComponent
-      },
-      {
-        path: 'product-create',
-        component: ProductCreateComponent
-      },
-      {
-        path: 'product-show/:id',
-        component: ProductShowComponent
-      },
-      {
-        path: 'product-edit/:id',
-        component: ProductEditComponent
+        loadChildren: './product/product.module#ProductModule'
       },
 
 

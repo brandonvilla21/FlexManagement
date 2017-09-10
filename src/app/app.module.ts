@@ -1,15 +1,16 @@
 
-import { ProviderModule } from './provider/provider.module';
-import { CustomerModule } from './customer/customer.module';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+// Imported modules
+import { ProductModule } from './product/product.module';
+import { ProviderModule } from './provider/provider.module';
+import { CustomerModule } from './customer/customer.module';
+
 // Services.
-import { ProductService } from './shared/product.service';
 import { EmployeeService } from './services/employee/employee.service';
 
 // Url service configuration.
@@ -31,12 +32,6 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
-// Product components
-import { ProductEditComponent } from './components/product/product-edit.component';
-import { ProductShowComponent } from './components/product/product-show.component';
-import { ProductCreateComponent } from './components/product/product-create.component';
-import { ProductComponent } from './components/product/product.component';
-
 // Provider components
 import { EmployeesComponent } from './components/employee/employees/employees.component';
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
@@ -51,7 +46,8 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     HttpModule,
     FormsModule,
     ProviderModule,
-    CustomerModule
+    CustomerModule,
+    ProductModule
   ],
   declarations: [
     AppComponent,
@@ -60,10 +56,6 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    ProductComponent,
-    ProductCreateComponent,
-    ProductShowComponent,
-    ProductEditComponent,
     EmployeesComponent,
     EmployeeCreateComponent,
   ],
@@ -72,7 +64,6 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ProductService,
     ConfigUrlService,
     EmployeeService
   ],

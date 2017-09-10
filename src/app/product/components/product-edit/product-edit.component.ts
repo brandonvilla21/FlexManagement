@@ -1,16 +1,17 @@
-import { ProductService } from './../../shared/product.service';
-import { Product } from './../../interfaces/product';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { NgModel, NgForm } from '@angular/forms';
+import { Product } from './../../product.model';
+import { ProductService } from './../../services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'app-product-show',
-    templateUrl: 'product-show.component.html',
+    selector: 'app-product-edit',
+    templateUrl: 'product-edit.component.html',
     styleUrls: ['./product.component.scss']
 })
 
-export class ProductShowComponent implements OnInit {
-    public productId: String;
+export class ProductEditComponent implements OnInit {
+    public productId: string;
     public product: Product;
 
     constructor(
@@ -21,11 +22,11 @@ export class ProductShowComponent implements OnInit {
             this.productId = parameters['id'];
             this.productService.findById( this.productId )
                 .subscribe( product => {
+                    console.log(product);
                     this.product = product;
                 });
         });
     }
 
     ngOnInit() { }
-
 }

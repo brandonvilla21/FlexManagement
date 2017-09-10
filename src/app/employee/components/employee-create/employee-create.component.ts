@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../employee.model';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class EmployeeCreateComponent implements OnInit {
 
   public employee: Employee;
 
-  constructor( private employeeService: EmployeeService ) { }
+  constructor( private employeeService: EmployeeService, private router: Router ) { }
 
   ngOnInit() {
     this.employee = { employee_id: null, name: '', lastname: '', address: '', whatsapp: '' };
@@ -24,6 +25,7 @@ export class EmployeeCreateComponent implements OnInit {
       this.employeeService.create( this.employee )
         .subscribe( res => {
           console.log(res);
+          this.router.navigate(['/employees/all']);
         })
     }
   }

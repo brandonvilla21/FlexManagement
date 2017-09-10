@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from './../../../interfaces/customer';
-import { CustomerService } from './../../../services/customer/customer.service';
+import { CustomerService } from './../../services/customer/customer.service';
+import { Customer } from '../../customer.model';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss']
 })
-export class CustomerComponent implements OnInit {
+export class CustomersComponent implements OnInit {
 
   public customers: Customer[];
 

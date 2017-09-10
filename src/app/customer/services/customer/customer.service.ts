@@ -1,8 +1,8 @@
 //Interfaces
-import { Customer } from '../../interfaces/customer';
+import { Customer } from '../../customer.model';
 
 //Services
-import { ConfigUrlService } from '../config-url/config.url.service'
+import { ConfigUrlService } from '../../../services/config-url/config.url.service'
 
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';

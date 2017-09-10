@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
-import { Customer } from './../../../interfaces/customer';
-import { CustomerService } from './../../../services/customer/customer.service';
+import { Customer } from './../../customer.model';
+import { CustomerService } from './../../services/customer/customer.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

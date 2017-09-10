@@ -21,7 +21,7 @@ export class CustomerShowComponent implements OnInit {
           .subscribe( customer => {
               this.customer = customer[0];
           });
-  });
+    });
   }
 
   ngOnInit() {

@@ -19,9 +19,15 @@ export class CustomersComponent implements OnInit {
 
   getCustomers(): void {
     this.customerService.all()
-      .subscribe( data => {
+      .subscribe(data => {
         this.customers = data;
       });
   }
 
+  deleteCustomer(customer) {
+    this.customerService.delete(customer)
+      .subscribe(res => {
+        this.getCustomers();
+      });
+  }
 }

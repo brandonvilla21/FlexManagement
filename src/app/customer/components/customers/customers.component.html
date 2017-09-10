@@ -25,11 +25,14 @@
         <td>{{ customer.facebook }}</td>  
         <td>{{ customer.balance }}</td>  
         <td>
-          <a [routerLink]="['/customer-show', customer.customer_id]" class="btn  btn-outline-primary">Consultar</a>
+          <a [routerLink]="['../show/', customer.customer_id]" class="btn  btn-outline-primary">Consultar</a>
         </td>  
         <td>
-          <a [routerLink]="['/customer-edit', customer.customer_id]" class="btn btn-outline-warning">Editar</a>
-        </td>  
+          <a [routerLink]="['../edit/', customer.customer_id]" class="btn btn-outline-warning">Editar</a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(customer.customer_id)">Eliminar</button>
+        </td> 
       </tr>
     </tbody>
   </div>

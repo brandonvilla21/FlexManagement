@@ -56,8 +56,6 @@ export const routes: Routes = [
         path: 'customer-show/:id',
         component: CustomerShowComponent
       },
-      
-      
       {
         path: 'employees',
         component: EmployeesComponent

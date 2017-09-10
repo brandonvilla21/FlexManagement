@@ -34,6 +34,9 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 // Customer Components
 import { CustomerComponent } from './components/customer/customers/customer.component';
 import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
+import { CustomerShowComponent } from './components/customer/customer-show/customer-show.component';
+
 
 
 // Provider components
@@ -63,7 +66,9 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     CustomerCreateComponent,
     EmployeesComponent,
     CustomerCreateComponent,
-    EmployeeCreateComponent
+    EmployeeCreateComponent,
+    CustomerEditComponent,
+    CustomerShowComponent
   ],
   providers: [
     {

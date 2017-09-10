@@ -15,21 +15,18 @@ export class CustomerEditComponent implements OnInit {
   public customer: Customer;
 
   constructor(private activatedRoute: ActivatedRoute, private customerService: CustomerService) {
-    console.log(this.activatedRoute);
     this.activatedRoute.params.subscribe( parameters => {
         this.customerId = parameters['id'];
         this.customerService.findById( this.customerId )
             .subscribe( customer => {
-                console.log(customer);
-                this.customer = customer;
+                this.customer = customer[0];
             });
     });
   }
 
   onSubmitCustomerEdit(value: NgForm) {
-    console.log(value);
-    if (value.valid && !true) {
-      this.customerService.create( this.customer )
+    if (value.valid) {
+      this.customerService.update( this.customer )
         .subscribe( res => {
           console.log(res);
         })

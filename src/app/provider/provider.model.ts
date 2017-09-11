@@ -1,6 +1,6 @@
 export interface Provider {
     name: string,
-    descrition: string,
+    description: string,
     contact: string,
     email: string,
     phone: string,

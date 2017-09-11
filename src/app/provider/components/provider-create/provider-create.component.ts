@@ -12,7 +12,7 @@ import { Provider } from './../../provider.model';
 export class ProviderCreateComponent implements OnInit {
   public provider: Provider = {
     name: '',
-    descrition: '',
+    description: '',
     contact: '',
     email: '',
     phone: '',

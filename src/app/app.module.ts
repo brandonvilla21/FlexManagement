@@ -1,3 +1,4 @@
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app.routing';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
+import { SearchModalComponent } from './shared/search-modal/search-modal.component';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
     ProductModule,
     ProcessesModule,
     CustomerModule,
-    EmployeeModule
+    EmployeeModule,
+    BootstrapModalModule.forRoot({ container: document.body })
   ],
   declarations: [
     AppComponent,
@@ -54,6 +57,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
+    SearchModalComponent,
   ],
   providers: [
     {
@@ -62,6 +66,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
     },
     ConfigUrlService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ SearchModalComponent ],
 })
 export class AppModule { }

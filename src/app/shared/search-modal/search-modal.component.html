@@ -1,0 +1,81 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+           <button type="button" class="close" (click)="close()" >&times;</button>
+           <h4 class="modal-title"> {{ title }} </h4>
+      </div>
+      <div class="modal-body">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                </span>
+                <input type="text" name="employee_id" class="form-control" placeholder="ID del prducto">
+            </div>
+            <div class="container">
+                <div class="row table-responsive">
+                    <ng-container *ngIf="type === 'provider'">
+                        <table class="table table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Contacto</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let provider of providers">
+                                    <tr style="cursor: pointer;" (click)="confirm(provider)">
+                                        <td> {{ provider.provider_id }} </td>
+                                        <td> {{ provider.name }} </td>
+                                        <td> {{ provider.description }} </td>
+                                        <td> {{ provider.contact }} </td>
+                                        <td> {{ provider.email }} </td>
+                                        <td> {{ provider.phone }} </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                    <ng-container *ngIf="type === 'product'">
+                        <table class="table table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Descripción</th>
+                                <th>Marca</th>
+                                <th>Sabor</th>
+                                <th>Costo</th>
+                                <th>Precio venta</th>
+                                <th>Existencias</th>
+                                <th>Máx</th>
+                                <th>Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let product of products">
+                                    <tr style="cursor: pointer;" (click)="confirm(product)">
+                                        <td> {{ product.product_id }} </td>
+                                        <td> {{ product.description }} </td>
+                                        <td> {{ product.brand }} </td>
+                                        <td> {{ product.flavor }} </td>
+                                        <td> {{ product.buy_price }} </td>
+                                        <td> {{ product.sale_price }} </td>
+                                        <td> {{ product.existence }} </td>
+                                        <td> {{ product.max }} </td>
+                                        <td> {{ product.min }} </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
+      </div>
+  </div>
+</div>

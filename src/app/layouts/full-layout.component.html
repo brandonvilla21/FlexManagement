@@ -13,51 +13,73 @@
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Panel de control </a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-home"></i> Panel de control </a>
         </li>
         <li class="nav-item nav-dropdown" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Productos</a>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Catálogos</a>
           <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/products/create']" style="padding-left: 2em;"><i class="icon-user"></i>Registrar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/products/all']" style="padding-left: 2em;"><i class="icon-user"></i>Consultar</a>
-            </li>
+            <li class="nav-item nav-dropdown" appNavDropdown>
+                <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Productos</a>
+                <ul class="nav-dropdown-items">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/products/create']" style="padding-left: 2em;"><i class="icon-note"></i>Registrar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/products/all']" style="padding-left: 2em;"><i class="icon-event"></i> Consultar</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item nav-dropdown" appNavDropdown>
+                <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Clientes</a>
+                <ul class="nav-dropdown-items">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/customers']" style="padding-left: 2em;"><i class="icon-event"></i> Consultar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/customer-create']" style="padding-left: 2em;"><i class="icon-note"></i>Registrar</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item nav-dropdown" appNavDropdown>
+                <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Empleados</a>
+                <ul class="nav-dropdown-items">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/employees']" style="padding-left: 2em;"><i class="icon-event"></i> Consultar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/employee-create']" style="padding-left: 2em;"><i class="icon-note"></i>Registrar</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item nav-dropdown" appNavDropdown>
+                <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Proveedores</a>
+                <ul class="nav-dropdown-items">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/all']" style="padding-left: 2em;"><i class="icon-event"></i> Consultar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/create']" style="padding-left: 2em;"><i class="icon-note"></i>Registrar</a>
+                  </li>
+                </ul>
+              </li>
           </ul>
-        </li>
+        </li> 
         <li class="nav-item nav-dropdown" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Clientes</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/customers']" style="padding-left: 2em;"><i class="icon-user"></i> Consultar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/customer-create']" style="padding-left: 2em;"><i class="icon-user"></i>Registrar</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item nav-dropdown" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Empleados</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/employees']" style="padding-left: 2em;"><i class="icon-user"></i> Consultar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/employee-create']" style="padding-left: 2em;"><i class="icon-user"></i>Registrar</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item nav-dropdown" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-user"></i> Proveedores</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/all']" style="padding-left: 2em;"><i class="icon-user"></i> Consultar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/providers/create']" style="padding-left: 2em;"><i class="icon-user"></i>Registrar</a>
-            </li>
-          </ul>
+            <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Movimientos</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/purchase']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Compras</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Ventas</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-wallet"></i>Abonos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-clock"></i>Devoluciones</a>
+              </li>
+            </ul>
         </li>
       </ul>
     </nav>

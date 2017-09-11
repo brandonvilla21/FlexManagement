@@ -1,4 +1,3 @@
-import { ProductModule } from './product/product.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -7,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 // Imported modules
 import { ProviderModule } from './provider/provider.module';
+import { ProductModule } from './product/product.module';
+import { ProcessesModule } from './processes/processes.module';
 
 // Services.
 import { CustomerService } from './services/customer/customer.service';
@@ -53,7 +54,8 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     HttpModule,
     FormsModule,
     ProviderModule,
-    ProductModule
+    ProductModule,
+    ProcessesModule,
   ],
   declarations: [
     AppComponent,

@@ -9,4 +9,5 @@ export interface Product {
     max: number,
     min: number,
     product_id?: string,
+    purchaseExistence?: number,
 }

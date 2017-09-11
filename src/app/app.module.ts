@@ -5,13 +5,12 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 // Imported modules
-import { ProviderModule } from './provider/provider.module';
 import { ProductModule } from './product/product.module';
+import { ProviderModule } from './provider/provider.module';
 import { ProcessesModule } from './processes/processes.module';
+import { CustomerModule } from './customer/customer.module';
+import { EmployeeModule } from './employee/employee.module';
 
-// Services.
-import { CustomerService } from './services/customer/customer.service';
-import { EmployeeService } from './services/employee/employee.service';
 
 // Url service configuration.
 import { ConfigUrlService } from './services/config-url/config.url.service';
@@ -32,17 +31,6 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
-// Customer Components
-import { CustomerComponent } from './components/customer/customers/customer.component';
-import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
-import { CustomerEditComponent } from './components/customer/customer-edit/customer-edit.component';
-import { CustomerShowComponent } from './components/customer/customer-show/customer-show.component';
-
-
-
-// Provider components
-import { EmployeesComponent } from './components/employee/employees/employees.component';
-import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 
 @NgModule({
   imports: [
@@ -56,6 +44,8 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     ProviderModule,
     ProductModule,
     ProcessesModule,
+    CustomerModule,
+    EmployeeModule
   ],
   declarations: [
     AppComponent,
@@ -64,22 +54,13 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    CustomerComponent,
-    CustomerCreateComponent,
-    EmployeesComponent,
-    CustomerCreateComponent,
-    EmployeeCreateComponent,
-    CustomerEditComponent,
-    CustomerShowComponent
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ConfigUrlService,
-    CustomerService,
-    EmployeeService
+    ConfigUrlService
   ],
   bootstrap: [ AppComponent ]
 })

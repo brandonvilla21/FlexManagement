@@ -1,0 +1,81 @@
+<div class="animated fadeIn" *ngIf="!employee">
+  <div class="row">
+    <div class="col-sm-2 col-md-2">
+    </div>
+    <div class="col-sm-7 col-md-7">
+      <div class="card">
+        <div class="card-header">
+          <strong>Información</strong>
+        </div>
+        <div class="card-block row">
+          <div class="col-md-8">
+            <p>El registro que estás buscando no se ha podido encontrar :(</p>
+          </div>
+          <div class="col-md-4">
+            <button [routerLink]="['/employees/all']" class="btn btn-sm btn-primary pull-right">Regresar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="animated fadeIn" *ngIf="employee">
+  <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8 col-xs-12">
+          <form #formEmployee="ngForm" (ngSubmit)="onSubmitEmployeeEdit(formEmployee)">                    
+              <div class="card">
+                  <div class="card-header text-center">
+                      <h2>Editar empleado</h2>
+                  </div>
+                  <div class="card-block">
+
+                          <div class="form-group row has-danger">
+                              <label class="col-md-3 form-control-label">Nombre</label>
+                              <div class="col-md-9">
+                                  <input [(ngModel)]="employee.name" #name="ngModel" type="text" name="name" class="form-control" placeholder="Nombre" required>
+                                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                                      <div *ngIf="name.errors.required"> Debes ingresar un <strong>nombre</strong> </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                              <label class="col-md-3 form-control-label">Apellido(s)</label>
+                              <div class="col-md-9">
+                                  <input type="text" [(ngModel)]="employee.lastname" #lastname="ngModel" name="lastname" class="form-control" placeholder="Ingrese apellidos..." required>
+                                  <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                                      <div *ngIf="lastname.errors.required"> Debes ingresar mínimo un <strong>apellido</strong> </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                              <label class="col-md-3 form-control-label">Domicilio</label>
+                              <div class="col-md-9">
+                                  <input type="text" [(ngModel)]="employee.address" #address="ngModel" name="address" class="form-control" placeholder="Ingrese domicilio..." required>
+                                  <div *ngIf="address.invalid && (address.dirty || address.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                                      <div *ngIf="address.errors.required"> Debes ingresar un <strong>domicilio</strong> </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group row">
+                              <label class="col-md-3 form-control-label">Whatsapp</label>
+                              <div class="col-md-9">
+                                  <input type="text" [(ngModel)]="employee.whatsapp" #whatsapp="ngModel" name="whatsapp" class="form-control" placeholder="3410000000">
+                              </div>
+                          </div>
+
+                  </div>
+                  <div class="card-footer">
+                    <div class="col-md-6 pull-right">
+                      <button [disabled]="formEmployee.invalid" type="submit" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Editar</button>
+                    </div>
+                  </div>
+              </div>
+          </form>    
+      </div>
+  </div>
+</div>

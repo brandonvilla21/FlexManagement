@@ -7,7 +7,9 @@
                 </div>
                 <div class="card-block">
                     <div class="row">
-                      <div class="col-md-6"></div>
+                      <div class="col-md-6">
+                          <img [src]="['assets/img/flexgym-logo.png']" alt="logo" style="width: 100%;">
+                      </div>
                       <div class="col-md-6">
                         <h3>Datos de la compra</h3>
                         <hr>
@@ -82,27 +84,35 @@
                           <div class="form-group row">
                               <label class="col-md-3 form-control-label">ID Producto</label>
                               <div class="col-md-3">
-                                  <input type="text" name="product_id" [(ngModel)]="productForm.product_id" class="form-control" required disabled>
+                                  <input type="text" name="product_id" [(ngModel)]="productForm.product_id" class="form-control" disabled>
                               </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                              <label class="col-md-3 form-control-label">Costo</label>
-                              <div class="col-md-9">
-                                  <div class="input-group">
-                                    <span class="input-group-addon">$</span>
-                                    <input type="number" name="buy_price_form" [(ngModel)]="productForm.buy_price" class="form-control" min="0" value="0" required>
-                                  </div>
-                              </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <input type="text" name="description_form" [(ngModel)]="productForm.description" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Marca</label>
+                                <input type="text" name="brand_form" [(ngModel)]="productForm.brand" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>Costo</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="number" name="buy_price_form" [(ngModel)]="productForm.buy_price" class="form-control" min="0" value="0" required>
+                            </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                              <label class="col-md-3 form-control-label">Cantidad</label>
-                              <div class="col-md-9">
-                                  <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" required>
-                              </div>
+                        <div class="col-md-3">
+                          <div class="form-group ">
+                            <label >Cantidad</label>
+                            <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" required>
                           </div>
                         </div>
                         <div class="col-md-8">
@@ -135,7 +145,9 @@
                                 <td>{{ product.buy_price }}</td>
                                 <td>{{ product.purchaseExistence }}</td>
                                 <td>{{ product.buy_price * product.purchaseExistence }}</td>
-                                <td> Eliminar button</td>
+                                <td> 
+                                    <button type="button" class="btn btn-outline-danger" (click)="removeFromPurchased(product.product_id)">Eliminar</button>
+                                </td>
 
                               </tr>
                             </tbody>
@@ -151,7 +163,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                   <span class="input-group-addon">$</span>
-                                  <input type="text" name="subtotal" class="form-control" required disabled>
+                                  <input type="text" name="subtotal"  [(ngModel)]="subtotal" class="form-control text-right" disabled>
                                 </div>
                             </div>
                           </div>
@@ -160,7 +172,7 @@
                             <div class="col-md-9">
                                 <div class="input-group">
                                   <span class="input-group-addon">$</span>
-                                  <input type="text" name="descuento" class="form-control" required disabled>
+                                  <input type="text" name="discount" [(ngModel)]="discount" class="form-control text-right" disabled>
                                 </div>
                             </div>
                           </div>
@@ -169,7 +181,7 @@
                             <div class="col-md-9">
                               <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" name="total" class="form-control" required disabled>
+                                <input type="text" name="total" [(ngModel)]="total" class="form-control text-right" disabled>
                               </div>
                             </div>
                           </div>
@@ -178,7 +190,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="col-md-6 pull-right">
-                        <button type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
+                        <button type="submit" class="btn btn-block btn-lg btn-outline-primary" (click)="testSubmit()"><i class="fa fa-check"></i> Registrar</button>
                     </div>
                 </div>
             </div>

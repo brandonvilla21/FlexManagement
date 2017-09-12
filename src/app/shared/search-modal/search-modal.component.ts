@@ -13,6 +13,7 @@ export interface SearchModalInterface {
 @Component({
   selector: 'app-search-modal',
   templateUrl: './search-modal.component.html',
+  styleUrls: ['./search-modal.component.scss']
 })
 export class SearchModalComponent extends DialogComponent<SearchModalInterface, any> implements OnInit, SearchModalInterface {
   public providers: Provider[];

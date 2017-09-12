@@ -10,10 +10,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
-// Calculate subtotal, total and descuento :v
 // Get the ID Compra
 // Delete product from purchased product table button
-// Some validations (Avoid putting the same product twice in purchased products table, etc.)
 
 @Component({
   selector: 'app-purchase',
@@ -28,6 +26,9 @@ export class PurchaseComponent implements OnInit {
   public purchasedProducts: Product[] = [];
   public behaviorSubject: BehaviorSubject<Array<Product>>;
   public latestPurchasedProducts: Observable<Array<Product>>;
+  public subtotal = 0;
+  public discount = 0;
+  public total = 0;
   public providerForm: Provider = {
     name: '',
     description: '',
@@ -96,7 +97,29 @@ export class PurchaseComponent implements OnInit {
   addProductToTable( product: Product ) {
     if ( product.product_id !== '' ) {
       product.purchaseExistence = this.numberOfProducts;
-      this.addPurchaseProduct(product);
+      this.addPurchaseProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
+        description: product.description ,
+        brand: product.brand ,
+        flavor: product.flavor ,
+        expiration_date: product.expiration_date ,
+        sale_price: product.sale_price ,
+        buy_price: product.buy_price ,
+        existence: product.existence ,
+        max: product.max ,
+        min: product.min ,
+        product_id: product.product_id ,
+        purchaseExistence: product.purchaseExistence ,
+      });
+      this.subtotal += product.buy_price * product.purchaseExistence;
+      if ( this.subtotal >= 5000 ) {
+        this.discount = this.subtotal * .10;
+      }
+      this.total = this.subtotal - this.discount;
+      this.productForm.product_id = '';
+      this.productForm.description = '';
+      this.productForm.brand = '';
+      this.productForm.buy_price = 0;
+      this.numberOfProducts = 1;
     } else {
       // It has not selected any product
     }
@@ -107,8 +130,19 @@ export class PurchaseComponent implements OnInit {
     this.purchasedProducts.push(product);
     this.behaviorSubject.next(this.purchasedProducts);
   }
+
+  removeFromPurchased( product_id ) {
+    const productToDelete = this.purchasedProducts.filter( product => {
+      if ( product.product_id === product_id ) {
+        return product;
+      }
+    });
+    const index = this.purchasedProducts.indexOf(productToDelete[0]);
+    this.purchasedProducts.splice(index, 1);
+    // Call the observable
+    this.behaviorSubject.next(this.purchasedProducts);
+  }
   getDate() {
     this.currentDate = Observable.interval(1000).map(x => new Date()).share();
   }
-
 }

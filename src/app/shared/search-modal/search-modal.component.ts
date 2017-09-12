@@ -39,7 +39,7 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   }
 
   confirm(object: any) {
-    this.result = object;
+    this.result = object; // result is passed to subscribe method from addDialog observer
     this.close();
   }
 

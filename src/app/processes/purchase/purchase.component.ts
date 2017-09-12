@@ -8,10 +8,10 @@ import { ProductService } from './../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
+// import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
 // Get the ID Compra
-// Delete product from purchased product table button
+// Delete subtotal, discount and total on delete product
 
 @Component({
   selector: 'app-purchase',
@@ -68,6 +68,13 @@ export class PurchaseComponent implements OnInit {
       d => {
         return d;
       }));
+      // this.behaviorSubject.map( data => {
+      //   data.map( d => {
+      //     console.log(d);
+      //   })
+      // });
+      console.log(this.behaviorSubject);
+      console.log(this.latestPurchasedProducts);
   }
 
   getProducts() {

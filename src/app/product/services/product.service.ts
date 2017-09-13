@@ -34,6 +34,12 @@ export class ProductService {
       .catch( error => JSON.stringify(error) );
   }
 
+  public findByColumn( column: string, element: string ): Observable<Product[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${element}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
   public update( product: Product ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.endPoint}/${product.product_id}`, product, {headers: headers})

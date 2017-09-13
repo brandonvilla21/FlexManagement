@@ -34,6 +34,12 @@ export class ProviderService {
       .catch( error => JSON.stringify(error) );
   }
 
+  public findByColumn( column: string, value: string ): Observable<Provider[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${value}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
   public update( provider: Provider ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.endPoint}/${provider.provider_id}`, provider, {headers: headers})

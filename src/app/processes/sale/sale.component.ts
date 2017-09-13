@@ -84,10 +84,9 @@ export class SaleComponent implements OnInit {
       title: title,
     }).subscribe( data => {
       if (data) {
-        if (type === 'employee') {
-          this.employeeForm = data;
-        } else if ( type === 'product' ) {
-          this.productForm = data;
+        switch (type) {
+          case 'employee': this.employeeForm = data; break;
+          case 'product':  this.productForm = data;  break;
         }
       }
     });

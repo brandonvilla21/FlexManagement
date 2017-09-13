@@ -3,7 +3,7 @@
         <form>                    
             <div class="card">
                 <div class="card-header text-center">
-                    <h2>Registrar compra</h2>
+                    <h2>Registrar venta</h2>
                 </div>
                 <div class="card-block">
                     <div class="row">
@@ -11,7 +11,7 @@
                           <img [src]="['assets/img/flexgym-logo.png']" alt="logo" style="width: 100%;">
                       </div>
                       <div class="col-md-6">
-                        <h3>Datos de la compra</h3>
+                        <h3>Datos de la venta</h3>
                         <hr>
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">ID Venta</label>
@@ -53,15 +53,15 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Nombre</label>
                             <div class="col-md-9">
-                                <input type="text" name="contact" [(ngModel)]="employeeForm.contact" class="form-control" required disabled>
+                                <input type="text" name="contact" [(ngModel)]="employeeForm.name + ' ' + employeeForm.lastname" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">Email</label>
+                            <label class="col-md-3 form-control-label">Domicilio</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" [(ngModel)]="employeeForm.email" class="form-control" required disabled>
+                                <input type="text" name="email" [(ngModel)]="employeeForm.address" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -76,7 +76,7 @@
                           <div class="form-group row">
                               <label class="col-md-3 form-control-label">Buscar</label>
                               <div class="col-md-9">
-                                  <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar producto</button>
+                                  <button type="button" name="searchProduct" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar producto</button>
                               </div>
                           </div>
                         </div>

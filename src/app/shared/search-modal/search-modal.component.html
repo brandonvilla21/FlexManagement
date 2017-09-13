@@ -53,7 +53,7 @@
                           </thead>
                           <tbody>
                               <ng-container *ngFor="let employee of employees">
-                                  <tr style="cursor: pointer;" (click)="confirm(provider)">
+                                  <tr style="cursor: pointer;" (click)="confirm(employee)">
                                       <td> {{ employee.employee_id }} </td>
                                       <td> {{ employee.name }} </td>
                                       <td> {{ employee.lastname }} </td>

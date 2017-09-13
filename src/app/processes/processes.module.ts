@@ -10,6 +10,7 @@ import { ProcessesRoutingModule } from './processes.routing';
 // Components
 import { ProcessesComponent } from './processes.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { SaleComponent } from './sale/sale.component';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
     declarations: [
         ProcessesComponent,
         PurchaseComponent,
+        SaleComponent,
         ProductConfirmComponent
     ],
     providers: [],

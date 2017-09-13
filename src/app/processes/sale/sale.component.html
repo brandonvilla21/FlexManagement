@@ -14,7 +14,7 @@
                         <h3>Datos de la compra</h3>
                         <hr>
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">ID Compra</label>
+                            <label class="col-md-3 form-control-label">ID Venta</label>
                             <div class="col-md-6">
                                 <input type="text" name="description" class="form-control" required disabled>
                             </div>
@@ -30,30 +30,30 @@
                     <hr>
                     <div class="row">
                       <div class="col-md-12">
-                        <h3>Datos del proveedor</h3>
+                        <h3>Datos del empleado</h3>
                         <hr>
                       </div>                      
                       <div class="col-md-6">
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Buscar</label>
                             <div class="col-md-9">
-                                <button type="button" name="searchProvider" class="btn btn-outline-info btn-block" (click)="showModalSearch('provider', 'Selecciona un proveedor')" >Buscar proveedor</button>
+                                <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('employee', 'Selecciona un empleado')" >Buscar empleado</button>
                             </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">ID Proveedor</label>
+                            <label class="col-md-3 form-control-label">ID Empleado</label>
                             <div class="col-md-3">
-                                <input type="text" name="provider_id" [(ngModel)]="providerForm.provider_id" class="form-control" required disabled>
+                                <input type="text" name="employee_id" [(ngModel)]="employeeForm.employee_id" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">Contacto</label>
+                            <label class="col-md-3 form-control-label">Nombre</label>
                             <div class="col-md-9">
-                                <input type="text" name="contact" [(ngModel)]="providerForm.contact" class="form-control" required disabled>
+                                <input type="text" name="contact" [(ngModel)]="employeeForm.contact" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Email</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" [(ngModel)]="providerForm.email" class="form-control" required disabled>
+                                <input type="text" name="email" [(ngModel)]="employeeForm.email" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -76,7 +76,7 @@
                           <div class="form-group row">
                               <label class="col-md-3 form-control-label">Buscar</label>
                               <div class="col-md-9">
-                                  <button type="button" name="searchProvider" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar producto</button>
+                                  <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar producto</button>
                               </div>
                           </div>
                         </div>

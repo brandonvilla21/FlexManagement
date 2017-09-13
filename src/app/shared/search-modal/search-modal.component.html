@@ -39,6 +39,32 @@
                             </tbody>
                         </table>
                     </ng-container>
+                    
+                    <ng-container *ngIf="type === 'employee'">
+                      <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                          <thead>
+                              <tr>
+                              <th>ID</th>
+                              <th>Nombre</th>
+                              <th>Apellido(s)</th>
+                              <th>Domicilio</th>
+                              <th>Whatsapp</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <ng-container *ngFor="let employee of employees">
+                                  <tr style="cursor: pointer;" (click)="confirm(provider)">
+                                      <td> {{ employee.employee_id }} </td>
+                                      <td> {{ employee.name }} </td>
+                                      <td> {{ employee.lastname }} </td>
+                                      <td> {{ employee.address }} </td>
+                                      <td> {{ employee.whatsapp }} </td>
+                                  </tr>
+                              </ng-container>
+                          </tbody>
+                      </table>
+                  </ng-container>
+
                     <ng-container *ngIf="type === 'product'">
                         <table class="table table-responsive table-hover adjust-table-responsive">
                             <thead>

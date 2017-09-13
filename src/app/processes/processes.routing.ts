@@ -15,7 +15,7 @@ const routes: Routes = [
     },
     children: [
         { path: 'purchase', component: PurchaseComponent, data: { title: 'Compras' } },
-        { path: 'sale',     component: PurchaseComponent, data: { title: 'Ventas' } }
+        { path: 'sale',     component: SaleComponent, data: { title: 'Ventas' } }
     ]
   },
 ];

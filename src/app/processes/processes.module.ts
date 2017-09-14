@@ -1,4 +1,3 @@
-import { ProductConfirmComponent } from './product-confirm/product-confirm.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -22,10 +21,8 @@ import { PurchaseComponent } from './purchase/purchase.component';
     declarations: [
         ProcessesComponent,
         PurchaseComponent,
-        ProductConfirmComponent
     ],
     providers: [],
-    entryComponents: [ ProductConfirmComponent ]
 
 })
 export class ProcessesModule { }

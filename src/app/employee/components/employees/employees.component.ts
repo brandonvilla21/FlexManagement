@@ -31,5 +31,10 @@ export class EmployeesComponent implements OnInit {
         this.getEmployees();
       });
   }
+  // For Debounce
+  // https://stackoverflow.com/questions/42761163/angular-2-debouncing-a-keyup-event
+  onKeyUp( searchTextValue ) {
+    console.log(searchTextValue);
+  }
 
 }

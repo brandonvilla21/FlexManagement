@@ -8,10 +8,10 @@ import { ProductService } from './../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
+// import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
 // Get the ID Compra
-// Delete product from purchased product table button
+// Delete subtotal, discount and total on delete product
 
 @Component({
   selector: 'app-purchase',
@@ -111,11 +111,9 @@ export class PurchaseComponent implements OnInit {
         product_id: product.product_id ,
         purchaseExistence: product.purchaseExistence ,
       });
-      this.subtotal += product.buy_price * product.purchaseExistence;
-      if ( this.subtotal >= 5000 ) {
-        this.discount = this.subtotal * .10;
-      }
-      this.total = this.subtotal - this.discount;
+
+      this.calculateCosts( product.buy_price * product.purchaseExistence )
+
       this.productForm.product_id = '';
       this.productForm.description = '';
       this.productForm.brand = '';
@@ -132,17 +130,24 @@ export class PurchaseComponent implements OnInit {
     this.behaviorSubject.next(this.purchasedProducts);
   }
 
-  removeFromPurchased( product_id ) {
-    const productToDelete = this.purchasedProducts.filter( product => {
-      if ( product.product_id === product_id ) {
-        return product;
-      }
-    });
-    const index = this.purchasedProducts.indexOf(productToDelete[0]);
+  removeFromPurchased( product: Product ) {
+
+    const index = this.purchasedProducts.indexOf(product);
     this.purchasedProducts.splice(index, 1);
+
     // Call the observable
     this.behaviorSubject.next(this.purchasedProducts);
+
+    this.calculateCosts( ( product.buy_price * product.purchaseExistence ) * -1 )
+
   }
+
+  calculateCosts( subtotal ) {
+    this.subtotal += subtotal;
+    this.discount = this.subtotal >= 5000 ? this.subtotal * .10 : 0;
+    this.total = this.subtotal + this.discount;
+  }
+
   getDate() {
     this.currentDate = Observable.interval(1000).map(x => new Date()).share();
   }

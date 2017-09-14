@@ -79,6 +79,7 @@ export class PurchaseComponent implements OnInit {
     this.providerService.all()
       .subscribe( providers => this.providers = providers );
   }
+
   showModalSearch(type: string, title: string) {
     const disposable = this.dialogService.addDialog(SearchModalComponent, {
       type: type,

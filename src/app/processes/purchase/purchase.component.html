@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <form>                    
+        <form #formPurchase="ngForm" (ngSubmit)="onSubmitPurchase(formPurchase)" >                    
             <div class="card">
                 <div class="card-header text-center">
                     <h2>Registrar compra</h2>
@@ -16,13 +16,13 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">ID Compra</label>
                             <div class="col-md-6">
-                                <input type="text" name="description" class="form-control" required disabled>
+                                <input [(ngModel)]="purchaseProduct.purchase_id" type="text" name="purchase_id" class="form-control" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Fecha</label>
                             <div class="col-md-6" >
-                                <input type="date" name="date" class="form-control" value="{{ currentDate | async | date:'yyyy-MM-dd' }}" required disabled>
+                                <input type="date" name="date" class="form-control" value="{{ currentDate | async | date:'yyyy-MM-dd' }}"  disabled>
                             </div>
                         </div>
                       </div>
@@ -45,7 +45,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">ID Proveedor</label>
                             <div class="col-md-3">
-                                <input type="text" name="provider_id" [(ngModel)]="providerForm.provider_id" class="form-control" required disabled>
+                                <input type="text" name="provider_id" #provider_id="ngModel" [(ngModel)]="providerForm.provider_id" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Contacto</label>
                             <div class="col-md-9">
-                                <input type="text" name="contact" [(ngModel)]="providerForm.contact" class="form-control" required disabled>
+                                <input type="text" name="contact" #contact="ngModel" [(ngModel)]="providerForm.contact" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Email</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" [(ngModel)]="providerForm.email" class="form-control" required disabled>
+                                <input type="text" name="email" #email="ngModel" [(ngModel)]="providerForm.email" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -105,14 +105,14 @@
                             <label>Costo</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="number" name="buy_price_form" [(ngModel)]="productForm.buy_price" class="form-control" min="0" value="0" required>
+                                <input type="number" name="buy_price_form" [(ngModel)]="productForm.buy_price" class="form-control" min="0" value="0" >
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3">
                           <div class="form-group ">
                             <label >Cantidad</label>
-                            <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" required>
+                            <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" >
                           </div>
                         </div>
                         <div class="col-md-8">
@@ -120,7 +120,7 @@
                         </div>
                         <div class="col-md-3">
                           <div class="form-group row mt-3">
-                              <button type="button" name="addProduct" class="btn btn-primary btn-block" (click)="addProductToTable(productForm)" required>Agregar producto</button>
+                              <button type="button" name="addProduct" class="btn btn-primary btn-block" (click)="addProductToTable(productForm)" >Agregar producto</button>
                           </div>
                         </div>
                       </div>
@@ -190,7 +190,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="col-md-6 pull-right">
-                        <button type="submit" class="btn btn-block btn-lg btn-outline-primary" (click)="testSubmit()"><i class="fa fa-check"></i> Registrar</button>
+                        <button [disabled]="formPurchase.invalid" type="submit" class="btn btn-block btn-lg btn-outline-primary" ><i class="fa fa-check"></i> Registrar</button>
                     </div>
                 </div>
             </div>

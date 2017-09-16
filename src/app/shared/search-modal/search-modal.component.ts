@@ -54,7 +54,6 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
 
         break;
       case 'provider':
-        // this.getProviders();
         this.setElements(
           { value: 'provider_id', name: 'ID Proveedor' },
           { value: 'name', name: 'Nombre' },
@@ -98,24 +97,17 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   }
 
   setElements( ...elements ) {
-    elements.forEach( element => {
-      this.selectElements.push( element );
-    });
+    elements.forEach( element => this.selectElements.push( element ) );
   }
 
   getProductsByColumn( ...elements ) {
     this.productService.findByColumn( this.searchOptionValue, this.searchTextValue )
-    .subscribe( products => {
-      this.products = products;
-    });
+    .subscribe( products => this.products = products );
   }
 
   getProvidersByColumn() {
     this.providersService.findByColumn( this.searchOptionValue, this.searchTextValue )
-      .subscribe( providers => {
-        this.providers = providers;
-        console.log(providers);
-      });
+      .subscribe( providers => this.providers = providers );
   }
 
   onKeyUp( searchTextValue ) {

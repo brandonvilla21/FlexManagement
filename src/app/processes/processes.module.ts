@@ -6,6 +6,8 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 // Routing
 import { ProcessesRoutingModule } from './processes.routing';
 
+// Services
+import { PurchaseProductService } from './services/purchase-product.service';
 // Components
 import { ProcessesComponent } from './processes.component';
 import { PurchaseComponent } from './purchase/purchase.component';
@@ -22,7 +24,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
         ProcessesComponent,
         PurchaseComponent,
     ],
-    providers: [],
+    providers: [ PurchaseProductService ],
 
 })
 export class ProcessesModule { }

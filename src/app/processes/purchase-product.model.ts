@@ -3,7 +3,7 @@ import { ProductPurchaseProductInterface } from './product-purchase-product.mode
 export interface PurchaseProductInterface {
     purchase_id: string,
     provider_id: string,
-    purchase_date: string,
+    purchase_date: Date,
     subtotal: number,
     discount: number,
     total: number,

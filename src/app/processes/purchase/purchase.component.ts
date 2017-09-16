@@ -1,3 +1,4 @@
+import { ProductPurchaseProductInterface } from './../product-purchase-product.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchModalComponent } from './../../shared/search-modal/search-modal.component';
@@ -8,10 +9,8 @@ import { ProductService } from './../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
-// import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
-// Things missing
-// Get the ID Compra
-// Delete subtotal, discount and total on delete product
+import { PurchaseProductInterface } from './../purchase-product.model';
+import { PurchaseProductService } from './../services/purchase-product.service';
 
 @Component({
   selector: 'app-purchase',
@@ -51,13 +50,25 @@ export class PurchaseComponent implements OnInit {
     purchaseExistence: 0,
   }
 
+  public purchaseProduct: PurchaseProductInterface = {
+    purchase_id: '',
+    provider_id: '',
+    purchase_date: new Date(),
+    subtotal: 0,
+    discount: 0,
+    total: 0,
+    product_purchaseProduct: [],
+  }
+
   constructor(
     private dialogService: DialogService,
     private productService: ProductService,
-    private providerService: ProviderService
+    private providerService: ProviderService,
+    private purchaseProductService: PurchaseProductService
    ) {
       this.getProviders();
       this.getProducts();
+      this.getPurchaseCount();
     }
 
   ngOnInit() {
@@ -70,14 +81,19 @@ export class PurchaseComponent implements OnInit {
       }));
   }
 
-  getProducts() {
+  private getProducts() {
     this.productService.all()
       .subscribe( products => this.products = products );
   }
 
-  getProviders() {
+  private getProviders() {
     this.providerService.all()
       .subscribe( providers => this.providers = providers );
+  }
+
+  private getPurchaseCount() {
+    this.purchaseProductService.count()
+      .subscribe( res => this.purchaseProduct.purchase_id = res[0].number_of_purchase + 1 );
   }
 
   showModalSearch(type: string, title: string) {
@@ -142,13 +158,38 @@ export class PurchaseComponent implements OnInit {
 
   }
 
-  calculateCosts( subtotal ) {
+  private calculateCosts( subtotal ) {
     this.subtotal += subtotal;
     this.discount = this.subtotal >= 5000 ? this.subtotal * .10 : 0;
     this.total = this.subtotal + this.discount;
   }
 
-  getDate() {
+  private getDate() {
     this.currentDate = Observable.interval(1000).map(x => new Date()).share();
   }
+
+
+  onSubmitPurchase ( form: NgForm ) {
+    this.purchaseProduct.provider_id = this.providerForm.provider_id;
+    this.purchaseProduct.subtotal = this.subtotal;
+    this.purchaseProduct.discount = this.discount;
+    this.purchaseProduct.total = this.total;
+    this.purchasedProducts.forEach( product => {
+      this.purchaseProduct.product_purchaseProduct.push({
+        purchase_id: this.purchaseProduct.purchase_id,
+        product_id: product.product_id,
+        price: product.buy_price,
+        amount: product.purchaseExistence,
+      });
+    });
+    console.log( this.purchaseProduct );
+    this.insertPurchase();
+  }
+
+  private insertPurchase () {
+    this.purchaseProductService.create( this.purchaseProduct )
+      .subscribe( res => console.log( res ) );
+  }
+
+
 }

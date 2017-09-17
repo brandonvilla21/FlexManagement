@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProcessesComponent } from './processes.component';
-import { PurchaseComponent } from './purchase/purchase.component';
+import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 
 
@@ -14,7 +14,7 @@ const routes: Routes = [
         title: 'Movimientos'
     },
     children: [
-        { path: 'purchase', component: PurchaseComponent, data: { title: 'Compras' } },
+        { path: 'purchase', component: PurchaseCreateComponent, data: { title: 'Compras' } },
         { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } }
     ]
   },

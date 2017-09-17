@@ -1,4 +1,4 @@
-import { PurchaseComponent } from './processes/purchase/purchase.component';
+import { PurchaseCreateComponent } from './processes/purchase-create/purchase-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -36,7 +36,7 @@ export const routes: Routes = [
         loadChildren: './processes/processes.module#ProcessesModule'
       },
       {
-        path: 'purchase', component: PurchaseComponent
+        path: 'purchase', component: PurchaseCreateComponent
       },
       {
         path: 'customers',

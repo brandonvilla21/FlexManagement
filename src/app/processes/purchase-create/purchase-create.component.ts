@@ -13,11 +13,11 @@ import { PurchaseProductInterface } from './../purchase-product.model';
 import { PurchaseProductService } from './../services/purchase-product.service';
 
 @Component({
-  selector: 'app-purchase',
-  templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.scss']
+  selector: 'app-purchase-create',
+  templateUrl: './purchase-create.component.html',
+  styleUrls: ['./purchase-create.component.scss']
 })
-export class PurchaseComponent implements OnInit {
+export class PurchaseCreateComponent implements OnInit {
   public numberOfProducts = 1;
   public currentDate;
   public products: Product[];

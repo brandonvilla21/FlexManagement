@@ -10,7 +10,7 @@ import { ProcessesRoutingModule } from './processes.routing';
 import { PurchaseProductService } from './services/purchase-product.service';
 // Components
 import { ProcessesComponent } from './processes.component';
-import { PurchaseComponent } from './purchase/purchase.component';
+import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { PurchasesComponent } from './purchases/purchases.component';
     exports: [],
     declarations: [
         ProcessesComponent,
-        PurchaseComponent,
+        PurchaseCreateComponent,
         PurchasesComponent,
     ],
     providers: [ PurchaseProductService ],

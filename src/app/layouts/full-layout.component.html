@@ -67,9 +67,17 @@
         <li class="nav-item nav-dropdown" appNavDropdown>
             <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Movimientos</a>
             <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/purchase']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Compras</a>
-              </li>
+                <li class="nav-item nav-dropdown" appNavDropdown>
+                    <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Compras</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/purchase']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Registrar</a>
+                        </li>                      
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/purchases']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Consultar</a>
+                        </li>                      
+                    </ul>
+                </li>
               <li class="nav-item">
                   <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Ventas</a>
               </li>

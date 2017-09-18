@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProcessesComponent } from './processes.component';
+import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
+import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { SaleComponent } from './sale/sale.component';
 
@@ -14,8 +16,10 @@ const routes: Routes = [
         title: 'Movimientos'
     },
     children: [
-        { path: 'purchase', component: PurchaseComponent, data: { title: 'Compras' } },
-        { path: 'sale',     component: SaleComponent, data: { title: 'Ventas' } }
+        { path: 'purchase-create', component: PurchaseCreateComponent, data: { title: 'Compras' } },
+        { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } },
+        { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } },
+        { path: 'sale-create',     component: SaleComponent, data: { title: 'Ventas' } }
     ]
   },
 ];

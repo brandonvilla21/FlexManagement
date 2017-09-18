@@ -21,7 +21,7 @@
                                 <span class="input-group-btn">
                                     <button [routerLink]="['../show/', employee_id]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                                 </span>
-                                <input type="text" [(ngModel)]="employee_id" name="employee_id" class="form-control" placeholder="Id del empleado">
+                                <input  (keyup)="onKeyUp(employee_id)" type="text" [(ngModel)]="employee_id" name="employee_id" class="form-control" placeholder="Id del empleado">
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Provider } from './../../provider/provider.model';
 import { Employee } from './../../employee/employee.model';
 import { Product } from './../../product/product.model';
@@ -22,6 +24,10 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   public providers: Provider[];
   public employees: Employee[];
   public products: Product[];
+  public searchTextValue: string;
+  public searchOptionValue: string;
+  public selectElements: any[];
+  private subject: BehaviorSubject<string>;
 
   type: string;
   title: string;
@@ -33,26 +39,55 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
     private productService: ProductService
   ) {
     super(dialogService);
+    this.selectElements = [];
+    this.searchTextValue = '';
+    this.searchOptionValue = '';
+    this.subject  = new BehaviorSubject<string>(this.searchTextValue);
    }
 
   ngOnInit() {
+    switch ( this.type ) {
+      case 'product' :
+        // this.getProducts();
+        this.setElements(
+          { value: 'product_id', name: 'ID Producto' },
+          { value: 'description', name: 'Descripción'},
+          { value: 'brand', name: 'Marca'},
+          { value: 'flavor', name: 'Sabor'}
+        );
+        this.searchOptionValue = 'product_id';
 
-    switch (this.type) {
-      case 'provider':
-        this.getProviders();
         break;
-      case 'employee':
-        this.getEmployees();
-        break; // it encounters this break so will not continue into 'case 2:'
-      case 'product':
-        this.getProducts();
-
+      case 'provider':
+        this.setElements(
+          { value: 'provider_id', name: 'ID Proveedor' },
+          { value: 'name', name: 'Nombre' },
+          { value: 'description', name: 'Descripción' },
+          { value: 'contact', name: 'Contacto' },
+          { value: 'email', name: 'Correo' },
+          { value: 'phone', name: 'Teléfono' },
+        );
+        this.searchOptionValue = 'provider_id';
         break;
     }
+
+    // Subscribe to observable for debounce
+    this.subject.debounceTime(400).subscribe( searchTextValue => {
+      if ( searchTextValue !== '' ) {
+        switch ( this.type ) {
+          case 'product':
+            this.getProductsByColumn();
+            break;
+          case 'provider':
+            this.getProvidersByColumn();
+            break;
+        }
+      }
+    });
   }
 
-  confirm(object: any) {
-    this.result = object;
+  confirm( object: any ) {
+    this.result = object; // result is passed to subscribe method from addDialog observer
     this.close();
   }
 
@@ -69,6 +104,24 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getProducts() {
     this.productService.all()
       .subscribe( products => this.products = products);
+  }
+
+  setElements( ...elements ) {
+    elements.forEach( element => this.selectElements.push( element ) );
+  }
+
+  getProductsByColumn( ...elements ) {
+    this.productService.findByColumn( this.searchOptionValue, this.searchTextValue )
+    .subscribe( products => this.products = products );
+  }
+
+  getProvidersByColumn() {
+    this.providersService.findByColumn( this.searchOptionValue, this.searchTextValue )
+      .subscribe( providers => this.providers = providers );
+  }
+
+  onKeyUp( searchTextValue ) {
+    this.subject.next(searchTextValue);
   }
 
 }

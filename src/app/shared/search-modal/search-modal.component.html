@@ -5,13 +5,22 @@
            <h4 class="modal-title"> {{ title }} </h4>
       </div>
       <div class="modal-body">
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
-                </span>
-                <input type="text" name="employee_id" class="form-control" placeholder="Ingresa el ID">
-            </div>
-            <div class="container">
+          <div class="row">
+              <div class="input-group col-md-4">
+                  <select name="" id="" class="form-control" [(ngModel)]="searchOptionValue">
+                      <ng-container *ngFor="let item of selectElements">
+                        <option value="{{ item.value }}"> {{ item.name }} </option>
+                      </ng-container>
+                  </select>
+              </div>
+              <div class="input-group col-md-8">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                  </span>
+                  <input type="text" name="employee_id" class="form-control" [(ngModel)]="searchTextValue" placeholder="Ingresa la búsqueda" (keyup)="onKeyUp(searchTextValue)">
+              </div>
+          </div>
+            <div class="container pt-2">
                 <div class="row">
                     <ng-container *ngIf="type === 'provider'">
                         <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">

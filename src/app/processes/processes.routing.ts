@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProcessesComponent } from './processes.component';
 import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,9 @@ const routes: Routes = [
         title: 'Movimientos'
     },
     children: [
-        { path: 'purchase', component: PurchaseCreateComponent, data: { title: 'Compras' } },
-        { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } }
+        { path: 'purchase-create', component: PurchaseCreateComponent, data: { title: 'Compras' } },
+        { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } },
+        { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } }
     ]
   },
 ];

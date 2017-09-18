@@ -1,4 +1,4 @@
-import { ProductPurchaseProductInterface } from './../product-purchase-product.model';
+import { ProductPurchaseProductInterface } from './../models/product-purchase-product.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchModalComponent } from './../../shared/search-modal/search-modal.component';
@@ -9,7 +9,7 @@ import { ProductService } from './../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { PurchaseProductInterface } from './../purchase-product.model';
+import { PurchaseProductInterface } from './../models/purchase-product.model';
 import { PurchaseProductService } from './../services/purchase-product.service';
 
 @Component({

@@ -16,9 +16,9 @@
                         <div class="col-md-12">
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                    <button [routerLink]="['../purchase', search]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
                                 </span>
-                                <input  type="text"  name="purchase_id" class="form-control" placeholder="ID de la compra">
+                                <input [(ngModel)]="search" type="text"  name="purchase_id" class="form-control" placeholder="ID de la compra">
                             </div>
                         </div>
                     </div>
@@ -39,6 +39,7 @@
               <tr>
                 <th>ID Compra</th>
                 <th>ID Proveedor</th>
+                <th>Nombre de proveedor</th>
                 <th>Fecha</th>
                 <th>Subtotal</th>
                 <th>Descuento</th>
@@ -50,12 +51,13 @@
               <tr *ngFor="let purchase of purchases">
                 <td>{{ purchase.purchase_id }}</td>
                 <td>{{ purchase.provider_id }}</td>
+                <td>{{ purchase.provider_name }}</td>
                 <td>{{ purchase.purchase_date | date}}</td>
                 <td>{{ purchase.subtotal }}</td>
                 <td>{{ purchase.discount }}</td>
                 <td>{{ purchase.total }}</td>
                 <td>
-                  <a class="btn  btn-outline-primary">Ver más</a>
+                  <a [routerLink]="['../purchase', purchase.purchase_id]" class="btn  btn-outline-primary">Ver más</a>
                 </td>
               </tr>
             </tbody>

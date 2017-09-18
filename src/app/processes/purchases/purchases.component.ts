@@ -1,6 +1,6 @@
-import { PurchaseProductInterface } from './../purchase-product.model';
-import { PurchaseProductService } from './../services/purchase-product.service';
 import { Component, OnInit } from '@angular/core';
+import { PurchaseProductInterface } from './../models/purchase-product.model';
+import { PurchaseProductService } from './../services/purchase-product.service';
 
 @Component({
   selector: 'app-purchases',
@@ -8,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./purchases.component.scss']
 })
 export class PurchasesComponent implements OnInit {
-  public purchases: PurchaseProductInterface [];
-
-  constructor( private purchaseProductService: PurchaseProductService ) {
+  public purchases: any [];
+  public search: string;
+  constructor( private purchaseProductService: PurchaseProductService) {
     this.purchases = [];
+    this.search = '';
   }
 
   ngOnInit() {
@@ -19,8 +20,7 @@ export class PurchasesComponent implements OnInit {
   }
 
   getAll() {
-    this.purchaseProductService.all()
+    this.purchaseProductService.general()
       .subscribe( purchases => this.purchases = purchases );
   }
-
 }

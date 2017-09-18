@@ -36,9 +36,6 @@ export const routes: Routes = [
         loadChildren: './processes/processes.module#ProcessesModule'
       },
       {
-        path: 'purchase', component: PurchaseCreateComponent
-      },
-      {
         path: 'customers',
         loadChildren: './customer/customer.module#CustomerModule'
       },

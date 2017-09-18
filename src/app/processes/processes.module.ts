@@ -12,6 +12,7 @@ import { PurchaseProductService } from './services/purchase-product.service';
 import { ProcessesComponent } from './processes.component';
 import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { PurchasesComponent } from './purchases/purchases.component';
         ProcessesComponent,
         PurchaseCreateComponent,
         PurchasesComponent,
+        PurchaseComponent,
     ],
     providers: [ PurchaseProductService ],
 

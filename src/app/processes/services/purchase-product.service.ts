@@ -21,6 +21,12 @@ export class PurchaseProductService {
       .catch(err =>  JSON.stringify(err));
   }
 
+  public general(): Observable<any[]> {
+    return this.http.get(`${this.endPoint}/general`)
+      .map(res => res.json() || { })
+      .catch(err =>  JSON.stringify(err));
+  }
+
   public count(): Observable<Object> {
     return this.http.get(`${this.endPoint}/count`)
       .map( res => res.json())
@@ -29,6 +35,12 @@ export class PurchaseProductService {
 
   public findById( id ): Observable<PurchaseProductInterface> {
     return this.http.get(`${this.endPoint}/${id}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
+  public findByIdJoin( id ): Observable<any> {
+    return this.http.get(`${this.endPoint}/join/${id}`)
       .map( res => res.json() || {} )
       .catch( error => JSON.stringify(error) );
   }

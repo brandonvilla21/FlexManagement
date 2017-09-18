@@ -65,7 +65,7 @@ export class PurchaseCreateComponent implements OnInit {
     private productService: ProductService,
     private providerService: ProviderService,
     private purchaseProductService: PurchaseProductService
-   ) {
+  ) {
       this.getProviders();
       this.getProducts();
       this.getPurchaseCount();
@@ -161,7 +161,7 @@ export class PurchaseCreateComponent implements OnInit {
   private calculateCosts( subtotal ) {
     this.subtotal += subtotal;
     this.discount = this.subtotal >= 5000 ? this.subtotal * .10 : 0;
-    this.total = this.subtotal + this.discount;
+    this.total = this.subtotal - this.discount;
   }
 
   private getDate() {

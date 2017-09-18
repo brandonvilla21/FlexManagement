@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { ConfigUrlService } from './../../services/config-url/config.url.service';
-import { PurchaseProductInterface } from './../purchase-product.model';
+import { PurchaseProductInterface } from './../models/purchase-product.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';

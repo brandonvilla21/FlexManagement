@@ -69,6 +69,17 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
         );
         this.searchOptionValue = 'provider_id';
         break;
+
+      case 'employee':
+        this.setElements(
+          { value: 'employee_id', name: 'ID Empleado' },
+          { value: 'name', name: 'Nombre' },
+          { value: 'lastname', name: 'Apellido(s)' },
+          { value: 'address', name: 'Dirección' },
+          { value: 'whatsapp', name: 'WhatsApp' }
+        );
+        this.searchOptionValue = 'employee_id';
+        break;
     }
 
     // Subscribe to observable for debounce
@@ -80,6 +91,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
             break;
           case 'provider':
             this.getProvidersByColumn();
+            break;
+          case 'employee':
+            this.getEmployeesByColumn();
             break;
         }
       }
@@ -118,6 +132,11 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getProvidersByColumn() {
     this.providersService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( providers => this.providers = providers );
+  }
+
+  getEmployeesByColumn() {
+    this.employeeService.findByColumn( this.searchOptionValue, this.searchTextValue )
+      .subscribe( employees => this.employees = employees );
   }
 
   onKeyUp( searchTextValue ) {

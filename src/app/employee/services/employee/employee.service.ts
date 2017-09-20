@@ -39,6 +39,12 @@ export class EmployeeService {
       .catch( error => JSON.stringify(error) );
   }
 
+  public findByColumn( column: string, value: string ): Observable<Employee[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${value}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
   public update( employee: Employee ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.endPoint}/${employee.employee_id}`, employee, {headers: headers})

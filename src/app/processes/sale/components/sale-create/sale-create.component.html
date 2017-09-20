@@ -30,20 +30,20 @@
                     <hr>
                     <div class="row">
                       <div class="col-md-12">
-                        <h3>Datos del empleado</h3>
+                        <h3>Datos del cliente seleccionado</h3>
                         <hr>
                       </div>                      
                       <div class="col-md-6">
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Buscar</label>
                             <div class="col-md-9">
-                                <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('employee', 'Selecciona un empleado')" >Buscar empleado</button>
+                                <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('employee', 'Selecciona un empleado')" >Buscar cliente</button>
                             </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">ID Empleado</label>
+                            <label class="col-md-3 form-control-label">ID Cliente</label>
                             <div class="col-md-3">
                                 <input type="text" name="employee_id" [(ngModel)]="employeeForm.employee_id" class="form-control" required disabled>
                             </div>
@@ -51,7 +51,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">Nombre</label>
+                            <label class="col-md-3 form-control-label">Referencia</label>
                             <div class="col-md-9">
                                 <input type="text" name="contact" [(ngModel)]="employeeForm.name + ' ' + employeeForm.lastname" class="form-control" required disabled>
                             </div>
@@ -59,13 +59,71 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">Domicilio</label>
+                            <label class="col-md-3 form-control-label">Whatsapp</label>
                             <div class="col-md-9">
                                 <input type="text" name="email" [(ngModel)]="employeeForm.address" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                          <h3>Datos del empleado seleccionado</h3>
+                          <hr>
+                        </div>                      
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                              <label class="col-md-3 form-control-label">Buscar</label>
+                              <div class="col-md-9">
+                                  <button type="button" name="searchProduct" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar empleado</button>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                              <label class="col-md-3 form-control-label">ID Empleado</label>
+                              <div class="col-md-3">
+                                  <input type="text" name="product_id" [(ngModel)]="productForm.product_id" class="form-control" disabled>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" name="description_form" [(ngModel)]="productForm.description" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Marca</label>
+                                <input type="text" name="brand_form" [(ngModel)]="productForm.brand" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label>Costo</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="number" name="buy_price_form" [(ngModel)]="productForm.buy_price" class="form-control" min="0" value="0" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group ">
+                            <label >Cantidad</label>
+                            <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" required>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <!-- <img [src]="flexgym-logo.png" alt=""> -->
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group row mt-3">
+                              <button type="button" name="addProduct" class="btn btn-primary btn-block" (click)="addProductToTable(productForm)" required>Agregar producto</button>
+                          </div>
+                        </div>
+                      </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-12">

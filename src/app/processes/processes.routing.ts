@@ -5,7 +5,7 @@ import { ProcessesComponent } from './processes.component';
 import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { SaleComponent } from './sale/sale-create/sale-create.component';
+// import { SaleComponent } from './sale/sale-create/sale-create.component';
 
 
 const routes: Routes = [
@@ -19,7 +19,12 @@ const routes: Routes = [
         { path: 'purchase-create', component: PurchaseCreateComponent, data: { title: 'Compras' } },
         { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } },
         { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } },
-        { path: 'sale-create',     component: SaleComponent, data: { title: 'Ventas' } }
+        
+        {
+          path: 'sales',
+          loadChildren: './sale/sale.module#SaleModule'
+        }
+        // { path: 'sale-create',     component: SaleComponent, data: { title: 'Ventas' } }
     ]
   },
 ];

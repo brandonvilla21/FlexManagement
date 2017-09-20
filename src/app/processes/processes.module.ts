@@ -13,7 +13,9 @@ import { ProcessesComponent } from './processes.component';
 import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { SaleComponent } from './sale/sale-create/sale-create.component';
+
+//Modules
+import { SaleModule } from './sale/sale.module';
 
 @NgModule({
     imports: [
@@ -28,7 +30,7 @@ import { SaleComponent } from './sale/sale-create/sale-create.component';
         PurchaseCreateComponent,
         PurchasesComponent,
         PurchaseComponent,
-        SaleComponent
+        // SaleComponent
     ],
     providers: [ PurchaseProductService ],
 

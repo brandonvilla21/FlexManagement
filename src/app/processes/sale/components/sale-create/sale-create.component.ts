@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SearchModalComponent } from './../../../../shared/search-modal/search-modal.component';
 import { Employee } from './../../../../employee/employee.model';
 import { Product } from './../../../../product/product.model';
 import { EmployeeService } from './../../../../employee/services/employee/employee.service';
@@ -8,10 +7,15 @@ import { ProductService } from './../../../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
+import { ProductSaleProductInterface } from '../../models/product-sale-product.model';
+import { SearchModalComponent } from './../../../../shared/search-modal/search-modal.component';
+import { SaleProductInterface } from '../../models/sale-product.model';
+import { SaleProductService } from './../../services/sale-product.service';
+
 // import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
 // Get the ID Compra
-// Delete product from purchased product table button
+// Delete product from saled product table button
 
 @Component({
   selector: 'app-sale-create',
@@ -48,6 +52,16 @@ export class SaleCreateComponent implements OnInit {
     min: 0,
     product_id: '',
     purchaseExistence: 0,
+  }
+
+  public saleProduct: SaleProductInterface = {
+    sale_id: '',
+    provider_id: '',
+    sale_date: new Date(),
+    subtotal: 0,
+    discount: 0,
+    total: 0,
+    product_saleProduct: [],
   }
 
   constructor(
@@ -95,7 +109,7 @@ export class SaleCreateComponent implements OnInit {
   addProductToTable( product: Product ) {
     if ( product.product_id !== '' ) {
       product.purchaseExistence = this.numberOfProducts;
-      this.addPurchaseProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
+      this.addSaleProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
         description: product.description ,
         brand: product.brand ,
         flavor: product.flavor ,
@@ -124,12 +138,12 @@ export class SaleCreateComponent implements OnInit {
 
   }
 
-  addPurchaseProduct(product) {
+  addSaleProduct(product) {
     this.soldProducts.push(product);
     this.behaviorSubject.next(this.soldProducts);
   }
 
-  removeFromPurchased( product_id ) {
+  removeFromSaled( product_id ) {
     const productToDelete = this.soldProducts.filter( product => {
       if ( product.product_id === product_id ) {
         return product;

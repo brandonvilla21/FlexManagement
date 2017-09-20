@@ -39,6 +39,12 @@ export class CustomerService {
       .catch( error => JSON.stringify(error) );
   }
 
+  public findByColumn( column: string, value: string ): Observable<Customer[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${value}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
   public update( customer: Customer ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.put(`${this.endPoint}/${customer.customer_id}`, customer, {headers: headers})

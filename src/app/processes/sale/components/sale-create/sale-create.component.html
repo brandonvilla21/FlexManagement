@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Buscar</label>
                             <div class="col-md-9">
-                                <button type="button" name="searchEmployee" class="btn btn-outline-info btn-block" (click)="showModalSearch('employee', 'Selecciona un empleado')" >Buscar cliente</button>
+                                <button type="button" name="searchCustomer" class="btn btn-outline-info btn-block" (click)="showModalSearch('customer', 'Selecciona un cliente')" >Buscar cliente</button>
                             </div>
                         </div>
                       </div>
@@ -45,7 +45,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">ID Cliente</label>
                             <div class="col-md-3">
-                                <input type="text" name="employee_id" [(ngModel)]="employeeForm.employee_id" class="form-control" required disabled>
+                                <input type="text" name="customer_id" [(ngModel)]="customerForm.customer_id" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Referencia</label>
                             <div class="col-md-9">
-                                <input type="text" name="contact" [(ngModel)]="employeeForm.name + ' ' + employeeForm.lastname" class="form-control" required disabled>
+                                <input type="text" name="customer_refecence" [(ngModel)]="customerForm.reference" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>
@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Whatsapp</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" [(ngModel)]="employeeForm.address" class="form-control" required disabled>
+                                <input type="text" name="customer_whatsapp" [(ngModel)]="customerForm.whatsapp" class="form-control" required disabled>
                             </div>
                         </div>
                       </div>

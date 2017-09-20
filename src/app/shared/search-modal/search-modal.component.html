@@ -74,6 +74,35 @@
                       </table>
                   </ng-container>
 
+                  <ng-container *ngIf="type === 'customer'">
+                    <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                        <thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido(s)</th>
+                            <th>Referencia</th>
+                            <th>Whatsapp</th>
+                            <th>Facebook</th>
+                            <th>Saldo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let customer of customers">
+                                <tr style="cursor: pointer;" (click)="confirm(customer)">
+                                    <td> {{ customer.customer_id }} </td>
+                                    <td> {{ customer.name }} </td>
+                                    <td> {{ customer.lastname }} </td>
+                                    <td> {{ customer.reference }} </td>
+                                    <td> {{ customer.whatsapp }} </td>
+                                    <td> {{ customer.facebook }} </td>
+                                    <td> {{ customer.balance }} </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </ng-container>
+
                     <ng-container *ngIf="type === 'product'">
                         <table class="table table-responsive table-hover adjust-table-responsive">
                             <thead>

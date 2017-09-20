@@ -2,11 +2,13 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Provider } from './../../provider/provider.model';
 import { Employee } from './../../employee/employee.model';
+import { Customer } from './../../customer/customer.model';
 import { Product } from './../../product/product.model';
 
 import { ProductService } from './../../product/services/product.service';
 import { ProviderService } from './../../provider/services/provider/provider.service';
 import { EmployeeService } from './../../employee/services/employee/employee.service';
+import { CustomerService } from './../../customer/services/customer/customer.service';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
@@ -23,6 +25,7 @@ export interface SearchModalInterface {
 export class SearchModalComponent extends DialogComponent<SearchModalInterface, any> implements OnInit, SearchModalInterface {
   public providers: Provider[];
   public employees: Employee[];
+  public customers: Customer[];
   public products: Product[];
   public searchTextValue: string;
   public searchOptionValue: string;
@@ -36,6 +39,7 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
     dialogService: DialogService,
     private providersService: ProviderService,
     private employeeService: EmployeeService,
+    private customerService: CustomerService,    
     private productService: ProductService
   ) {
     super(dialogService);
@@ -80,6 +84,19 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
         );
         this.searchOptionValue = 'employee_id';
         break;
+
+      case 'customer':
+        this.setElements(
+          { value: 'customer_id', name: 'ID Cliente' },
+          { value: 'name', name: 'Nombre' },
+          { value: 'lastname', name: 'Apellido(s)' },
+          { value: 'reference', name: 'Referencia' },
+          { value: 'whatsapp', name: 'WhatsApp' },
+          { value: 'facebook', name: 'Facebook' },
+          { value: 'balance', name: 'Saldo' }
+        );
+        this.searchOptionValue = 'customer_id';
+        break;
     }
 
     // Subscribe to observable for debounce
@@ -94,6 +111,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
             break;
           case 'employee':
             this.getEmployeesByColumn();
+            break;
+          case 'customer':
+            this.getCustomersByColumn();
             break;
         }
       }
@@ -137,6 +157,11 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getEmployeesByColumn() {
     this.employeeService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( employees => this.employees = employees );
+  }
+
+  getCustomersByColumn() {
+    this.customerService.findByColumn( this.searchOptionValue, this.searchTextValue )
+      .subscribe( customers => this.customers = customers );
   }
 
   onKeyUp( searchTextValue ) {

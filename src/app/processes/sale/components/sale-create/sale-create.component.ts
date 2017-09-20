@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Employee } from './../../../../employee/employee.model';
+import { Customer } from './../../../../customer/customer.model';
 import { Product } from './../../../../product/product.model';
 import { EmployeeService } from './../../../../employee/services/employee/employee.service';
+import { CustomerService } from './../../../../customer/services/customer/customer.service';
 import { ProductService } from './../../../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -27,6 +29,7 @@ export class SaleCreateComponent implements OnInit {
   public currentDate;
   public products: Product[];
   public employees: Employee[];
+  public customers: Customer[];
   public soldProducts: Product[] = [];
   public behaviorSubject: BehaviorSubject<Array<Product>>;
   public latestSoldProducts: Observable<Array<Product>>;
@@ -40,6 +43,17 @@ export class SaleCreateComponent implements OnInit {
     address: '',
     whatsapp: ''
   };
+
+  public customerForm: Customer = {
+    customer_id: '',
+    name: '',
+    lastname: '',
+    reference: '',
+    whatsapp: '',
+    facebook: '',
+    balance: 0
+  };
+
   public productForm: Product = {
     description: '',
     brand: '',
@@ -67,10 +81,12 @@ export class SaleCreateComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private productService: ProductService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private customerService: CustomerService
    ) {
       this.getEmployees();
       this.getProducts();
+      this.getCustomers();
     }
 
   ngOnInit() {
@@ -92,6 +108,12 @@ export class SaleCreateComponent implements OnInit {
     this.employeeService.all()
       .subscribe( employees => this.employees = employees );
   }
+
+  getCustomers() {
+    this.customerService.all()
+      .subscribe( customers => this.customers = customers );
+  }
+
   showModalSearch(type: string, title: string) {
     const disposable = this.dialogService.addDialog(SearchModalComponent, {
       type: type,
@@ -101,6 +123,7 @@ export class SaleCreateComponent implements OnInit {
         switch (type) {
           case 'employee': this.employeeForm = data; break;
           case 'product':  this.productForm = data;  break;
+          case 'customer':  this.customerForm = data;  break;
         }
       }
     });

@@ -5,7 +5,7 @@ import { ProcessesComponent } from './processes.component';
 import { PurchaseCreateComponent } from './purchase-create/purchase-create.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { SaleComponent } from './sale/sale.component';
+import { SaleComponent } from './sale/sale-create/sale-create.component';
 
 
 const routes: Routes = [

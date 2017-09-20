@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SearchModalComponent } from './../../shared/search-modal/search-modal.component';
-import { Employee } from './../../employee/employee.model';
-import { Product } from './../../product/product.model';
-import { EmployeeService } from './../../employee/services/employee/employee.service';
-import { ProductService } from './../../product/services/product.service';
+import { SearchModalComponent } from './../../../shared/search-modal/search-modal.component';
+import { Employee } from './../../../employee/employee.model';
+import { Product } from './../../../product/product.model';
+import { EmployeeService } from './../../../employee/services/employee/employee.service';
+import { ProductService } from './../../../product/services/product.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
+// import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
 // Get the ID Compra
 // Delete product from purchased product table button
 
 @Component({
-  selector: 'app-sale',
-  templateUrl: './sale.component.html',
-  styleUrls: ['./sale.component.scss']
+  selector: 'app-sale-create',
+  templateUrl: './sale-create.component.html',
+  styleUrls: ['./sale-create.component.scss']
 })
 export class SaleComponent implements OnInit {
   public numberOfProducts = 1;

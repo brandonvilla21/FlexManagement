@@ -82,11 +82,13 @@ export class SaleCreateComponent implements OnInit {
     private dialogService: DialogService,
     private productService: ProductService,
     private employeeService: EmployeeService,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private saleProductService: SaleProductService
    ) {
       this.getEmployees();
       this.getProducts();
       this.getCustomers();
+      this.getSaleCount();
     }
 
   ngOnInit() {
@@ -112,6 +114,11 @@ export class SaleCreateComponent implements OnInit {
   getCustomers() {
     this.customerService.all()
       .subscribe( customers => this.customers = customers );
+  }
+
+  private getSaleCount() {
+    this.saleProductService.count()
+      .subscribe( res => this.saleProduct.sale_id = res[0].number_of_sale + 1 );
   }
 
   showModalSearch(type: string, title: string) {

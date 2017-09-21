@@ -10,4 +10,5 @@ export interface Product {
     min: number,
     product_id?: string,
     purchaseExistence?: number,
+    saleExistence?: number    
 }

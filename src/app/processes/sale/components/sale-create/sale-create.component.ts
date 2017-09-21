@@ -65,16 +65,20 @@ export class SaleCreateComponent implements OnInit {
     max: 0,
     min: 0,
     product_id: '',
-    purchaseExistence: 0,
+    saleExistence: 0
   }
 
   public saleProduct: SaleProductInterface = {
-    sale_id: '',
-    provider_id: '',
+    sale_id: null,
+    customer_id: '',
+    employee_id: '',
     sale_date: new Date(),
+    type: '',
+    state: 'REGISTRADO',
     subtotal: 0,
     discount: 0,
     total: 0,
+    total_payment: 0,
     product_saleProduct: [],
   }
 
@@ -138,7 +142,7 @@ export class SaleCreateComponent implements OnInit {
 
   addProductToTable( product: Product ) {
     if ( product.product_id !== '' ) {
-      product.purchaseExistence = this.numberOfProducts;
+      product.saleExistence = this.numberOfProducts;
       this.addSaleProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
         description: product.description ,
         brand: product.brand ,
@@ -150,17 +154,15 @@ export class SaleCreateComponent implements OnInit {
         max: product.max ,
         min: product.min ,
         product_id: product.product_id ,
-        purchaseExistence: product.purchaseExistence ,
+        saleExistence: product.saleExistence ,
       });
-      this.subtotal += product.buy_price * product.purchaseExistence;
-      if ( this.subtotal >= 5000 ) {
-        this.discount = this.subtotal * .10;
-      }
-      this.total = this.subtotal - this.discount;
+
+      this.calculateCosts( product.sale_price * product.saleExistence )
+
       this.productForm.product_id = '';
       this.productForm.description = '';
       this.productForm.brand = '';
-      this.productForm.buy_price = 0;
+      this.productForm.sale_price = 0;
       this.numberOfProducts = 1;
     } else {
       // It has not selected any product
@@ -168,12 +170,18 @@ export class SaleCreateComponent implements OnInit {
 
   }
 
+  private calculateCosts( subtotal ) {
+    this.subtotal += subtotal;
+    this.discount = this.subtotal >= 5000 ? this.subtotal * .10 : 0;
+    this.total = this.subtotal - this.discount;
+  }
+
   addSaleProduct(product) {
     this.soldProducts.push(product);
     this.behaviorSubject.next(this.soldProducts);
   }
 
-  removeFromSaled( product_id ) {
+  removeFromSold( product_id ) {
     const productToDelete = this.soldProducts.filter( product => {
       if ( product.product_id === product_id ) {
         return product;
@@ -184,6 +192,30 @@ export class SaleCreateComponent implements OnInit {
     // Call the observable
     this.behaviorSubject.next(this.soldProducts);
   }
+
+  onSubmitSale ( form: NgForm ) {
+    this.saleProduct.customer_id = this.customerForm.customer_id;
+    this.saleProduct.employee_id = this.employeeForm.employee_id;
+    this.saleProduct.subtotal = this.subtotal;
+    this.saleProduct.discount = this.discount;
+    this.saleProduct.total = this.total;
+    this.soldProducts.forEach( product => {
+      this.saleProduct.product_saleProduct.push({
+        sale_id: this.saleProduct.sale_id,
+        product_id: product.product_id,
+        price: product.sale_price,
+        amount: product.saleExistence,
+      });
+    });
+    console.log( this.saleProduct );
+    this.insertPurchase();
+  }
+
+  private insertPurchase () {
+    this.saleProductService.create( this.saleProduct )
+      .subscribe( res => console.log( res ) );
+  }
+
   getDate() {
     this.currentDate = Observable.interval(1000).map(x => new Date()).share();
   }

@@ -4,7 +4,6 @@ import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { SaleProductInterface } from '../../models/sale-product.model';
 import { SaleProductService } from './../../services/sale-product.service';
-// import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -20,7 +19,6 @@ export class SaleShowComponent implements OnInit {
 
   constructor(
     private saleProductService: SaleProductService,
-    // private location: Location,
     private activatedRoute: ActivatedRoute
    ){ }
 
@@ -31,10 +29,8 @@ export class SaleShowComponent implements OnInit {
   getSale() {
     this.activatedRoute.params.subscribe(parameters => {
       this.saleProductId = parameters['id'];
-
-      this.saleProductService.findByIdJoin('1').subscribe(saleProduct => {
+      this.saleProductService.findByIdJoin(this.saleProductId).subscribe(saleProduct => {
         this.saleProduct = saleProduct;
-        console.log('saleProduct: ', saleProduct);
       });
     });
   }

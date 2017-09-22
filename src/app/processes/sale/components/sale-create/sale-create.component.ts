@@ -173,9 +173,12 @@ export class SaleCreateComponent implements OnInit {
 
   }
 
-  private calculateCosts( subtotal ) {
+  calculateCosts( subtotal ) {
     this.subtotal += subtotal;
-    this.discount = this.subtotal >= 5000 ? this.subtotal * .10 : 0;
+    this.total = this.subtotal - this.discount;
+  }
+
+  calculateTotal() {
     this.total = this.subtotal - this.discount;
   }
 

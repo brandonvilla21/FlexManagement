@@ -75,7 +75,7 @@ export class SaleCreateComponent implements OnInit {
     customer_id: '',
     employee_id: '',
     sale_date: new Date(),
-    type: '',
+    type: 'CONTADO',
     state: 'REGISTRADO',
     subtotal: 0,
     discount: 0,

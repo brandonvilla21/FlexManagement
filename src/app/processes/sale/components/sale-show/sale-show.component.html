@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div *ngIf="saleProduct" class="animated fadeIn">
   <div class="row">
     <div class="col-md-12">
       <form #formSale="ngForm">
@@ -23,7 +23,7 @@
                 <div class="form-group row">
                   <label class="col-md-3 form-control-label">Fecha</label>
                   <div class="col-md-6">
-                    <input type="date" name="date" class="form-control" value="{{ currentDate | async | date:'yyyy-MM-dd' }}" required disabled>
+                    <input type="text" name="date" class="form-control" [ngModel]="saleProduct.sale_date | date" required disabled>
                   </div>
                 </div>
               </div>
@@ -34,140 +34,90 @@
                 <h3>Datos del cliente seleccionado</h3>
                 <hr>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
                 <div class="form-group row">
-                  <label class="col-md-3 form-control-label">Buscar</label>
-                  <div class="col-md-9">
-                    <button type="button" name="searchCustomer" class="btn btn-outline-info btn-block" (click)="showModalSearch('customer', 'Selecciona un cliente')">Buscar cliente</button>
+                  <label class="col-md-4 form-control-label">ID Cliente ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="customer_id" [(ngModel)]="saleProduct.customer_id" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
                 <div class="form-group row">
-                  <label class="col-md-3 form-control-label">ID Cliente</label>
-                  <div class="col-md-3">
-                    <input type="text" name="customer_id" [(ngModel)]="customerForm.customer_id" class="form-control" required disabled>
+                  <label class="col-md-4 form-control-label">Referencia ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="customer_refecence" [(ngModel)]="saleProduct.customer_reference" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
                 <div class="form-group row">
-                  <label class="col-md-3 form-control-label">Referencia</label>
-                  <div class="col-md-9">
-                    <input type="text" name="customer_refecence" [(ngModel)]="customerForm.reference" class="form-control" required disabled>
+                  <label class="col-md-4 form-control-label">Whatsapp ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="customer_whatsapp" [(ngModel)]="saleProduct.customer_whatsapp" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-md-3 form-control-label">Whatsapp</label>
-                  <div class="col-md-9">
-                    <input type="text" name="customer_whatsapp" [(ngModel)]="customerForm.whatsapp" class="form-control" required disabled>
+
+              <div class="col-md-4">
+                  <div class="form-group row">
+                    <label class="col-md-4 form-control-label">Saldo ></label>
+                    <div class="col-md-8">
+                      <input type="number" name="customer_balance" [(ngModel)]="saleProduct.customer_balance" class="form-control" required disabled>
+                    </div>
                   </div>
                 </div>
-              </div>
+
             </div>
             <hr>
+
             <div class="row">
               <div class="col-md-12">
                 <h3>Datos del empleado seleccionado</h3>
                 <hr>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
                 <div class="form-group row">
-                  <label class="col-md-3 form-control-label">Buscar</label>
-                  <div class="col-md-9">
-                    <button type="button" name="searchProduct" class="btn btn-outline-info btn-block" (click)="showModalSearch('employee', 'Selecciona un producto')">Buscar empleado</button>
+                  <label class="col-md-4 form-control-label">ID Empleado ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="employee_id" [(ngModel)]="saleProduct.employee_id" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-md-4">
                 <div class="form-group row">
-                  <label class="col-md-3 form-control-label">ID Empleado</label>
-                  <div class="col-md-3">
-                    <input type="text" name="employee_id" [(ngModel)]="employeeForm.employee_id" class="form-control" disabled>
+                  <label class="col-md-4 form-control-label">Nombre ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="employee_employee_name" [(ngModel)]="saleProduct.employee_name" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Nombre</label>
-                  <input type="text" name="name_form" [(ngModel)]="employeeForm.name" class="form-control" disabled>
+
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-4 form-control-label">Apellido(s) ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="employee_lastname" [(ngModel)]="saleProduct.employee_lastname" class="form-control" required disabled>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Apellido(s)</label>
-                  <input type="text" name="lastname_form" [(ngModel)]="employeeForm.lastname" class="form-control" disabled>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Whatsapp</label>
-                  <div class="input-group">
-                    <input type="text" name="whatsapp_form" [(ngModel)]="employeeForm.whatsapp" class="form-control" disabled>
+
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-4 form-control-label">Whatsapp ></label>
+                  <div class="col-md-8">
+                    <input type="text" name="employee_whatsapp" [(ngModel)]="saleProduct.employee_whatsapp" class="form-control" required disabled>
                   </div>
                 </div>
               </div>
             </div>
+
             <hr>
-            <div class="row">
-              <div class="col-md-12">
-                <h3>Datos del producto seleccionado</h3>
-                <hr>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-md-3 form-control-label">Buscar</label>
-                  <div class="col-md-9">
-                    <button type="button" name="searchProduct" class="btn btn-outline-info btn-block" (click)="showModalSearch('product', 'Selecciona un producto')">Buscar producto</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-md-3 form-control-label">ID Producto</label>
-                  <div class="col-md-3">
-                    <input type="text" name="product_id" [(ngModel)]="productForm.product_id" class="form-control" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" name="description_form" [(ngModel)]="productForm.description" class="form-control" disabled>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Marca</label>
-                  <input type="text" name="brand_form" [(ngModel)]="productForm.brand" class="form-control" disabled>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label>Precio</label>
-                  <div class="input-group">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" name="buy_price_form" [(ngModel)]="productForm.sale_price" class="form-control" required disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group ">
-                  <label>Cantidad</label>
-                  <input type="number" name="numberOfProducts" [(ngModel)]="numberOfProducts" class="form-control" min="1" value="1" required>
-                </div>
-              </div>
-              <div class="col-md-8">
-                <!-- <img [src]="flexgym-logo.png" alt=""> -->
-              </div>
-              <div class="col-md-3">
-                <div class="form-group row mt-3">
-                  <button type="button" name="addProduct" class="btn btn-primary btn-block" (click)="addProductToTable(productForm)" required>Agregar producto</button>
-                </div>
-              </div>
-            </div>
             <div class="row">
               <div class="col-md-12 col-sm-12">
                 <h3>Productos</h3>
@@ -176,23 +126,18 @@
                     <tr>
                       <th>ID Producto</th>
                       <th>Descripción</th>
-                      <th>Costo</th>
+                      <th>Precio</th>
                       <th>Cantidad</th>
                       <th>Importe</th>
-                      <th>Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let product of latestSoldProducts | async">
+                    <tr *ngFor="let product of saleProduct.product_saleProduct">
                       <td>{{ product.product_id }}</td>
                       <td>{{ product.description }}</td>
-                      <td>{{ product.sale_price }}</td>
-                      <td>{{ product.saleExistence }}</td>
-                      <td>{{ product.sale_price * product.saleExistence }}</td>
-                      <td>
-                        <button type="button" class="btn btn-outline-danger" (click)="removeFromSold(product)">Eliminar</button>
-                      </td>
-
+                      <td>{{ product.price }}</td>
+                      <td>{{ product.amount }}</td>
+                      <td>{{ product.price * product.amount }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -202,30 +147,30 @@
             <div class="row">
               <div class="col-md-6"></div>
               <div class="col-md-6">
-                  <div class="form-group row">
-                      <label class="col-md-3 form-control-label">Tipo de venta</label>
-                      <div class="col-md-9">
-                          <select [(ngModel)]="saleProduct.type" #type="ngModel" name="type" class="form-control">
-                              <option value="CONTADO">CONTADO</option>
-                              <option value="CRÉDITO">CRÉDITO</option>
-                          </select>
-                      </div>
+                <div class="form-group row">
+                  <label class="col-md-3 form-control-label">Tipo de venta</label>
+                  <div class="col-md-9">
+                    <select [(ngModel)]="saleProduct.type" #type="ngModel" name="type" class="form-control" disabled>
+                      <option value="CONTADO">CONTADO</option>
+                      <option value="CRÉDITO">CRÉDITO</option>
+                    </select>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-md-3 form-control-label"><strong>Subtotal</strong></label>
-                    <div class="col-md-9">
-                      <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="text" name="subtotal" [(ngModel)]="subtotal" class="form-control text-right" disabled>
-                      </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 form-control-label"><strong>Subtotal</strong></label>
+                  <div class="col-md-9">
+                    <div class="input-group">
+                      <span class="input-group-addon">$</span>
+                      <input type="text" name="subtotal" [(ngModel)]="saleProduct.subtotal" class="form-control text-right" disabled>
                     </div>
                   </div>
+                </div>
                 <div class="form-group row">
                   <label class="col-md-3 form-control-label"><strong>Descuento</strong></label>
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input type="text" name="discount" [(ngModel)]="discount" class="form-control text-right" disabled>
+                      <input type="text" name="discount" [(ngModel)]="saleProduct.discount" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>
@@ -234,11 +179,17 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input type="text" name="total" [(ngModel)]="total" class="form-control text-right" disabled>
+                      <input type="text" name="total" [(ngModel)]="saleProduct.total" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="col-md-6 pull-right">
+              <button [routerLink]="['/sales/all']" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Aceptar</button>
             </div>
           </div>
         </div>

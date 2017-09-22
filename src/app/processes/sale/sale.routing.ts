@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SaleComponent } from './sale.component';
 import { SaleCreateComponent } from './components/sale-create/sale-create.component';
+import { SaleShowComponent } from './components/sale-show/sale-show.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 const routes: Routes = [
   {
@@ -12,13 +14,13 @@ const routes: Routes = [
       title: 'Ventas'
     },
     children : [
-      // {
-      //   path: 'all',
-      //   component: EmployeesComponent,
-      //   data: {
-      //     title: 'Consulta General'
-      //   }
-      // },
+      {
+        path: 'all',
+        component: SalesComponent,
+        data: {
+          title: 'Consulta General'
+        }
+      },
       {
         path: 'create',
         component: SaleCreateComponent,
@@ -26,20 +28,13 @@ const routes: Routes = [
           title: 'Registro'
         }
       },
-      // {
-      //   path: 'edit/:id',
-      //   component: EmployeeEditComponent,
-      //   data: {
-      //     title: 'Edición'
-      //   }
-      // },
-      // {
-      //   path: 'show/:id',
-      //   component: EmployeeShowComponent,
-      //   data: {
-      //     title: 'Consulta Individual'
-      //   }
-      // }
+      {
+        path: 'show/:id',
+        component: SaleShowComponent,
+        data: {
+          title: 'Consulta Individual'
+        }
+      }
     ]
   },
 ];

@@ -6,7 +6,9 @@ import { FormsModule } from '@angular/forms';
 
 import { SaleComponent } from './sale.component';
 import { SaleCreateComponent } from './components/sale-create/sale-create.component';
+import { SaleShowComponent } from './components/sale-show/sale-show.component';
 import { SaleRoutingModule } from './sale.routing';
+import { SalesComponent } from './components/sales/sales.component';
 
 @NgModule({
     imports: [
@@ -18,6 +20,8 @@ import { SaleRoutingModule } from './sale.routing';
     declarations: [
         SaleComponent,
         SaleCreateComponent,
+        SaleShowComponent,
+        SalesComponent
     ],
     providers: [
       SaleProductService

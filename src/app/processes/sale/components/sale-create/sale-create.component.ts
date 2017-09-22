@@ -13,6 +13,8 @@ import { ProductSaleProductInterface } from '../../models/product-sale-product.m
 import { SearchModalComponent } from './../../../../shared/search-modal/search-modal.component';
 import { SaleProductInterface } from '../../models/sale-product.model';
 import { SaleProductService } from './../../services/sale-product.service';
+import { Router } from '@angular/router';
+
 
 // import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
 // Things missing
@@ -73,7 +75,7 @@ export class SaleCreateComponent implements OnInit {
     customer_id: '',
     employee_id: '',
     sale_date: new Date(),
-    type: '',
+    type: 'CONTADO',
     state: 'REGISTRADO',
     subtotal: 0,
     discount: 0,
@@ -87,7 +89,8 @@ export class SaleCreateComponent implements OnInit {
     private productService: ProductService,
     private employeeService: EmployeeService,
     private customerService: CustomerService,
-    private saleProductService: SaleProductService
+    private saleProductService: SaleProductService,
+    private router: Router
    ) {
       this.getEmployees();
       this.getProducts();
@@ -207,13 +210,15 @@ export class SaleCreateComponent implements OnInit {
         amount: product.saleExistence,
       });
     });
-    console.log( this.saleProduct );
     this.insertPurchase();
   }
 
   private insertPurchase () {
     this.saleProductService.create( this.saleProduct )
-      .subscribe( res => console.log( res ) );
+      .subscribe( res => {
+        console.log( res );
+        this.router.navigate(['/processes/sales/all']);
+      } );
   }
 
   getDate() {

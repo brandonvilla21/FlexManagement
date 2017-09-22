@@ -216,7 +216,7 @@
                     <div class="col-md-9">
                       <div class="input-group">
                         <span class="input-group-addon">$</span>
-                        <input type="text" name="subtotal" [(ngModel)]="subtotal" class="form-control text-right" disabled>
+                        <input type="number" name="subtotal" [(ngModel)]="subtotal" class="form-control text-right" disabled>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input type="text" name="discount" [(ngModel)]="discount" class="form-control text-right" disabled>
+                      <input type="number" name="discount" [(ngModel)]="discount" (keyup)="calculateTotal()" min="0" class="form-control text-right">
                     </div>
                   </div>
                 </div>
@@ -234,7 +234,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input type="text" name="total" [(ngModel)]="total" class="form-control text-right" disabled>
+                      <input type="number" name="total" [(ngModel)]="total" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>

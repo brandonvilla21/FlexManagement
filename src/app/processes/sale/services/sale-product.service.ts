@@ -47,7 +47,7 @@ export class SaleProductService {
 
   public create( saleProduct: SaleProductInterface): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.endPoint}`, saleProduct, {headers: headers})
+    return this.http.post(`${this.endPoint}`, saleProduct, { headers:  headers})
       .map( res => res.json() || {})
       .catch( error => JSON.stringify(error));
   }

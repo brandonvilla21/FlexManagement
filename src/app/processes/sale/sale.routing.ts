@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SaleComponent } from './sale.component';
 import { SaleCreateComponent } from './components/sale-create/sale-create.component';
+import { SaleShowComponent } from './components/sale-show/sale-show.component';
 
 const routes: Routes = [
   {
@@ -26,20 +27,13 @@ const routes: Routes = [
           title: 'Registro'
         }
       },
-      // {
-      //   path: 'edit/:id',
-      //   component: EmployeeEditComponent,
-      //   data: {
-      //     title: 'Edición'
-      //   }
-      // },
-      // {
-      //   path: 'show/:id',
-      //   component: EmployeeShowComponent,
-      //   data: {
-      //     title: 'Consulta Individual'
-      //   }
-      // }
+      {
+        path: 'show/:id',
+        component: SaleShowComponent,
+        data: {
+          title: 'Consulta Individual'
+        }
+      }
     ]
   },
 ];

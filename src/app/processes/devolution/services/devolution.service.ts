@@ -19,6 +19,12 @@ export class DevolutionService {
       .catch(err =>  JSON.stringify(err));
   }
 
+  public general(): Observable<any[]> {
+    return this.http.get(`${this.endPoint}/general`)
+      .map(res => res.json() || { })
+      .catch(err =>  JSON.stringify(err));
+  }
+
   public findById( devolution_id: string ): Observable<DevolutionInterface> {
     return this.http.get(`${this.endPoint}/${devolution_id}`)
       .map( res => res.json() || {})

@@ -19,6 +19,7 @@ const routes: Routes = [
         { path: 'purchase-create', component: PurchaseCreateComponent, data: { title: 'Compras' } },
         { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } },
         { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } },
+        { path: 'devolution', loadChildren: './devolution/devolution.module#DevolutionModule' },
         {
           path: 'sales',
           loadChildren: './sale/sale.module#SaleModule'

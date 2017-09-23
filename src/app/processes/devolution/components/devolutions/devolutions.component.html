@@ -1,0 +1,70 @@
+<div class="animated fadeIn">
+  <h1 class="display-4 text-center">Consulta de devoluciones</h1>
+  <div class="line__bottom-container mb-3">
+    <span class="line__bottom"></span>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>  
+
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-block">
+                <form class="form-horizontal ">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button [routerLink]="['../show/',search]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                                <input [(ngModel)]="search" type="text"  name="sale_id" class="form-control" placeholder="ID de la devolución">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-block table-responsive">
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>ID Devolución</th>
+                <th>ID Venta</th>
+                <th>ID Empleado</th>
+                <th>Nombre del empleado</th>
+                <th>Fecha de devolución</th>
+                <th>Total devuelto</th>
+                <th>Concepto</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let devolution of devolutions">
+                <td>{{ devolution.devolution_id }}</td>
+                <td>{{ devolution.sale_id }}</td>
+                <td>{{ devolution.employee_id }}</td>
+                <td>{{ devolution.employee_name }}</td>
+                <td>{{ devolution.devolution_date | date}}</td>
+                <td>{{ devolution.total_returned }}</td>
+                <td>{{ devolution.concept }}</td>
+                <td>
+                  <a [routerLink]="['../show/', devolution.devolution_id]" class="btn  btn-outline-primary">Ver más</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

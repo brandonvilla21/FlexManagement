@@ -94,8 +94,16 @@
               <li class="nav-item">
                   <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-wallet"></i>Abonos</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" style="padding-left: 2em;"><i class="icon-clock"></i>Devoluciones</a>
+                <li class="nav-item nav-dropdown" appNavDropdown>
+                  <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-clock"></i>Devoluciones</a>
+                  <ul class="nav-dropdown-items">
+                      <li class="nav-item">
+                          <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/devolution/create']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Registrar</a>
+                      </li>                      
+                      <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/processes/devolution/all']" style="padding-left: 2em;"><i class="icon-basket-loaded"></i>Consultar</a>
+                    </li>
+                  </ul>
               </li>
             </ul>
         </li>

@@ -21,7 +21,10 @@ export class DevolutionsComponent implements OnInit {
 
   getDevolutions() {
     this.devolutionService.general()
-      .subscribe( devolutions => this.devolutions = devolutions);
+      .subscribe( devolutions => {
+        console.log(devolutions);
+        this.devolutions = devolutions
+      });
   }
 
 }

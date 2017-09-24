@@ -51,4 +51,10 @@ export class SaleProductService {
       .map( res => res.json() || {})
       .catch( error => JSON.stringify(error));
   }
+
+  public findByColumn( column: string, value: string ): Observable<SaleProductInterface[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${value}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
 }

@@ -1,3 +1,4 @@
+import { SaleProductInterface } from './../../processes/sale/models/sale-product.model';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Provider } from './../../provider/provider.model';
@@ -9,6 +10,7 @@ import { ProductService } from './../../product/services/product.service';
 import { ProviderService } from './../../provider/services/provider/provider.service';
 import { EmployeeService } from './../../employee/services/employee/employee.service';
 import { CustomerService } from './../../customer/services/customer/customer.service';
+import { SaleProductService } from './../../processes/sale/services/sale-product.service';
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
@@ -20,13 +22,17 @@ export interface SearchModalInterface {
 @Component({
   selector: 'app-search-modal',
   templateUrl: './search-modal.component.html',
-  styleUrls: ['./search-modal.component.scss']
+  styleUrls: ['./search-modal.component.scss'],
+  providers: [
+    SaleProductService
+  ]
 })
 export class SearchModalComponent extends DialogComponent<SearchModalInterface, any> implements OnInit, SearchModalInterface {
   public providers: Provider[];
   public employees: Employee[];
   public customers: Customer[];
   public products: Product[];
+  public salesProduct: SaleProductInterface[];
   public searchTextValue: string;
   public searchOptionValue: string;
   public selectElements: any[];
@@ -39,8 +45,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
     dialogService: DialogService,
     private providersService: ProviderService,
     private employeeService: EmployeeService,
-    private customerService: CustomerService,    
-    private productService: ProductService
+    private customerService: CustomerService,
+    private productService: ProductService,
+    private saleProductService: SaleProductService
   ) {
     super(dialogService);
     this.selectElements = [];
@@ -52,7 +59,6 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   ngOnInit() {
     switch ( this.type ) {
       case 'product' :
-        // this.getProducts();
         this.setElements(
           { value: 'product_id', name: 'ID Producto' },
           { value: 'description', name: 'Descripción'},
@@ -97,6 +103,15 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
         );
         this.searchOptionValue = 'customer_id';
         break;
+      case 'sale_product_for_devolution':
+        this.setElements(
+          { value: 'sale_id', name: 'ID Venta' },
+          { value: 'sale_date', name: 'Fecha de venta' },
+          { value: 'customer_id', name: 'ID Cliente' },
+          { value: 'employee_id', name: 'ID Empleado' }
+        );
+        this.searchOptionValue = 'sale_id';
+        break;
     }
 
     // Subscribe to observable for debounce
@@ -114,6 +129,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
             break;
           case 'customer':
             this.getCustomersByColumn();
+            break;
+          case 'sale_product_for_devolution':
+            this.getSaleDevolutionByColumn();
             break;
         }
       }
@@ -162,6 +180,14 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getCustomersByColumn() {
     this.customerService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( customers => this.customers = customers );
+  }
+  getSaleDevolutionByColumn() {
+    this.saleProductService.findByColumn( this.searchOptionValue, this.searchTextValue )
+      .subscribe( salesProduct => {
+        this.salesProduct =  salesProduct.filter( saleProduct => {
+          return saleProduct.type === 'CONTADO' && saleProduct.state === 'REGISTRADO';
+        })
+      });
   }
 
   onKeyUp( searchTextValue ) {

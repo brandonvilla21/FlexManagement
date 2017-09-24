@@ -31,7 +31,13 @@ export class DevolutionService {
       .catch( err => JSON.stringify(err));
   }
 
-  public cerate( devolution: any ) {
+  public count(): Observable<any> {
+    return this.http.get(`${this.endPoint}/count`)
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
+  }
+
+  public create( devolution: any ) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.endPoint}`, devolution, { headers: headers })
       .map( res => res.json() || {})

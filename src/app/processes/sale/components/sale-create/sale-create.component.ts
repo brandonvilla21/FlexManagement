@@ -15,12 +15,6 @@ import { SaleProductInterface } from '../../models/sale-product.model';
 import { SaleProductService } from './../../services/sale-product.service';
 import { Router } from '@angular/router';
 
-
-// import { ProductConfirmComponent } from './../product-confirm/product-confirm.component';
-// Things missing
-// Get the ID Compra
-// Delete product from saled product table button
-
 @Component({
   selector: 'app-sale-create',
   templateUrl: './sale-create.component.html',
@@ -143,32 +137,51 @@ export class SaleCreateComponent implements OnInit {
     });
   }
 
+  isOnTable( product: Product ) {
+    let index = -1;
+    for (let i = 0; i < this.soldProducts.length; i++) {
+      if ( this.soldProducts[i].product_id === product.product_id ) {
+        index = i;
+        break;
+      }
+    }
+    if ( index !== -1 ) {
+      this.soldProducts[index].saleExistence = this.soldProducts[index].saleExistence + this.numberOfProducts;
+      this.behaviorSubject.next(this.soldProducts);
+      this.calculateCosts( product.sale_price * this.numberOfProducts );
+      return true;
+    }
+    return false;
+  }
+
   addProductToTable( product: Product ) {
-    if ( product.product_id !== '' ) {
-      product.saleExistence = this.numberOfProducts;
-      this.addSaleProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
-        description: product.description ,
-        brand: product.brand ,
-        flavor: product.flavor ,
-        expiration_date: product.expiration_date ,
-        sale_price: product.sale_price ,
-        buy_price: product.buy_price ,
-        existence: product.existence ,
-        max: product.max ,
-        min: product.min ,
-        product_id: product.product_id ,
-        saleExistence: product.saleExistence ,
-      });
-
-      this.calculateCosts( product.sale_price * product.saleExistence )
-
-      this.productForm.product_id = '';
-      this.productForm.description = '';
-      this.productForm.brand = '';
-      this.productForm.sale_price = 0;
-      this.numberOfProducts = 1;
-    } else {
-      // It has not selected any product
+    if ( !this.isOnTable( product ) ) {
+      if ( product.product_id !== '' ) {
+        product.saleExistence = this.numberOfProducts;
+        this.addSaleProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
+          description: product.description ,
+          brand: product.brand ,
+          flavor: product.flavor ,
+          expiration_date: product.expiration_date ,
+          sale_price: product.sale_price ,
+          buy_price: product.buy_price ,
+          existence: product.existence ,
+          max: product.max ,
+          min: product.min ,
+          product_id: product.product_id ,
+          saleExistence: product.saleExistence ,
+        });
+  
+        this.calculateCosts( product.sale_price * product.saleExistence )
+  
+        this.productForm.product_id = '';
+        this.productForm.description = '';
+        this.productForm.brand = '';
+        this.productForm.sale_price = 0;
+        this.numberOfProducts = 1;
+      } else {
+        // It has not selected any product
+      }
     }
 
   }

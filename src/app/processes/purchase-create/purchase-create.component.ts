@@ -110,33 +110,58 @@ export class PurchaseCreateComponent implements OnInit {
       }
     });
   }
-
-  addProductToTable( product: Product ) {
-    if ( product.product_id !== '' ) {
-      product.purchaseExistence = this.numberOfProducts;
-      this.addPurchaseProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
-        description: product.description ,
-        brand: product.brand ,
-        flavor: product.flavor ,
-        expiration_date: product.expiration_date ,
-        sale_price: product.sale_price ,
-        buy_price: product.buy_price ,
-        existence: product.existence ,
-        max: product.max ,
-        min: product.min ,
-        product_id: product.product_id ,
-        purchaseExistence: product.purchaseExistence ,
-      });
-
-      this.calculateCosts( product.buy_price * product.purchaseExistence )
-
+  isOnTable( product: Product ) {
+    let index = -1;
+    for (let i = 0; i < this.purchasedProducts.length; i++) {
+      if ( this.purchasedProducts[i].product_id === product.product_id ) {
+        index = i;
+        break;
+      }
+    }
+    if ( index !== -1 ) {
+      this.purchasedProducts[index].purchaseExistence = this.purchasedProducts[index].purchaseExistence + this.numberOfProducts;
+      this.purchasedProducts[index].buy_price = this.productForm.buy_price;
+      this.behaviorSubject.next(this.purchasedProducts);
+      this.calculateCosts( product.sale_price * this.numberOfProducts );
       this.productForm.product_id = '';
       this.productForm.description = '';
       this.productForm.brand = '';
       this.productForm.buy_price = 0;
       this.numberOfProducts = 1;
-    } else {
-      // It has not selected any product
+
+      return true;
+    }
+    return false;
+  }
+
+  addProductToTable( product: Product ) {
+    if ( !this.isOnTable( product ) ) {
+      if ( product.product_id !== '' ) {
+        product.purchaseExistence = this.numberOfProducts;
+        this.addPurchaseProduct({ // If I pass product variable, it will cause some errors in lines 120, 121 and 122
+          description: product.description ,
+          brand: product.brand ,
+          flavor: product.flavor ,
+          expiration_date: product.expiration_date ,
+          sale_price: product.sale_price ,
+          buy_price: product.buy_price ,
+          existence: product.existence ,
+          max: product.max ,
+          min: product.min ,
+          product_id: product.product_id ,
+          purchaseExistence: product.purchaseExistence ,
+        });
+
+        this.calculateCosts( product.buy_price * product.purchaseExistence )
+
+        this.productForm.product_id = '';
+        this.productForm.description = '';
+        this.productForm.brand = '';
+        this.productForm.buy_price = 0;
+        this.numberOfProducts = 1;
+      } else {
+        // It has not selected any product
+      }
     }
 
   }

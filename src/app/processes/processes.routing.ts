@@ -20,11 +20,8 @@ const routes: Routes = [
         { path: 'purchases', component: PurchasesComponent, data: { title: 'Consulta de compras' } },
         { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } },
         { path: 'devolution', loadChildren: './devolution/devolution.module#DevolutionModule' },
-        {
-          path: 'sales',
-          loadChildren: './sale/sale.module#SaleModule'
-        }
-        // { path: 'sale-create',     component: SaleComponent, data: { title: 'Ventas' } }
+        { path: 'sales', loadChildren: './sale/sale.module#SaleModule' },
+        { path: 'payments', loadChildren: './payment/payment.module#PaymentModule' }
     ]
   },
 ];

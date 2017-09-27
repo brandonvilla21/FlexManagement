@@ -202,7 +202,7 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
       .subscribe( salesProduct => {
         console.log('salesProductPayment: ', salesProduct);
         this.salesProduct =  salesProduct.filter( saleProduct => {
-          return saleProduct.type === 'CRÉDITO' && saleProduct.state === 'REGISTRADO';
+          return saleProduct.type === 'CRÉDITO' && saleProduct.state === 'REGISTRADO' && (saleProduct.total - saleProduct.total_payment) != 0;
         })
       });
   }

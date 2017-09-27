@@ -167,7 +167,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input [(ngModel)]="saleProductForm.total" type="number" name="total" class="form-control text-right" disabled>
+                      <input [(ngModel)]="saleProductForm.total" type="number" name="saleProductForm_total" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>
@@ -190,7 +190,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input [(ngModel)]="saleProductForm.total - saleProductForm.total_payment" type="number" name="total" class="form-control text-right" disabled>
+                      <input [(ngModel)]="saleProductForm.total - saleProductForm.total_payment" type="number" name="leftover" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>

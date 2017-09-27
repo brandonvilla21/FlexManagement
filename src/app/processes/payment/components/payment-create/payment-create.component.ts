@@ -80,6 +80,7 @@ export class PaymentCreateComponent implements OnInit {
     if ( form.valid ) {
       this.paymentService.create( this.payment )
         .subscribe( res => {
+          console.log('res: ', res);
           this.router.navigate(['/processes/payment/all']);
         });
     }
@@ -126,7 +127,7 @@ export class PaymentCreateComponent implements OnInit {
   }
 
   isValidPaymentAmout(){
-      return this.payment.payment_amount && (this.payment.payment_amount <= this.saleProductForm.total)
+      return this.payment.payment_amount && (this.payment.payment_amount <= this.saleProductForm.total - this.saleProductForm.total_payment)
   }
 
 }

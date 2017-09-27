@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PaymentComponent } from './payment.component';
-// import { SaleCreateComponent } from './components/sale-create/sale-create.component';
+import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
 // import { SaleShowComponent } from './components/sale-show/sale-show.component';
 // import { SalesComponent } from './components/sales/sales.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
     data: {
       title: 'Abonos'
     },
-    // children : [
+    children : [
     //   {
     //     path: 'all',
     //     component: SalesComponent,
@@ -21,13 +21,13 @@ const routes: Routes = [
     //       title: 'Consulta General'
     //     }
     //   },
-    //   {
-    //     path: 'create',
-    //     component: SaleCreateComponent,
-    //     data: {
-    //       title: 'Registro'
-    //     }
-    //   },
+      {
+        path: 'create',
+        component: PaymentCreateComponent,
+        data: {
+          title: 'Registro'
+        }
+      },
     //   {
     //     path: 'show/:id',
     //     component: SaleShowComponent,
@@ -35,7 +35,7 @@ const routes: Routes = [
     //       title: 'Consulta Individual'
     //     }
     //   }
-    // ]
+    ]
   },
 ];
 

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment.component';
 
 import { PaymentRoutingModule } from './payment.routing';
+import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
 // import { SaleCreateComponent } from './components/sale-create/sale-create.component';
 // import { SaleShowComponent } from './components/sale-show/sale-show.component';
 // import { SaleRoutingModule } from './sale.routing';
@@ -21,7 +22,7 @@ import { PaymentRoutingModule } from './payment.routing';
     exports: [],
     declarations: [
       PaymentComponent,
-        // SaleCreateComponent,
+      PaymentCreateComponent,
         // SaleShowComponent,
         // SalesComponent
     ],

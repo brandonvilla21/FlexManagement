@@ -103,7 +103,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
         );
         this.searchOptionValue = 'customer_id';
         break;
+        
       case 'sale_product_for_devolution':
+      case 'sale_product_for_payment':
         this.setElements(
           { value: 'sale_id', name: 'ID Venta' },
           { value: 'sale_date', name: 'Fecha de venta' },
@@ -132,6 +134,9 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
             break;
           case 'sale_product_for_devolution':
             this.getSaleDevolutionByColumn();
+            break;
+          case 'sale_product_for_payment':
+            this.getSalePaymentByColumn();
             break;
         }
       }
@@ -181,11 +186,23 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
     this.customerService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( customers => this.customers = customers );
   }
+  
   getSaleDevolutionByColumn() {
     this.saleProductService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( salesProduct => {
+        console.log('salesProductDevolution: ', salesProduct);
         this.salesProduct =  salesProduct.filter( saleProduct => {
           return saleProduct.type === 'CONTADO' && saleProduct.state === 'REGISTRADO';
+        })
+      });
+  }
+
+  getSalePaymentByColumn() {
+    this.saleProductService.findByColumn( this.searchOptionValue, this.searchTextValue )
+      .subscribe( salesProduct => {
+        console.log('salesProductPayment: ', salesProduct);
+        this.salesProduct =  salesProduct.filter( saleProduct => {
+          return saleProduct.type === 'CRÉDITO' && saleProduct.state === 'REGISTRADO';
         })
       });
   }

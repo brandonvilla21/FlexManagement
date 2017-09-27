@@ -8,6 +8,7 @@ import { PaymentComponent } from './payment.component';
 
 import { PaymentRoutingModule } from './payment.routing';
 import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
+import { PaymentService } from './services/payment.service';
 // import { SaleCreateComponent } from './components/sale-create/sale-create.component';
 // import { SaleShowComponent } from './components/sale-show/sale-show.component';
 // import { SaleRoutingModule } from './sale.routing';
@@ -27,7 +28,7 @@ import { PaymentCreateComponent } from './components/payment-create/payment-crea
         // SalesComponent
     ],
     providers: [
-      // SaleProductService
+      PaymentService
     ],
 })
 export class PaymentModule { }

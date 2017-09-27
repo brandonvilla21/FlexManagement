@@ -67,7 +67,7 @@
               <div class="col-md-4">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <button (click)="showModalSearch('sale_product_for_devolution', 'Buscar venta')" type="button" name="searchSale" class="btn btn-outline-info btn-block">Buscar Venta</button>
+                    <button (click)="showModalSearch('sale_product_for_payment', 'Buscar venta')" type="button" name="searchSale" class="btn btn-outline-info btn-block">Buscar Venta</button>
                   </div>
                 </div>
               </div>
@@ -181,7 +181,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input type="number" name="discount" [(ngModel)]="discount" (keyup)="calculateTotal()" min="0" class="form-control text-right">
+                      <input type="number" name="payment_amount" [(ngModel)]="payment.payment_amount" min="0" class="form-control text-right">
                     </div>
                   </div>
                 </div>
@@ -190,7 +190,7 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon">$</span>
-                      <input [(ngModel)]="saleProductForm.total" type="number" name="total" class="form-control text-right" disabled>
+                      <input [(ngModel)]="saleProductForm.total - saleProductForm.total_payment" type="number" name="total" class="form-control text-right" disabled>
                     </div>
                   </div>
                 </div>
@@ -199,7 +199,7 @@
           </div>
           <div class="card-footer">
             <div class="col-md-6 pull-right">
-              <button [disabled]="formPayment.invalid" type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
+              <button [disabled]="formPayment.invalid || !isValidPaymentAmout()" type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
             </div>
           </div>
         </div>

@@ -109,6 +109,7 @@ export class DevolutionCreateComponent implements OnInit {
             this.saleProductForm.product_saleProduct.forEach( productForm => {
               this.productService.findById( productForm.product_id )
                 .subscribe( product => {
+                  this.productsTable.length = 0;
                   this.productsTable.push({
                     product_id: productForm.product_id,
                     description: product[0].description,

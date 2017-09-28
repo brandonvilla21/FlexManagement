@@ -10,8 +10,7 @@ import { PaymentCreateComponent } from './components/payment-create/payment-crea
 import { PaymentsComponent } from './components/payments/payments.component';
 import { PaymentService } from './services/payment.service';
 import { PaymentRoutingModule } from './payment.routing';
-// import { SaleShowComponent } from './components/sale-show/sale-show.component';
-// import { SaleRoutingModule } from './sale.routing';
+import { PaymentShowComponent } from './components/payment-show/payment-show.component';
 
 @NgModule({
     imports: [
@@ -23,8 +22,8 @@ import { PaymentRoutingModule } from './payment.routing';
     declarations: [
       PaymentComponent,
       PaymentCreateComponent,
-        // SaleShowComponent,
-        PaymentsComponent
+      PaymentShowComponent,
+      PaymentsComponent
     ],
     providers: [
       PaymentService

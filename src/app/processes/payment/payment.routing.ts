@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PaymentComponent } from './payment.component';
 import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-// import { SaleShowComponent } from './components/sale-show/sale-show.component';
+import { PaymentShowComponent } from './components/payment-show/payment-show.component';
 
 const routes: Routes = [
   {
@@ -28,13 +28,13 @@ const routes: Routes = [
           title: 'Registro'
         }
       },
-    //   {
-    //     path: 'show/:id',
-    //     component: SaleShowComponent,
-    //     data: {
-    //       title: 'Consulta Individual'
-    //     }
-    //   }
+      {
+        path: 'show/:id',
+        component: PaymentShowComponent,
+        data: {
+          title: 'Consulta Individual'
+        }
+      }
     ]
   },
 ];

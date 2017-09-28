@@ -81,7 +81,7 @@ export class PaymentCreateComponent implements OnInit {
       this.paymentService.create( this.payment )
         .subscribe( res => {
           console.log('res: ', res);
-          this.router.navigate(['/processes/payment/all']);
+          this.router.navigate(['/processes/payments/all']);
         });
     }
   }

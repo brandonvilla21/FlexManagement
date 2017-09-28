@@ -190,7 +190,6 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getSaleDevolutionByColumn() {
     this.saleProductService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( salesProduct => {
-        console.log('salesProductDevolution: ', salesProduct);
         this.salesProduct =  salesProduct.filter( saleProduct => {
           return saleProduct.type === 'CONTADO' && saleProduct.state === 'REGISTRADO';
         })
@@ -200,7 +199,6 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
   getSalePaymentByColumn() {
     this.saleProductService.findByColumn( this.searchOptionValue, this.searchTextValue )
       .subscribe( salesProduct => {
-        console.log('salesProductPayment: ', salesProduct);
         this.salesProduct =  salesProduct.filter( saleProduct => {
           return saleProduct.type === 'CRÉDITO' && saleProduct.state === 'REGISTRADO' && (saleProduct.total - saleProduct.total_payment) != 0;
         })

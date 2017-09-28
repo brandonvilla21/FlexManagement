@@ -57,7 +57,7 @@ import { SearchModalComponent } from './shared/search-modal/search-modal.compone
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    SearchModalComponent,
+    SearchModalComponent
   ],
   providers: [
     {

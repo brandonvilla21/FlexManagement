@@ -6,13 +6,12 @@ import { FormsModule } from '@angular/forms';
 
 import { PaymentComponent } from './payment.component';
 
-import { PaymentRoutingModule } from './payment.routing';
 import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
+import { PaymentsComponent } from './components/payments/payments.component';
 import { PaymentService } from './services/payment.service';
-// import { SaleCreateComponent } from './components/sale-create/sale-create.component';
+import { PaymentRoutingModule } from './payment.routing';
 // import { SaleShowComponent } from './components/sale-show/sale-show.component';
 // import { SaleRoutingModule } from './sale.routing';
-// import { SalesComponent } from './components/sales/sales.component';
 
 @NgModule({
     imports: [
@@ -25,7 +24,7 @@ import { PaymentService } from './services/payment.service';
       PaymentComponent,
       PaymentCreateComponent,
         // SaleShowComponent,
-        // SalesComponent
+        PaymentsComponent
     ],
     providers: [
       PaymentService

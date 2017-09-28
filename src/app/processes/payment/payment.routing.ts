@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PaymentComponent } from './payment.component';
 import { PaymentCreateComponent } from './components/payment-create/payment-create.component';
+import { PaymentsComponent } from './components/payments/payments.component';
 // import { SaleShowComponent } from './components/sale-show/sale-show.component';
-// import { SalesComponent } from './components/sales/sales.component';
 
 const routes: Routes = [
   {
@@ -14,13 +14,13 @@ const routes: Routes = [
       title: 'Abonos'
     },
     children : [
-    //   {
-    //     path: 'all',
-    //     component: SalesComponent,
-    //     data: {
-    //       title: 'Consulta General'
-    //     }
-    //   },
+      {
+        path: 'all',
+        component: PaymentsComponent,
+        data: {
+          title: 'Consulta General'
+        }
+      },
       {
         path: 'create',
         component: PaymentCreateComponent,

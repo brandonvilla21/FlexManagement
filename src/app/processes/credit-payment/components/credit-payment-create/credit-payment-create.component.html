@@ -1,0 +1,106 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <form #formPayment="ngForm" (ngSubmit)="onSubmitPayment(formPayment)">
+        <div class="card">
+          <div class="card-header text-center">
+            <h2>Registrar abono</h2>
+          </div>
+          <div class="card-block">
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Seleccionar cliente</h3>
+                <hr>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <button (click)="showModalSearch('customer', 'Seleccionar cliente')" type="button" name="searchCustomer" class="btn btn-outline-info btn-block">Buscar cliente</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-5 form-control-label">ID Cliente</label>
+                  <div class="col-md-6">
+                    <input [ngModel]="customer.customer_id" type="text" name="customer_id" class="form-control" required disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-3 form-control-label">Nombre</label>
+                  <div class="col-md-9">
+                    <input [ngModel]="customer.name" type="text" name="customer_name" class="form-control" required disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <table class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>ID Venta</th>
+                  <th>Fecha</th>
+                  <th>Total</th>
+                  <th>Abonos</th>
+                  <th>Por pagar</th>
+                  <th>Detalle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let sale of salesProduct">
+                  <tr (click)="setSale(sale)" style="cursor:pointer;">
+                    <td>{{ sale.sale_id }}</td>
+                    <td>{{ sale.sale_date | date}}</td>
+                    <td>{{ sale.total }}</td>
+                    <td>{{ sale.total_payment }}</td>
+                    <td>{{ sale.total - sale.total_payment  }}</td>
+                    <td>
+                      <button (click)="details(sale)" class="btn btn-outline-info">Ver más...</button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-md-5 form-control-label">Deuda total del cliente {{ customer.name }} </label>
+                    <div class="col-md-7">
+                      <input [ngModel]="customer.balance" type="text" name="customer_balance" class="form-control" required disabled>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-md-5 form-control-label">ID Venta seleccionada</label>
+                    <div class="col-md-7">
+                      <input [ngModel]="saleSelected.sale_id" type="text" name="customer_balance" class="form-control" required disabled>
+                    </div>
+                  </div>
+              </div>
+              <!-- <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-md-5 form-control-label">Cantidad a abonar</label>
+                    <div class="col-md-7">
+                      <input [(ngModel)]="saleSelected.sale_id" type="text" name="customer_balance" class="form-control" required disabled>
+                    </div>
+                  </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="col-md-6 pull-right">
+              <button [disabled]="formPayment.invalid" type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -14,7 +14,7 @@ import { PurchaseCreateComponent } from './purchase-create/purchase-create.compo
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 
-//Modules
+// Modules
 import { SaleModule } from './sale/sale.module';
 
 @NgModule({

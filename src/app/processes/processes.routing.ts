@@ -21,7 +21,8 @@ const routes: Routes = [
         { path: 'purchase/:id', component: PurchaseComponent, data: { title: 'Consulta de compra' } },
         { path: 'devolution', loadChildren: './devolution/devolution.module#DevolutionModule' },
         { path: 'sales', loadChildren: './sale/sale.module#SaleModule' },
-        { path: 'payments', loadChildren: './payment/payment.module#PaymentModule' }
+        { path: 'payments', loadChildren: './payment/payment.module#PaymentModule' },
+        { path: 'credit-payments', loadChildren: './credit-payment/credit-payment.module#CreditPaymentModule' }
     ]
   },
 ];

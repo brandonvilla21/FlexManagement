@@ -1,3 +1,4 @@
+import { CreditPaymentModule } from './credit-payment/credit-payment.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ import { SaleModule } from './sale/sale.module';
         FormsModule,
         CommonModule,
         ProcessesRoutingModule,
+        CreditPaymentModule,
         BootstrapModalModule.forRoot({ container: document.body })
     ],
     exports: [],

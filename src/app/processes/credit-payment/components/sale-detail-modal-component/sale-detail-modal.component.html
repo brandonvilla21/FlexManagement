@@ -1,0 +1,218 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+           <button type="button" class="close" (click)="close()" >&times;</button>
+           <h3 class="modal-title"> Detalle de la venta </h3>
+      </div>
+
+      <!-- <div class="col-md-12" *ngIf="customer">
+
+      </div> -->
+
+      <div class="container" *ngIf="customer">
+        <div class="row">
+          <div class="col-md-12">
+            <br>
+            <h6>Datos del cliente seleccionado</h6>
+            <hr>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">ID Cliente</label>
+              <div class="col-md-8">
+                <input type="text" name="customer_id" [(ngModel)]="customer.customer_id" class="form-control" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label class="col-md-2 form-control-label">Nombre</label>
+              <div class="col-md-8">
+                <input type="text" name="customer_refecence" [(ngModel)]="customer.name + ' ' + customer.lastname" class="form-control" disabled>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="container" *ngIf="employee">
+        <div class="row">
+          <div class="col-md-12">
+            <h6>Datos del empleado que atendió</h6>
+            <hr>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">ID Empleado</label>
+              <div class="col-md-8">
+                <input type="text" name="employee_id" [(ngModel)]="employee.employee_id" class="form-control" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label class="col-md-2 form-control-label">Nombre completo</label>
+              <div class="col-md-8">
+                <input type="text" name="employee_fullname" [(ngModel)]="employee.name + ' ' + employee.lastname" class="form-control" disabled>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-body">
+            <div class="container pt-2">
+                <div class="row">
+                    <ng-container *ngIf="true">
+                        <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                            <thead>
+                                <tr>
+                                <th>ID Venta</th>
+                                <th>ID Cliente</th>
+                                <th>ID Empleado</th>
+                                <th>Fecha</th>
+                                <th>Total de venta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let saleProduct of salesProduct">
+                                    <tr style="cursor: pointer;" (click)="confirm(saleProduct)">
+                                        <td> {{ saleProduct.sale_id }} </td>
+                                        <td> {{ saleProduct.customer_id }} </td>
+                                        <td> {{ saleProduct.employee_id }} </td>
+                                        <td> {{ saleProduct.sale_date | date }} </td>
+                                        <td> {{ saleProduct.total }} </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                    <ng-container *ngIf="type === 'provider'">
+                        <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Contacto</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let provider of providers">
+                                    <tr style="cursor: pointer;" (click)="confirm(provider)">
+                                        <td> {{ provider.provider_id }} </td>
+                                        <td> {{ provider.name }} </td>
+                                        <td> {{ provider.description }} </td>
+                                        <td> {{ provider.contact }} </td>
+                                        <td> {{ provider.email }} </td>
+                                        <td> {{ provider.phone }} </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="type === 'employee'">
+                      <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                          <thead>
+                              <tr>
+                              <th>ID</th>
+                              <th>Nombre</th>
+                              <th>Apellido(s)</th>
+                              <th>Domicilio</th>
+                              <th>Whatsapp</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <ng-container *ngFor="let employee of employees">
+                                  <tr style="cursor: pointer;" (click)="confirm(employee)">
+                                      <td> {{ employee.employee_id }} </td>
+                                      <td> {{ employee.name }} </td>
+                                      <td> {{ employee.lastname }} </td>
+                                      <td> {{ employee.address }} </td>
+                                      <td> {{ employee.whatsapp }} </td>
+                                  </tr>
+                              </ng-container>
+                          </tbody>
+                      </table>
+                  </ng-container>
+
+                  <ng-container *ngIf="type === 'customer'">
+                    <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
+                        <thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido(s)</th>
+                            <th>Referencia</th>
+                            <th>Whatsapp</th>
+                            <th>Facebook</th>
+                            <th>Saldo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let customer of customers">
+                                <tr style="cursor: pointer;" (click)="confirm(customer)">
+                                    <td> {{ customer.customer_id }} </td>
+                                    <td> {{ customer.name }} </td>
+                                    <td> {{ customer.lastname }} </td>
+                                    <td> {{ customer.reference }} </td>
+                                    <td> {{ customer.whatsapp }} </td>
+                                    <td> {{ customer.facebook }} </td>
+                                    <td> {{ customer.balance }} </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </ng-container>
+
+                    <ng-container *ngIf="type === 'product'">
+                        <table class="table table-responsive table-hover adjust-table-responsive">
+                            <thead>
+                                <tr>
+                                <th>ID</th>
+                                <th>Descripción</th>
+                                <th>Marca</th>
+                                <th>Sabor</th>
+                                <th>Costo</th>
+                                <th>Precio venta</th>
+                                <th>Existencias</th>
+                                <th>Máx</th>
+                                <th>Min</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let product of products">
+                                    <tr style="cursor: pointer;" (click)="confirm(product)">
+                                        <td> {{ product.product_id }} </td>
+                                        <td> {{ product.description }} </td>
+                                        <td> {{ product.brand }} </td>
+                                        <td> {{ product.flavor }} </td>
+                                        <td> {{ product.buy_price }} </td>
+                                        <td> {{ product.sale_price }} </td>
+                                        <td> {{ product.existence }} </td>
+                                        <td> {{ product.max }} </td>
+                                        <td> {{ product.min }} </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
+      </div>
+  </div>
+</div>

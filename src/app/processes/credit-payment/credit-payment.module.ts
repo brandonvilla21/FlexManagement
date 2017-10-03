@@ -5,6 +5,7 @@ import { CreditPaymentRoutingModule } from './credit-payment.routing';
 import { NgModule } from '@angular/core';
 
 import { CreditPaymentComponent } from './credit-payment.component';
+import { SaleDetailModalComponent } from './components/sale-detail-modal-component/sale-detail-modal.component';
 
 @NgModule({
     imports: [
@@ -15,8 +16,10 @@ import { CreditPaymentComponent } from './credit-payment.component';
     exports: [],
     declarations: [
         CreditPaymentComponent,
-        CreditPaymentCreateComponent
+        CreditPaymentCreateComponent,
+        SaleDetailModalComponent
     ],
     providers: [],
+    entryComponents: [ SaleDetailModalComponent ]
 })
 export class CreditPaymentModule { }

@@ -3,6 +3,7 @@ import { SaleProductService } from './../../../sale/services/sale-product.servic
 import { Customer } from './../../../../customer/customer.model';
 import { SearchModalComponent } from './../../../../shared/search-modal/search-modal.component';
 import { DialogService } from 'ng2-bootstrap-modal';
+import { SaleDetailModalComponent } from './../sale-detail-modal-component/sale-detail-modal.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -55,9 +56,7 @@ export class CreditPaymentCreateComponent implements OnInit {
       })
   }
   details( saleProduct: SaleProductInterface ) {
-    // this.dialogService.addDialog(SaleDetailModalComponent, {
-    //   saleProduct: saleProduct
-    // });
+    this.dialogService.addDialog(SaleDetailModalComponent, saleProduct);
   }
   showModalSearch( type: string, title: string) {
     this.dialogService.addDialog(SearchModalComponent, {

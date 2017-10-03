@@ -70,145 +70,31 @@
 
       <div class="modal-body">
             <div class="container pt-2">
-                <div class="row">
-                    <ng-container *ngIf="true">
-                        <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
-                            <thead>
-                                <tr>
-                                <th>ID Venta</th>
-                                <th>ID Cliente</th>
-                                <th>ID Empleado</th>
-                                <th>Fecha</th>
-                                <th>Total de venta</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-container *ngFor="let saleProduct of salesProduct">
-                                    <tr style="cursor: pointer;" (click)="confirm(saleProduct)">
-                                        <td> {{ saleProduct.sale_id }} </td>
-                                        <td> {{ saleProduct.customer_id }} </td>
-                                        <td> {{ saleProduct.employee_id }} </td>
-                                        <td> {{ saleProduct.sale_date | date }} </td>
-                                        <td> {{ saleProduct.total }} </td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                        </table>
-                    </ng-container>
-                    <ng-container *ngIf="type === 'provider'">
-                        <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
-                            <thead>
-                                <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Contacto</th>
-                                <th>Email</th>
-                                <th>Teléfono</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-container *ngFor="let provider of providers">
-                                    <tr style="cursor: pointer;" (click)="confirm(provider)">
-                                        <td> {{ provider.provider_id }} </td>
-                                        <td> {{ provider.name }} </td>
-                                        <td> {{ provider.description }} </td>
-                                        <td> {{ provider.contact }} </td>
-                                        <td> {{ provider.email }} </td>
-                                        <td> {{ provider.phone }} </td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                        </table>
-                    </ng-container>
-                    
-                    <ng-container *ngIf="type === 'employee'">
-                      <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
-                          <thead>
-                              <tr>
-                              <th>ID</th>
-                              <th>Nombre</th>
-                              <th>Apellido(s)</th>
-                              <th>Domicilio</th>
-                              <th>Whatsapp</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <ng-container *ngFor="let employee of employees">
-                                  <tr style="cursor: pointer;" (click)="confirm(employee)">
-                                      <td> {{ employee.employee_id }} </td>
-                                      <td> {{ employee.name }} </td>
-                                      <td> {{ employee.lastname }} </td>
-                                      <td> {{ employee.address }} </td>
-                                      <td> {{ employee.whatsapp }} </td>
-                                  </tr>
-                              </ng-container>
-                          </tbody>
-                      </table>
-                  </ng-container>
-
-                  <ng-container *ngIf="type === 'customer'">
-                    <table class="table table-responsive table-hover adjust-table-responsive" style="overflow-x: auto;">
-                        <thead>
-                            <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido(s)</th>
-                            <th>Referencia</th>
-                            <th>Whatsapp</th>
-                            <th>Facebook</th>
-                            <th>Saldo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let customer of customers">
-                                <tr style="cursor: pointer;" (click)="confirm(customer)">
-                                    <td> {{ customer.customer_id }} </td>
-                                    <td> {{ customer.name }} </td>
-                                    <td> {{ customer.lastname }} </td>
-                                    <td> {{ customer.reference }} </td>
-                                    <td> {{ customer.whatsapp }} </td>
-                                    <td> {{ customer.facebook }} </td>
-                                    <td> {{ customer.balance }} </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </ng-container>
-
-                    <ng-container *ngIf="type === 'product'">
-                        <table class="table table-responsive table-hover adjust-table-responsive">
-                            <thead>
-                                <tr>
-                                <th>ID</th>
-                                <th>Descripción</th>
-                                <th>Marca</th>
-                                <th>Sabor</th>
-                                <th>Costo</th>
-                                <th>Precio venta</th>
-                                <th>Existencias</th>
-                                <th>Máx</th>
-                                <th>Min</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-container *ngFor="let product of products">
-                                    <tr style="cursor: pointer;" (click)="confirm(product)">
-                                        <td> {{ product.product_id }} </td>
-                                        <td> {{ product.description }} </td>
-                                        <td> {{ product.brand }} </td>
-                                        <td> {{ product.flavor }} </td>
-                                        <td> {{ product.buy_price }} </td>
-                                        <td> {{ product.sale_price }} </td>
-                                        <td> {{ product.existence }} </td>
-                                        <td> {{ product.max }} </td>
-                                        <td> {{ product.min }} </td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                        </table>
-                    </ng-container>
+              <div class="row" *ngIf="sale">
+                <div class="col-md-12 col-sm-12">
+                  <h3>Productos</h3>
+                  <table class="table table-striped table-responsive">
+                    <thead>
+                      <tr>
+                        <th>ID Producto</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Importe</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of sale.product_saleProduct">
+                        <td>{{ product.product_id }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.amount }}</td>
+                        <td>{{ product.price * product.amount }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
         </div>
       <div class="modal-footer">

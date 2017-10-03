@@ -56,7 +56,7 @@ export class CreditPaymentCreateComponent implements OnInit {
       })
   }
   details( saleProduct: SaleProductInterface ) {
-    this.dialogService.addDialog(SaleDetailModalComponent, saleProduct);
+    this.dialogService.addDialog(SaleDetailModalComponent, { sale_id: saleProduct.sale_id });
   }
   showModalSearch( type: string, title: string) {
     this.dialogService.addDialog(SearchModalComponent, {

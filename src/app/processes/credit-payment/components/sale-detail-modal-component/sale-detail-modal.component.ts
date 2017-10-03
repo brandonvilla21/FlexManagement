@@ -78,11 +78,5 @@ export class SaleDetailModalComponent extends DialogComponent<SaleDetailModalInt
 
   getCustomer(id) { return this.customerService.findById(id) }
 
-  getSaleProduct(id) { return this.saleProductService.findById(id) }
-
-
-  getProduct(id, value) {
-    this.productService.findByColumn(id, value)
-      .subscribe( products => this.products = products);
-  }
+  getSaleProduct(id) { return this.saleProductService.findByIdJoin(id) }
 }

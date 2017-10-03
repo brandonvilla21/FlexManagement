@@ -48,6 +48,8 @@ export class SaleDetailModalComponent extends DialogComponent<SaleDetailModalInt
 
   ngOnInit() {
 
+    document.getElementsByTagName('body')[0].classList.add('modal-open');
+
     this.getSaleProduct( this.sale_id )
     
     .flatMap( sale => {
@@ -67,6 +69,10 @@ export class SaleDetailModalComponent extends DialogComponent<SaleDetailModalInt
       console.log('this.employee: ', this.employee);
     }, error => console.log(error), () => console.log('Success!'))
     
+  }
+
+  ngOnDestroy(){
+    document.getElementsByTagName('body')[0].classList.remove('modal-open');
   }
 
   confirm( object: any ) {

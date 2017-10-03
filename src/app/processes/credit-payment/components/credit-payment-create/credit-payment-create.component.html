@@ -1,12 +1,33 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <form #formPayment="ngForm" (ngSubmit)="onSubmitPayment(formPayment)">
+      <form #formPayment="ngForm" (ngSubmit)="onSubmitCreditPayment(formPayment)">
         <div class="card">
           <div class="card-header text-center">
             <h2>Registrar abono</h2>
           </div>
           <div class="card-block">
+              <div class="row">
+                  <div class="col-md-6">
+                    <img [src]="['assets/img/flexgym-logo.png']" alt="logo" style="width: 100%;">
+                  </div>
+                  <div class="col-md-6">
+                    <h3>Datos del abono</h3>
+                    <hr>
+                    <div class="form-group row">
+                      <label class="col-md-4 form-control-label">ID Abono</label>
+                      <div class="col-md-6">
+                        <input [ngModel]="creditPayment.payment_id" type="text" name="creditpayment_id" class="form-control" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 form-control-label">Fecha abono</label>
+                      <div class="col-md-6">
+                        <input type="date" name="date" class="form-control" [ngModel]="creditPayment.payment_date  | date:'yyyy-MM-dd'" required disabled>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             <div class="row">
               <div class="col-md-12">
                 <h3>Seleccionar cliente</h3>
@@ -69,33 +90,70 @@
                 <div class="form-group row">
                     <label class="col-md-5 form-control-label">Deuda total del cliente {{ customer.name }} </label>
                     <div class="col-md-7">
-                      <input [ngModel]="customer.balance" type="text" name="customer_balance" class="form-control" required disabled>
+                      <div class="input-group">
+                          <span class="input-group-addon">$</span>
+                          <input [ngModel]="customer.balance" type="text" name="customer_balance" class="form-control" required disabled>                          
+                      </div>
                     </div>
                 </div>
               </div>
             </div>
+            <h2>Venta seleccionada</h2>
+            <hr>            
             <div class="row">
               <div class="col-md-6">
                   <div class="form-group row">
                     <label class="col-md-5 form-control-label">ID Venta seleccionada</label>
                     <div class="col-md-7">
-                      <input [ngModel]="saleSelected.sale_id" type="text" name="customer_balance" class="form-control" required disabled>
+                      <input [ngModel]="saleSelected.sale_id" type="text" name="saleselected_sale_id" class="form-control" required disabled>
                     </div>
                   </div>
               </div>
-              <!-- <div class="col-md-6">
+              <div class="col-md-6">
                   <div class="form-group row">
                     <label class="col-md-5 form-control-label">Cantidad a abonar</label>
                     <div class="col-md-7">
-                      <input [(ngModel)]="saleSelected.sale_id" type="text" name="customer_balance" class="form-control" required disabled>
+                      <div class="input-group">
+                          <span class="input-group-addon">$</span>
+                          <input [(ngModel)]="creditPayment.payment_amount" type="text" name="payment_amount" class="form-control" required>
+                      </div>
                     </div>
                   </div>
-              </div> -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Seleccionar empleado</h3>
+                <hr>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <button (click)="showModalSearch('employee', 'Seleccionar empleado')" type="button" name="searchCustomer" class="btn btn-outline-info btn-block">Buscar empleado</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-5 form-control-label">ID Empleado</label>
+                  <div class="col-md-6">
+                    <input [ngModel]="employee.employee_id" type="text" name="employee_id" class="form-control" required disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group row">
+                  <label class="col-md-3 form-control-label">Nombre</label>
+                  <div class="col-md-9">
+                    <input [ngModel]="employee.name" type="text" name="employee_name" class="form-control" required disabled>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="card-footer">
             <div class="col-md-6 pull-right">
-              <button [disabled]="formPayment.invalid" type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
+              <button [disabled]="formPayment.invalid && isValidPaymentAmount()" type="submit" class="btn btn-block btn-lg btn-outline-primary"><i class="fa fa-check"></i> Registrar</button>
             </div>
           </div>
         </div>

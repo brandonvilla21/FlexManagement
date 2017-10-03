@@ -126,7 +126,7 @@ export class PaymentCreateComponent implements OnInit {
     });
   }
 
-  isValidPaymentAmout(){
+  isValidPaymentAmout() {
       return this.payment.payment_amount && (this.payment.payment_amount <= this.saleProductForm.total - this.saleProductForm.total_payment)
   }
 

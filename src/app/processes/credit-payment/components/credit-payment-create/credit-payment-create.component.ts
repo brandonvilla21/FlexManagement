@@ -79,7 +79,9 @@ export class CreditPaymentCreateComponent implements OnInit {
   }
   getBalance() {
     this.saleProductService.findByColumn( 'customer_id', this.customer.customer_id )
-      .subscribe( res =>  this.salesProduct = res )
+      .subscribe( res =>  {
+        this.salesProduct = res.filter( sale => sale.type === 'CRÉDITO')
+      })
   }
   details( saleProduct: SaleProductInterface ) {
     this.dialogService.addDialog(SaleDetailModalComponent, { sale_id: saleProduct.sale_id });

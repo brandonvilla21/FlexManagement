@@ -42,7 +42,8 @@ export const routes: Routes = [
       {
         path: 'employees',
         loadChildren: './employee/employee.module#EmployeeModule'
-      }
+      },
+      { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]
   },
   { path: '**', redirectTo: 'dashboard'}

@@ -2,6 +2,9 @@
   <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8 col-xs-12">
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                <strong>Ha ocurrido un error: </strong> {{ errorMessage }}
+            </div>
           <form #formLogin="ngForm" (ngSubmit)="onSubmitLogin(formLogin)">                    
               <div class="card">
                   <div class="card-header text-center">

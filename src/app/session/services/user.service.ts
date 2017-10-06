@@ -13,8 +13,8 @@ export class UserService {
   public register( user: UserInterface ) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.endPoint}/register`, user, { headers: headers })
-      .map( res => res.json || {} )
-      .catch( err => JSON.stringify(err));
+      .map( res => res.json() )
+      .catch( err =>  JSON.stringify(err) );
   }
 
   public login( email, password ) {
@@ -24,9 +24,9 @@ export class UserService {
     }
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.endPoint}/login`, credentails, { headers: headers} )
-      .map( res => res.json || {})
-      .catch( err =>  JSON.stringify(err) );
+    return  this.http.post(`${this.endPoint}/login`, credentails, { headers: headers} )
+    .map( res => res.json() )
+    .catch( err =>  JSON.stringify(err) );
   }
 
 }

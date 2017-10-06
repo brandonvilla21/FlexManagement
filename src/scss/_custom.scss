@@ -13,3 +13,30 @@
     border          : 2px solid $gray-500;
     margin-bottom   : .5em;    
 }
+// Sexy line
+.sexy_line{ 
+    display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 650, from(#B0B0B0), to(#e4e5e6));
+}
+
+// Nav bar
+.menu-cont{
+    padding-top: 1em; 
+	text-align: right;
+	color: #ABABAB;
+}
+.menuitem{
+	padding: 10px;
+	cursor: pointer;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+.menuitem:hover{
+	// background-color: black;
+    color: white !important;
+    text-decoration: none;
+}

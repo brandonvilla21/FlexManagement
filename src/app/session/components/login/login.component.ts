@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   public user: UserInterface;
+  public error: boolean;
+  public errorMessage: string;
   constructor(
     private userService: UserService,
     private router: Router
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
       email: '',
       password: ''
     }
+    this.error = false;
+    this.errorMessage = '';
   }
 
   ngOnInit() {
@@ -28,7 +32,14 @@ export class LoginComponent implements OnInit {
     if ( form.valid ) {
       this.userService.login( this.user.email, this.user.password )
         .subscribe( res => {
-          console.log(res);
+          if (res.success) {
+            console.log(res)
+            this.router.navigate(['/dashboard']);
+          } else {
+            console.log(res);
+            this.error = true;
+            this.errorMessage = res.message;
+          }
         })
     }
   }

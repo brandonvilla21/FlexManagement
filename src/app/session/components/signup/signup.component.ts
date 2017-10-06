@@ -12,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
   public user: UserInterface;
   public validatePassword: string;
+  public error: boolean;
+  public errorMessage: string;
   constructor(
     private userService: UserService,
     private router: Router
@@ -32,10 +34,18 @@ export class SignupComponent implements OnInit {
       if ( this.passwordsMathes() ) {
         this.userService.register( this.user )
           .subscribe( res => {
-             if ( res ) {
+             if ( res.success ) {
+               console.log(res);
                this.router.navigate(['/login']);
+             } else {
+               console.log(res);
+               this.error = true;
+               this.errorMessage = res.message;
              }
           })
+      } else {
+        this.error = true;
+        this.errorMessage = 'Las contraseñas no coinciden';
       }
     }
   }

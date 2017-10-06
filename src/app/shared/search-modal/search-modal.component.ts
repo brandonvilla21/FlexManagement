@@ -103,7 +103,7 @@ export class SearchModalComponent extends DialogComponent<SearchModalInterface, 
         );
         this.searchOptionValue = 'customer_id';
         break;
-        
+
       case 'sale_product_for_devolution':
       case 'sale_product_for_payment':
         this.setElements(

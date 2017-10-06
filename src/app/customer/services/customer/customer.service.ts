@@ -1,7 +1,7 @@
-//Interfaces
+// Interfaces
 import { Customer } from '../../customer.model';
 
-//Services
+// Services
 import { ConfigUrlService } from '../../../services/config-url/config.url.service'
 
 import { Injectable } from '@angular/core';

@@ -1,3 +1,6 @@
+import { SignupComponent } from './session/components/signup/signup.component';
+import { LoginComponent } from './session/components/login/login.component';
+import { SessionComponent } from './session/session.component';
 import { PurchaseCreateComponent } from './processes/purchase-create/purchase-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,6 +14,14 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: SessionComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+    ]
   },
   {
     path: '',
@@ -42,8 +53,8 @@ export const routes: Routes = [
       {
         path: 'employees',
         loadChildren: './employee/employee.module#EmployeeModule'
-      },
-      { path: 'session', loadChildren: './session/session.module#SessionModule' },
+      }
+      // { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]
   },
   { path: '**', redirectTo: 'dashboard'}

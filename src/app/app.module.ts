@@ -1,3 +1,4 @@
+import { SessionModule } from './session/session.module';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,6 +49,7 @@ import { SearchModalComponent } from './shared/search-modal/search-modal.compone
     ProcessesModule,
     CustomerModule,
     EmployeeModule,
+    SessionModule,
     BootstrapModalModule.forRoot({ container: document.body })
   ],
   declarations: [

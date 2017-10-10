@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { SessionRoutingModule } from './session.routing';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,8 @@ import { SignupComponent } from './components/signup/signup.component';
     LoginComponent,
     SignupComponent
   ],
-  providers: [ UserService ]
+  providers: [
+    UserService
+  ]
 })
 export class SessionModule { }

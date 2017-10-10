@@ -1,3 +1,4 @@
+import { AuthService } from './session/services/auth.service';
 import { SessionModule } from './session/session.module';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { NgModule } from '@angular/core';
@@ -66,7 +67,8 @@ import { SearchModalComponent } from './shared/search-modal/search-modal.compone
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    ConfigUrlService
+    ConfigUrlService,
+    AuthService
   ],
   bootstrap: [ AppComponent ],
   entryComponents: [ SearchModalComponent ],

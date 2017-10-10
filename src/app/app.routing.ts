@@ -1,3 +1,4 @@
+import { AuthService } from './session/services/auth.service';
 import { SignupComponent } from './session/components/signup/signup.component';
 import { LoginComponent } from './session/components/login/login.component';
 import { SessionComponent } from './session/session.component';
@@ -29,6 +30,7 @@ export const routes: Routes = [
     data: {
       title: 'Home'
     },
+    canActivate: [ AuthService ],
     children: [
       {
         path: 'dashboard',
@@ -57,7 +59,7 @@ export const routes: Routes = [
       // { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]
   },
-  { path: '**', redirectTo: 'dashboard'}
+  { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

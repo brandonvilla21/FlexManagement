@@ -24,9 +24,10 @@ export class UserService {
     }
 
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return  this.http.post(`${this.endPoint}/login`, credentails, { headers: headers} )
+    return this.http.post(`${this.endPoint}/login`, credentails, { headers: headers} )
     .map( res => res.json() )
     .catch( err =>  JSON.stringify(err) );
+
   }
 
 }

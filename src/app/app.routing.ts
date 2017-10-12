@@ -13,7 +13,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -55,11 +55,15 @@ export const routes: Routes = [
       {
         path: 'employees',
         loadChildren: './employee/employee.module#EmployeeModule'
+      },
+      {
+        path: 'reports',
+        loadChildren: './reports/reports.module#ReportsModule'
       }
       // { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]
   },
-  { path: '**', redirectTo: '/login'}
+  { path: '**', redirectTo: 'login'}
 ];
 
 @NgModule({

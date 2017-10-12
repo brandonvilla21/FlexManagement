@@ -116,6 +116,14 @@
               </li>
             </ul>
         </li>
+        <li class="nav-item nav-dropdown" appNavDropdown>
+            <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Reportes</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/customer-report']" style="padding-left: 2em;"><i class="icon-user"></i>Clientes</a>
+                </li>   
+            </ul>
+        </li>
       </ul>
     </nav>
   </div>

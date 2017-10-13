@@ -1,3 +1,4 @@
+import { ReportsService } from './services/reports.service';
 import { Ng2PdfModule } from './../shared/ng2-pdf/ng2-pdf.module';
 import { ReportsRoutingModule } from './reports.routing';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,8 @@ import { CustomerReportComponent } from './components/customer-report/customer-r
         ReportsComponent,
         CustomerReportComponent
     ],
-    providers: [],
+    providers: [
+        ReportsService
+    ],
 })
 export class ReportsModule { }

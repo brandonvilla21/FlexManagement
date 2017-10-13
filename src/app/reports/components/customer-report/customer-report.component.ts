@@ -1,3 +1,4 @@
+import { ReportsService } from './../../services/reports.service';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 import { Customer } from './../../../customer/customer.model';
 import { CustomerService } from './../../../customer/services/customer/customer.service';
@@ -13,16 +14,21 @@ declare var jsPDF: any; // Important
 })
 export class CustomerReportComponent implements OnInit {
   public customers: Customer[];
-  constructor( private customerService: CustomerService, private ng2PdfService: Ng2PdfService ) {
+  constructor(
+    private customerService: CustomerService,
+    private ng2PdfService: Ng2PdfService,
+    private reportsService: ReportsService
+  ) {
     this.customers = [];
    }
 
   ngOnInit() {
     this.getCustomers();
   }
+  
   getCustomers() {
-    this.customerService.all()
-      .subscribe( res => this.customers = res );
+    this.reportsService.getCustomers()
+      .subscribe( res => {this.customers = res, console.log(res)});
   }
 
   download() {
@@ -44,4 +50,5 @@ export class CustomerReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTable( columns, rows, 'LISTA DE CLIENTES', 'Clientes.pdf' );
   }
+
 }

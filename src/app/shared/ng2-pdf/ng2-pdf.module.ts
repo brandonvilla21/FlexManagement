@@ -8,10 +8,8 @@ import { Ng2PdfComponent } from './ng2-pdf.component';
     imports: [
         CommonModule
     ],
-    exports: [
-    ],
-    declarations: [
-    ],
+    exports: [],
+    declarations: [],
     providers: [
         Ng2PdfService
     ],

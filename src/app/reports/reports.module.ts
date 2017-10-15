@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ReportsComponent } from './reports.component';
+import { ReportsService } from './components/services/reports.service';
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
+import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
 
 @NgModule({
     imports: [
@@ -15,8 +17,9 @@ import { CustomerReportComponent } from './components/customer-report/customer-r
     exports: [],
     declarations: [
         ReportsComponent,
-        CustomerReportComponent
+        CustomerReportComponent,
+        ProductListReportComponent
     ],
-    providers: [],
+    providers: [ReportsService],
 })
 export class ReportsModule { }

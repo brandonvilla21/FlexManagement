@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <h2 class="text-center"> Ventas a crédito por pagar </h2>
+          <table class="table table-striped table-condensed">
+              <thead>
+                  <th> ID Venta </th>
+                  <th> ID Cliente </th>
+                  <th> Cliente </th>
+                  <th> ID Empleado </th>
+                  <th> Empleado </th>
+                  <th> Subtotal </th>
+                  <th> Descuento </th>
+                  <th> Total </th>
+                  <th> Abono </th>
+                  <th> Deuda </th>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let sale of sales">
+                      <td> {{ sale.sale_id }} </td>
+                      <td> {{ sale.customer_id }} </td>
+                      <td> {{ sale.customer_name }} </td>
+                      <td> {{ sale.employee_id }} </td>
+                      <td> {{ sale.employee_name }} </td>
+                      <td> {{ sale.subtotal }} </td>
+                      <td> {{ sale.discount }} </td>
+                      <td> {{ sale.total }} </td>
+                      <td> {{ sale.total_payment }} </td>
+                      <td> {{ sale.total - sale.total_payment }} </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-md-12 text-right">
+          <button class="btn btn-primary" (click)="download()"> Descargar </button>
+      </div>
+  </div>
+</div>
+

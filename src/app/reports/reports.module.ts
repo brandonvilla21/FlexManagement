@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { ReportsComponent } from './reports.component';
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
+import { SalesToPayReportComponent } from './components/sales-to-pay-report/sales-to-pay-report.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { CustomerReportComponent } from './components/customer-report/customer-r
     exports: [],
     declarations: [
         ReportsComponent,
-        CustomerReportComponent
+        CustomerReportComponent,
+        SalesToPayReportComponent
     ],
     providers: [
         ReportsService

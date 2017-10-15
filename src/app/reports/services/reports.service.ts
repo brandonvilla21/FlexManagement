@@ -11,8 +11,12 @@ export class ReportsService {
   }
 
   getCustomers(): Observable<any[]> {
-    console.log(`${this.endPoint}/getCustomers`);
     return this.http.get(`${this.endPoint}/getCustomers`)
+      .map( res => res.json())
+      .catch( res => JSON.stringify(res));
+  }
+  getSalesToPay(): Observable<any[]> {
+    return this.http.get(`${this.endPoint}/salesToPay`)
       .map( res => res.json())
       .catch( res => JSON.stringify(res));
   }

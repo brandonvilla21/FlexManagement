@@ -1,7 +1,6 @@
 import { ReportsService } from './../../services/reports.service';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 import { Customer } from './../../../customer/customer.model';
-import { CustomerService } from './../../../customer/services/customer/customer.service';
 import { Component, OnInit } from '@angular/core';
 declare var jsPDF: any; // Important
 
@@ -15,7 +14,6 @@ declare var jsPDF: any; // Important
 export class CustomerReportComponent implements OnInit {
   public customers: Customer[];
   constructor(
-    private customerService: CustomerService,
     private ng2PdfService: Ng2PdfService,
     private reportsService: ReportsService
   ) {
@@ -25,17 +23,17 @@ export class CustomerReportComponent implements OnInit {
   ngOnInit() {
     this.getCustomers();
   }
-  
+
   getCustomers() {
     this.reportsService.getCustomers()
-      .subscribe( res => {this.customers = res, console.log(res)});
+      .subscribe( res => this.customers = res );
   }
 
   download() {
 
     const columns = [ 'ID', 'NOMBRE', 'APELLIDO(S)', 'REFERENCIA', 'WHATSAPP', 'FACEBOOK', 'SALDO'];
     const rows = [];
-
+    let total = 0;
     this.customers.forEach( customer => {
       rows.push([
         customer.customer_id,
@@ -46,7 +44,9 @@ export class CustomerReportComponent implements OnInit {
         customer.facebook || '',
         customer.balance || '',
       ])
+      total += customer.balance;
     })
+    rows.push([ '', '', '', '', '', 'TOTAL', total]);
 
     this.ng2PdfService.pdfTable( columns, rows, 'LISTA DE CLIENTES', 'Clientes.pdf' );
   }

@@ -1,3 +1,4 @@
+import { SalesToPayReportComponent } from './components/sales-to-pay-report/sales-to-pay-report.component';
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,6 +11,7 @@ const routes: Routes = [
         component: ReportsComponent,
         children: [
             { path: 'customer-report', component: CustomerReportComponent },
+            { path: 'sales-to-pay-report', component: SalesToPayReportComponent },
         ]
     },
 ];

@@ -48,7 +48,10 @@ export class CustomerReportComponent implements OnInit {
     })
     rows.push([ '', '', '', '', '', 'TOTAL', total]);
 
-    this.ng2PdfService.pdfTable( columns, rows, 'LISTA DE CLIENTES', 'Clientes.pdf' );
+    // Set the date to PDF
+    const date = 'Fecha: ' + new Date().toLocaleDateString();
+
+    this.ng2PdfService.pdfTableDate( columns, rows, 'LISTA DE CLIENTES', 'Clientes.pdf', date );
   }
 
 }

@@ -51,7 +51,8 @@ export class SalesToPayReportComponent implements OnInit {
     rows.push(['', '', '', '', '', '', '', '', '', '']);
     rows.push([ '', '', '', '', 'TOTAL', totalSubtotal, totalDiscount, total, totalPayment, totalDebt]);
 
-    this.ng2PdfService.pdfTable( columns, rows, 'Ventas a crédito por pagar', 'ventas-por-pagar.pdf');
+    const date = 'Fecha: ' + new Date().toLocaleDateString();
+    this.ng2PdfService.pdfTableDate( columns, rows, 'Ventas a crédito por pagar', 'ventas-por-pagar.pdf', date );
 
   }
 

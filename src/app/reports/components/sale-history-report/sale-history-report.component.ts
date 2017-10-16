@@ -92,7 +92,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
           
           case 'employee_id':
-
+            this.generateEmployeePDF();
           break;
         }
 
@@ -123,6 +123,34 @@ export class SaleHistoryReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTableWithDates(       
       columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, 'Historial de Ventas por cliente.pdf');
+  }
+
+
+  generateEmployeePDF(){
+    const columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const rows = [];
+
+    this.salesEmployee.forEach( sale => {
+
+      rows.push([
+        sale.sale_id || '',
+        sale.customer_name && sale.customer_lastname ? `${sale.customer_name} ${sale.customer_lastname}` : '',
+        sale.sale_date ? new Date(sale.sale_date).toLocaleDateString() : '',
+        sale.state || '',
+        sale.type || '',
+        sale.subtotal || '',
+        sale.discount || '',
+        sale.total_payment || '',
+        sale.total || '',
+      ])
+    })
+
+    let fromDate = `DESDE: ${this.fromDate}`;
+    let toDate = `HASTA: ${this.toDate}`;
+    let employeeName = `EMPLEADO: ${this.employee.name} ${this.employee.lastname}`
+
+    this.ng2PdfService.pdfTableWithDates(       
+      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, 'Historial de Ventas por empleado.pdf');
   }
 
 }

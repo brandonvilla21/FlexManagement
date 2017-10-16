@@ -67,7 +67,7 @@ export class SaleHistoryReportComponent implements OnInit {
   }
 
   loadSalesTables() {
-    if(this.fromDate && this.toDate && this.id_search) {
+    if(this.isValidForm()) {
       this.reportsService.salesHistoryByColumnInAPeriod({ 
         fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search
       })
@@ -84,19 +84,12 @@ export class SaleHistoryReportComponent implements OnInit {
   }
 
   download() {
-    
-        switch(this.columnOption){
-          case 'customer_id':
-            this.generateCustomerPDF();
-          break;
-
-          
-          case 'employee_id':
-            this.generateEmployeePDF();
-          break;
-        }
-
+    if (this.isValidForm())
+      switch (this.columnOption) {
+        case 'customer_id': this.generateCustomerPDF(); break;
+        case 'employee_id': this.generateEmployeePDF(); break;
       }
+  }
 
   generateCustomerPDF(){
     const columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
@@ -151,6 +144,10 @@ export class SaleHistoryReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTableWithDates(       
       columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, 'Historial de Ventas por empleado.pdf');
+  }
+
+  isValidForm(){
+    return this.fromDate && this.toDate && this.id_search;
   }
 
 }

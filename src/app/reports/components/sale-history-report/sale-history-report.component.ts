@@ -15,7 +15,7 @@ import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 })
 export class SaleHistoryReportComponent implements OnInit {
   public sales: any[];
-  public columnOption: String;
+  public columnOption: String = 'employee_id';
   public fromDate: Date;
   public toDate: Date;
   public reportTitle: String;
@@ -53,7 +53,10 @@ export class SaleHistoryReportComponent implements OnInit {
       toDate: '2017-11-11',
       column: 'employee_id',
       id: 1
-    }).subscribe( sales => console.log("sales: ", sales) );
+    }).subscribe( sales => {
+      this.sales = sales;
+      console.log('this.sales: ', this.sales);
+    });
   }
 
   showModalSearch( type: string, title: string) {

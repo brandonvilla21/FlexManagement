@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Ng2PdfModule } from './../shared/ng2-pdf/ng2-pdf.module';
 import { ReportsRoutingModule } from './reports.routing';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { SaleHistoryReportComponent } from './components/sale-history-report/sal
     imports: [
         CommonModule,
         ReportsRoutingModule,
-        Ng2PdfModule
+        Ng2PdfModule,
+        FormsModule
     ],
     exports: [],
     declarations: [

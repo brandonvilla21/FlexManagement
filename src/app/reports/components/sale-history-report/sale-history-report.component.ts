@@ -83,4 +83,46 @@ export class SaleHistoryReportComponent implements OnInit {
     
   }
 
+  download() {
+    
+        switch(this.columnOption){
+          case 'customer_id':
+            this.generateCustomerPDF();
+          break;
+
+          
+          case 'employee_id':
+
+          break;
+        }
+
+      }
+
+  generateCustomerPDF(){
+    const columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const rows = [];
+
+    this.salesCustomer.forEach( sale => {
+
+      rows.push([
+        sale.sale_id || '',
+        sale.employee_name && sale.employee_lastname ? `${sale.employee_name} ${sale.employee_lastname}` : '',
+        sale.sale_date ? new Date(sale.sale_date).toLocaleDateString() : '',
+        sale.state || '',
+        sale.type || '',
+        sale.subtotal || '',
+        sale.discount || '',
+        sale.total_payment || '',
+        sale.total || '',
+      ])
+    })
+
+    let fromDate = `DESDE: ${this.fromDate}`;
+    let toDate = `HASTA: ${this.toDate}`;
+    let customerName = `CLIENTE: ${this.customer.name} ${this.customer.lastname}`
+
+    this.ng2PdfService.pdfTableWithDates(       
+      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, 'Historial de Ventas por cliente.pdf');
+  }
+
 }

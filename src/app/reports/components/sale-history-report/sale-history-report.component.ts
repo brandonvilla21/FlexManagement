@@ -14,43 +14,39 @@ import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
   styleUrls: ['./sale-history-report.component.scss']
 })
 export class SaleHistoryReportComponent implements OnInit {
-  public sales: any[];
+  public salesEmployee: any[];
+  public salesCustomer: any[];
   public columnOption: String;
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
 
-  public customer: Customer = {
-    customer_id: '',
-    name: '',
-    lastname: '',
-    reference: '',
-    whatsapp: '',
-    facebook: '',
-    balance: 0
-  }
+  public customer: Customer;
+  public employee: Employee;
 
-  public employee: Employee = {
-    employee_id: '',
-    name: '',
-    lastname: '',
-    address: '',
-    whatsapp: ''
-  }
   constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService,
                private dialogService: DialogService, private router: Router, 
                private activatedRoute: ActivatedRoute
   ) { 
-    this.sales = [];
 
   }
 
   ngOnInit() { 
     this.loadOption();
+    this.setValues();
   }
+
+  
 
   loadOption(){
     this.activatedRoute.params.subscribe( params => this.columnOption = params['id'] )
+  }
+
+  setValues(){
+    this.customer = { customer_id: '', name: '', lastname: '', reference: '', whatsapp: '', facebook: '', balance: 0 };
+    this.employee = { employee_id: '', name: '', lastname: '', address: '', whatsapp: '' };
+    this.salesEmployee = [];
+    this.salesCustomer = [];
   }
 
   showModalSearch( type: string, title: string) {
@@ -64,25 +60,22 @@ export class SaleHistoryReportComponent implements OnInit {
           case 'employee': this.employee = data; this.id_search = this.employee.employee_id; break;
         }
 
-        this.loadSalesTable();
+        this.loadSalesTables();
 
       }
     })
   }
 
-  loadSalesTable() {
-    console.log('id: ', this.id_search);
-    console.log('this.toDate: ', this.toDate);
-    console.log('this.fromDate: ', this.fromDate);
+  loadSalesTables() {
     if(this.fromDate && this.toDate && this.id_search) {
-      this.reportsService.salesHistoryByColumnInAPeriod({
-        fromDate: this.fromDate,
-        toDate: this.toDate,
-        column: this.columnOption,
-        id: this.id_search
-      }).subscribe( sales => {
-        this.sales = sales;
-        console.log('this.sales: ', this.sales);
+      this.reportsService.salesHistoryByColumnInAPeriod({ 
+        fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search
+      })
+      .subscribe( sales => {
+        switch(this.columnOption){
+          case 'customer_id': this.salesCustomer = sales; console.log('this.salesCustomer: ', this.salesCustomer); break;
+          case 'employee_id': this.salesEmployee = sales; console.log('this.salesEmployee: ', this.salesEmployee); break;
+        }
       });
     } else {
       console.log("No entró al if.")

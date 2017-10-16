@@ -1,5 +1,6 @@
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
 import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
+import { SaleHistoryReportComponent } from './components/sale-history-report/sale-history-report.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,7 +13,7 @@ const routes: Routes = [
         children: [
             { path: 'customer-report', component: CustomerReportComponent },
             { path: 'product-list-report', component: ProductListReportComponent },
-            
+            { path: 'sale-history-report', component: SaleHistoryReportComponent },
         ]
     },
 ];

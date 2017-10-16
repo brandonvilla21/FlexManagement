@@ -7,6 +7,7 @@ import { ReportsComponent } from './reports.component';
 import { ReportsService } from './components/services/reports.service';
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
 import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
+import { SaleHistoryReportComponent } from './components/sale-history-report/sale-history-report.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { ProductListReportComponent } from './components/product-list-report/pro
     declarations: [
         ReportsComponent,
         CustomerReportComponent,
-        ProductListReportComponent
+        ProductListReportComponent,
+        SaleHistoryReportComponent
     ],
     providers: [ReportsService],
 })

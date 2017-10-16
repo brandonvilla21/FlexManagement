@@ -12,7 +12,7 @@ declare var jsPDF: any;
 export class ProductListReportComponent implements OnInit {
   public products: Product[];
 
-  constructor(private reportsService: ReportsService, private ng2PdfService: Ng2PdfService) { 
+  constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService ) { 
     this.products = [];
   }
 

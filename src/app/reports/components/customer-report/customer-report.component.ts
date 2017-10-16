@@ -42,7 +42,7 @@ export class CustomerReportComponent implements OnInit {
         customer.reference || '',
         customer.whatsapp || '',
         customer.facebook || '',
-        customer.balance || '',
+        customer.balance,
       ])
       total += customer.balance;
     })

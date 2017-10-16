@@ -21,4 +21,17 @@ export class ReportsService {
       .catch( res => JSON.stringify(res));
   }
 
+  public getProducts(): Observable<any> {
+    return this.http.get(`${this.endPoint}/getProducts`)
+      .map(res => res.json() || { })
+      .catch(err =>  JSON.stringify(err));
+  }
+
+  public salesHistoryByColumnInAPeriod(params): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.endPoint}/salesHistoryByColumnInAPeriod`, params, { headers: headers })
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
+  }
+
 }

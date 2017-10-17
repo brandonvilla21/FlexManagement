@@ -18,7 +18,7 @@ export class SaleHistoryReportComponent implements OnInit {
   public salesCustomer: any[];
   public salesAll: any[];
   public columnOption: String = 'all';
-  public saleType: String = 'ALL'
+  public saleType: String = 'CRÉDITO/CONTADO'
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
@@ -126,9 +126,10 @@ export class SaleHistoryReportComponent implements OnInit {
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
     const customerName = `CLIENTE: ${this.customer.name} ${this.customer.lastname}`
+    const saleType = `TIPO: ${this.saleType}`
 
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, 'Historial de Ventas por cliente.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf');
   }
 
 
@@ -160,9 +161,10 @@ export class SaleHistoryReportComponent implements OnInit {
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
     const employeeName = `EMPLEADO: ${this.employee.name} ${this.employee.lastname}`
+    const saleType = `TIPO: ${this.saleType}`    
 
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, 'Historial de Ventas por empleado.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf');
   }
   
 
@@ -195,9 +197,10 @@ export class SaleHistoryReportComponent implements OnInit {
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
     const allSales = `VENTAS GENERALES`
-
+    const saleType = `TIPO: ${this.saleType}`
+    
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, 'Historial de Ventas generales.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf');
   
   }
 

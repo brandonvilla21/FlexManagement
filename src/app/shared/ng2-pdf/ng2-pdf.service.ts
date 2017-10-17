@@ -39,12 +39,12 @@ export class Ng2PdfService {
         doc.save(fileName);
     }
 
-    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, customerName, fileName = 'File.pdf') {
+    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, customerName, saleType, fileName = 'File.pdf') {
 
       const doc = new jsPDF('p', 'pt', 'a4');
-      const date = 'FECHA: ' + new Date().toLocaleDateString();
+      const date = `| FECHA: ${new Date().toLocaleDateString()} |`;
       doc.autoTable(columns, rows, {
-        margin: { top: 95 },
+        margin: { top: 100 },
         styles: this.styles,
         headerStyles: {
           fillColor: [51, 122, 183],
@@ -53,14 +53,15 @@ export class Ng2PdfService {
         },
         theme: 'grid',
         addPageContent: data => {
-          doc.addImage(this.img, 'PNG', 400, 10, 140, 60);
+          doc.addImage(this.img, 'PNG', 410, 10, 140, 60);
           doc.setFontSize(12);
           doc.text(titleTable, 40, 30);
           doc.setFontSize(10);
-          doc.text(date, 425, 80);
           doc.text(customerName, 40, 60);
           doc.text(fromDate, 40, 80);
-          doc.text(toDate, 200, 80);
+          doc.text(toDate, 150, 80);
+          doc.text(saleType, 270, 80);
+          doc.text(date, 429, 80);
         }
       });
       doc.save(fileName);

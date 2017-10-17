@@ -130,11 +130,10 @@ export class SaleHistoryReportComponent implements OnInit {
 
 
   generateEmployeePDF() {
-    const columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     const rows = [];
     let subtotal = 0;
     let discount = 0;
-    let totalPayment = 0;
     let total = 0;
     this.salesEmployee.forEach( sale => {
     
@@ -146,16 +145,14 @@ export class SaleHistoryReportComponent implements OnInit {
         sale.type || '',
         sale.subtotal,
         sale.discount,
-        sale.total_payment,
         sale.total,
       ])
       subtotal += sale.subtotal;
       discount += sale.discount;
-      totalPayment += sale.total_payment;
       total += sale.total;
     })
     rows.push(['', '', '', '', '', '', '', '', '']);
-    rows.push(['', '', '', '', 'TOTAL', subtotal, discount, totalPayment, total]);
+    rows.push(['', '', '', '', 'TOTAL', subtotal, discount, total]);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;

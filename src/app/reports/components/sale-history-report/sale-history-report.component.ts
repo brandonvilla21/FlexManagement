@@ -88,13 +88,17 @@ export class SaleHistoryReportComponent implements OnInit {
       switch (this.columnOption) {
         case 'customer_id': this.generateCustomerPDF(); break;
         case 'employee_id': this.generateEmployeePDF(); break;
+        case 'all':     this.generateGeneralSalesPDF(); break;
       }
   }
 
   generateCustomerPDF(){
-    const columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     const rows = [];
-    console.log('HHHHHHH: ', this.salesCustomer);
+    let subtotal = 0;
+    let discount = 0;
+    let total = 0;
+
     this.salesCustomer.forEach( sale => {
 
       rows.push([
@@ -105,10 +109,16 @@ export class SaleHistoryReportComponent implements OnInit {
         sale.type || '',
         sale.subtotal ,
         sale.discount,
-        sale.total_payment,
         sale.total,
       ])
+      subtotal += sale.subtotal;
+      discount += sale.discount;
+      total += sale.total;
     })
+
+    
+    rows.push(['', '', '', '', '', '', '', '', '']);
+    rows.push(['', '', '', '', 'TOTAL', subtotal, discount, total]);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;

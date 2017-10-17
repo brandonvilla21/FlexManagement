@@ -11,7 +11,7 @@ export class Ng2PdfService {
       valign: 'middle', // top, middle, bottom
       columnWidth: 'auto', // 'auto', 'wrap' or a number
       overflow: 'linebreak',
-      fontSize: 8,
+      fontSize: 7,
       font: 'helvetica'
     }
 
@@ -40,6 +40,7 @@ export class Ng2PdfService {
     }
 
     pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, customerName, fileName = 'File.pdf') {
+
       const doc = new jsPDF('p', 'pt', 'a4');
       const date = 'FECHA: ' + new Date().toLocaleDateString();
       doc.autoTable(columns, rows, {

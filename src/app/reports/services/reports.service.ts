@@ -29,7 +29,7 @@ export class ReportsService {
 
   public salesHistoryByColumnInAPeriod(params): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.endPoint}/salesHistoryByColumnInAPeriod`, params, { headers: headers })
+    return this.http.post(`${this.endPoint}/salesHistoryByColumnAndSaleTypeInAPeriod`, params, { headers: headers })
       .map( res => res.json() || {})
       .catch( error => JSON.stringify(error));
   }

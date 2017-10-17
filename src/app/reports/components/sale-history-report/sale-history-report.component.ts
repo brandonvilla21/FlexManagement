@@ -1,7 +1,7 @@
 import { Employee } from './../../../employee/employee.model';
 import { Customer } from './../../../customer/customer.model';
 import { SearchModalComponent } from './../../../shared/search-modal/search-modal.component';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { PaymentService } from './../../../processes/payment/services/payment.service';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,8 @@ import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 export class SaleHistoryReportComponent implements OnInit {
   public salesEmployee: any[];
   public salesCustomer: any[];
-  public columnOption: String;
+  public salesAll: any[];
+  public columnOption: String = 'employee_id';
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
@@ -25,21 +26,13 @@ export class SaleHistoryReportComponent implements OnInit {
   public employee: Employee;
 
   constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService,
-               private dialogService: DialogService, private router: Router, 
-               private activatedRoute: ActivatedRoute
+               private dialogService: DialogService, private router: Router
   ) { 
 
   }
 
-  ngOnInit() { 
-    this.loadOption();
+  ngOnInit() {
     this.setValues();
-  }
-
-  
-
-  loadOption(){
-    this.activatedRoute.params.subscribe( params => this.columnOption = params['id'] )
   }
 
   setValues(){
@@ -47,6 +40,8 @@ export class SaleHistoryReportComponent implements OnInit {
     this.employee = { employee_id: '', name: '', lastname: '', address: '', whatsapp: '' };
     this.salesEmployee = [];
     this.salesCustomer = [];
+    this.salesAll = [];
+    this.id_search = '';
   }
 
   showModalSearch( type: string, title: string) {
@@ -68,13 +63,18 @@ export class SaleHistoryReportComponent implements OnInit {
 
   loadSalesTables() {
     if(this.isValidForm()) {
+
+      if(this.columnOption == 'all')
+        this.id_search = '0';
+
       this.reportsService.salesHistoryByColumnInAPeriod({ 
-        fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search
+        fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: 'ALL'
       })
       .subscribe( sales => {
-        switch(this.columnOption){
+        switch( this.columnOption ){
           case 'customer_id': this.salesCustomer = sales; console.log('this.salesCustomer: ', this.salesCustomer); break;
           case 'employee_id': this.salesEmployee = sales; console.log('this.salesEmployee: ', this.salesEmployee); break;
+          case 'all':         this.salesAll      = sales; console.log('this.salesAll: ', this.salesAll);           break;
         }
       });
     } else {
@@ -154,9 +154,48 @@ export class SaleHistoryReportComponent implements OnInit {
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, 'Historial de Ventas por empleado.pdf');
   }
+  
+
+  generateGeneralSalesPDF() {
+    const columns = [ 'ID', 'EMPLEADO', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const rows = [];
+    let subtotal = 0;
+    let discount = 0;
+    let totalPayment = 0;
+    let total = 0;
+    this.salesAll.forEach( sale => {
+    
+      rows.push([
+        sale.sale_id || '',
+        sale.employee_name && sale.employee_lastname ? `${sale.employee_name} ${sale.employee_lastname}` : '',
+        sale.customer_name && sale.customer_lastname ? `${sale.customer_name} ${sale.customer_lastname}` : '',
+        sale.sale_date ? new Date(sale.sale_date).toLocaleDateString() : '',
+        sale.state || '',
+        sale.type || '',
+        sale.subtotal,
+        sale.discount,
+        sale.total_payment,
+        sale.total,
+      ])
+      subtotal += sale.subtotal;
+      discount += sale.discount;
+      totalPayment += sale.total_payment;
+      total += sale.total;
+    })
+    rows.push(['', '', '', '', '', '', '', '', '']);
+    rows.push(['', '', '', '', 'TOTAL', subtotal, discount, totalPayment, total]);
+
+    const fromDate = `DESDE: ${this.fromDate}`;
+    const toDate = `HASTA: ${this.toDate}`;
+    const allSales = `VENTAS GENERALES`
+
+    this.ng2PdfService.pdfTableWithDates(
+      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, 'Historial de Ventas generales.pdf');
+  
+  }
 
   isValidForm() {
-    return this.fromDate && this.toDate && this.id_search;
+    return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
 
 }

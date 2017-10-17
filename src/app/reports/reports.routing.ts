@@ -15,7 +15,7 @@ const routes: Routes = [
             { path: 'customer-report', component: CustomerReportComponent },
             { path: 'sales-to-pay-report', component: SalesToPayReportComponent },
             { path: 'product-list-report', component: ProductListReportComponent },
-            { path: 'sale-history-report/:id', component: SaleHistoryReportComponent },
+            { path: 'sale-history-report', component: SaleHistoryReportComponent },
         ]
     },
 ];

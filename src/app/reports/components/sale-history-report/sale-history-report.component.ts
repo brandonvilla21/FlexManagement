@@ -33,6 +33,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
   ngOnInit() {
     this.setValues();
+    
   }
 
   setValues(){
@@ -42,6 +43,7 @@ export class SaleHistoryReportComponent implements OnInit {
     this.salesCustomer = [];
     this.salesAll = [];
     this.id_search = '';
+    this.loadSalesTables();
   }
 
   showModalSearch( type: string, title: string) {
@@ -164,11 +166,10 @@ export class SaleHistoryReportComponent implements OnInit {
   
 
   generateGeneralSalesPDF() {
-    const columns = [ 'ID', 'EMPLEADO', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL ABONOS', 'TOTAL'];
+    const columns = [ 'ID', 'EMPLEADO', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     const rows = [];
     let subtotal = 0;
     let discount = 0;
-    let totalPayment = 0;
     let total = 0;
     this.salesAll.forEach( sale => {
     
@@ -181,16 +182,14 @@ export class SaleHistoryReportComponent implements OnInit {
         sale.type || '',
         sale.subtotal,
         sale.discount,
-        sale.total_payment,
         sale.total,
       ])
       subtotal += sale.subtotal;
       discount += sale.discount;
-      totalPayment += sale.total_payment;
       total += sale.total;
     })
     rows.push(['', '', '', '', '', '', '', '', '']);
-    rows.push(['', '', '', '', 'TOTAL', subtotal, discount, totalPayment, total]);
+    rows.push(['', '', '', '', '', 'TOTAL', subtotal, discount, total]);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;

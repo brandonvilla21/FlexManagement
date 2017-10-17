@@ -2,6 +2,8 @@
 
   <h2 class="text-center" *ngIf="columnOption == 'employee_id'"> Historial de ventas por empleado en un período </h2>
   <h2 class="text-center" *ngIf="columnOption == 'customer_id'"> Historial de ventas a un cliente en un período </h2>
+  <h2 class="text-center" *ngIf="columnOption == 'all'"> Historial de ventas generales en un período </h2>
+
   <hr>
 
   <div class="col-md-12">
@@ -11,7 +13,7 @@
       <div class="col-md-12">
 
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group row">
               <label class="col-md-4 form-control-label">Venta por: </label>
               <div class="col-md-8">
@@ -24,7 +26,20 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Tipo: </label>
+              <div class="col-md-8">
+                <select [(ngModel)]="saleType" #type="ngModel" name="saleType" class="form-control" (ngModelChange)="loadSalesTables()">
+                  <option value="CRÉDITO">Crédito</option>
+                  <option value="CONTADO">Contado</option>
+                  <option value="ALL">Todas</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
             <div class="form-group row">
               <label class="col-md-3 form-control-label">Fecha inicial: </label>
               <div class="col-md-9">
@@ -33,7 +48,7 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group row">
               <label class="col-md-3 form-control-label">Fecha final: </label>
               <div class="col-md-9">

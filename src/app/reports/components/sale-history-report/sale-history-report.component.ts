@@ -17,7 +17,8 @@ export class SaleHistoryReportComponent implements OnInit {
   public salesEmployee: any[];
   public salesCustomer: any[];
   public salesAll: any[];
-  public columnOption: String = 'employee_id';
+  public columnOption: String = 'all';
+  public saleType: String = 'ALL'
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
@@ -70,7 +71,7 @@ export class SaleHistoryReportComponent implements OnInit {
         this.id_search = '0';
 
       this.reportsService.salesHistoryByColumnInAPeriod({ 
-        fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: 'ALL'
+        fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: this.saleType
       })
       .subscribe( sales => {
         switch( this.columnOption ){

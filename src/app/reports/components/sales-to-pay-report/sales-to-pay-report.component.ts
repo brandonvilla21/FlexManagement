@@ -18,11 +18,12 @@ export class SalesToPayReportComponent implements OnInit {
   }
   getSalesToPay() {
     this.reportsService.getSalesToPay()
-      .subscribe( res => this.sales = res );
+      .subscribe( res => {this.sales = res; console.log(this.sales)} );
   }
 
   download() {
-    const columns = [ 'ID Venta', 'ID Cliente', 'Cliente', 'Referencia', 'Whatsapp', 'Subtotal', 'Desc', 'Total', 'Abono', 'Deuda' ];
+    // tslint:disable-next-line:max-line-length
+    const columns = [ 'ID Venta', 'Fecha', 'ID Cliente', 'Cliente', 'Referencia', 'Whatsapp', 'Subtotal', 'Desc', 'Total', 'Abono', 'Deuda' ];
     const rows = [];
     let totalSubtotal = 0;
     let totalDiscount = 0;
@@ -32,6 +33,7 @@ export class SalesToPayReportComponent implements OnInit {
     this.sales.forEach( sale => {
       rows.push([
         sale.sale_id,
+        new Date(sale.sale_date).toLocaleDateString() || '',
         sale.customer_id,
         sale.customer_name,
         sale.customer_reference,
@@ -48,8 +50,8 @@ export class SalesToPayReportComponent implements OnInit {
       totalPayment += sale.total_payment;
       totalDebt += sale.total - sale.total_payment;
     });
-    rows.push(['', '', '', '', '', '', '', '', '', '']);
-    rows.push([ '', '', '', '', 'TOTAL', totalSubtotal, totalDiscount, total, totalPayment, totalDebt]);
+    rows.push(['', '', '', '', '', '', '', '', '', '', '']);
+    rows.push([ '', '', '', '', '', 'TOTAL', totalSubtotal, totalDiscount, total, totalPayment, totalDebt]);
 
     const date = 'Fecha: ' + new Date().toLocaleDateString();
     this.ng2PdfService.pdfTableDate( columns, rows, 'Ventas a crédito por pagar', 'ventas-por-pagar.pdf', date );

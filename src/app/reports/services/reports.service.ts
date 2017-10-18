@@ -33,6 +33,12 @@ export class ReportsService {
       .catch(err =>  JSON.stringify(err));
   }
 
+  public accountStatus( debt: string, fromDate: string, userId: number ): Observable<any> {
+    return this.http.get(`${this.endPoint}/accountStatus/${debt}/${fromDate}/${userId}`)
+      .map(res => res.json() || { })
+      .catch(err =>  JSON.stringify(err));
+  }
+
   public salesHistoryByColumnInAPeriod(params): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.endPoint}/salesHistoryByColumnAndSaleTypeInAPeriod`, params, { headers: headers })

@@ -82,12 +82,12 @@ export class PurchaseHistoryReportComponent implements OnInit {
     if (this.isValidForm())
       switch (this.columnOption) {
         case 'provider_id': this.generateProviderPDF(); break;
-        // case 'all':     this.generateGeneralSalesPDF(); break;
+        case 'all':     this.generateGeneralPurchasesPDF(); break;
       }
   }
 
 
-  generateProviderPDF(){
+  generateProviderPDF() {
     let columns = [ 'ID', 'FECHA', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     let rows = [];
     let subtotal = 0;
@@ -98,8 +98,6 @@ export class PurchaseHistoryReportComponent implements OnInit {
 
       rows.push([
         purchase.purchase_id || '',
-        // purchase.provider_name || '',
-        // purchase.provider_description || '',
         purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString() : '',
         purchase.subtotal ,
         purchase.discount,
@@ -118,7 +116,44 @@ export class PurchaseHistoryReportComponent implements OnInit {
     const name = `PROVEEDOR: ${this.provider.name}`
 
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE COMPRAS A UN PROVEEDOR EN UN PERÍODO', fromDate, toDate, name, '', 'Historial de compras por proveedor.pdf', true);
+      columns, rows, 'HISTORIAL DE COMPRAS A UN PROVEEDOR EN UN PERÍODO', 
+      fromDate, toDate, name, '', 'Historial de compras por proveedor.pdf', true);
+  }
+
+
+  generateGeneralPurchasesPDF() {
+    let columns = [ 'ID', 'NOMBRE PROVEEDOR', 'DESCRIPCIÓN PROVEEDOR', 'FECHA', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
+    let rows = [];
+    let subtotal = 0;
+    let discount = 0;
+    let total = 0;
+
+    this.purchasesAll.forEach( purchase => {
+
+      rows.push([
+        purchase.purchase_id || '',
+        purchase.provider_name || '',
+        purchase.provider_description || '',
+        purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString() : '',
+        purchase.subtotal ,
+        purchase.discount,
+        purchase.total,
+      ])
+      subtotal += purchase.subtotal;
+      discount += purchase.discount;
+      total += purchase.total;
+    })
+
+    rows.push(['', '', '', '', '']);
+    rows.push(['', '', '', 'TOTAL', subtotal, discount, total]);
+
+    const fromDate = `DESDE: ${this.fromDate}`;
+    const toDate = `HASTA: ${this.toDate}`;
+    const name = `COMPRAS GENERALES`
+
+    this.ng2PdfService.pdfTableWithDates(
+      columns, rows, 'HISTORIAL DE COMPRAS GENERALES EN UN PERÍODO', 
+      fromDate, toDate, name, '', 'Historial de compras generales.pdf', false);
   }
 
 

@@ -13,6 +13,7 @@ import { SaleHistoryReportComponent } from './components/sale-history-report/sal
 import { ProviderReportComponent } from './components/provider-report/provider-report.component';
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { PurchaseHistoryReportComponent } from './components/purchase-history-report/purchase-history-report.component';
+import { AccountStatusComponent } from './components/account-status/account-status.component';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { PurchaseHistoryReportComponent } from './components/purchase-history-re
         SaleHistoryReportComponent,
         ProviderReportComponent,
         EmployeeReportComponent,
-        PurchaseHistoryReportComponent
+        PurchaseHistoryReportComponent,
+        AccountStatusComponent
     ],
     providers: [ReportsService],
 })

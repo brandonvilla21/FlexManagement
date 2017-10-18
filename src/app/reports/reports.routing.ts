@@ -1,3 +1,4 @@
+import { AccountStatusComponent } from './components/account-status/account-status.component';
 import { ProviderReportComponent } from './components/provider-report/provider-report.component';
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { SalesToPayReportComponent } from './components/sales-to-pay-report/sales-to-pay-report.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: 'sales-to-pay-report', component: SalesToPayReportComponent },
             { path: 'product-list-report', component: ProductListReportComponent },
             { path: 'sale-history-report', component: SaleHistoryReportComponent },
+            { path: 'account-status-report', component: AccountStatusComponent },
         ]
     },
 ];

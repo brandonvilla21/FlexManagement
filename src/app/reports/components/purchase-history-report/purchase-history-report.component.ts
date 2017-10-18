@@ -78,53 +78,48 @@ export class PurchaseHistoryReportComponent implements OnInit {
     
   }
 
-  // download() {
-  //   if (this.isValidForm())
-  //     switch (this.columnOption) {
-  //       case 'customer_id': this.generateProviderPDF(); break;
-  //       case 'all':     this.generateGeneralSalesPDF(); break;
-  //     }
-  // }
+  download() {
+    if (this.isValidForm())
+      switch (this.columnOption) {
+        case 'provider_id': this.generateProviderPDF(); break;
+        // case 'all':     this.generateGeneralSalesPDF(); break;
+      }
+  }
 
 
-  // generateProviderPDF(){
-  //   let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
-  //   let rows = [];
-  //   let subtotal = 0;
-  //   let discount = 0;
-  //   let total = 0;
+  generateProviderPDF(){
+    let columns = [ 'ID', 'FECHA', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
+    let rows = [];
+    let subtotal = 0;
+    let discount = 0;
+    let total = 0;
 
-  //   this.purchasesCustomer.forEach( purchase => {
+    this.purchasesProvider.forEach( purchase => {
 
-  //     rows.push([
-  //       purchase.purchase_id || '',
-  //       purchase.employee_name && purchase.employee_lastname ? `${purchase.employee_name} ${purchase.employee_lastname}` : '',
-  //       purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString() : '',
-  //       purchase.state || '',
-  //       purchase.type || '',
-  //       purchase.subtotal ,
-  //       purchase.discount,
-  //       purchase.total,
-  //     ])
-  //     subtotal += purchase.subtotal;
-  //     discount += purchase.discount;
-  //     total += purchase.total;
-  //   })
+      rows.push([
+        purchase.purchase_id || '',
+        // purchase.provider_name || '',
+        // purchase.provider_description || '',
+        purchase.purchase_date ? new Date(purchase.purchase_date).toLocaleDateString() : '',
+        purchase.subtotal ,
+        purchase.discount,
+        purchase.total,
+      ])
+      subtotal += purchase.subtotal;
+      discount += purchase.discount;
+      total += purchase.total;
+    })
 
-  //   rows.push(['', '', '', '', '', '', '', '', '']);
-  //   rows.push(['', '', '', '', 'TOTAL', subtotal, discount, total]);
+    rows.push(['', '', '', '', '']);
+    rows.push(['', 'TOTAL', subtotal, discount, total]);
 
-  //   rows = this.removeTypeRows(rows);
-  //   columns = this.removeTypeColumns(columns);
+    const fromDate = `DESDE: ${this.fromDate}`;
+    const toDate = `HASTA: ${this.toDate}`;
+    const name = `PROVEEDOR: ${this.provider.name}`
 
-  //   const fromDate = `DESDE: ${this.fromDate}`;
-  //   const toDate = `HASTA: ${this.toDate}`;
-  //   const customerName = `CLIENTE: ${this.customer.name} ${this.customer.lastname}`
-  //   const purchaseType = `TIPO: ${this.purchaseType}`
-
-  //   this.ng2PdfService.pdfTableWithDates(
-  //     columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, purchaseType, 'Historial de Ventas por cliente.pdf');
-  // }
+    this.ng2PdfService.pdfTableWithDates(
+      columns, rows, 'HISTORIAL DE COMPRAS A UN PROVEEDOR EN UN PERÍODO', fromDate, toDate, name, '', 'Historial de compras por proveedor.pdf', true);
+  }
 
 
   isValidForm() {

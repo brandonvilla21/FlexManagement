@@ -17,12 +17,12 @@ export class ProductListReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProducts();
+    this.getTableData();
   }
 
-  getProducts() {
-    this.reportsService.getProducts()
-      .subscribe( products => this.products = products );
+  getTableData() {
+    this.reportsService.getTabeData( 'product ')
+      .subscribe( res => this.products = res );
   }
 
   download() {

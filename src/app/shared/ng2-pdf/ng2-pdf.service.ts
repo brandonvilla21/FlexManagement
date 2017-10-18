@@ -26,14 +26,19 @@ export class Ng2PdfService {
         const doc = new jsPDF('p', 'pt', 'a4');
         doc.autoTable(columns, rows, {
             theme: 'striped',
-            margin: { top: 220 },
+            margin: { top: 100 },
             styles: this.styles,
+            headerStyles: {
+              fillColor: [51, 122, 183],
+              textColor: [255],
+              halign: 'center'
+            },
             addPageContent: data => {
-                doc.addImage(this.img, 'PNG', 40, 10, 320, 180);
-                // Set the Date
-                doc.text(date, 400, 70);
-                // Set the Title
-                doc.text(titleTable, 40, 200);
+                doc.addImage(this.img, 'PNG', 410, 10, 140, 60);
+                doc.setFontSize(12);
+                doc.text(titleTable, 40, 30);
+                doc.setFontSize(10);
+                doc.text(date, 429, 80);
             }
         });
         doc.save(fileName);

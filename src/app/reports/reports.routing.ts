@@ -1,3 +1,5 @@
+import { ProviderReportComponent } from './components/provider-report/provider-report.component';
+import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { SalesToPayReportComponent } from './components/sales-to-pay-report/sales-to-pay-report.component';
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
 import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
@@ -13,6 +15,8 @@ const routes: Routes = [
         component: ReportsComponent,
         children: [
             { path: 'customer-report', component: CustomerReportComponent },
+            { path: 'employee-report', component: EmployeeReportComponent },
+            { path: 'provider-report', component: ProviderReportComponent },
             { path: 'sales-to-pay-report', component: SalesToPayReportComponent },
             { path: 'product-list-report', component: ProductListReportComponent },
             { path: 'sale-history-report', component: SaleHistoryReportComponent },

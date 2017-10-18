@@ -22,7 +22,7 @@ export class SalesToPayReportComponent implements OnInit {
   }
 
   download() {
-    const columns = [ 'ID Venta', 'ID Cliente', 'Cliente', 'ID Empleado', 'Empleado', 'Subtotal', 'Desc', 'Total', 'Abono', 'Deuda' ];
+    const columns = [ 'ID Venta', 'ID Cliente', 'Cliente', 'Referencia', 'Whatsapp', 'Subtotal', 'Desc', 'Total', 'Abono', 'Deuda' ];
     const rows = [];
     let totalSubtotal = 0;
     let totalDiscount = 0;
@@ -34,8 +34,8 @@ export class SalesToPayReportComponent implements OnInit {
         sale.sale_id,
         sale.customer_id,
         sale.customer_name,
-        sale.employee_id,
-        sale.employee_name,
+        sale.customer_reference,
+        sale.customer_whatsapp,
         sale.subtotal,
         sale.discount,
         sale.total,

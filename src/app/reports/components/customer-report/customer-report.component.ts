@@ -21,11 +21,11 @@ export class CustomerReportComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.getCustomers();
+    this.getTableData();
   }
 
-  getCustomers() {
-    this.reportsService.getCustomers()
+  getTableData() {
+    this.reportsService.getTabeData( 'customer ')
       .subscribe( res => this.customers = res );
   }
 

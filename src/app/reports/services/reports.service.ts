@@ -27,6 +27,12 @@ export class ReportsService {
       .catch(err =>  JSON.stringify(err));
   }
 
+  public getTabeData( tableName: string): Observable<any> {
+    return this.http.get(`${this.endPoint}/getTableData/${tableName}`)
+      .map(res => res.json() || { })
+      .catch(err =>  JSON.stringify(err));
+  }
+
   public salesHistoryByColumnInAPeriod(params): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(`${this.endPoint}/salesHistoryByColumnAndSaleTypeInAPeriod`, params, { headers: headers })

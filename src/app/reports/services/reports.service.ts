@@ -40,4 +40,11 @@ export class ReportsService {
       .catch( error => JSON.stringify(error));
   }
 
+  public purchaseHistoryByColumnInAPeriod(params): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.endPoint}/purchaseHistoryByColumnInAPeriod`, params, { headers: headers })
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
+  }
+
 }

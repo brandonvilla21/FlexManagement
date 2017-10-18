@@ -4,6 +4,7 @@ import { SalesToPayReportComponent } from './components/sales-to-pay-report/sale
 import { CustomerReportComponent } from './components/customer-report/customer-report.component';
 import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
 import { SaleHistoryReportComponent } from './components/sale-history-report/sale-history-report.component';
+import { PurchaseHistoryReportComponent } from './components/purchase-history-report/purchase-history-report.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: 'sales-to-pay-report', component: SalesToPayReportComponent },
             { path: 'product-list-report', component: ProductListReportComponent },
             { path: 'sale-history-report', component: SaleHistoryReportComponent },
+            { path: 'purchase-history-report', component: PurchaseHistoryReportComponent }
         ]
     },
 ];

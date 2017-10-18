@@ -10,6 +10,8 @@ import { CustomerReportComponent } from './components/customer-report/customer-r
 import { SalesToPayReportComponent } from './components/sales-to-pay-report/sales-to-pay-report.component';
 import { ProductListReportComponent } from './components/product-list-report/product-list-report.component';
 import { SaleHistoryReportComponent } from './components/sale-history-report/sale-history-report.component';
+import { ProviderReportComponent } from './components/provider-report/provider-report.component';
+import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 
 @NgModule({
     imports: [
@@ -24,7 +26,9 @@ import { SaleHistoryReportComponent } from './components/sale-history-report/sal
         CustomerReportComponent,
         SalesToPayReportComponent,
         ProductListReportComponent,
-        SaleHistoryReportComponent
+        SaleHistoryReportComponent,
+        ProviderReportComponent,
+        EmployeeReportComponent
     ],
     providers: [ReportsService],
 })

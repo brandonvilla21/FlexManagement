@@ -158,7 +158,7 @@
                   <th> Empleado </th>
                   <th> Fecha </th>
                   <th> Estado </th>
-                  <th> Tipo </th>
+                  <th *ngIf="saleType == 'CRÉDITO/CONTADO'"> Tipo </th>
                   <th> Subtotal </th>
                   <th> Descuento </th>
                   <th> Total </th>
@@ -170,7 +170,7 @@
                   <td>{{ sale.employee_name + ' ' + sale.employee_lastname }}</td>
                   <td>{{ sale.sale_date | date }}</td>
                   <td>{{ sale.state }}</td>
-                  <td>{{ sale.type }}</td>
+                  <td *ngIf="saleType == 'CRÉDITO/CONTADO'">{{ sale.type }}</td>
                   <td>{{ sale.subtotal }}</td>
                   <td>{{ sale.discount }}</td>
                   <td>{{ sale.total }}</td>
@@ -195,7 +195,7 @@
                     <th> Cliente </th>
                     <th> Fecha </th>
                     <th> Estado </th>
-                    <th> Tipo </th>
+                    <th *ngIf="saleType == 'CRÉDITO/CONTADO'"> Tipo </th>
                     <th> Subtotal </th>
                     <th> Descuento </th>
                     <th> Total </th>
@@ -207,7 +207,7 @@
                     <td>{{ sale.customer_name + ' ' + sale.customer_lastname }}</td>
                     <td>{{ sale.sale_date | date }}</td>
                     <td>{{ sale.state }}</td>
-                    <td>{{ sale.type }}</td>
+                    <td *ngIf="saleType == 'CRÉDITO/CONTADO'">{{ sale.type }}</td>
                     <td>{{ sale.subtotal }}</td>
                     <td>{{ sale.discount }}</td>
                     <td>{{ sale.total }}</td>
@@ -234,7 +234,7 @@
                 <th> Cliente </th>
                 <th> Fecha </th>
                 <th> Estado </th>
-                <th> Tipo </th>
+                <th *ngIf="saleType == 'CRÉDITO/CONTADO'"> Tipo </th>
                 <th> Subtotal </th>
                 <th> Descuento </th>
                 <th> Total </th>
@@ -247,7 +247,7 @@
                 <td>{{ sale.customer_name + ' ' + sale.customer_lastname }}</td>
                 <td>{{ sale.sale_date | date }}</td>
                 <td>{{ sale.state }}</td>
-                <td>{{ sale.type }}</td>
+                <td *ngIf="saleType == 'CRÉDITO/CONTADO'">{{ sale.type }}</td>
                 <td>{{ sale.subtotal }}</td>
                 <td>{{ sale.discount }}</td>
                 <td>{{ sale.total }}</td>

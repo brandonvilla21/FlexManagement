@@ -96,8 +96,8 @@ export class SaleHistoryReportComponent implements OnInit {
   }
 
   generateCustomerPDF(){
-    const columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
-    const rows = [];
+    let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
+    let rows = [];
     let subtotal = 0;
     let discount = 0;
     let total = 0;
@@ -119,9 +119,11 @@ export class SaleHistoryReportComponent implements OnInit {
       total += sale.total;
     })
 
-    
     rows.push(['', '', '', '', '', '', '', '', '']);
     rows.push(['', '', '', '', 'TOTAL', subtotal, discount, total]);
+
+    rows = this.removeTypeRows(rows);
+    columns = this.removeTypeColumns(columns);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
@@ -134,8 +136,8 @@ export class SaleHistoryReportComponent implements OnInit {
 
 
   generateEmployeePDF() {
-    const columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
-    const rows = [];
+    let columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
+    let rows = [];
     let subtotal = 0;
     let discount = 0;
     let total = 0;
@@ -155,8 +157,12 @@ export class SaleHistoryReportComponent implements OnInit {
       discount += sale.discount;
       total += sale.total;
     })
+
     rows.push(['', '', '', '', '', '', '', '', '']);
     rows.push(['', '', '', '', 'TOTAL', subtotal, discount, total]);
+
+    rows = this.removeTypeRows(rows);
+    columns = this.removeTypeColumns(columns);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
@@ -169,8 +175,8 @@ export class SaleHistoryReportComponent implements OnInit {
   
 
   generateGeneralSalesPDF() {
-    const columns = [ 'ID', 'EMPLEADO', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
-    const rows = [];
+    let columns = [ 'ID', 'EMPLEADO', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
+    let rows = [];
     let subtotal = 0;
     let discount = 0;
     let total = 0;
@@ -191,8 +197,12 @@ export class SaleHistoryReportComponent implements OnInit {
       discount += sale.discount;
       total += sale.total;
     })
+
     rows.push(['', '', '', '', '', '', '', '', '']);
     rows.push(['', '', '', '', '', 'TOTAL', subtotal, discount, total]);
+
+    rows = this.removeTypeRows(rows);
+    columns = this.removeTypeColumns(columns);
 
     const fromDate = `DESDE: ${this.fromDate}`;
     const toDate = `HASTA: ${this.toDate}`;
@@ -202,6 +212,31 @@ export class SaleHistoryReportComponent implements OnInit {
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf');
   
+  }
+
+  removeTypeRows(rows: any[][]){
+    if(this.saleType != 'CRÉDITO/CONTADO') {
+
+      //TO REMOVE `CRÉDITO` OR `CONTADO` VALUES FROM THE rows.
+      for (let i = 0; i < rows.length; i++) {
+        if(i < rows.length - 2)
+          rows[i] = rows[i].filter( cell => cell != 'CRÉDITO' && cell != 'CONTADO');
+        else 
+          rows[i].shift();
+      }
+    }
+
+    return rows;
+  }
+
+  removeTypeColumns(columns: any[]){
+    if(this.saleType != 'CRÉDITO/CONTADO') {
+
+      //TO REMOVE `TIPO` VALUES FORM THE columns.
+      columns = columns.filter( column => column != 'TIPO' );
+    }
+
+    return columns;
   }
 
   isValidForm() {

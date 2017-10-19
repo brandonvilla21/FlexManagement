@@ -33,7 +33,7 @@ export class ReportsService {
       .catch(err =>  JSON.stringify(err));
   }
 
-  public accountStatus( debt: string, fromDate: string, userId: number ): Observable<any> {
+  public accountStatus( debt: string, fromDate: string, userId: string ): Observable<any> {
     return this.http.get(`${this.endPoint}/accountStatus/${debt}/${fromDate}/${userId}`)
       .map(res => res.json() || { })
       .catch(err =>  JSON.stringify(err));

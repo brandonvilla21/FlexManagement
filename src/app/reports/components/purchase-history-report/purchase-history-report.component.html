@@ -1,0 +1,183 @@
+<div class="animated fadeIn">
+
+  <h2 class="text-center" *ngIf="columnOption == 'provider_id'"> Historial de compras por proveedor en un período </h2>
+  <h2 class="text-center" *ngIf="columnOption == 'all'"> Historial de compras generales en un período </h2>
+
+  <hr>
+
+  <div class="col-md-12">
+    <div class="container">
+
+      <!-- OPTIONS -->
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Compra por: </label>
+              <div class="col-md-8">
+                <select [(ngModel)]="columnOption" #type="ngModel" name="columnOption" class="form-control" (ngModelChange)="setValues()">
+                      <option value="provider_id">Proveedor</option>
+                      <option value="all">Todas</option>
+                    </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Fecha inicial: </label>
+              <div class="col-md-9">
+                <input type="date" [(ngModel)]="fromDate" name="fromDate" class="form-control" (ngModelChange)="loadSalesTables()">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Fecha final: </label>
+              <div class="col-md-9">
+                <input type="date" [(ngModel)]="toDate" name="toDate" class="form-control" (ngModelChange)="loadSalesTables()">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FILTERS BASED ON PROVIDER -->
+      <div class="col-md-12">
+
+        <!-- PROVIDER -->
+        <div *ngIf="columnOption == 'provider_id'">
+          <div class="col-md-12">
+            <h3>Seleccionar proveedor</h3>
+            <hr>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <button (click)="showModalSearch('provider', 'Seleccionar proveedor')" type="button" name="searchProvider" class="btn btn-outline-info btn-block">Buscar proveedor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group row">
+                <label class="col-md-6 form-control-label">ID Proveedor</label>
+                <div class="col-md-6">
+                  <input [ngModel]="provider.provider_id" type="text" name="provider_id" class="form-control" required disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Nombre</label>
+                <div class="col-md-9">
+                  <input [ngModel]="provider.name" type="text" name="provider_name" class="form-control" required disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Descripción</label>
+                <div class="col-md-9">
+                  <input [ngModel]="provider.description" type="text" name="provider_description" class="form-control" required disabled>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="row">
+
+      <!-- PROVIDER TABLE -->
+      <div class="col-lg-12" *ngIf="columnOption == 'provider_id'">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify display-5"></i> Compras por proveedor
+          </div>
+          <div class="card-block table-responsive">
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th> ID </th>
+                  <th> Fecha </th>
+                  <th> Subtotal </th>
+                  <th> Descuento </th>
+                  <th> Total </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let purchase of purchasesProvider">
+                  <td>{{ purchase.purchase_id }}</td>
+                  <td>{{ purchase.purchase_date | date }}</td>
+                  <td>{{ purchase.subtotal }}</td>
+                  <td>{{ purchase.discount }}</td>
+                  <td>{{ purchase.total }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALL TABLE -->
+    <div class="col-lg-12" *ngIf="columnOption == 'all'">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify display-5"></i> Todas las compras
+        </div>
+        <div class="card-block table-responsive">
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th> ID </th>
+                <th> Nombre proveedor </th>
+                <th> Descripción proveedor </th>
+                <th> Fecha </th>
+                <th> Subtotal </th>
+                <th> Descuento </th>
+                <th> Total </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let purchase of purchasesAll">
+                <td>{{ purchase.purchase_id }}</td>
+                <td>{{ purchase.provider_name }}</td>
+                <td>{{ purchase.provider_description }}</td>
+                <td>{{ purchase.purchase_date | date }}</td>
+                <td>{{ purchase.subtotal }}</td>
+                <td>{{ purchase.discount }}</td>
+                <td>{{ purchase.total }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-md-11">
+      <div class="text-right">
+        <button class="btn btn-primary" (click)="download()"> Descargar </button>
+      </div>
+    </div>
+  </div>
+</div>

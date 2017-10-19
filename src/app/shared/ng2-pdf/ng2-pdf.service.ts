@@ -44,25 +44,31 @@ export class Ng2PdfService {
         doc.save(fileName);
     }
 
-    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, customerName, saleType, fileName = 'File.pdf') {
+    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, name, saleType = '', fileName = 'File.pdf', center = false) {
+
+      let customStyles = {};
+
+      if (center) {
+        Object.assign(customStyles, this.styles)['halign'] = 'center';
+      }
 
       const doc = new jsPDF('p', 'pt', 'a4');
       const date = `| FECHA: ${new Date().toLocaleDateString()} |`;
       doc.autoTable(columns, rows, {
         margin: { top: 100 },
-        styles: this.styles,
+        styles: center ? customStyles : this.styles,
         headerStyles: {
           fillColor: [51, 122, 183],
           textColor: [255],
           halign: 'center'
         },
-        theme: 'grid',
+        theme: 'striped',
         addPageContent: data => {
           doc.addImage(this.img, 'PNG', 410, 10, 140, 60);
           doc.setFontSize(12);
           doc.text(titleTable, 40, 30);
           doc.setFontSize(10);
-          doc.text(customerName, 40, 60);
+          doc.text(name, 40, 60);
           doc.text(fromDate, 40, 80);
           doc.text(toDate, 150, 80);
           doc.text(saleType, 270, 80);

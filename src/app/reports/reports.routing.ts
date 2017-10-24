@@ -23,7 +23,7 @@ const routes: Routes = [
             { path: 'product-list-report', component: ProductListReportComponent },
             { path: 'sale-history-report', component: SaleHistoryReportComponent },
             { path: 'purchase-history-report', component: PurchaseHistoryReportComponent },
-            { path: 'account-status-report', component: AccountStatusComponent }
+            { path: 'account-status-report', component: AccountStatusComponent },
         ]
     },
 ];

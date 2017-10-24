@@ -57,6 +57,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="form-group row">
+              <div class="col-md-12">
+                <button [disabled]="!customer.customer_id" (click)="getStatusAccount()" class="btn btn-primary btn-block">Aceptar</button>
+              </div>
+            </div>
+        </div>
       </div>
       <div class="row">
         <div *ngIf="tableData" class="col-md-12">
@@ -64,15 +71,29 @@
             <thead>
               <th>Fecha</th>
               <th>Referencia</th>
-              <th>Cargos</th>
               <th>Abonos</th>
+              <th>Cargos</th>
             </thead>
             <tbody>
               <tr *ngFor="let data of tableData">
-
+                <td> {{ data.date | date }} </td>
+                <td *ngIf="data.charge === 0">
+                  Abono ID: <strong>{{ data.reference }}</strong> 
+                </td>
+                <td *ngIf="data.payment === 0">
+                  Venta ID: <strong>{{ data.reference }}</strong> 
+                </td>
+                <td> ${{ data.payment }} </td>
+                <td> ${{ data.charge }} </td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+          <button (click)="download()" *ngIf="isDownloadable" class="btn btn-block btn-primary">Descargar</button>
         </div>
       </div>
     </div>

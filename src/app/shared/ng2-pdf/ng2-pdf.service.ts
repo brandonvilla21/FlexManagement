@@ -44,6 +44,29 @@ export class Ng2PdfService {
         doc.save(fileName);
     }
 
+    pdfTableDateAccountStatus( columns: string[], rows: any[], titleTable = 'Table', fileName = 'File.pdf', date) {
+        const doc = new jsPDF('p', 'pt', 'a4');
+        doc.autoTable(columns, rows, {
+            theme: 'striped',
+            margin: { top: 150 },
+            styles: this.styles,
+            headerStyles: {
+              fillColor: [51, 122, 183],
+              textColor: [255],
+              halign: 'center'
+            },
+            addPageContent: data => {
+                doc.addImage(this.img, 'PNG', 410, 10, 140, 60);
+                doc.setFontSize(12);
+                doc.text(titleTable, 40, 30);
+                doc.setFontSize(10);
+                doc.text(date, 429, 80);
+            }
+        });
+        doc.save(fileName);
+    }
+
+    // tslint:disable-next-line:max-line-length
     pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, name, saleType = '', fileName = 'File.pdf', center = false) {
 
       let customStyles = {};

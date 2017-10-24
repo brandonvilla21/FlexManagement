@@ -31,6 +31,12 @@ export class PaymentService {
       .catch( err => JSON.stringify(err));
   }
 
+  public findByParam( column: string, value: string ): Observable<PaymentInterface[]> {
+    return this.http.get(`${this.endPoint}/byColumn/${column}/${value}`)
+      .map( res => res.json() || {} )
+      .catch( error => JSON.stringify(error) );
+  }
+
   public count(): Observable<any> {
     return this.http.get(`${this.endPoint}/count`)
       .map( res => res.json() || {})

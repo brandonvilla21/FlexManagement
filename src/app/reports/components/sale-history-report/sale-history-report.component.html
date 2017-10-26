@@ -267,16 +267,14 @@
     </div>
   </div>
 
-
-  <div>
-    <canvas
-        baseChart
-        [chartType]="'bar'"
-        [datasets]="chartData"
-        [labels]="chartLabels"
-        [options]="chartOptions"
-        [legend]="true"
-        (chartClick)="onChartClick($event)">
+  <div style="display: block" *ngIf="graphics.all.loaded">
+    <h1>gg izi :v</h1>
+    <canvas baseChart
+      [data]="graphics.all.doughnutChartData"
+      [labels]="graphics.all.doughnutChartLabels"
+      [chartType]="doughnutChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
     </canvas>
   </div>
 

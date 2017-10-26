@@ -89,11 +89,40 @@ export class SaleHistoryReportComponent implements OnInit {
   download() {
     if (this.isValidForm())
       switch (this.columnOption) {
-        case 'customer_id': this.generateCustomerPDF(); break;
-        case 'employee_id': this.generateEmployeePDF(); break;
-        case 'all':     this.generateGeneralSalesPDF(); break;
+        case 'customer_id': this.generateCustomerPDF(); this.generateGraphic(this.columnOption); break;
+        case 'employee_id': this.generateEmployeePDF(); this.generateGraphic(this.columnOption); break;
+        case 'all':     this.generateGeneralSalesPDF(); this.generateGraphic(this.columnOption); break;
       }
   }
+
+
+  chartOptions = {
+    responsive: true
+  };
+
+  chartData = [
+    { data: [330, 600, 260, 700], label: 'Account A' },
+    { data: [120, 455, 100, 340], label: 'Account B' },
+    { data: [45, 67, 800, 500], label: 'Account C' }
+  ];
+
+  chartLabels = ['January', 'February', 'Mars', 'April'];
+
+  onChartClick(event) {
+    console.log(event);
+  }
+
+
+
+
+  generateGraphic(type: String) {
+    switch (type) {
+      case 'all':
+        console.log("this.salesAll", this.salesAll);
+      
+      break;
+    }
+  }  
 
   generateCustomerPDF(){
     let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
@@ -242,5 +271,7 @@ export class SaleHistoryReportComponent implements OnInit {
   isValidForm() {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
+
+
 
 }

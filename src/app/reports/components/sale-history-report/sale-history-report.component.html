@@ -267,4 +267,18 @@
     </div>
   </div>
 
+
+  <div>
+    <canvas
+        baseChart
+        [chartType]="'bar'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>
+
+
 </div>

@@ -22,6 +22,7 @@ export class SaleHistoryReportComponent implements OnInit {
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
+  public chartOnPDF: String = 'no';
 
   public customer: Customer;
   public employee: Employee;
@@ -250,7 +251,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf',
-    false, canvas);
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   }
 
 
@@ -292,7 +293,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
-    false, canvas);
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   }
   
 
@@ -335,7 +336,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf',
-    false, canvas);
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   
   }
 

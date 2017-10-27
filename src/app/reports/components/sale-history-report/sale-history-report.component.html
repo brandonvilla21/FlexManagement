@@ -262,10 +262,10 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="form-group row">
-            <label class="col-md-2 form-control-label">Tipo de gráfica: </label>
-            <div class="col-md-6">
+            <label class="col-md-4 form-control-label">Tipo de gráfica: </label>
+            <div class="col-md-8">
               <select [(ngModel)]="chartType" #type="ngModel" name="chartType" class="form-control">
                 <option value="doughnut">Doughnut</option>
                 <option value="pie">Pie</option>
@@ -277,7 +277,22 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-md-4 form-control-label">Incluir gráfica en PDF: </label>
+              <div class="col-md-8">
+                <select [(ngModel)]="chartOnPDF" #type="ngModel" name="chartOnPDF" class="form-control">
+                  <option value="no">No</option>
+                  <option value="yes">Sí</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        <div class="col-md-3">
           <div class="text-right">
             <button class="btn btn-primary" (click)="download()"> Descargar </button>
           </div>

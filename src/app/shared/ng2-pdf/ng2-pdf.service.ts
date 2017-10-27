@@ -98,7 +98,7 @@ export class Ng2PdfService {
           doc.text(date, 429, 80);
           if(canvas) {
             doc.addPage();
-            doc.text('GRÁFICA', 40, 30);
+            doc.text(`GRÁFICA: ${name}`, 190, 30);
             doc.addImage(canvas.toDataURL(), 'PNG', 140, 40, canvas.width / 1.5, canvas.height / 1.5);
           }
           

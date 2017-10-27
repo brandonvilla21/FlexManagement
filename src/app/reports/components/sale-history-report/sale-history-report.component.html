@@ -267,16 +267,57 @@
     </div>
   </div>
 
-  <div style="display: block" *ngIf="graphics.all.loaded">
-    <h1>gg izi :v</h1>
-    <canvas baseChart
-      [data]="graphics.all.doughnutChartData"
-      [labels]="graphics.all.doughnutChartLabels"
-      [chartType]="doughnutChartType"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)">
-    </canvas>
+  <hr>
+  
+  <div class="container">
+  <button (click)="seeValues()">SEE VALUES</button>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <!-- ALL CHART -->
+            <div class="col-md-8" style="width: 60%;" *ngIf="charts.all.loaded && this.columnOption == 'all'">
+              <h5 class="text-center">Gráfica general</h5>
+
+              <canvas baseChart
+                [data]="charts.all.doughnutChartData"
+                [labels]="charts.all.doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [options]="chartOptions"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+
+            <!-- CUSTOMER CHART -->
+            <div class="col-md-8" style="width: 60%;" *ngIf="charts.customer.loaded && this.id_search">
+              <h5 class="text-center">Gráfica de cliente</h5>
+              
+              <canvas baseChart
+                [data]="charts.customer.doughnutChartData"
+                [labels]="charts.customer.doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [options]="chartOptions"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+
+            <!-- EMPLOYEE CHART -->
+            <div class="col-md-8" style="width: 60%;" *ngIf="charts.employee.loaded && this.id_search">
+              <h5 class="text-center">Gráfica de empleado</h5>
+              
+              <canvas baseChart
+                [data]="charts.employee.doughnutChartData"
+                [labels]="charts.employee.doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                [options]="chartOptions"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+        </div>
+    </div>
   </div>
-
-
 </div>

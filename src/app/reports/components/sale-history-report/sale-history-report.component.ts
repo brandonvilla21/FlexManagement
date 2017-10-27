@@ -17,7 +17,7 @@ export class SaleHistoryReportComponent implements OnInit {
   public salesEmployee: any[];
   public salesCustomer: any[];
   public salesAll: any[];
-  public columnOption: String = 'all';
+  public columnOption;
   public saleType: String = 'CRÉDITO/CONTADO'
   public fromDate: Date;
   public toDate: Date;
@@ -27,24 +27,31 @@ export class SaleHistoryReportComponent implements OnInit {
   public employee: Employee;
 
   
+  public chartOptions = {
+    responsive: true
+  }
 
-  public graphics = {
+  public charts: any = {
     all: {
       doughnutChartLabels: [],
       doughnutChartData: [],
-      loaded: false
+      loaded: false,
+      option: 'all'
     },
 
     employee: {
       doughnutChartLabels: [],
       doughnutChartData: [],
-      loaded: false
+      loaded: false,
+      option: 'employee_id'
     },
     
     customer: {
       doughnutChartLabels: [],
       doughnutChartData: [],
-      loaded: false
+      loaded: false,
+      option: 'customer_id'
+      
     }
 
   }
@@ -54,7 +61,8 @@ export class SaleHistoryReportComponent implements OnInit {
 
   constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService,
                private dialogService: DialogService, private router: Router
-  ) { 
+  ) {
+      this.columnOption = 'all';
 
   }
 
@@ -71,6 +79,77 @@ export class SaleHistoryReportComponent implements OnInit {
     this.salesAll = [];
     this.id_search = '';
     this.loadSalesTables();
+  }
+
+  resetHiddenCharts(){
+    for (let key in this.charts) {
+      this.charts[key].loaded = (this.charts[key].option == this.columnOption);
+    }
+    console.log("gg", this.charts);
+
+  }
+
+  saleArrayIsEmpty() {
+    switch (this.columnOption) {
+      case 'all':
+        return this.salesAll.length == 0;
+
+      case 'customer_id':
+        return this.salesCustomer.length == 0;
+
+      case 'employee_id':
+        return this.salesCustomer.length == 0;
+    
+      
+    }
+  }
+
+  generateGraphic() {
+    switch (this.columnOption) {
+      case 'all':
+      console.log('En la opción: ', this.columnOption);
+        this.charts.all.doughnutChartLabels.length = 0;
+        this.charts.all.doughnutChartData.length = 0;
+        
+        this.salesAll.forEach( sale => {
+          this.charts.all.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.all.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+
+      case 'customer_id':
+      console.log('En la opción: ', this.columnOption);
+      
+        this.charts.customer.doughnutChartLabels.length = 0;
+        this.charts.customer.doughnutChartData.length = 0;
+        
+        this.salesCustomer.forEach( sale => {
+          this.charts.customer.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.customer.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+
+      case 'employee_id':
+      console.log('En la opción: ', this.columnOption);
+      
+        this.charts.employee.doughnutChartLabels.length = 0;
+        this.charts.employee.doughnutChartData.length = 0;
+        console.log("asdasdasd", this.salesEmployee);
+        this.salesEmployee.forEach( sale => {
+          this.charts.employee.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.employee.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+    }
+
+
+
   }
 
   showModalSearch( type: string, title: string) {
@@ -100,10 +179,10 @@ export class SaleHistoryReportComponent implements OnInit {
         fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: this.saleType
       })
       .subscribe( sales => {
-        switch( this.columnOption ){
-          case 'customer_id': this.salesCustomer = sales; this.generateGraphic(this.columnOption); console.log('this.salesCustomer: ', this.salesCustomer); break;
-          case 'employee_id': this.salesEmployee = sales; this.generateGraphic(this.columnOption); console.log('this.salesEmployee: ', this.salesEmployee); break;
-          case 'all':         this.salesAll      = sales; this.generateGraphic(this.columnOption); console.log('this.salesAll: ', this.salesAll);           break;
+        switch( this.columnOption ) {
+          case 'customer_id': this.salesCustomer = sales; this.generateGraphic(); break;
+          case 'employee_id': this.salesEmployee = sales; this.generateGraphic(); break;
+          case 'all':         this.salesAll      = sales; this.generateGraphic(); break;
         }
       });
     } else {
@@ -127,32 +206,7 @@ export class SaleHistoryReportComponent implements OnInit {
   onChartClick(event) {
     console.log(event);
   }
-
-
-
-
-  generateGraphic(type: String) {
-    switch (type) {
-      case 'all':
-      this.salesAll.forEach( sale => {
-        this.graphics.all.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
-        this.graphics.all.doughnutChartData.push(sale.total);
-      });
-      
-      console.log('this.doughnutChartLabels: ', this.graphics.all.doughnutChartLabels);
-      console.log('this.doughnutChartData: ', this.graphics.all.doughnutChartData);
-
-      this.graphics.all.loaded = true;
-
-
-
-        // { data: [330, 600, 260, 700], label: 'Account A' },
-        // { data: [120, 455, 100, 340], label: 'Account B' },
-        // { data: [45, 67, 800, 500], label: 'Account C' }
-
-      break;
-    }
-  }  
+  
 
   generateCustomerPDF(){
     let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
@@ -300,6 +354,10 @@ export class SaleHistoryReportComponent implements OnInit {
 
   isValidForm() {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
+  }
+
+  seeValues(){
+    console.log("this.charts", this.charts);
   }
 
 

@@ -270,14 +270,12 @@
   <hr>
   
   <div class="container">
-  <button (click)="seeValues()">SEE VALUES</button>
-
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
 
             <!-- ALL CHART -->
-            <div class="col-md-8" style="width: 60%;" *ngIf="charts.all.loaded && this.columnOption == 'all'">
+            <div class="col-md-6" *ngIf="charts.all.loaded && this.columnOption == 'all'">
               <h5 class="text-center">Gráfica general</h5>
 
               <canvas baseChart
@@ -291,7 +289,7 @@
             </div>
 
             <!-- CUSTOMER CHART -->
-            <div class="col-md-8" style="width: 60%;" *ngIf="charts.customer.loaded && this.id_search">
+            <div class="col-md-6" *ngIf="charts.customer.loaded && this.id_search">
               <h5 class="text-center">Gráfica de cliente</h5>
               
               <canvas baseChart
@@ -305,7 +303,7 @@
             </div>
 
             <!-- EMPLOYEE CHART -->
-            <div class="col-md-8" style="width: 60%;" *ngIf="charts.employee.loaded && this.id_search">
+            <div class="col-md-6" *ngIf="charts.employee.loaded && this.id_search">
               <h5 class="text-center">Gráfica de empleado</h5>
               
               <canvas baseChart

@@ -363,10 +363,4 @@ export class SaleHistoryReportComponent implements OnInit {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
 
-  seeValues(){
-    console.log("this.charts", this.charts);
-  }
-
-
-
 }

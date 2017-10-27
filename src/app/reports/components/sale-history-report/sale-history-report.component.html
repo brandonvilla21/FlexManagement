@@ -177,6 +177,16 @@
                   <td>{{ sale.discount }}</td>
                   <td>{{ sale.total }}</td>
                 </tr>
+                <tr *ngIf="totalSum !== 0">
+                  <td>TOTAL</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td *ngIf="saleType == 'CRÉDITO/CONTADO'"></td>
+                  <td>{{ subtotalSum }}</td>
+                  <td>{{ discountSum }}</td>
+                  <td>{{ totalSum }}</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -213,6 +223,16 @@
                   <td>{{ sale.subtotal }}</td>
                   <td>{{ sale.discount }}</td>
                   <td>{{ sale.total }}</td>
+                </tr>
+                <tr *ngIf="totalSum !== 0">
+                  <td>TOTAL</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td *ngIf="saleType == 'CRÉDITO/CONTADO'"></td>
+                  <td>{{ subtotalSum }}</td>
+                  <td>{{ discountSum }}</td>
+                  <td>{{ totalSum }}</td>
                 </tr>
               </tbody>
             </table>
@@ -253,6 +273,17 @@
                 <td>{{ sale.subtotal }}</td>
                 <td>{{ sale.discount }}</td>
                 <td>{{ sale.total }}</td>
+              </tr>
+              <tr *ngIf="totalSum !== 0">
+                <td>TOTAL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td *ngIf="saleType == 'CRÉDITO/CONTADO'"></td>
+                <td>{{ subtotalSum }}</td>
+                <td>{{ discountSum }}</td>
+                <td>{{ totalSum }}</td>
               </tr>
             </tbody>
           </table>

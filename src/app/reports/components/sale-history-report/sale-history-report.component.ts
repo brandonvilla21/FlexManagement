@@ -14,6 +14,10 @@ import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
   styleUrls: ['./sale-history-report.component.scss']
 })
 export class SaleHistoryReportComponent implements OnInit {
+  // Global totals
+  public subtotalSum = 0;
+  public discountSum = 0;
+  public totalSum = 0;
   public salesEmployee: any[];
   public salesCustomer: any[];
   public salesAll: any[];
@@ -79,6 +83,9 @@ export class SaleHistoryReportComponent implements OnInit {
     this.salesCustomer = [];
     this.salesAll = [];
     this.id_search = '';
+    this.totalSum = 0;
+    this.discountSum = 0;
+    this.discountSum = 0;
     this.loadSalesTables();
   }
 
@@ -183,22 +190,43 @@ export class SaleHistoryReportComponent implements OnInit {
       if(this.columnOption == 'all')
         this.id_search = '0';
 
-      this.reportsService.salesHistoryByColumnInAPeriod({ 
+      this.reportsService.salesHistoryByColumnInAPeriod({
         fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: this.saleType
       })
       .subscribe( sales => {
-        switch( this.columnOption ) {
-          case 'customer_id': this.salesCustomer = sales; this.generateGraphic(); break;
-          case 'employee_id': this.salesEmployee = sales; this.generateGraphic(); break;
-          case 'all':         this.salesAll      = sales; this.generateGraphic(); break;
+        switch ( this.columnOption ) {
+          case 'customer_id':
+            this.salesCustomer = sales;
+            this.setSums(this.salesCustomer);
+            this.generateGraphic();
+            break;
+          case 'employee_id':
+            this.salesEmployee = sales;
+            this.setSums(this.salesEmployee);
+            this.generateGraphic();
+            break;
+          case 'all':
+            this.salesAll = sales;
+            this.setSums(this.salesAll);
+            this.generateGraphic();
+            break;
         }
       });
     } else {
       console.log("No entró al if.")
     }
-    
   }
-
+  setSums( array ) {
+    this.subtotalSum = array.reduce( (prevValue, currentValue) => {
+      return prevValue + currentValue.subtotal;
+    }, 0)
+    this.discountSum = array.reduce( (prevValue, currentValue) => {
+      return prevValue + currentValue.discount;
+    }, 0)
+    this.totalSum = array.reduce( (prevValue, currentValue) => {
+      return prevValue + currentValue.total;
+    }, 0)
+  }
   download() {
     if (this.isValidForm())
       switch (this.columnOption) {

@@ -99,7 +99,6 @@ export class SaleHistoryReportComponent implements OnInit {
       for (let key in this.charts) {
         this.charts[key].loaded = (this.charts[key].option == this.columnOption);
       }
-      console.log("gg", this.charts);
     }, 100);
 
   }
@@ -122,7 +121,6 @@ export class SaleHistoryReportComponent implements OnInit {
   generateGraphic() {
     switch (this.columnOption) {
       case 'all':
-      console.log('En la opción: ', this.columnOption);
         this.charts.all.doughnutChartLabels.length = 0;
         this.charts.all.doughnutChartData.length = 0;
         
@@ -135,13 +133,11 @@ export class SaleHistoryReportComponent implements OnInit {
       break;
 
       case 'customer_id':
-      console.log('En la opción: ', this.columnOption);
-      
         this.charts.customer.doughnutChartLabels.length = 0;
         this.charts.customer.doughnutChartData.length = 0;
         
         this.salesCustomer.forEach( sale => {
-          this.charts.customer.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.customer.doughnutChartLabels.push(`ID Venta ${sale.sale_id}`);
           this.charts.customer.doughnutChartData.push(sale.total);
         });
         
@@ -149,13 +145,10 @@ export class SaleHistoryReportComponent implements OnInit {
       break;
 
       case 'employee_id':
-      console.log('En la opción: ', this.columnOption);
-      
         this.charts.employee.doughnutChartLabels.length = 0;
         this.charts.employee.doughnutChartData.length = 0;
-        console.log("asdasdasd", this.salesEmployee);
         this.salesEmployee.forEach( sale => {
-          this.charts.employee.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.employee.doughnutChartLabels.push(`ID Venta ${sale.sale_id}`);
           this.charts.employee.doughnutChartData.push(sale.total);
         });
         

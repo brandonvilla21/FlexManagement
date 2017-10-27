@@ -71,8 +71,8 @@
             <thead>
               <th>Fecha</th>
               <th>Referencia</th>
-              <th>Abonos</th>
               <th>Cargos</th>
+              <th>Abonos</th>
             </thead>
             <tbody>
               <tr *ngFor="let data of tableData">
@@ -83,8 +83,8 @@
                 <td *ngIf="data.payment === 0">
                   Venta ID: <strong>{{ data.reference }}</strong> 
                 </td>
-                <td> ${{ data.payment }} </td>
                 <td> ${{ data.charge }} </td>
+                <td> ${{ data.payment }} </td>
               </tr>
             </tbody>
           </table>

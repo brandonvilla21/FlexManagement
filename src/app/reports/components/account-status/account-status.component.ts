@@ -56,7 +56,7 @@ export class AccountStatusComponent implements OnInit {
   ngOnInit() {
   }
   download() {
-    const columns = [ 'FECHA', 'REFERENCIA', 'ABONOS', 'CARGOS'];
+    const columns = [ 'FECHA', 'REFERENCIA', 'CARGOS', 'ABONOS'];
     const rows = [];
     let totalPayment = 0;
     let totalCharge = 0;
@@ -64,15 +64,15 @@ export class AccountStatusComponent implements OnInit {
       rows.push([
         element.date ? new Date(element.date).toLocaleDateString() : '',
         element.charge === 0 ? `Abono ID: ${element.reference}` : `Venta ID: ${element.reference}`,
-        `$ ${element.payment}`,
-        `$ ${element.charge}`
+        `$ ${element.charge}`,
+        `$ ${element.payment}`
       ])
       totalPayment += element.payment;
       totalCharge += element.charge;
     })
 
     rows.push(['', '', '', '']);
-    rows.push(['', 'TOTAL', '$ ' + totalPayment, '$ ' + totalCharge]);
+    rows.push(['', 'TOTAL', '$ ' + totalCharge, '$ ' + totalPayment]);
     // Set the date to PDF
     const date = 'Fecha: ' + new Date().toLocaleDateString();
     let title;

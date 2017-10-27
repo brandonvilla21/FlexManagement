@@ -203,18 +203,14 @@ export class SaleHistoryReportComponent implements OnInit {
       switch (this.columnOption) {
         case 'customer_id': this.generateCustomerPDF(); break;
         case 'employee_id': this.generateEmployeePDF(); break;
-        case 'all':     this.generateGeneralSalesPDF(); break;
+        case 'all':         this.generateGeneralSalesPDF(); break;
       }
   }
-
-
-  
 
   onChartClick(event) {
     console.log(event);
   }
   
-
   generateCustomerPDF(){
     let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     let rows = [];
@@ -250,8 +246,11 @@ export class SaleHistoryReportComponent implements OnInit {
     const customerName = `CLIENTE: ${this.customer.name} ${this.customer.lastname}`
     const saleType = `TIPO: ${this.saleType}`
 
+    const canvas = document.querySelector("canvas");
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf',
+    false, canvas);
   }
 
 
@@ -289,8 +288,11 @@ export class SaleHistoryReportComponent implements OnInit {
     const employeeName = `EMPLEADO: ${this.employee.name} ${this.employee.lastname}`
     const saleType = `TIPO: ${this.saleType}`    
 
+    const canvas = document.querySelector("canvas");
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
+    false, canvas);
   }
   
 
@@ -329,8 +331,11 @@ export class SaleHistoryReportComponent implements OnInit {
     const allSales = `VENTAS GENERALES`
     const saleType = `TIPO: ${this.saleType}`
     
+    const canvas = document.querySelector("canvas");
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf',
+    false, canvas);
   
   }
 

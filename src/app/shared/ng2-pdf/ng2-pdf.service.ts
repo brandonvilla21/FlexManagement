@@ -67,7 +67,7 @@ export class Ng2PdfService {
     }
 
     // tslint:disable-next-line:max-line-length
-    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, name, saleType = '', fileName = 'File.pdf', center = false) {
+    pdfTableWithDates( columns: string[], rows: any[], titleTable = 'Table', fromDate, toDate, name, saleType = '', fileName = 'File.pdf', center = false, canvas = null) {
 
       let customStyles = {};
 
@@ -96,6 +96,12 @@ export class Ng2PdfService {
           doc.text(toDate, 150, 80);
           doc.text(saleType, 270, 80);
           doc.text(date, 429, 80);
+          if(canvas) {
+            doc.addPage();
+            doc.text('GRÁFICA', 40, 30);
+            doc.addImage(canvas.toDataURL(), 'PNG', 140, 40, canvas.width / 1.5, canvas.height / 1.5);
+          }
+          
         }
       });
       doc.save(fileName);

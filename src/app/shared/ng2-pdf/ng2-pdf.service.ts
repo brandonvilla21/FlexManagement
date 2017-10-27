@@ -99,7 +99,7 @@ export class Ng2PdfService {
           if(canvas) {
             doc.addPage();
             doc.text(`GRÁFICA: ${name}`, 190, 30);
-            doc.addImage(canvas.toDataURL(), 'PNG', 140, 40, canvas.width / 1.5, canvas.height / 1.5);
+            doc.addImage(canvas.toDataURL(), 'PNG', 140, 40, canvas.width / 3.8, canvas.height / 3.8);
           }
           
         }

@@ -248,6 +248,7 @@ export class SaleHistoryReportComponent implements OnInit {
     const saleType = `TIPO: ${this.saleType}`
 
     const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf',
@@ -290,6 +291,7 @@ export class SaleHistoryReportComponent implements OnInit {
     const saleType = `TIPO: ${this.saleType}`    
 
     const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
@@ -333,6 +335,7 @@ export class SaleHistoryReportComponent implements OnInit {
     const saleType = `TIPO: ${this.saleType}`
     
     const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
 
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf',
@@ -368,5 +371,33 @@ export class SaleHistoryReportComponent implements OnInit {
   isValidForm() {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
+
+  //Method to increase the canvas' DPI and therefore, its render quality.
+  setDPI(canvas, dpi) {
+    // Set up CSS size.
+    canvas.style.width = canvas.style.width || canvas.width + 'px';
+    canvas.style.height = canvas.style.height || canvas.height + 'px';
+
+    // Get size information.
+    var scaleFactor = dpi / 96;
+    var width = parseFloat(canvas.style.width);
+    var height = parseFloat(canvas.style.height);
+
+    // Backup the canvas contents.
+    var oldScale = canvas.width / width;
+    var backupScale = scaleFactor / oldScale;
+    var backup = canvas.cloneNode(false);
+    backup.getContext('2d').drawImage(canvas, 0, 0);
+
+    // Resize the canvas.
+    var ctx = canvas.getContext('2d');
+    canvas.width = Math.ceil(width * scaleFactor);
+    canvas.height = Math.ceil(height * scaleFactor);
+
+    // Redraw the canvas image and scale future draws.
+    ctx.setTransform(backupScale, 0, 0, backupScale, 0, 0);
+    ctx.drawImage(backup, 0, 0);
+    ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
+}
 
 }

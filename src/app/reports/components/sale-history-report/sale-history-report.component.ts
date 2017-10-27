@@ -17,18 +17,53 @@ export class SaleHistoryReportComponent implements OnInit {
   public salesEmployee: any[];
   public salesCustomer: any[];
   public salesAll: any[];
-  public columnOption: String = 'all';
+  public columnOption;
   public saleType: String = 'CRÉDITO/CONTADO'
   public fromDate: Date;
   public toDate: Date;
   public id_search: String;
+  public chartOnPDF: String = 'no';
 
   public customer: Customer;
   public employee: Employee;
 
+  
+  public chartOptions = {
+    responsive: true
+  }
+
+  public charts: any = {
+    all: {
+      doughnutChartLabels: [],
+      doughnutChartData: [],
+      loaded: false,
+      option: 'all'
+    },
+
+    employee: {
+      doughnutChartLabels: [],
+      doughnutChartData: [],
+      loaded: false,
+      option: 'employee_id'
+    },
+    
+    customer: {
+      doughnutChartLabels: [],
+      doughnutChartData: [],
+      loaded: false,
+      option: 'customer_id'
+      
+    }
+
+  }
+  
+  public chartType:string = 'doughnut';
+  
+
   constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService,
                private dialogService: DialogService, private router: Router
-  ) { 
+  ) {
+      this.columnOption = 'all';
 
   }
 
@@ -45,6 +80,84 @@ export class SaleHistoryReportComponent implements OnInit {
     this.salesAll = [];
     this.id_search = '';
     this.loadSalesTables();
+  }
+
+  resetHiddenCharts(){
+
+    for (let key in this.charts) {
+      this.charts[key].loaded = false;
+    }
+
+    setTimeout( () => {
+      for (let key in this.charts) {
+        this.charts[key].loaded = (this.charts[key].option == this.columnOption);
+      }
+      console.log("gg", this.charts);
+    }, 100);
+
+  }
+
+  saleArrayIsEmpty() {
+    switch (this.columnOption) {
+      case 'all':
+        return this.salesAll.length == 0;
+
+      case 'customer_id':
+        return this.salesCustomer.length == 0;
+
+      case 'employee_id':
+        return this.salesCustomer.length == 0;
+    
+      
+    }
+  }
+
+  generateGraphic() {
+    switch (this.columnOption) {
+      case 'all':
+      console.log('En la opción: ', this.columnOption);
+        this.charts.all.doughnutChartLabels.length = 0;
+        this.charts.all.doughnutChartData.length = 0;
+        
+        this.salesAll.forEach( sale => {
+          this.charts.all.doughnutChartLabels.push(`ID Venta: ${sale.sale_id}`);
+          this.charts.all.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+
+      case 'customer_id':
+      console.log('En la opción: ', this.columnOption);
+      
+        this.charts.customer.doughnutChartLabels.length = 0;
+        this.charts.customer.doughnutChartData.length = 0;
+        
+        this.salesCustomer.forEach( sale => {
+          this.charts.customer.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.customer.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+
+      case 'employee_id':
+      console.log('En la opción: ', this.columnOption);
+      
+        this.charts.employee.doughnutChartLabels.length = 0;
+        this.charts.employee.doughnutChartData.length = 0;
+        console.log("asdasdasd", this.salesEmployee);
+        this.salesEmployee.forEach( sale => {
+          this.charts.employee.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.employee.doughnutChartData.push(sale.total);
+        });
+        
+        this.resetHiddenCharts();
+      break;
+    }
+
+
+
   }
 
   showModalSearch( type: string, title: string) {
@@ -74,10 +187,10 @@ export class SaleHistoryReportComponent implements OnInit {
         fromDate: this.fromDate, toDate: this.toDate, column: this.columnOption,  id: this.id_search, saleType: this.saleType
       })
       .subscribe( sales => {
-        switch( this.columnOption ){
-          case 'customer_id': this.salesCustomer = sales; console.log('this.salesCustomer: ', this.salesCustomer); break;
-          case 'employee_id': this.salesEmployee = sales; console.log('this.salesEmployee: ', this.salesEmployee); break;
-          case 'all':         this.salesAll      = sales; console.log('this.salesAll: ', this.salesAll);           break;
+        switch( this.columnOption ) {
+          case 'customer_id': this.salesCustomer = sales; this.generateGraphic(); break;
+          case 'employee_id': this.salesEmployee = sales; this.generateGraphic(); break;
+          case 'all':         this.salesAll      = sales; this.generateGraphic(); break;
         }
       });
     } else {
@@ -91,10 +204,14 @@ export class SaleHistoryReportComponent implements OnInit {
       switch (this.columnOption) {
         case 'customer_id': this.generateCustomerPDF(); break;
         case 'employee_id': this.generateEmployeePDF(); break;
-        case 'all':     this.generateGeneralSalesPDF(); break;
+        case 'all':         this.generateGeneralSalesPDF(); break;
       }
   }
 
+  onChartClick(event) {
+    console.log(event);
+  }
+  
   generateCustomerPDF(){
     let columns = [ 'ID', 'EMPLEADO', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
     let rows = [];
@@ -130,8 +247,12 @@ export class SaleHistoryReportComponent implements OnInit {
     const customerName = `CLIENTE: ${this.customer.name} ${this.customer.lastname}`
     const saleType = `TIPO: ${this.saleType}`
 
+    const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN CLIENTE EN UN PERÍODO', fromDate, toDate, customerName, saleType, 'Historial de Ventas por cliente.pdf',
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   }
 
 
@@ -169,8 +290,12 @@ export class SaleHistoryReportComponent implements OnInit {
     const employeeName = `EMPLEADO: ${this.employee.name} ${this.employee.lastname}`
     const saleType = `TIPO: ${this.saleType}`    
 
+    const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   }
   
 
@@ -209,8 +334,12 @@ export class SaleHistoryReportComponent implements OnInit {
     const allSales = `VENTAS GENERALES`
     const saleType = `TIPO: ${this.saleType}`
     
+    const canvas = document.querySelector("canvas");
+    this.setDPI(canvas, 240);
+
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf');
+      columns, rows, 'HISTORIAL DE VENTAS GENERALES UN PERÍODO', fromDate, toDate, allSales, saleType, 'Historial de Ventas generales.pdf',
+    false, this.chartOnPDF == 'yes' ? canvas : null);
   
   }
 
@@ -242,5 +371,33 @@ export class SaleHistoryReportComponent implements OnInit {
   isValidForm() {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
+
+  //Method to increase the canvas' DPI and therefore, its render quality.
+  setDPI(canvas, dpi) {
+    // Set up CSS size.
+    canvas.style.width = canvas.style.width || canvas.width + 'px';
+    canvas.style.height = canvas.style.height || canvas.height + 'px';
+
+    // Get size information.
+    var scaleFactor = dpi / 96;
+    var width = parseFloat(canvas.style.width);
+    var height = parseFloat(canvas.style.height);
+
+    // Backup the canvas contents.
+    var oldScale = canvas.width / width;
+    var backupScale = scaleFactor / oldScale;
+    var backup = canvas.cloneNode(false);
+    backup.getContext('2d').drawImage(canvas, 0, 0);
+
+    // Resize the canvas.
+    var ctx = canvas.getContext('2d');
+    canvas.width = Math.ceil(width * scaleFactor);
+    canvas.height = Math.ceil(height * scaleFactor);
+
+    // Redraw the canvas image and scale future draws.
+    ctx.setTransform(backupScale, 0, 0, backupScale, 0, 0);
+    ctx.drawImage(backup, 0, 0);
+    ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
+}
 
 }

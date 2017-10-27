@@ -56,7 +56,7 @@ export class SaleHistoryReportComponent implements OnInit {
 
   }
   
-  public doughnutChartType:string = 'doughnut';
+  public chartType:string = 'doughnut';
   
 
   constructor( private reportsService: ReportsService, private ng2PdfService: Ng2PdfService,
@@ -119,7 +119,7 @@ export class SaleHistoryReportComponent implements OnInit {
         this.charts.all.doughnutChartData.length = 0;
         
         this.salesAll.forEach( sale => {
-          this.charts.all.doughnutChartLabels.push(`Venta ${sale.sale_id}`);
+          this.charts.all.doughnutChartLabels.push(`ID Venta: ${sale.sale_id}`);
           this.charts.all.doughnutChartData.push(sale.total);
         });
         

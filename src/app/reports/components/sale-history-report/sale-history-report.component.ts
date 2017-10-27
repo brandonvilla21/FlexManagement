@@ -82,10 +82,17 @@ export class SaleHistoryReportComponent implements OnInit {
   }
 
   resetHiddenCharts(){
+
     for (let key in this.charts) {
-      this.charts[key].loaded = (this.charts[key].option == this.columnOption);
+      this.charts[key].loaded = false;
     }
-    console.log("gg", this.charts);
+
+    setTimeout( () => {
+      for (let key in this.charts) {
+        this.charts[key].loaded = (this.charts[key].option == this.columnOption);
+      }
+      console.log("gg", this.charts);
+    }, 100);
 
   }
 

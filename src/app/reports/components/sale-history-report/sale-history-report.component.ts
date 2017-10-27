@@ -6,6 +6,8 @@ import { PaymentService } from './../../../processes/payment/services/payment.se
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Component, OnInit } from '@angular/core';
 import { ReportsService } from './../../services/reports.service';
+import { SaleProductInterface } from './../../../processes/sale/models/sale-product.model';
+import { SaleDetailModalComponent } from './../../../processes/credit-payment/components/sale-detail-modal-component/sale-detail-modal.component';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 
 @Component({
@@ -130,7 +132,7 @@ export class SaleHistoryReportComponent implements OnInit {
         this.charts.customer.doughnutChartData.length = 0;
         
         this.salesCustomer.forEach( sale => {
-          this.charts.customer.doughnutChartLabels.push(`ID Venta ${sale.sale_id}`);
+          this.charts.customer.doughnutChartLabels.push(`ID Venta: ${sale.sale_id}`);
           this.charts.customer.doughnutChartData.push(sale.total);
         });
         
@@ -141,7 +143,7 @@ export class SaleHistoryReportComponent implements OnInit {
         this.charts.employee.doughnutChartLabels.length = 0;
         this.charts.employee.doughnutChartData.length = 0;
         this.salesEmployee.forEach( sale => {
-          this.charts.employee.doughnutChartLabels.push(`ID Venta ${sale.sale_id}`);
+          this.charts.employee.doughnutChartLabels.push(`ID Venta: ${sale.sale_id}`);
           this.charts.employee.doughnutChartData.push(sale.total);
         });
         
@@ -202,7 +204,15 @@ export class SaleHistoryReportComponent implements OnInit {
   }
 
   onChartClick(event) {
-    console.log(event);
+    let id;
+    switch (this.columnOption) {
+      case 'customer_id': id = this.charts.customer.doughnutChartLabels[event.active[0]._index].replace('ID Venta: ',''); break;
+      case 'employee_id': id = this.charts.employee.doughnutChartLabels[event.active[0]._index].replace('ID Venta: ',''); break;
+      case 'all':         id = this.charts.all.doughnutChartLabels[event.active[0]._index].replace('ID Venta: ',''); break;
+    
+    }
+    
+    this.details(id);
   }
   
   generateCustomerPDF(){
@@ -365,6 +375,12 @@ export class SaleHistoryReportComponent implements OnInit {
     return (this.fromDate && this.toDate) && (this.id_search || this.columnOption == 'all');
   }
 
+
+  details( sale_id ) {
+    this.dialogService.addDialog(SaleDetailModalComponent, { sale_id });
+  }
+
+
   //Method to increase the canvas' DPI and therefore, its render quality.
   setDPI(canvas, dpi) {
     // Set up CSS size.
@@ -391,6 +407,6 @@ export class SaleHistoryReportComponent implements OnInit {
     ctx.setTransform(backupScale, 0, 0, backupScale, 0, 0);
     ctx.drawImage(backup, 0, 0);
     ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
-}
+  }
 
 }

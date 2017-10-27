@@ -313,7 +313,7 @@
           <h5 class="text-center">Gráfica general</h5>
 
           <canvas baseChart [data]="charts.all.doughnutChartData" [labels]="charts.all.doughnutChartLabels" [chartType]="chartType"
-            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="onChartClick($event)">
           </canvas>
         </div>
 
@@ -322,7 +322,7 @@
           <h5 class="text-center">Gráfica de cliente</h5>
 
           <canvas baseChart [data]="charts.customer.doughnutChartData" [labels]="charts.customer.doughnutChartLabels" [chartType]="chartType"
-            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="onChartClick($event)">
           </canvas>
         </div>
 
@@ -331,7 +331,7 @@
           <h5 class="text-center">Gráfica de empleado</h5>
 
           <canvas baseChart [data]="charts.employee.doughnutChartData" [labels]="charts.employee.doughnutChartLabels" [chartType]="chartType"
-            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            [options]="chartOptions" (chartHover)="chartHovered($event)" (chartClick)="onChartClick($event)">
           </canvas>
         </div>
       </div>

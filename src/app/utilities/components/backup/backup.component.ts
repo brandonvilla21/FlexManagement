@@ -1,6 +1,7 @@
 import { UtilitiesService } from './../../services/utilities.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { saveAs } from 'file-saver/FileSaver';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class BackupComponent implements OnInit {
   constructor( private utilitiesService: UtilitiesService ) { }
 
   ngOnInit() {
-    this.utilitiesService.getBackup().subscribe( backupFile => console.log("backupFile",backupFile) )
+    this.utilitiesService.getBackup().subscribe( blob => {
+      saveAs(blob, 'backup.sql');
+     })
   }
 
   onSubmitBackup(value: NgForm){

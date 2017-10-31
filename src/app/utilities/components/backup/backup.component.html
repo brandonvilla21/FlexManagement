@@ -9,10 +9,10 @@
           <form #formBackup="ngForm" (ngSubmit)="onSubmitBackup(formBackup)">
             <div class="form-group">
               <div class="input-group">
-                <h5>Ingrese las credenciales de la base de datos para generar backup.</h5>
+                <p>Ingrese las credenciales de la base de datos para generar respaldo.</p>
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <div class="input-group">
                 <input type="text" [(ngModel)]="db.host" #host="ngModel" name="host" class="form-control" placeholder="ej: localhost" required>
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -20,7 +20,7 @@
               <div *ngIf="host.invalid && (host.dirty || host.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
                 <div *ngIf="host.errors.required"> Ingrese un host, por favor. </div>
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <div class="input-group">
                 <input type="text" [(ngModel)]="db.username" #username="ngModel" name="username" class="form-control" placeholder="Usuario"
@@ -35,13 +35,13 @@
               <div class="input-group">
                 <input type="password" [(ngModel)]="db.password" #password="ngModel" name="password" class="form-control" placeholder="Password"
                   required>
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
               </div>
               <div *ngIf="password.invalid && (password.dirty || password.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
                 <div *ngIf="password.errors.required"> Ingrese un password, por favor. </div>
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <div class="input-group">
                 <input type="text" [(ngModel)]="db.name" #database_name="ngModel" name="database_name" class="form-control" placeholder="Nombre de la base de datos"
                   required>
@@ -50,12 +50,24 @@
               <div *ngIf="database_name.invalid && (database_name.dirty || database_name.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
                 <div *ngIf="database_name.errors.required"> Ingrese el nombre de la base de datos, por favor. </div>
               </div>
-            </div>
+            </div> -->
             <div class="form-group form-actions">
               <button type="submit" class="btn btn-sm btn-primary">Submit</button>
             </div>
           </form>
         </div>
+      </div>
+    </div>
+
+    <div class="col-md-12" *ngIf="errors">
+      <div class="alert alert-danger" role="alert">
+        <p>Hubo un error en el servidor al tratar de crear el respaldo. Por favor, comprueba tus credenciales e intentalo de nuevo.</p>
+      </div>
+    </div>
+
+    <div class="col-md-12" *ngIf="success">
+      <div class="alert alert-info" role="alert">
+        <p>Éxito al crear respaldo de la base de datos.</p>
       </div>
     </div>
 

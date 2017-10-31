@@ -10,10 +10,8 @@ export class UtilitiesService {
     this.endPoint = `${configUrlService.getBaseUrl()}/utilities`;
   }
 
-  public getBackup(): Observable<any> {
-    return this.http.get(`${this.endPoint}/backup`, { responseType: ResponseContentType.Blob })
-    .map(res => res.blob())
-    .catch( res => JSON.stringify(res));
+  public getBackup(params: Object): Observable<any> {
+    return this.http.post(`${this.endPoint}/backup`, params, { responseType: ResponseContentType.Blob })
   }
 
 }

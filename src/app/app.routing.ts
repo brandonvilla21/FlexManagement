@@ -59,6 +59,10 @@ export const routes: Routes = [
       {
         path: 'reports',
         loadChildren: './reports/reports.module#ReportsModule'
+      },
+      {
+        path: 'utilities',
+        loadChildren: './utilities/utilities.module#UtilitiesModule'
       }
       // { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]

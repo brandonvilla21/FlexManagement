@@ -1,3 +1,4 @@
+import { UtilitiesService } from './services/utilities.service';
 import { UtilitiesRoutingModule } from './utilities.routing';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,6 +20,6 @@ import { RestoreComponent } from './components/restore/restore.component';
         BackupComponent,
         RestoreComponent,
     ],
-    // providers: [UtilitiesService],
+    providers: [UtilitiesService],
 })
 export class UtilitiesModule { }

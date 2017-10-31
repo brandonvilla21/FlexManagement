@@ -1,40 +1,65 @@
 <div class="container">
   <div class="row">
-    
-      <div class="col-md-8">
-          <div class="card">
-            <div class="card-header">
-              Descargar respaldo de la base de datos.
-            </div>
-            <div class="card-body">
-              <form #formBackup="ngForm" (ngSubmit)="onSubmitBackup(formBackup)">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" id="username2" name="username2" class="form-control" placeholder="Username">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="email" id="email2" name="email2" class="form-control" placeholder="Email">
-                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="password" id="password2" name="password2" class="form-control" placeholder="Password">
-                    <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-                  </div>
-                </div>
-                <div class="form-group form-actions">
-                  <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Descargar respaldo de la base de datos.
         </div>
+        <div class="card-body">
+          <form #formBackup="ngForm" (ngSubmit)="onSubmitBackup(formBackup)">
+            <div class="form-group">
+              <div class="input-group">
+                <h5>Ingrese las credenciales de la base de datos para generar backup.</h5>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" [(ngModel)]="db.host" #host="ngModel" name="host" class="form-control" placeholder="ej: localhost" required>
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              </div>
+              <div *ngIf="host.invalid && (host.dirty || host.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                <div *ngIf="host.errors.required"> Ingrese un host, por favor. </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" [(ngModel)]="db.username" #username="ngModel" name="username" class="form-control" placeholder="Usuario"
+                  required>
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              </div>
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                <div *ngIf="username.errors.required"> Ingrese un usuario válido. </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="password" [(ngModel)]="db.password" #password="ngModel" name="password" class="form-control" placeholder="Password"
+                  required>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                <div *ngIf="password.errors.required"> Ingrese un password, por favor. </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" [(ngModel)]="db.name" #database_name="ngModel" name="database_name" class="form-control" placeholder="Nombre de la base de datos"
+                  required>
+                <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+              </div>
+              <div *ngIf="database_name.invalid && (database_name.dirty || database_name.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
+                <div *ngIf="database_name.errors.required"> Ingrese el nombre de la base de datos, por favor. </div>
+              </div>
+            </div>
+            <div class="form-group form-actions">
+              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-        <!-- <div class="col-md-4">
+    <!-- <div class="col-md-4">
           <div class="card">
             <div class="card-body">
               <img [src]="['assets/img/mysql.png']" alt="logo" style="width: 100%;">

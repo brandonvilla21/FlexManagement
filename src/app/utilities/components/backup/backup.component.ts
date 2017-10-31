@@ -10,19 +10,23 @@ import { saveAs } from 'file-saver/FileSaver';
   styleUrls: ['./backup.component.scss']
 })
 export class BackupComponent implements OnInit {
-
+  
+  public db = {};
+  
   constructor( private utilitiesService: UtilitiesService ) { }
 
   ngOnInit() {
-    this.utilitiesService.getBackup().subscribe( blob => {
-      saveAs(blob, 'backup.sql');
-     })
+    // this.utilitiesService.getBackup().subscribe( blob => {
+    //   saveAs(blob, 'backup.sql');
+    //  })
   }
 
   onSubmitBackup(value: NgForm){
-    // if (value.valid) {
+    if (value.valid) {
 
-    // }
+      console.log("valido", this.db);
+
+    }
 
   }
 

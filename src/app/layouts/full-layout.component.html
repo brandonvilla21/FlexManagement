@@ -145,6 +145,46 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item nav-dropdown" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Reportes</a>
+          <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/customer-report']" style="padding-left: 2em;"><i class="icon-user"></i>Clientes</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/product-list-report']" style="padding-left: 2em;"><i class="icon-user"></i>Productos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/provider-report']" style="padding-left: 2em;"><i class="icon-user"></i>Proveedores</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/employee-report']" style="padding-left: 2em;"><i class="icon-user"></i>Empleados</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/sale-history-report']" style="padding-left: 2em;"><i class="icon-user"></i>Historial de Ventas</a>
+              </li>   
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/purchase-history-report']" style="padding-left: 2em;"><i class="icon-user"></i>Historial de Compras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/sales-to-pay-report']" style="padding-left: 2em;"><i class="icon-basket"></i>Ventas por pagar</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/reports/account-status-report']" style="padding-left: 2em;"><i class="icon-basket"></i>Estado de cuenta</a>
+              </li>
+          </ul>
+      </li>
+      <li class="nav-item nav-dropdown" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Utilidades</a>
+        <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/utilities/backup']" style="padding-left: 2em;"><i class="icon-user"></i>Respaldo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/utilities/restore']" style="padding-left: 2em;"><i class="icon-user"></i>Restauración</a>
+            </li>
+        </ul>
+    </li>
       </ul>
     </nav>
   </div>

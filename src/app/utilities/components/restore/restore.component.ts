@@ -10,6 +10,7 @@ import { FileUploader } from 'ng2-file-upload';
 export class RestoreComponent implements OnInit {
   public endPoint: string;
   public uploader:FileUploader;
+  public db = {};
 
   constructor( private configUrlService: ConfigUrlService ) { 
     this.endPoint = `${configUrlService.getBaseUrl()}/utilities/restore`;

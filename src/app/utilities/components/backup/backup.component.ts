@@ -18,11 +18,7 @@ export class BackupComponent implements OnInit {
   
   constructor( private utilitiesService: UtilitiesService ) { }
 
-  ngOnInit() {
-    // this.utilitiesService.getBackup().subscribe( blob => {
-    //   saveAs(blob, 'backup.sql');
-    //  })
-  }
+  ngOnInit() { }
 
   onSubmitBackup(value: NgForm){
     if (value.valid) {

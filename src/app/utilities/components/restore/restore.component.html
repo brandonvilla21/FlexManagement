@@ -42,7 +42,12 @@
               </div>
               <div class="form-group" *ngIf="db.username && db.password">
                 <p>Seleccionar respaldo: </p>
-                <div> <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"/> </div>
+                <div> 
+                  <input type="file" class="form-control" name="single" #fileToChoose ng2FileSelect [uploader]="uploader" style="display: none;"/> 
+                  <button type="button" class="btn btn-primary pull-left" (click)="uploader.clearQueue();fileToChoose.value='';fileToChoose.click();">
+                    Seleccionar archivo
+                  </button>
+                </div>
               </div>
             </div>
           </form>
@@ -92,7 +97,7 @@
                   </span>
                 </td>
                 <td nowrap>
-                  <button type="button" class="btn btn-outline-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                  <button type="button" class="btn btn-outline-success btn-xs" (click)="addCredentialsBeforeUpload(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                     <span class="glyphicon glyphicon-upload"></span> Subir
                   </button>
                   <button type="button" class="btn btn-outline-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
@@ -118,7 +123,7 @@
           </div>
           <!-- <small class="text-muted">Lorem ipsum dolor sit amet enim.</small> -->
         </div>
-        <hr>
+        <!-- <hr>
         <div class="card-body">
           <button type="button" class="btn btn-outline-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
             <span class="glyphicon glyphicon-upload"></span> Subir todos
@@ -129,7 +134,7 @@
           <button type="button" class="btn btn-outline-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
             <span class="glyphicon glyphicon-trash"></span> Remover todos
           </button>
-        </div>
+        </div> -->
       </div>
 
     </div>

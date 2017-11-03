@@ -1,13 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <form>
-        <div class="form-group">
-          <label for="">Seleccionar respaldo: </label>
-          <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
-        </div>
-      </form>
-    </div>
 
     <div class="col-md-12">
       <div class="card">
@@ -48,8 +40,7 @@
                   </div>
                 </div>
               </div>
-              <hr>
-              <div class="form-group">
+              <div class="form-group" *ngIf="db.username && db.password">
                 <p>Seleccionar respaldo: </p>
                 <div> <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader"/> </div>
               </div>
@@ -60,7 +51,7 @@
     </div>
 
 
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="db.username && db.password">
 
       <div class="card">
         <div class="card-header grey">

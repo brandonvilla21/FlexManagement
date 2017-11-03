@@ -35,7 +35,7 @@
                 <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
                 <td>
                   <div class="progress" style="margin-bottom: 0;">
-                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                    <div class="progress-bar progress-bar-animated" [ngClass]="{'progress-bar-striped': uploader.progress < 100 }" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
                   </div>
                 </td>
                 <td class="text-center">
@@ -71,7 +71,7 @@
           </div>
           <div class="h4 m-0"> {{ uploader.progress || 0 }} %</div>
           <div class="progress progress-xs my-3">
-            <div class="progress-bar bg-success" style="width: 25%" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            <div class="progress-bar bg-success progress-bar-animated" [ngClass]="{'progress-bar-striped': uploader.progress < 100 }" style="width: 25%" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
           </div>
           <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
         </div>

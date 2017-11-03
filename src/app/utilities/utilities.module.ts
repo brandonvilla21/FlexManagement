@@ -3,6 +3,7 @@ import { UtilitiesRoutingModule } from './utilities.routing';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { UtilitiesComponent } from './utilities.component';
 import { BackupComponent } from './components/backup/backup.component';
@@ -19,6 +20,7 @@ import { RestoreComponent } from './components/restore/restore.component';
         UtilitiesComponent,
         BackupComponent,
         RestoreComponent,
+        FileSelectDirective
     ],
     providers: [UtilitiesService],
 })

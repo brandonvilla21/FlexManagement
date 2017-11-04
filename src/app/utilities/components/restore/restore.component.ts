@@ -27,11 +27,6 @@ export class RestoreComponent implements OnInit {
       this.message = JSON.parse(response);
       this.message.status = status;
       this.loading = false;
-
-      console.log('headers: ', headers);
-      console.log('item: ', item);
-      console.log('status: ', status);
-      console.log("item uploaded", response);
     };
   }
 
@@ -46,7 +41,6 @@ export class RestoreComponent implements OnInit {
     this.uploaderOptions.headers.push({ name: 'username', value: this.db.username });
     this.uploaderOptions.headers.push({ name: 'pass', value: this.db.password });
     this.uploader.setOptions(this.uploaderOptions);
-    console.log("this.uploader.isUploading", this.uploader.isUploading);
     item.upload();
     this.loading = true;
 

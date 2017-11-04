@@ -14,6 +14,7 @@ export class RestoreComponent implements OnInit {
   public db = { username: '', password: '' };
   public uploaderOptions = {url: '', headers: []};
   public message;
+  public loading = false;
 
   constructor(private configUrlService: ConfigUrlService) {
     this.endPoint = `${configUrlService.getBaseUrl()}/utilities/restore`;
@@ -25,7 +26,8 @@ export class RestoreComponent implements OnInit {
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
       this.message = JSON.parse(response);
       this.message.status = status;
-      
+      this.loading = false;
+
       console.log('headers: ', headers);
       console.log('item: ', item);
       console.log('status: ', status);
@@ -46,6 +48,7 @@ export class RestoreComponent implements OnInit {
     this.uploader.setOptions(this.uploaderOptions);
     console.log("this.uploader.isUploading", this.uploader.isUploading);
     item.upload();
+    this.loading = true;
 
   }
 

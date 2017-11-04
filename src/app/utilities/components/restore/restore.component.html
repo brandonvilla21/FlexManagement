@@ -45,7 +45,7 @@
                 <div>
                   <input type="file" class="form-control" name="single" #fileToChoose ng2FileSelect [uploader]="uploader" style="display: none;"
                   />
-                  <button type="button" class="btn btn-primary pull-left" (click)="uploader.clearQueue();fileToChoose.value='';fileToChoose.click();">
+                  <button type="button" class="btn btn-primary pull-left" (click)="uploader.clearQueue();this.message = {};fileToChoose.value='';fileToChoose.click();">
                     Seleccionar archivo
                   </button>
                 </div>
@@ -63,7 +63,14 @@
           <div class="alert" [ngClass]=" message.status != 200 ? 'alert-danger' : 'alert-info' " role="alert">
             <p>{{ message.sqlMessage }}</p>
           </div>
-        </section>
+      </section>
+
+      <div class="col-md-12" style="padding-bottom: 20px" *ngIf="uploader.progress == 100 && loading">
+        <div class="text-center">
+          <i class="fa fa-spinner fa-lg mt-4 fa-spin fa-4x"></i>
+          <br><br>Esperando respuesta del servidor...
+        </div>
+      </div>
 
       <div class="card">
         <div class="card-header grey">

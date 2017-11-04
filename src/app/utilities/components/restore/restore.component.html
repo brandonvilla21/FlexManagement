@@ -7,7 +7,7 @@
           Subir respaldo de la base de datos.
         </div>
         <div class="card-body">
-          <form #formRestore="ngForm" (ngSubmit)="onSubmitRestore(formRestore)">
+          <form #formRestore="ngForm" (ngSubmit)="onSubmitRestore(formRestore)" autocomplete="new-password">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4 form-group">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                   <div class="input-group">
-                    <input type="text" [(ngModel)]="db.username" #username="ngModel" name="username" class="form-control" placeholder="Usuario"
+                    <input type="text" autocomplete="new-password" [(ngModel)]="db.username" #username="ngModel" name="username" class="form-control" placeholder="Usuario"
                       required>
                     <span class="input-group-addon">
                       <i class="fa fa-user"></i>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                   <div class="input-group">
-                    <input type="password" [(ngModel)]="db.password" #password="ngModel" name="password" class="form-control" placeholder="Password"
+                    <input type="password" autocomplete="new-password" [(ngModel)]="db.password" #password="ngModel" name="password" class="form-control" placeholder="Password"
                       required>
                     <span class="input-group-addon">
                       <i class="fa fa-asterisk"></i>
@@ -57,7 +57,7 @@
     </div>
 
 
-    <div class="col-md-12" *ngIf="db.username && db.password">
+    <div class="col-md-12 animated fadeIn" *ngIf="db.username && db.password">
 
       <section *ngIf="!uploader.isUploading && message && message.sqlMessage && message.status">
           <div class="alert" [ngClass]=" message.status != 200 ? 'alert-danger' : 'alert-info' " role="alert">

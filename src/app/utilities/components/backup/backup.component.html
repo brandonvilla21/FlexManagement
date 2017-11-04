@@ -12,15 +12,6 @@
                 <p>Ingrese las credenciales de la base de datos para generar respaldo.</p>
               </div>
             </div>
-            <!-- <div class="form-group">
-              <div class="input-group">
-                <input type="text" [(ngModel)]="db.host" #host="ngModel" name="host" class="form-control" placeholder="ej: localhost" required>
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              </div>
-              <div *ngIf="host.invalid && (host.dirty || host.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
-                <div *ngIf="host.errors.required"> Ingrese un host, por favor. </div>
-              </div>
-            </div> -->
             <div class="form-group">
               <div class="input-group">
                 <input type="text" [(ngModel)]="db.username" #username="ngModel" name="username" class="form-control" placeholder="Usuario"
@@ -41,48 +32,32 @@
                 <div *ngIf="password.errors.required"> Ingrese un password, por favor. </div>
               </div>
             </div>
-            <!-- <div class="form-group">
-              <div class="input-group">
-                <input type="text" [(ngModel)]="db.name" #database_name="ngModel" name="database_name" class="form-control" placeholder="Nombre de la base de datos"
-                  required>
-                <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-              </div>
-              <div *ngIf="database_name.invalid && (database_name.dirty || database_name.touched)" class="" style="color: #990000; padding: 0; margin: 0;">
-                <div *ngIf="database_name.errors.required"> Ingrese el nombre de la base de datos, por favor. </div>
-              </div>
-            </div> -->
             <div class="form-group form-actions">
-              <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+              <button type="submit" class="btn btn-sm btn-primary">Generar respaldo</button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
-    <div class="col-md-12" *ngIf="errors">
+    <div class="col-md-12" *ngIf="loading.errors">
       <div class="alert alert-danger" role="alert">
         <p>Hubo un error en el servidor al tratar de crear el respaldo. Por favor, comprueba tus credenciales e intentalo de nuevo.</p>
       </div>
     </div>
 
-    <div class="col-md-12" *ngIf="success">
+    <div class="col-md-12" *ngIf="loading.success">
       <div class="alert alert-info" role="alert">
         <p>Éxito al crear respaldo de la base de datos.</p>
       </div>
     </div>
 
-    <!-- <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <img [src]="['assets/img/mysql.png']" alt="logo" style="width: 100%;">
-            </div>
-          </div>
-
-          <div class="form-group form-actions">
-            <button type="button" class="btn btn-sm btn-primary">Download</button>
-          </div>
-
-        </div> -->
+    <div class="col-md-12" style="padding-bottom: 20px" *ngIf="loading.waitingServer">
+      <div class="text-center">
+        <i class="fa fa-spinner fa-lg mt-4 fa-spin fa-4x"></i>
+        <br><br>Esperando respuesta del servidor...
+      </div>
+    </div>
 
   </div>
 

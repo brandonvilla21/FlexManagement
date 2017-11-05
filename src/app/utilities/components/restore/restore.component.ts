@@ -12,7 +12,7 @@ export class RestoreComponent implements OnInit {
   public endPoint: string;
   public uploader: FileUploader;
   public db = { username: '', password: '' };
-  public uploaderOptions = {url: '', headers: [], allowedMimeType: ['application/sql'], maxFileSize: 1000*1024*1024 }; // 1000 MB
+  public uploaderOptions = {url: '', headers: [], maxFileSize: 1000*1024*1024 }; // 1000 MB
   public message;
   public loading = false;
 

@@ -43,7 +43,7 @@
               <div class="form-group" *ngIf="db.username && db.password">
                 <p>Seleccione respaldo con extensión .sql: </p>
                 <div>
-                  <input type="file" class="form-control" name="single" #fileToChoose ng2FileSelect [uploader]="uploader" style="display: none;"
+                  <input type="file" accept=".sql" class="form-control" name="single" #fileToChoose ng2FileSelect [uploader]="uploader" style="display: none;"
                   />
                   <button type="button" class="btn btn-primary pull-left" (click)="uploader.clearQueue();this.message = {};fileToChoose.value='';fileToChoose.click();">
                     Seleccionar archivo

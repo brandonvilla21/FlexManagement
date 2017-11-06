@@ -24,9 +24,11 @@ export class RestoreComponent implements OnInit {
 
   ngOnInit() {
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-      this.message = JSON.parse(response);
-      this.message.status = status;
-      this.loading = false;
+      if (response && status) {
+        this.message = JSON.parse(response);
+        this.message.status = status;
+        this.loading = false;
+      }
     };
   }
 

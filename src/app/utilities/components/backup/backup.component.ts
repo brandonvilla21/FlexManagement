@@ -13,32 +13,31 @@ import 'rxjs/add/operator/catch';
 export class BackupComponent implements OnInit {
   
   public db = {};
-  public errors = false;
-  public success = false;
+  public loading = { errors: false, success: false, waitingServer: false }
   
   constructor( private utilitiesService: UtilitiesService ) { }
 
-  ngOnInit() {
-    // this.utilitiesService.getBackup().subscribe( blob => {
-    //   saveAs(blob, 'backup.sql');
-    //  })
-  }
+  ngOnInit() { }
 
   onSubmitBackup(value: NgForm){
-    if (value.valid) {
 
-      console.log("valido", this.db);
+    if (value.valid) {
+      
+      this.loading.waitingServer = true;
+      this.loading.errors = this.loading.success = false;
+
+
       this.utilitiesService.getBackup(this.db)
       .map(res => res.blob())      
       .subscribe(
         blob => {
-          this.errors = false;
-          this.success = true;
+          this.loading.waitingServer = this.loading.errors = false;
+          this.loading.success = true;
           saveAs(blob, 'backup.sql');
         },
         err => {
-          this.success = false;
-          this.errors = true;
+          this.loading.waitingServer = this.loading.success = false;
+          this.loading.errors = true;
         }
       );
     }

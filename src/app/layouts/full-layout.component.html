@@ -6,6 +6,9 @@
       <a class="nav-link navbar-toggler" href="#" appSidebarToggler> &#9776; </a>
     </li>
   </ul>
+  <a class="help-icon" [routerLink]="['/help']">
+    <i tooltip content="Ayuda" class="fa fa-2x fa-question-circle" aria-hidden="true"></i>
+  </a>
 </header>
 
 <div class="app-body">
@@ -184,7 +187,15 @@
                 <a class="nav-link" routerLinkActive="active" [routerLink]="['/utilities/restore']" style="padding-left: 2em;"><i class="icon-user"></i>Restauración</a>
             </li>
         </ul>
-    </li>
+      </li>
+      <li class="nav-item nav-dropdown" appNavDropdown>
+        <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Ayuda</a>
+        <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/help']" fragment="catalogo" style="padding-left: 2em;"><i class="icon-user"></i>Catálogo</a>
+            </li>
+        </ul>
+      </li>
       </ul>
     </nav>
   </div>

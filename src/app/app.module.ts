@@ -1,3 +1,4 @@
+import { HelpModule } from './help/help.module';
 import { AuthService } from './session/services/auth.service';
 import { SessionModule } from './session/session.module';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
@@ -6,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { ToolTipModule } from 'angular2-tooltip'
 
 // Imported modules
 import { ProductModule } from './product/product.module';
@@ -51,7 +53,9 @@ import { SearchModalComponent } from './shared/search-modal/search-modal.compone
     CustomerModule,
     EmployeeModule,
     SessionModule,
-    BootstrapModalModule.forRoot({ container: document.body })
+    HelpModule,
+    BootstrapModalModule.forRoot({ container: document.body }),
+    ToolTipModule
   ],
   declarations: [
     AppComponent,

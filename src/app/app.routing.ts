@@ -63,6 +63,10 @@ export const routes: Routes = [
       {
         path: 'utilities',
         loadChildren: './utilities/utilities.module#UtilitiesModule'
+      },
+      {
+        path: 'help',
+        loadChildren: './help/help.module#HelpModule'
       }
       // { path: 'session', loadChildren: './session/session.module#SessionModule' },
     ]

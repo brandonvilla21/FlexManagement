@@ -3,10 +3,12 @@
   <div class="line__bottom-container mb-3">
     <span class="line__bottom"></span>
   </div>
-  <div class="row">
+  <div class="row" style="font-size: 1em">
       <div class="col-md-12">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus cumque nobis dignissimos quae commodi, alias in, inventore quia corporis cum natus quidem aperiam reiciendis excepturi sit. Modi magni veritatis aperiam.
+        <h3>Registro y consulta del catálogo de productos </h3>
+        <p class="text-justify" >
+          El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de los productos con los que cuenta el negocio.
+          De esta manera se obtiene un control autimatizado de los productos
         </p>
       </div>
       <div class="col-md-12">
@@ -15,8 +17,10 @@
             <img [src]="productos1" alt="">
           </div>
           <div class="col-md-9">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nobis sunt dicta quam consequuntur velit ullam tenetur reprehenderit voluptatum eligendi, harum voluptas nam possimus inventore ratione nulla nisi. Incidunt, hic.
+            <h3>Ingresa a registrar un producto</h3>
+            <p class="text-justify" >
+              El primer paso para realizar el registro de un producto es ingresar a la seccion lateral izquierda en
+              'Catálogos/Productos/Registrar', cómo se muestra en la primera imagen. De esta manera, estará ingresando a la pagina para registrar un producto.
             </p>
           </div>
         </div>
@@ -24,18 +28,78 @@
       <div class="col-md-12" style="margin-top: 2em">
         <div class="row">
           <div class="col-md-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. At sapiente iste corporis repellendus eligendi sunt assumenda ea dolore provident et, accusamus distinctio quae dolor fuga eaque autem accusantium adipisci expedita!
+            <h3>Registro de producto</h3>
+            <p>
+              Una vez en la página del registro de productos se llenaran los campos de la siguiente manera:
+            </p>
+            <ul>
+              <li>
+                <strong>Descripción </strong> La descripcion del producto, por ejemplo: las caracteristicas principales que contiene ese producto.
+              </li>
+              <li>
+                <strong>Marca </strong> Se eligirá alguna de las marcas que se encuentren enlistadas y que corresponda con la marca del producto. En el listado se encontrarán todas las marcas que maneja el negocio.
+              </li>
+              <li>
+                <strong>Sabor </strong> El sabor del producto.
+              </li>
+              <li>
+                <strong>Fecha de caducidad </strong> El formato de la fecha de caducidad del producto es dd/mm/aaaa siendo 'dd' el día, 'mm' el mes y 'aaaa' el año.
+              </li>
+              <li>
+                <strong>Precio de venta </strong> Se indica el precio en que se vende el producto a los clientes.
+              </li>
+              <li>
+                <strong>Precio de compra </strong> Se indica el precio en que se compra el producto a los proveedores.
+              </li>
+              <li>
+                <strong>Existencia </strong> Ya que todos los productos con los que cuenta el negocio son unidades, se indicará con un numero entero el numero de productos a registrar.
+              </li>
+              <li>
+                <strong>Producto máximo </strong> Es el tope del número de productos con los que el negocio no debería revasar de ese producto en específico.
+              </li>
+              <li>
+                <strong>Producto mínimo </strong> Es la cantidad mínima de ese producto con el que el negocio debería contar.
+              </li>
+            </ul>
           </div>
           <div class="col-md-8">
-            <img [src]="productos2" alt="" style="max-width: 100%">
+            <div class="row">
+              <div class="col-md-12">
+                <img [src]="productos2" alt="" style="max-width: 100%">
+              </div>
+              <div class="col-md-12">
+                <p>
+                  Una vez llenado todos los campos, al dar click en el boton de registrar, el producto será registrado en la base de datos y podra ser visualizado en una consulta general y/o individual.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-12" style="margin-top: 2em">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt eius sed dolorum explicabo, totam eligendi aperiam fugit provident quos eos tenetur aliquam nulla suscipit voluptatum laudantium, laborum exercitationem quis libero.
+      <div id="consulta-gral-productos" class="col-md-12" style="margin-top: 2em">
+        <h3>Consulta general</h3>
+        Para realizar una consulta general de los productos. Se accederá desde el menú de la barra lateral izquierda en 'Catálogos/Productos/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación.
+        Aparecerán todos los registros de los productos con su informacion más importante, en  la imagen debajo se muestra uno de los registros el cuál fue creado previamente en la segunda imagen.
+        Del lado derecho del registro, aparecen dos botones: Consultar y Editar.
+        <ul>
+          <li><strong>Consultar </strong> Se realiza una consulta individual del producto más detallada de la que se muestra en la consulta general.</li>
+          <li><strong>Editar </strong> Se muestran los datos del producto para poder ser editados y guardados los cambios en la base de datos.</li>
+        </ul>
       </div>
       <div class="col-md-12">
         <img [src]="productos3" alt="" style="max-width: 100%">
+      </div>
+      
+      <div class="row" style="margin-top: 2em">
+        <div class="col-md-8">
+          <img [src]="productos4" style="max-width: 100%" alt="">
+        </div>
+        <div class="col-md-4">
+          <h3>Consulta individual del producto</h3>
+          <p>
+            Para realizar una consulta individual de un producto se ingresara a la misma ruta que para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>) 
+          </p>
+        </div>
       </div>
   </div>
 </div>

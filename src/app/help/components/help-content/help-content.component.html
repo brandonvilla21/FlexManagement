@@ -1,9 +1,14 @@
 <div class="animated fadeIn">
-  <h1 class="display-4 text-center">Catálogo de productos</h1>
-  <div class="line__bottom-container mb-3">
-    <span class="line__bottom"></span>
+  <!-- Catálogo de productos -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-4 text-center">Catálogo de productos</h1>
+      <div class="line__bottom-container mb-3">
+        <span class="line__bottom"></span>
+      </div>
+    </div>
   </div>
-  <div class="row" style="font-size: 1em">
+  <div class="row" style="font-size: 1.1em">
       <div class="col-md-12">
         <h3>Registro y consulta del catálogo de productos </h3>
         <p class="text-justify" >
@@ -65,7 +70,7 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-12">
-                <img [src]="productos2" alt="" style="max-width: 100%">
+                <img [src]="productos2" alt="" style="width: 100%">
               </div>
               <div class="col-md-12">
                 <p>
@@ -87,19 +92,56 @@
         </ul>
       </div>
       <div class="col-md-12">
-        <img [src]="productos3" alt="" style="max-width: 100%">
+        <img [src]="productos3" alt="" style="width: 100%">
       </div>
       
       <div class="row" style="margin-top: 2em">
         <div class="col-md-8">
-          <img [src]="productos4" style="max-width: 100%" alt="">
+          <img [src]="productos4" style="width: 100%" alt="">
         </div>
         <div class="col-md-4">
           <h3>Consulta individual del producto</h3>
           <p>
-            Para realizar una consulta individual de un producto se ingresara a la misma ruta que para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>) 
+            Para realizar una consulta individual de un producto se ingresará a la misma ruta que para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>).
+            Una vez en la página de consulta general, de click en el botón de Consultar del registro que quiera realizar una consulta individual más detallada.
+            A continuación aparecera una vista como la que se muestra en la siguiente imagen.
           </p>
         </div>
       </div>
+
+      <div class="row" style="margin-top: 2em">
+        <div class="col-md-4">
+          <h3>Editar un producto</h3>
+          <p>
+            Para realizar la edición de un producto se ingresará a la misma ruta que se hace para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>).
+            Una vez en la página de consulta general, de click en el botón de Editar del registro que quiera editar sus datos.
+            A continuación aparecera una vista cómo la que se muestra en la siguiente imagen, se podrán editar los datos del producto y una vez realizados los cambios, de un click en Guardar Cambios para que los cambios que se hicieron tengan efecto.
+          </p>
+        </div>
+        <div class="col-md-8">
+          <img [src]="productos5" alt="" style="width: 100%;">
+        </div>
+      </div>
+  </div>
+
+
+
+
+  <!-- Movimiento de ventas -->
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-4 text-center">Movimiento de ventas</h1>
+      <div class="line__bottom-container mb-3">
+        <span class="line__bottom"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Registro y consulta de ventas a clientes</h3>
+      <p>
+          El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de las ventas que se realizan a los clientes del negocio. Se lleva a cabo un control automatizado de las ventas del negocio.
+      </p>
+    </div>
   </div>
 </div>

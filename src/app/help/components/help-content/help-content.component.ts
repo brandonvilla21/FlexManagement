@@ -18,7 +18,12 @@ export class HelpContentComponent implements    OnInit {
   public ventas4: string
   public ventas5: string
   public ventas6: string
+  public reportes = []
+  public configUrlService;
   constructor( configUrlService: ConfigUrlService) {
+
+    this.configUrlService = configUrlService;
+
     this.productos1 = `${configUrlService.getBaseUrl()}/assets/productos1.png`
     this.productos2 = `${configUrlService.getBaseUrl()}/assets/productos2.png`
     this.productos3 = `${configUrlService.getBaseUrl()}/assets/productos3.png`
@@ -30,9 +35,16 @@ export class HelpContentComponent implements    OnInit {
     this.ventas4 = `${configUrlService.getBaseUrl()}/assets/ventas4.png`
     this.ventas5 = `${configUrlService.getBaseUrl()}/assets/ventas5.png`
     this.ventas6 = `${configUrlService.getBaseUrl()}/assets/ventas6.png`
+
   }
 
   ngOnInit() {
+    for (let i = 0; i < 12; i++) {
+      this.reportes[i] = `${this.configUrlService.getBaseUrl()}/assets/reporte${i + 1}.png`
+   }
+
+   console.log(this.reportes);
+
   }
 
 

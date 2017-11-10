@@ -126,14 +126,7 @@
 
   
   
-  
-  
-  <div class="col-md-12">
-    <hr>
-  </div>
-
-
-
+  <hr>
 
 
   <!-- Movimiento de ventas -->
@@ -255,4 +248,199 @@
       </div>
     </div>
   </div>
+
+
+
+  <hr>
+
+  <div id="sales-report">
+    <!-- Reporte de ventas -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4 text-center">Reporte de ventas</h1>
+        <div class="line__bottom-container mb-3">
+          <span class="line__bottom"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+
+      <div class="col-md-12">
+        <p class="custom-p">
+          El sistema FLEX GYM ADMIN® cuenta con un apartado para realizar reportes personalizados, entre los cuales se encuentra el
+          reporte de historial de ventas. Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar
+          la pestaña de reportes y posteriormente, seleccionar el reporte llamado “Historial de Ventas”.
+        </p>
+      </div>
+
+
+      <div class="col-md-12">
+
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p">
+              Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar la pestaña de reportes y posteriormente,
+              seleccionar el reporte llamado “Historial de Ventas”.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[0]" width="20%">
+          </div>
+        </div>
+
+        <hr class="light-hr">
+        <br>
+
+        <div>
+          <div>
+            <p class="custom-p text-center">
+              Al completar los pasos anteriores, se desplegará la siguiente interfaz:
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[1]" width="80%" style="border: 1px solid; border-radius: 25px;">
+          </div>
+          <br>
+          <p class="custom-p text-center">Esta interfaz contempla una gran variedad de filtros, para así poder ofrecer la mayor flexibilidad posible al usuario.</p>
+        </div>
+      </div>
+
+      <hr class="light-hr">
+      <br>
+
+      <div>
+        <div>
+          <p class="custom-p text-center">
+            A continuación se describirán los distintos filtros que soporta el generador de reportes.
+          </p>
+        </div>
+        <div>
+          <img class="custom-img" [src]="reportes[2]" width="80%" >
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+          <div class="col-md-9">
+            <p class="custom-p">
+                <strong>Venta por:</strong> Este filtro acepta las opciones de Empleado, Cliente y Todas (la cual despliega todas las ventas sin tener en consideración a un empleado o a un cliente como parte del filtrado).
+                En caso de seleccionar la opción de Empleado se desplegará la siguiente opción, para buscar al Empleado en un modal.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <img class="custom-img" [src]="reportes[3]" width="80%" >
+          </div>
+      </div>
+
+      <br><br>
+
+      <div>
+          <div>
+            <p class="custom-p">
+                Al dar click en el bóton, se desplegará el siguiente modal, en el cual podremos buscar al empleado deseado mediante sus diferentes campos (como ID, nombre, apellidos, etc).
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[4]" width="80%" >
+          </div>
+      </div>
+
+      <br><br>
+
+
+      <div>
+          <div>
+            <p class="custom-p">
+                Finalmente, cuando encontremos el usuario deseado, daremos clic en la fila deseada y los datos de nuestro empleado, serán traspasados al formulario anterior automáticamente.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[5]" width="80%" >
+          </div>
+      </div>
+
+      <br><br>
+      
+      <div class="row">
+          <div class="col-md-9">
+            <br>
+            <p class="custom-p">
+                <strong>Tipo: </strong> Este filtro es capaz de separar las ventas por tipo de pago. Si se desea, se puede seleccionar la opción de todas, para desplegar tanto ventas a Crédito como de Contado a la vez.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <img class="custom-img" [src]="reportes[6]" width="100%" >
+          </div>
+      </div>
+      
+
+      <br><br>
+
+      
+      <div class="row">
+          <div class="col-md-3">
+            <img class="custom-img" [src]="reportes[7]" width="150%" >
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-7">
+              <br>
+              <br>
+              <p class="custom-p">
+                  <strong>Tipo: </strong> Una vez hecho esto, se tendrán que seleccionar las fechas de inicio y fin que se deseen para generar el reporte.
+              </p>
+          </div>
+      </div>
+
+      <br><br>
+
+      <div>
+          <div>
+            <p class="custom-p text-center">
+                Al completar el anterior paso, se desplegará la información de reporte finalmente en pantalla.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[8]" width="80%" >
+          </div>
+      </div>
+
+      <br><br>
+
+      <div>
+          <div>
+            <p class="custom-p">
+                Más abajo en el formulario, ya con el reporte cargado, se desplegará una gráfica responsive con los datos del reporte generado y se podrá elegir entre direfentes tipos de gráficas.
+                También podemos elegir si incluir la gráfica en la generación del PDF al dar clic en descargar (el cual será explicado a continuación).
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[9]" width="80%" >
+          </div>
+      </div>
+
+      <br><br>
+
+      <div>
+          <div>
+            <p class="custom-p">
+                Por último, se nos generará un PDF al darle al botón de descargar, con los distintos datos generados en el filtrado anterior y su respectiva tabla en caso de incluirla.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[10]" width="80%" >
+            <br>
+            <img class="custom-img" [src]="reportes[11]" width="80%" >
+          </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>

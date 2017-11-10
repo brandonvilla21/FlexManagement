@@ -24,7 +24,7 @@
           <div class="col-md-9">
             <h3>Ingresa a registrar un producto</h3>
             <p class="text-justify" >
-              El primer paso para realizar el registro de un producto es ingresar a la seccion lateral izquierda en
+              El primer paso para realizar el registro de un producto es ingresar a la sección lateral izquierda en
               'Catálogos/Productos/Registrar', cómo se muestra en la primera imagen. De esta manera, estará ingresando a la pagina para registrar un producto.
             </p>
           </div>
@@ -124,6 +124,17 @@
       </div>
   </div>
 
+  
+  
+  
+  
+  <div class="col-md-12">
+    <hr>
+  </div>
+
+
+
+
 
   <!-- Movimiento de ventas -->
   <div class="row">
@@ -140,6 +151,108 @@
       <p>
           El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de las ventas que se realizan a los clientes del negocio. Se lleva a cabo un control automatizado de las ventas del negocio.
       </p>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3">
+          <img [src]="ventas1" alt="">
+        </div>
+        <div class="col-md-9">
+          <h3>Ingresa a registrar una venta</h3>
+          <p class="text-justify" >
+            El primer paso para realizar el registro de una venta es ingresar a la sección lateral izquierda en
+            'Movimientos/Ventas/Registrar', cómo se muestra en la primera imagen de esta sección. De esta manera, estará ingresando a la página para el registro de una venta.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12" style="margin-top: 2em">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Registro de la venta</h3>
+          <p>
+            Una vez en la página del registro de ventas, se llenarán los campos de la siguiente manera:
+          </p>
+          <ul>
+            <li>
+              <strong>ID Venta </strong> Este campo será llenado automáticamente, es un numero consecutivo único que indica el ID de la venta
+            </li>
+            <li>
+              <strong>Fecha </strong> Este campo será llenado automáticamente, es la fecha del día actual tomada del sistema operativo.
+            </li>
+            <li>
+              <strong>Datos del cliente seleccionado</strong>
+                <p>Para llenar los datos del cliente, se hará click en el botón con el texto 'Buscar cliente', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los clientes y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
+            </li>
+            <li>
+              <strong>Datos del empleado seleccionado</strong>
+                <p>Para llenar los datos del empleado, se hará click en el botón con el texto 'Buscar empleado', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los empleados y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
+            </li>
+            <li>
+              <strong>Agregar un producto a la venta</strong>
+              <p>
+                Para agregar un producto a la venta, el primer paso es dar click en el boton 'Buscar producto', a continuación se desplegará una ventana para seleccionar el producto que desee agregar a la venta, automáticamente se llenarán algunos campos del formulario principal del registro de la venta.
+              </p>
+              <ul>
+                <li><strong>Precio </strong> Se indíca el precio del producto.</li>
+                <li><strong>Cantidad </strong> Se indíca el número de productos que se van a agregar a la venta.</li>
+                <li><strong>Agregar producto </strong> Para agregar el producto a la tabla sólo de click en el boton 'Agregar producto'.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Tipo de venta </strong> Donde de tendrá la opción de ser una venta a CRÉDITO o CONTADO.
+            </li>
+            <li>
+              <strong>Subtotal </strong> Se calcula automáticamente.
+            </li>
+            <li>
+              <strong>Descuento </strong> Se puede asignar un descuento a desición de la persona que realice la venta.
+            </li>
+            <li>
+              <strong>Total </strong> Se calcula automáticamente.
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-8">
+            <img [src]="ventas2" style="width: 100%" alt="">
+            <p>
+              El último paso para realizar el registro de la venta es dar click sobre el boton con el texto 'Registrar'
+            </p>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12" style="margin-top: 2em">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>'Buscar cliente'</h3>
+          <img [src]="ventas3" style="width: 100%;" alt="">
+        </div>
+        <div class="col-md-4">
+          <h3>'Buscar empleado'</h3>
+          <img [src]="ventas4" style="width: 100%;" alt="">
+        </div>
+        <div class="col-md-4">
+          <h3>'Buscar producto'</h3>
+          <img [src]="ventas5" style="width: 100%;" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 2em">
+      <div class="row">
+        <div class="col-md-8">
+          <img [src]="ventas6" alt="" style="width: 100%">
+        </div>
+        <div class="col-md-4">
+            <h3>Consulta general</h3>
+            Para realizar una consulta general de las ventas. Se accederá desde el menú de la barra lateral izquierda en 'Movimientos/Ventas/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación de esta sección.
+            Aparecerán todos los registros de las ventas con su informacion más importante, en  la imagen debajo se muestran los registros de ventas anteriores
+            Del lado derecho del registro, aparece un botón con el texto 'Ver más'
+            <ul>
+              <li><strong>Ver más </strong> Se muestran todos los datos de la venta para fines de consulta
+            </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -19,6 +19,7 @@ export class HelpContentComponent implements    OnInit {
   public ventas5: string
   public ventas6: string
   public reportes = []
+  public utilidades = []
   public configUrlService;
   constructor( configUrlService: ConfigUrlService) {
 
@@ -39,12 +40,17 @@ export class HelpContentComponent implements    OnInit {
   }
 
   ngOnInit() {
-    for (let i = 0; i < 12; i++) {
-      this.reportes[i] = `${this.configUrlService.getBaseUrl()}/assets/reporte${i + 1}.png`
-   }
+  this.loadReportImages();
+  this.loadUtilityImages();
 
-   console.log(this.reportes);
+  }
 
+  loadReportImages() {
+    for (let i = 0; i < 12; i++) { this.reportes[i] = `${this.configUrlService.getBaseUrl()}/assets/reporte${i + 1}.png` }
+  }
+
+  loadUtilityImages() {
+    for (let i = 0; i < 5; i++) { this.utilidades[i] = `${this.configUrlService.getBaseUrl()}/assets/utilidad${i + 1}.png` }
   }
 
 

@@ -1,9 +1,5 @@
-<pre>
-    {{ product | json }}
-</pre>
-
 <div class="animated fadeIn">
-  <div class="animated fadeIn" *ngIf="!customer">
+  <div class="animated fadeIn" *ngIf="!product">
     <div class="row">
       <div class="col-sm-2 col-md-2">
       </div>
@@ -17,7 +13,7 @@
               <p>El registro que estás buscando no se ha podido encontrar :(</p>
             </div>
             <div class="col-md-4">
-              <button [routerLink]="['/customers/all']" class="btn btn-sm btn-primary pull-right">Regresar</button>
+              <button [routerLink]="['/products/all']" class="btn btn-sm btn-primary pull-right">Regresar</button>
             </div>
           </div>
         </div>
@@ -25,62 +21,90 @@
     </div>
   </div>
   
-  <div class="row" *ngIf="customer">
+  <div class="row" *ngIf="product">
     <div class="col-md-2"></div>
     <div class="col-md-8 col-xs-12">
       <form>
         <div class="card">
           <div class="card-header text-center">
-            <h2>Consultar cliente</h2>
+            <h2>Consultar producto</h2>
           </div>
           <div class="card-block">
 
             <div class="form-group row has-danger">
-              <label class="col-md-3 form-control-label">Nombre</label>
+              <label class="col-md-3 form-control-label">ID del producto</label>
               <div class="col-md-9">
-                <input [(ngModel)]="customer.name" #name="ngModel" type="text" name="name" class="form-control" required readonly>
+                <input [(ngModel)]="product.product_id" #product_id="ngModel" type="text" name="product_id" class="form-control" required readonly>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 form-control-label">Apellido(s)</label>
+              <label class="col-md-3 form-control-label">Descripción</label>
               <div class="col-md-9">
-                <input type="text" [(ngModel)]="customer.lastname" #lastname="ngModel" name="lastname" class="form-control" required readonly>
+                <input type="text" [(ngModel)]="product.description" #description="ngModel" name="description" class="form-control" required readonly>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 form-control-label">Referencia</label>
+              <label class="col-md-3 form-control-label">Marca</label>
               <div class="col-md-9">
-                <input type="text" [(ngModel)]="customer.reference" #reference="ngModel" name="reference" class="form-control" required readonly>
+                <input type="text" [(ngModel)]="product.brand" #brand="ngModel" name="brand" class="form-control" required readonly>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 form-control-label">Whatsapp</label>
+              <label class="col-md-3 form-control-label">Sabor</label>
               <div class="col-md-9">
-                <input type="text" [(ngModel)]="customer.whatsapp" #whatsapp="ngModel" name="whatsapp" class="form-control" readonly>
+                <input type="text" [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control" readonly>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 form-control-label">Facebook</label>
+              <label class="col-md-3 form-control-label">Fecha de expiración</label>
               <div class="col-md-9">
-                <input type="text" [(ngModel)]="customer.facebook" #facebook="ngModel" name="facebook" class="form-control" readonly>
+                <input type="text" [(ngModel)]="product.expiration_date" #expiration_date="ngModel" name="expiration_date" class="form-control" readonly>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-md-3 form-control-label">Saldo</label>
+              <label class="col-md-3 form-control-label">Precio de venta</label>
               <div class="col-md-9">
-                <input type="number" [(ngModel)]="customer.balance" #balance="ngModel" name="balance" class="form-control" required readonly>
+                <input type="number" [(ngModel)]="product.sale_price" #sale_price="ngModel" name="sale_price" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Precio de compra</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.buy_price" #buy_price="ngModel" name="buy_price" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Existencias</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.existence" #existence="ngModel" name="existence" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Máximos</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.max" #max="ngModel" name="max" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Mínimos</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.min" #min="ngModel" name="min" class="form-control" required readonly>
               </div>
             </div>
 
           </div>
           <div class="card-footer">
             <div class="col-md-6 pull-right">
-              <button [routerLink]="['/customers/all']" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Aceptar</button>
+              <button [routerLink]="['/products/all']" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Aceptar</button>
             </div>
           </div>
         </div>

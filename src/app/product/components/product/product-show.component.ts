@@ -23,7 +23,7 @@ export class ProductShowComponent implements OnInit {
             this.productId = parameters['id'];
             this.productService.findById( this.productId )
                 .subscribe( product => {
-                    this.product = product;
+                    this.product = product[0];
                 });
         });
     }

@@ -9,6 +9,7 @@ import { ProductService } from './services/product.service';
 import { ProductComponent } from './product.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductShowComponent } from './components/product/product-show.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { ProductsComponent } from './components/products/products.component';
     declarations: [
         ProductComponent,
         ProductsComponent,
-        ProductCreateComponent
+        ProductCreateComponent,
+        ProductShowComponent
     ],
     providers: [
         ProductService

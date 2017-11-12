@@ -1,36 +1,102 @@
 <div class="animated fadeIn">
-  <h1 class="display-3 text-center">Productos</h1>
+  <h1 class="display-4 text-center">Productos</h1>
   <div class="line__bottom-container mb-3">
     <span class="line__bottom"></span>
   </div>
-  <div class="table">
-    <tr>
-      <th>Descripción</th>
-      <th>Marca</th>
-      <th>Sabor</th>
-      <th>Fecha de caducidad</th>
-      <th>Precio de venta</th>
-      <th>Existencias</th>
-      <th></th>
-    </tr>
 
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.description }}</td>  
-        <td>{{ product.brand }}</td>  
-        <td>{{ product.flavor }}</td>  
-        <td>{{ product.expiration_date | date: 'fullDate' }}</td>  
-        <td>{{ product.sale_price }}</td>  
-        <td>{{ product.existence }}</td>  
-        <td>
-          <a [routerLink]="['/product-show', product.product_id]" class="btn  btn-outline-primary">Consultar</a>
-        </td>  
-        <td>
-          <a [routerLink]="['/product-edit', product.product_id]" class="btn btn-outline-warning">Editar</a>
-        </td>  
-      </tr>
-    </tbody>
-  </div>
+  <div class="row">
+    <div class="col-sm-1 col-md-1">
+    </div>  
+
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-header">
+                <strong>Consulta individual: </strong> producto
+            </div>
+            <div class="card-block">
+                <form class="form-horizontal ">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button [routerLink]="['../show/', product_id]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                                <input type="text" [(ngModel)]="product_id" name="product_id" class="form-control" placeholder="Id del producto">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-header">
+                <strong>Editar: </strong> producto
+            </div>
+            <div class="card-block">
+                <form class="form-horizontal ">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button [routerLink]="['../edit/', product_id]" type="button" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                                <input type="text" [(ngModel)]="product_id" name="product_id" class="form-control" placeholder="Id del producto">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify display-5"></i> Consulta General
+        </div>
+        <div class="card-block table-responsive">
+          <table class="table table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Marca</th>
+                <th>Sabor</th>
+                <th>Fecha de caducidad</th>
+                <th>Precio de venta</th>
+                <th>Existencias</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
 
+
+            <tr *ngFor="let product of products">
+                <td>{{ product.product_id }}</td>  
+                <td>{{ product.description }}</td>  
+                <td>{{ product.brand }}</td>  
+                <td>{{ product.flavor }}</td>  
+                <td>{{ product.expiration_date | date: 'fullDate' }}</td>  
+                <td>{{ product.sale_price }}</td>  
+                <td>{{ product.existence }}</td>  
+                <td>
+                  <a [routerLink]="['../show', product.product_id]" class="btn  btn-outline-primary">Consultar</a>
+                </td>  
+                <td>
+                  <a [routerLink]="['../edit/', product.product_id]" class="btn btn-outline-warning">Editar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

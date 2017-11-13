@@ -10,6 +10,7 @@ import { ProductComponent } from './product.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductShowComponent } from './components/product/product-show.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ProductShowComponent } from './components/product/product-show.componen
         ProductComponent,
         ProductsComponent,
         ProductCreateComponent,
-        ProductShowComponent
+        ProductShowComponent,
+        ProductEditComponent
     ],
     providers: [
         ProductService

@@ -92,6 +92,9 @@
                 <td>
                   <a [routerLink]="['../edit/', product.product_id]" class="btn btn-outline-warning">Editar</a>
                 </td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger" (click)="deleteProduct(product.product_id)">Eliminar</button>
+                </td>
               </tr>
             </tbody>
           </table>

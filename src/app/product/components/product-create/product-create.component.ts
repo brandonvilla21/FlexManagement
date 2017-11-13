@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../product.model';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-create',
@@ -20,7 +21,7 @@ export class ProductCreateComponent implements OnInit {
     min: 0,
     product_id: null,
   };
-  constructor( private productService: ProductService ) { }
+  constructor( private productService: ProductService, private router: Router ) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,7 @@ export class ProductCreateComponent implements OnInit {
       this.productService.create( this.product )
         .subscribe( res => {
           console.log(res);
+          this.router.navigate(['/products/all']);
         })
     }
   }

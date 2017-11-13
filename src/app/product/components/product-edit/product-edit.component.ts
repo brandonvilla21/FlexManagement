@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { Product } from './../../product.model';
 import { ProductService } from './../../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-product-edit',
     templateUrl: 'product-edit.component.html',
-    styleUrls: ['./product.component.scss']
+    styleUrls: ['./product-edit.component.scss']
 })
 
 export class ProductEditComponent implements OnInit {
@@ -16,17 +16,29 @@ export class ProductEditComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private productService: ProductService
+        private productService: ProductService,
+        private router: Router
     ) {
         this.activatedRoute.params.subscribe( parameters => {
             this.productId = parameters['id'];
             this.productService.findById( this.productId )
                 .subscribe( product => {
-                    console.log(product);
-                    this.product = product;
+                    this.product = product[0];
                 });
         });
     }
 
     ngOnInit() { }
+
+
+    onSubmitProductEdit(value: NgForm) {
+      if (value.valid) {
+        this.productService.update( this.product )
+          .subscribe( res => {
+            console.log(res);
+            this.router.navigate(['/products/all']);
+          })
+      }
+    }
+
 }

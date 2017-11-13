@@ -49,7 +49,7 @@ export class ProductService {
 
   public delete( id ): Observable<any> { // Not sure if this method works
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.delete(`${this.endPoint}/id`, { headers: headers})
+    return this.http.delete(`${this.endPoint}/${id}`, { headers: headers})
       .map( res => res.json() || {} )
       .catch( error => JSON.stringify(error) );
   }

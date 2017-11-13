@@ -1,3 +1,114 @@
-<pre>
-    {{ product | json }}
-</pre>
+<div class="animated fadeIn">
+  <div class="animated fadeIn" *ngIf="!product">
+    <div class="row">
+      <div class="col-sm-2 col-md-2">
+      </div>
+      <div class="col-sm-7 col-md-7">
+        <div class="card">
+          <div class="card-header">
+            <strong>Información</strong>
+          </div>
+          <div class="card-block row">
+            <div class="col-md-8">
+              <p>El registro que estás buscando no se ha podido encontrar :(</p>
+            </div>
+            <div class="col-md-4">
+              <button [routerLink]="['/products/all']" class="btn btn-sm btn-primary pull-right">Regresar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="product">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 col-xs-12">
+      <form>
+        <div class="card">
+          <div class="card-header text-center">
+            <h2>Consultar producto</h2>
+          </div>
+          <div class="card-block">
+
+            <div class="form-group row has-danger">
+              <label class="col-md-3 form-control-label">ID del producto</label>
+              <div class="col-md-9">
+                <input [(ngModel)]="product.product_id" #product_id="ngModel" type="text" name="product_id" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Descripción</label>
+              <div class="col-md-9">
+                <input type="text" [(ngModel)]="product.description" #description="ngModel" name="description" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Marca</label>
+              <div class="col-md-9">
+                <input type="text" [(ngModel)]="product.brand" #brand="ngModel" name="brand" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Sabor</label>
+              <div class="col-md-9">
+                <input type="text" [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control" readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Fecha de expiración</label>
+              <div class="col-md-9">
+                  <input type="date" [ngModel]="product.expiration_date | date:'yyyy-MM-dd'" #expirationdate="ngModel" name="expiration_date" class="form-control" readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Precio de venta</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.sale_price" #sale_price="ngModel" name="sale_price" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Precio de compra</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.buy_price" #buy_price="ngModel" name="buy_price" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Existencias</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.existence" #existence="ngModel" name="existence" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Máximos</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.max" #max="ngModel" name="max" class="form-control" required readonly>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Mínimos</label>
+              <div class="col-md-9">
+                <input type="number" [(ngModel)]="product.min" #min="ngModel" name="min" class="form-control" required readonly>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <div class="col-md-6 pull-right">
+              <button [routerLink]="['/products/all']" class="btn btn-block btn-primary"><i class="fa fa-check"></i> Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

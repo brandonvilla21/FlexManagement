@@ -62,7 +62,7 @@
             <div class="form-group row">
               <label class="col-md-3 form-control-label">Fecha de expiración</label>
               <div class="col-md-9">
-                <input type="text" [(ngModel)]="product.expiration_date" #expiration_date="ngModel" name="expiration_date" class="form-control" readonly>
+                  <input type="date" [ngModel]="product.expiration_date | date:'yyyy-MM-dd'" #expirationdate="ngModel" name="expiration_date" class="form-control" readonly>
               </div>
             </div>
 

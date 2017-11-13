@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   public products: Product[];
+  public product_id: number;
   constructor( private productService: ProductService ) { }
 
   ngOnInit() {

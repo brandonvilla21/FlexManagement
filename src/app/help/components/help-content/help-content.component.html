@@ -1,31 +1,164 @@
-<div class="animated fadeIn">
-  <!-- Catálogo de productos -->
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="display-4 text-center">Catálogo de productos</h1>
-      <div class="line__bottom-container mb-3">
-        <span class="line__bottom"></span>
+<div class="overflow-help">
+  <div style="padding-left: 1em" class="animated fadeIn">
+    
+    <!-- Catálogo de productos -->
+
+
+    <div id="catalogo-productos" class="row">
+      <div class="col-md-12">
+        <h1 class="display-4 text-center">Catálogo de productos</h1>
+        <div class="line__bottom-container mb-3">
+          <span class="line__bottom"></span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row" style="font-size: 1.1em">
+    <div class="row" style="font-size: 1.1em">
+        <div class="col-md-12">
+          <h3>Registro y consulta del catálogo de productos </h3>
+          <p class="text-justify" >
+            El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de los productos con los que cuenta el negocio.
+            De esta manera se obtiene un control autimatizado de los productos
+          </p>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="productos1" alt="">
+            </div>
+            <div class="col-md-9">
+              <h3>Ingresa a registrar un producto</h3>
+              <p class="text-justify" >
+                El primer paso para realizar el registro de un producto es ingresar a la sección lateral izquierda en
+                'Catálogos/Productos/Registrar', cómo se muestra en la primera imagen. De esta manera, estará ingresando a la pagina para registrar un producto.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 2em">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Registro de producto</h3>
+              <p>
+                Una vez en la página del registro de productos se llenaran los campos de la siguiente manera:
+              </p>
+              <ul>
+                <li>
+                  <strong>Descripción </strong> La descripcion del producto, por ejemplo: las caracteristicas principales que contiene ese producto.
+                </li>
+                <li>
+                  <strong>Marca </strong> Se eligirá alguna de las marcas que se encuentren enlistadas y que corresponda con la marca del producto. En el listado se encontrarán todas las marcas que maneja el negocio.
+                </li>
+                <li>
+                  <strong>Sabor </strong> El sabor del producto.
+                </li>
+                <li>
+                  <strong>Fecha de caducidad </strong> El formato de la fecha de caducidad del producto es dd/mm/aaaa siendo 'dd' el día, 'mm' el mes y 'aaaa' el año.
+                </li>
+                <li>
+                  <strong>Precio de venta </strong> Se indica el precio en que se vende el producto a los clientes.
+                </li>
+                <li>
+                  <strong>Precio de compra </strong> Se indica el precio en que se compra el producto a los proveedores.
+                </li>
+                <li>
+                  <strong>Existencia </strong> Ya que todos los productos con los que cuenta el negocio son unidades, se indicará con un numero entero el numero de productos a registrar.
+                </li>
+                <li>
+                  <strong>Producto máximo </strong> Es el tope del número de productos con los que el negocio no debería revasar de ese producto en específico.
+                </li>
+                <li>
+                  <strong>Producto mínimo </strong> Es la cantidad mínima de ese producto con el que el negocio debería contar.
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-12">
+                  <img [src]="productos2" alt="" style="width: 100%">
+                </div>
+                <div class="col-md-12">
+                  <p>
+                    Una vez llenado todos los campos, al dar click en el boton de registrar, el producto será registrado en la base de datos y podra ser visualizado en una consulta general y/o individual.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="consulta-gral-productos" class="col-md-12" style="margin-top: 2em">
+          <h3>Consulta general</h3>
+          Para realizar una consulta general de los productos. Se accederá desde el menú de la barra lateral izquierda en 'Catálogos/Productos/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación.
+          Aparecerán todos los registros de los productos con su informacion más importante, en  la imagen debajo se muestra uno de los registros el cuál fue creado previamente en la segunda imagen.
+          Del lado derecho del registro, aparecen dos botones: Consultar y Editar.
+          <ul>
+            <li><strong>Consultar </strong> Se realiza una consulta individual del producto más detallada de la que se muestra en la consulta general.</li>
+            <li><strong>Editar </strong> Se muestran los datos del producto para poder ser editados y guardados los cambios en la base de datos.</li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <img [src]="productos3" alt="" style="width: 100%">
+        </div>
+        
+        <div class="row" style="margin-top: 2em">
+          <div class="col-md-8">
+            <img [src]="productos4" style="width: 100%" alt="">
+          </div>
+          <div class="col-md-4">
+            <h3>Consulta individual del producto</h3>
+            <p>
+              Para realizar una consulta individual de un producto se ingresará a la misma ruta que para realizar una consulta general.
+              Una vez en la página de consulta general, de click en el botón de Consultar del registro que quiera realizar una consulta individual más detallada.
+              A continuación aparecera una vista como la que se muestra en la siguiente imagen.
+            </p>
+          </div>
+        </div>
+  
+        <div class="row" style="margin-top: 2em">
+          <div class="col-md-4">
+            <h3>Editar un producto</h3>
+            <p>
+              Para realizar la edición de un producto se ingresará a la misma ruta que se hace para realizar una consulta general.
+              Una vez en la página de consulta general, de click en el botón de Editar del registro que quiera editar sus datos.
+              A continuación aparecera una vista cómo la que se muestra en la siguiente imagen, se podrán editar los datos del producto y una vez realizados los cambios, de un click en Guardar Cambios para que los cambios que se hicieron tengan efecto.
+            </p>
+          </div>
+          <div class="col-md-8">
+            <img [src]="productos5" alt="" style="width: 100%;">
+          </div>
+        </div>
+    </div>
+  
+    
+    
+    <hr>
+  
+  
+    <!-- Movimiento de ventas -->
+    <div id="movimiento-ventas" class="row">
       <div class="col-md-12">
-        <h3>Registro y consulta del catálogo de productos </h3>
-        <p class="text-justify" >
-          El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de los productos con los que cuenta el negocio.
-          De esta manera se obtiene un control autimatizado de los productos
+        <h1 class="display-4 text-center">Movimiento de ventas</h1>
+        <div class="line__bottom-container mb-3">
+          <span class="line__bottom"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Registro y consulta de ventas a clientes</h3>
+        <p>
+            El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de las ventas que se realizan a los clientes del negocio. Se lleva a cabo un control automatizado de las ventas del negocio.
         </p>
       </div>
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-3">
-            <img [src]="productos1" alt="">
+            <img [src]="ventas1" alt="">
           </div>
           <div class="col-md-9">
-            <h3>Ingresa a registrar un producto</h3>
+            <h3>Ingresa a registrar una venta</h3>
             <p class="text-justify" >
-              El primer paso para realizar el registro de un producto es ingresar a la sección lateral izquierda en
-              'Catálogos/Productos/Registrar', cómo se muestra en la primera imagen. De esta manera, estará ingresando a la pagina para registrar un producto.
+              El primer paso para realizar el registro de una venta es ingresar a la sección lateral izquierda en
+              'Movimientos/Ventas/Registrar', cómo se muestra en la primera imagen de esta sección. De esta manera, estará ingresando a la página para el registro de una venta.
             </p>
           </div>
         </div>
@@ -33,504 +166,377 @@
       <div class="col-md-12" style="margin-top: 2em">
         <div class="row">
           <div class="col-md-4">
-            <h3>Registro de producto</h3>
+            <h3>Registro de la venta</h3>
             <p>
-              Una vez en la página del registro de productos se llenaran los campos de la siguiente manera:
+              Una vez en la página del registro de ventas, se llenarán los campos de la siguiente manera:
             </p>
             <ul>
               <li>
-                <strong>Descripción </strong> La descripcion del producto, por ejemplo: las caracteristicas principales que contiene ese producto.
+                <strong>ID Venta </strong> Este campo será llenado automáticamente, es un numero consecutivo único que indica el ID de la venta
               </li>
               <li>
-                <strong>Marca </strong> Se eligirá alguna de las marcas que se encuentren enlistadas y que corresponda con la marca del producto. En el listado se encontrarán todas las marcas que maneja el negocio.
+                <strong>Fecha </strong> Este campo será llenado automáticamente, es la fecha del día actual tomada del sistema operativo.
               </li>
               <li>
-                <strong>Sabor </strong> El sabor del producto.
+                <strong>Datos del cliente seleccionado</strong>
+                  <p>Para llenar los datos del cliente, se hará click en el botón con el texto 'Buscar cliente', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los clientes y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
               </li>
               <li>
-                <strong>Fecha de caducidad </strong> El formato de la fecha de caducidad del producto es dd/mm/aaaa siendo 'dd' el día, 'mm' el mes y 'aaaa' el año.
+                <strong>Datos del empleado seleccionado</strong>
+                  <p>Para llenar los datos del empleado, se hará click en el botón con el texto 'Buscar empleado', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los empleados y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
               </li>
               <li>
-                <strong>Precio de venta </strong> Se indica el precio en que se vende el producto a los clientes.
+                <strong>Agregar un producto a la venta</strong>
+                <p>
+                  Para agregar un producto a la venta, el primer paso es dar click en el boton 'Buscar producto', a continuación se desplegará una ventana para seleccionar el producto que desee agregar a la venta, automáticamente se llenarán algunos campos del formulario principal del registro de la venta.
+                </p>
+                <ul>
+                  <li><strong>Precio </strong> Se indíca el precio del producto.</li>
+                  <li><strong>Cantidad </strong> Se indíca el número de productos que se van a agregar a la venta.</li>
+                  <li><strong>Agregar producto </strong> Para agregar el producto a la tabla sólo de click en el boton 'Agregar producto'.</li>
+                </ul>
               </li>
               <li>
-                <strong>Precio de compra </strong> Se indica el precio en que se compra el producto a los proveedores.
+                <strong>Tipo de venta </strong> Donde de tendrá la opción de ser una venta a CRÉDITO o CONTADO.
               </li>
               <li>
-                <strong>Existencia </strong> Ya que todos los productos con los que cuenta el negocio son unidades, se indicará con un numero entero el numero de productos a registrar.
+                <strong>Subtotal </strong> Se calcula automáticamente.
               </li>
               <li>
-                <strong>Producto máximo </strong> Es el tope del número de productos con los que el negocio no debería revasar de ese producto en específico.
+                <strong>Descuento </strong> Se puede asignar un descuento a desición de la persona que realice la venta.
               </li>
               <li>
-                <strong>Producto mínimo </strong> Es la cantidad mínima de ese producto con el que el negocio debería contar.
+                <strong>Total </strong> Se calcula automáticamente.
               </li>
             </ul>
           </div>
           <div class="col-md-8">
-            <div class="row">
-              <div class="col-md-12">
-                <img [src]="productos2" alt="" style="width: 100%">
-              </div>
-              <div class="col-md-12">
-                <p>
-                  Una vez llenado todos los campos, al dar click en el boton de registrar, el producto será registrado en la base de datos y podra ser visualizado en una consulta general y/o individual.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="consulta-gral-productos" class="col-md-12" style="margin-top: 2em">
-        <h3>Consulta general</h3>
-        Para realizar una consulta general de los productos. Se accederá desde el menú de la barra lateral izquierda en 'Catálogos/Productos/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación.
-        Aparecerán todos los registros de los productos con su informacion más importante, en  la imagen debajo se muestra uno de los registros el cuál fue creado previamente en la segunda imagen.
-        Del lado derecho del registro, aparecen dos botones: Consultar y Editar.
-        <ul>
-          <li><strong>Consultar </strong> Se realiza una consulta individual del producto más detallada de la que se muestra en la consulta general.</li>
-          <li><strong>Editar </strong> Se muestran los datos del producto para poder ser editados y guardados los cambios en la base de datos.</li>
-        </ul>
-      </div>
-      <div class="col-md-12">
-        <img [src]="productos3" alt="" style="width: 100%">
-      </div>
-      
-      <div class="row" style="margin-top: 2em">
-        <div class="col-md-8">
-          <img [src]="productos4" style="width: 100%" alt="">
-        </div>
-        <div class="col-md-4">
-          <h3>Consulta individual del producto</h3>
-          <p>
-            Para realizar una consulta individual de un producto se ingresará a la misma ruta que para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>).
-            Una vez en la página de consulta general, de click en el botón de Consultar del registro que quiera realizar una consulta individual más detallada.
-            A continuación aparecera una vista como la que se muestra en la siguiente imagen.
-          </p>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top: 2em">
-        <div class="col-md-4">
-          <h3>Editar un producto</h3>
-          <p>
-            Para realizar la edición de un producto se ingresará a la misma ruta que se hace para realizar una consulta general (<strong style="cursor:pointer" href="http://localhost:4200/help/#consulta-gral-productos">Véase, Consulta General para mas información</strong>).
-            Una vez en la página de consulta general, de click en el botón de Editar del registro que quiera editar sus datos.
-            A continuación aparecera una vista cómo la que se muestra en la siguiente imagen, se podrán editar los datos del producto y una vez realizados los cambios, de un click en Guardar Cambios para que los cambios que se hicieron tengan efecto.
-          </p>
-        </div>
-        <div class="col-md-8">
-          <img [src]="productos5" alt="" style="width: 100%;">
-        </div>
-      </div>
-  </div>
-
-  
-  
-  <hr>
-
-
-  <!-- Movimiento de ventas -->
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="display-4 text-center">Movimiento de ventas</h1>
-      <div class="line__bottom-container mb-3">
-        <span class="line__bottom"></span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Registro y consulta de ventas a clientes</h3>
-      <p>
-          El sistema FLEX GYM ADMIN® cuenta con un apartado para el registro y consulta de las ventas que se realizan a los clientes del negocio. Se lleva a cabo un control automatizado de las ventas del negocio.
-      </p>
-    </div>
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-3">
-          <img [src]="ventas1" alt="">
-        </div>
-        <div class="col-md-9">
-          <h3>Ingresa a registrar una venta</h3>
-          <p class="text-justify" >
-            El primer paso para realizar el registro de una venta es ingresar a la sección lateral izquierda en
-            'Movimientos/Ventas/Registrar', cómo se muestra en la primera imagen de esta sección. De esta manera, estará ingresando a la página para el registro de una venta.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12" style="margin-top: 2em">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Registro de la venta</h3>
-          <p>
-            Una vez en la página del registro de ventas, se llenarán los campos de la siguiente manera:
-          </p>
-          <ul>
-            <li>
-              <strong>ID Venta </strong> Este campo será llenado automáticamente, es un numero consecutivo único que indica el ID de la venta
-            </li>
-            <li>
-              <strong>Fecha </strong> Este campo será llenado automáticamente, es la fecha del día actual tomada del sistema operativo.
-            </li>
-            <li>
-              <strong>Datos del cliente seleccionado</strong>
-                <p>Para llenar los datos del cliente, se hará click en el botón con el texto 'Buscar cliente', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los clientes y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
-            </li>
-            <li>
-              <strong>Datos del empleado seleccionado</strong>
-                <p>Para llenar los datos del empleado, se hará click en el botón con el texto 'Buscar empleado', a continuación, se muestea una ventana como se puede observar en la siguiente imagen, selecciona alguno de los empleados y automáticamente muestra sus datos en el formulario principal del registro de la venta.</p>
-            </li>
-            <li>
-              <strong>Agregar un producto a la venta</strong>
+              <img [src]="ventas2" style="width: 100%" alt="">
               <p>
-                Para agregar un producto a la venta, el primer paso es dar click en el boton 'Buscar producto', a continuación se desplegará una ventana para seleccionar el producto que desee agregar a la venta, automáticamente se llenarán algunos campos del formulario principal del registro de la venta.
+                El último paso para realizar el registro de la venta es dar click sobre el boton con el texto 'Registrar'
               </p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-12" style="margin-top: 2em">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>'Buscar cliente'</h3>
+            <img [src]="ventas3" style="width: 100%;" alt="">
+          </div>
+          <div class="col-md-4">
+            <h3>'Buscar empleado'</h3>
+            <img [src]="ventas4" style="width: 100%;" alt="">
+          </div>
+          <div class="col-md-4">
+            <h3>'Buscar producto'</h3>
+            <img [src]="ventas5" style="width: 100%;" alt="">
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-12" style="margin-top: 2em">
+        <div class="row">
+          <div class="col-md-8">
+            <img [src]="ventas6" alt="" style="width: 100%">
+          </div>
+          <div class="col-md-4">
+              <h3>Consulta general</h3>
+              Para realizar una consulta general de las ventas. Se accederá desde el menú de la barra lateral izquierda en 'Movimientos/Ventas/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación de esta sección.
+              Aparecerán todos los registros de las ventas con su informacion más importante, en  la imagen debajo se muestran los registros de ventas anteriores
+              Del lado derecho del registro, aparece un botón con el texto 'Ver más'
               <ul>
-                <li><strong>Precio </strong> Se indíca el precio del producto.</li>
-                <li><strong>Cantidad </strong> Se indíca el número de productos que se van a agregar a la venta.</li>
-                <li><strong>Agregar producto </strong> Para agregar el producto a la tabla sólo de click en el boton 'Agregar producto'.</li>
+                <li><strong>Ver más </strong> Se muestran todos los datos de la venta para fines de consulta
               </ul>
-            </li>
-            <li>
-              <strong>Tipo de venta </strong> Donde de tendrá la opción de ser una venta a CRÉDITO o CONTADO.
-            </li>
-            <li>
-              <strong>Subtotal </strong> Se calcula automáticamente.
-            </li>
-            <li>
-              <strong>Descuento </strong> Se puede asignar un descuento a desición de la persona que realice la venta.
-            </li>
-            <li>
-              <strong>Total </strong> Se calcula automáticamente.
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-8">
-            <img [src]="ventas2" style="width: 100%" alt="">
-            <p>
-              El último paso para realizar el registro de la venta es dar click sobre el boton con el texto 'Registrar'
-            </p>
           </div>
-      </div>
-    </div>
-    <div class="col-md-12" style="margin-top: 2em">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>'Buscar cliente'</h3>
-          <img [src]="ventas3" style="width: 100%;" alt="">
-        </div>
-        <div class="col-md-4">
-          <h3>'Buscar empleado'</h3>
-          <img [src]="ventas4" style="width: 100%;" alt="">
-        </div>
-        <div class="col-md-4">
-          <h3>'Buscar producto'</h3>
-          <img [src]="ventas5" style="width: 100%;" alt="">
         </div>
       </div>
     </div>
-
-    <div class="col-md-12" style="margin-top: 2em">
-      <div class="row">
-        <div class="col-md-8">
-          <img [src]="ventas6" alt="" style="width: 100%">
-        </div>
-        <div class="col-md-4">
-            <h3>Consulta general</h3>
-            Para realizar una consulta general de las ventas. Se accederá desde el menú de la barra lateral izquierda en 'Movimientos/Ventas/Consultar', se puede visualizar esta ruta en la primera imagen de la explicación de esta sección.
-            Aparecerán todos los registros de las ventas con su informacion más importante, en  la imagen debajo se muestran los registros de ventas anteriores
-            Del lado derecho del registro, aparece un botón con el texto 'Ver más'
-            <ul>
-              <li><strong>Ver más </strong> Se muestran todos los datos de la venta para fines de consulta
-            </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <hr>
-
-  <div id="sales-report">
-    <!-- Reporte de ventas -->
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="display-4 text-center">Reporte de ventas</h1>
-        <div class="line__bottom-container mb-3">
-          <span class="line__bottom"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-
-
-      <div class="col-md-12">
-        <p class="custom-p">
-          El sistema FLEX GYM ADMIN® cuenta con un apartado para realizar reportes personalizados, entre los cuales se encuentra el
-          reporte de historial de ventas. Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar
-          la pestaña de reportes y posteriormente, seleccionar el reporte llamado “Historial de Ventas”.
-        </p>
-      </div>
-
-
-      <div class="col-md-12">
-
-        <div>
-          <div>
-            <br>
-            <br>
-            <p class="custom-p">
-              Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar la pestaña de reportes y posteriormente,
-              seleccionar el reporte llamado “Historial de Ventas”.
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[0]" width="20%">
-          </div>
-        </div>
-
-        <hr class="light-hr"><br>
-
-        <div>
-          <div>
-            <p class="custom-p text-center">
-              Al completar los pasos anteriores, se desplegará la siguiente interfaz:
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[1]" width="80%" style="border: 1px solid; border-radius: 25px;">
-          </div>
-          <br>
-          <p class="custom-p text-center">Esta interfaz contempla una gran variedad de filtros, para así poder ofrecer la mayor flexibilidad posible al usuario.</p>
-        </div>
-      </div>
-
-      <hr class="light-hr">
-      <br>
-
-      <div>
-        <div>
-          <p class="custom-p text-center">
-            A continuación se describirán los distintos filtros que soporta el generador de reportes.
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="reportes[2]" width="80%" >
-        </div>
-      </div>
-
-      <br><br>
-
-      <div class="row">
-          <div class="col-md-9">
-            <p class="custom-p">
-                <strong>Venta por:</strong> Este filtro acepta las opciones de Empleado, Cliente y Todas (la cual despliega todas las ventas sin tener en consideración a un empleado o a un cliente como parte del filtrado).
-                En caso de seleccionar la opción de Empleado se desplegará la siguiente opción, para buscar al Empleado en un modal.
-            </p>
-          </div>
-          <div class="col-md-3">
-            <img class="custom-img" [src]="reportes[3]" width="80%" >
-          </div>
-      </div>
-
-      <br><br>
-
-      <div>
-          <div>
-            <p class="custom-p">
-                Al dar click en el bóton, se desplegará el siguiente modal, en el cual podremos buscar al empleado deseado mediante sus diferentes campos (como ID, nombre, apellidos, etc).
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[4]" width="80%" >
-          </div>
-      </div>
-
-      <br><br>
-
-
-      <div>
-          <div>
-            <p class="custom-p">
-                Finalmente, cuando encontremos el usuario deseado, daremos clic en la fila deseada y los datos de nuestro empleado, serán traspasados al formulario anterior automáticamente.
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[5]" width="80%" >
-          </div>
-      </div>
-
-      <br><br>
-      
-      <div class="row">
-          <div class="col-md-9">
-            <br>
-            <p class="custom-p">
-                <strong>Tipo: </strong> Este filtro es capaz de separar las ventas por tipo de pago. Si se desea, se puede seleccionar la opción de todas, para desplegar tanto ventas a Crédito como de Contado a la vez.
-            </p>
-          </div>
-          <div class="col-md-3">
-            <img class="custom-img" [src]="reportes[6]" width="100%" >
-          </div>
-      </div>
-      
-
-      <br><br>
-
-      
-      <div class="row">
-          <div class="col-md-3">
-            <img class="custom-img" [src]="reportes[7]" width="150%" >
-          </div>
-          <div class="col-md-2">
-
-          </div>
-          <div class="col-md-7">
-              <br>
-              <br>
-              <p class="custom-p">
-                  <strong>Tipo: </strong> Una vez hecho esto, se tendrán que seleccionar las fechas de inicio y fin que se deseen para generar el reporte.
-              </p>
-          </div>
-      </div>
-
-      <br><br>
-
-      <div>
-          <div>
-            <p class="custom-p text-center">
-                Al completar el anterior paso, se desplegará la información de reporte finalmente en pantalla.
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[8]" width="80%" >
-          </div>
-      </div>
-
-      <br><br>
-
-      <div>
-          <div>
-            <p class="custom-p">
-                Más abajo en el formulario, ya con el reporte cargado, se desplegará una gráfica responsive con los datos del reporte generado y se podrá elegir entre direfentes tipos de gráficas.
-                También podemos elegir si incluir la gráfica en la generación del PDF al dar clic en descargar (el cual será explicado a continuación).
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[9]" width="80%" >
-          </div>
-      </div>
-
-      <br><br>
-
-      <div>
-          <div>
-            <p class="custom-p">
-                Por último, se nos generará un PDF al darle al botón de descargar, con los distintos datos generados en el filtrado anterior y su respectiva tabla en caso de incluirla.
-            </p>
-          </div>
-          <div>
-            <img class="custom-img" [src]="reportes[10]" width="80%" >
-            <br>
-            <img class="custom-img" [src]="reportes[11]" width="80%" >
-          </div>
-      </div>
-
-    </div>
-  </div>
-
-  <hr>
-
-  <div id="backup-utility">
-    <!-- Utilidad de Respaldo -->
-    <div class="row">
+  
+  
+  
+    <hr>
+  
+    <div id="sales-report">
+      <!-- Reporte de ventas -->
+      <div id="reporte-ventas" class="row">
         <div class="col-md-12">
-          <br>
-          <h1 class="display-4 text-center">Utilidad de respaldo</h1>
+          <h1 class="display-4 text-center">Reporte de ventas</h1>
           <div class="line__bottom-container mb-3">
             <span class="line__bottom"></span>
           </div>
         </div>
       </div>
-      <div>
-        <div>
-          <br>
-          <br>
-          <p class="custom-p">
-            Para ingresar a esta utilidad, lo primero es acceder al panel de control, seleccionar la pestaña de utilidades y posteriormente,
-            seleccionar la utilidad llamada “Respaldo”.
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="utilidades[0]" width="20%">
-        </div>
-      </div>
-      
-      <hr class="light-hr"><br>
-
-      <div>
-        <div>
-          <br>
-          <br>
-          <p class="custom-p text-center">
-              A continuación se mostrará el siguiente formulario.
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="utilidades[1]" width="80%"  style="border: 1px solid; border-radius: 25px;">
-        </div>
-      </div>
-
-      <hr class="light-hr"><br>
-
-      <div>
-        <div>
-          <br>
-          <br>
-          <p class="custom-p text-center">
-            Nos solicitará las credenciales de nuestra base de datos, para poder generar un respaldo. 
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="utilidades[2]" width="80%"  style="border: 1px solid; border-radius: 25px;">
-        </div>
-      </div>
-
-
-      <hr class="light-hr"><br>
-
-      <div>
-        <div>
-          <br>
-          <br>
-          <p class="custom-p text-center">
-            Una vez introducidas, si éstas son válidas, la utilidad desplegará una ventana (la cual varía en cada sistema operativo), para guardar nuestro respaldo .sql
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="utilidades[3]" width="80%"  style="border: 1px solid; border-radius: 25px;">
-        </div>
-      </div>
-
-      <hr class="light-hr"><br>
-
-      <div>
-        <div>
-          <br>
-          <br>
-          <p class="custom-p text-center">
-              Finalmente, la utilidad desplegará un mensaje de éxito o error, según sea el caso.
-          </p>
-        </div>
-        <div>
-          <img class="custom-img" [src]="utilidades[4]" width="80%"  style="border: 1px solid; border-radius: 25px;">
-        </div>
-      </div>
   
-
+      <div class="row">
+  
+  
+        <div class="col-md-12">
+          <p class="custom-p">
+            El sistema FLEX GYM ADMIN® cuenta con un apartado para realizar reportes personalizados, entre los cuales se encuentra el
+            reporte de historial de ventas. Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar
+            la pestaña de reportes y posteriormente, seleccionar el reporte llamado “Historial de Ventas”.
+          </p>
+        </div>
+  
+  
+        <div class="col-md-12">
+  
+          <div>
+            <div>
+              <br>
+              <br>
+              <p class="custom-p">
+                Para ingresar a este reporte, lo primero es acceder al panel de control, seleccionar la pestaña de reportes y posteriormente,
+                seleccionar el reporte llamado “Historial de Ventas”.
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[0]" width="20%">
+            </div>
+          </div>
+  
+          <hr class="light-hr"><br>
+  
+          <div>
+            <div>
+              <p class="custom-p text-center">
+                Al completar los pasos anteriores, se desplegará la siguiente interfaz:
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[1]" width="80%" style="border: 1px solid; border-radius: 25px;">
+            </div>
+            <br>
+            <p class="custom-p text-center">Esta interfaz contempla una gran variedad de filtros, para así poder ofrecer la mayor flexibilidad posible al usuario.</p>
+          </div>
+        </div>
+  
+        <hr class="light-hr">
+        <br>
+  
+        <div>
+          <div>
+            <p class="custom-p text-center">
+              A continuación se describirán los distintos filtros que soporta el generador de reportes.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="reportes[2]" width="80%" >
+          </div>
+        </div>
+  
+        <br><br>
+  
+        <div class="row">
+            <div class="col-md-9">
+              <p class="custom-p">
+                  <strong>Venta por:</strong> Este filtro acepta las opciones de Empleado, Cliente y Todas (la cual despliega todas las ventas sin tener en consideración a un empleado o a un cliente como parte del filtrado).
+                  En caso de seleccionar la opción de Empleado se desplegará la siguiente opción, para buscar al Empleado en un modal.
+              </p>
+            </div>
+            <div class="col-md-3">
+              <img class="custom-img" [src]="reportes[3]" width="80%" >
+            </div>
+        </div>
+  
+        <br><br>
+  
+        <div>
+            <div>
+              <p class="custom-p">
+                  Al dar click en el bóton, se desplegará el siguiente modal, en el cual podremos buscar al empleado deseado mediante sus diferentes campos (como ID, nombre, apellidos, etc).
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[4]" width="80%" >
+            </div>
+        </div>
+  
+        <br><br>
+  
+  
+        <div>
+            <div>
+              <p class="custom-p">
+                  Finalmente, cuando encontremos el usuario deseado, daremos clic en la fila deseada y los datos de nuestro empleado, serán traspasados al formulario anterior automáticamente.
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[5]" width="80%" >
+            </div>
+        </div>
+  
+        <br><br>
+        
+        <div class="row">
+            <div class="col-md-9">
+              <br>
+              <p class="custom-p">
+                  <strong>Tipo: </strong> Este filtro es capaz de separar las ventas por tipo de pago. Si se desea, se puede seleccionar la opción de todas, para desplegar tanto ventas a Crédito como de Contado a la vez.
+              </p>
+            </div>
+            <div class="col-md-3">
+              <img class="custom-img" [src]="reportes[6]" width="100%" >
+            </div>
+        </div>
+        
+  
+        <br><br>
+  
+        
+        <div class="row">
+            <div class="col-md-3">
+              <img class="custom-img" [src]="reportes[7]" width="150%" >
+            </div>
+            <div class="col-md-2">
+  
+            </div>
+            <div class="col-md-7">
+                <br>
+                <br>
+                <p class="custom-p">
+                    <strong>Tipo: </strong> Una vez hecho esto, se tendrán que seleccionar las fechas de inicio y fin que se deseen para generar el reporte.
+                </p>
+            </div>
+        </div>
+  
+        <br><br>
+  
+        <div>
+            <div>
+              <p class="custom-p text-center">
+                  Al completar el anterior paso, se desplegará la información de reporte finalmente en pantalla.
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[8]" width="80%" >
+            </div>
+        </div>
+  
+        <br><br>
+  
+        <div>
+            <div>
+              <p class="custom-p">
+                  Más abajo en el formulario, ya con el reporte cargado, se desplegará una gráfica responsive con los datos del reporte generado y se podrá elegir entre direfentes tipos de gráficas.
+                  También podemos elegir si incluir la gráfica en la generación del PDF al dar clic en descargar (el cual será explicado a continuación).
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[9]" width="80%" >
+            </div>
+        </div>
+  
+        <br><br>
+  
+        <div>
+            <div>
+              <p class="custom-p">
+                  Por último, se nos generará un PDF al darle al botón de descargar, con los distintos datos generados en el filtrado anterior y su respectiva tabla en caso de incluirla.
+              </p>
+            </div>
+            <div>
+              <img class="custom-img" [src]="reportes[10]" width="80%" >
+              <br>
+              <img class="custom-img" [src]="reportes[11]" width="80%" >
+            </div>
+        </div>
+  
+      </div>
+    </div>
+  
+    <hr>
+  
+    <div id="backup-utility">
+      <!-- Utilidad de Respaldo -->
+      <div id="utilidad-respaldo" class="row">
+          <div class="col-md-12">
+            <br>
+            <h1 class="display-4 text-center">Utilidad de respaldo</h1>
+            <div class="line__bottom-container mb-3">
+              <span class="line__bottom"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p">
+              Para ingresar a esta utilidad, lo primero es acceder al panel de control, seleccionar la pestaña de utilidades y posteriormente,
+              seleccionar la utilidad llamada “Respaldo”.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="utilidades[0]" width="20%">
+          </div>
+        </div>
+        
+        <hr class="light-hr"><br>
+  
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p text-center">
+                A continuación se mostrará el siguiente formulario.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="utilidades[1]" width="80%"  style="border: 1px solid; border-radius: 25px;">
+          </div>
+        </div>
+  
+        <hr class="light-hr"><br>
+  
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p text-center">
+              Nos solicitará las credenciales de nuestra base de datos, para poder generar un respaldo. 
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="utilidades[2]" width="80%"  style="border: 1px solid; border-radius: 25px;">
+          </div>
+        </div>
+  
+  
+        <hr class="light-hr"><br>
+  
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p text-center">
+              Una vez introducidas, si éstas son válidas, la utilidad desplegará una ventana (la cual varía en cada sistema operativo), para guardar nuestro respaldo .sql
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="utilidades[3]" width="80%"  style="border: 1px solid; border-radius: 25px;">
+          </div>
+        </div>
+  
+        <hr class="light-hr"><br>
+  
+        <div>
+          <div>
+            <br>
+            <br>
+            <p class="custom-p text-center">
+                Finalmente, la utilidad desplegará un mensaje de éxito o error, según sea el caso.
+            </p>
+          </div>
+          <div>
+            <img class="custom-img" [src]="utilidades[4]" width="80%"  style="border: 1px solid; border-radius: 25px;">
+          </div>
+        </div>
+    
+  
+    </div>
+  
   </div>
 
 </div>

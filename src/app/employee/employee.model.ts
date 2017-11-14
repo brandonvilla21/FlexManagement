@@ -3,5 +3,6 @@ export interface Employee {
     name: string,
     lastname: string,
     address: string,
-    whatsapp: string
+    whatsapp: string,
+    _id?: string
 }

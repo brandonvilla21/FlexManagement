@@ -22,7 +22,7 @@ export class EmployeeEditComponent implements OnInit {
         this.employeeService.findById( this.employeeId )
             .subscribe( employee => {
               console.log(employee);
-                this.employee = employee[0];
+                this.employee = employee;
             });
     });
                 
@@ -34,7 +34,8 @@ export class EmployeeEditComponent implements OnInit {
   onSubmitEmployeeEdit(value: NgForm) {
     if (value.valid) {
       this.employeeService.update( this.employee )
-        .subscribe( res => {
+      .subscribe( res => {
+        console.log('this.employee: ', this.employee);
           console.log(res);
           this.router.navigate(['/employees/all']);
         })

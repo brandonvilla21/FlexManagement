@@ -47,12 +47,12 @@ export class EmployeeService {
 
   public update( employee: Employee ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.endPoint}/${employee.employee_id}`, employee, {headers: headers})
+    return this.http.put(`${this.endPoint}/${employee._id}`, employee, {headers: headers})
       .map( res => res.json() || {} )
       .catch( error => JSON.stringify(error) );
   }
 
-  public delete( id ): Observable<any> { // Not sure if this method works
+  public delete( id ): Observable<any> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.delete(`${this.endPoint}/${id}`, { headers: headers})
       .map( res => res.json() || {} )

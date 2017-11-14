@@ -75,19 +75,19 @@
             </thead>
             <tbody>
               <tr *ngFor="let employee of employees">
-                <td>{{ employee.employee_id }}</td>
+                <td>{{ employee._id }}</td>
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.lastname }}</td>
                 <td>{{ employee.address }}</td>
                 <td>{{ employee.whatsapp }}</td>
                 <td>
-                  <a [routerLink]="['../show/', employee.employee_id]" class="btn  btn-outline-primary">Consultar</a>
+                  <a [routerLink]="['../show/', employee._id]" class="btn  btn-outline-primary">Consultar</a>
                 </td>
                 <td>
-                  <a [routerLink]="['../edit/', employee.employee_id]" class="btn btn-outline-warning">Editar</a>
+                  <a [routerLink]="['../edit/', employee._id]" class="btn btn-outline-warning">Editar</a>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-danger" (click)="deleteEmployee(employee.employee_id)">Eliminar</button>
+                  <button type="button" class="btn btn-outline-danger" (click)="deleteEmployee(employee._id)">Eliminar</button>
                 </td>
               </tr>
             </tbody>

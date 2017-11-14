@@ -19,7 +19,7 @@ export class EmployeeShowComponent implements OnInit {
       this.employeeId = parameters['id'];
       this.employeeService.findById( this.employeeId )
           .subscribe( employee => {
-              this.employee = employee[0];
+              this.employee = employee;
           });
     });
   }

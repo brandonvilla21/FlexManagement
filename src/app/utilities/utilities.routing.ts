@@ -1,5 +1,6 @@
 import { RestoreComponent } from './components/restore/restore.component';
 import { BackupComponent } from './components/backup/backup.component';
+import { HistoricComponent } from 'app/utilities/components/historic/historic.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
         children: [
             { path: 'backup', component: BackupComponent },
             { path: 'restore', component: RestoreComponent },
+            { path: 'historic', component: HistoricComponent },
         ]
     },
 ];

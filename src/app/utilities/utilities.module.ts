@@ -8,6 +8,7 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { UtilitiesComponent } from './utilities.component';
 import { BackupComponent } from './components/backup/backup.component';
 import { RestoreComponent } from './components/restore/restore.component';
+import { HistoricComponent } from './components/historic/historic.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { RestoreComponent } from './components/restore/restore.component';
         UtilitiesComponent,
         BackupComponent,
         RestoreComponent,
-        FileSelectDirective
+        FileSelectDirective,
+        HistoricComponent
     ],
     providers: [UtilitiesService],
 })

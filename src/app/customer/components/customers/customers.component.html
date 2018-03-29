@@ -5,10 +5,8 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-1 col-md-1">
-    </div>  
 
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
                 <strong>Consulta individual: </strong> cliente
@@ -30,7 +28,7 @@
         </div>
     </div>
     
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
                 <strong>Editar: </strong> cliente
@@ -54,9 +52,7 @@
 </div>
 
   <div class="row">
-    <div class="col-lg-1">
-    </div>
-    <div class="col-lg-10">
+    <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify display-5"></i> Consulta General
@@ -73,9 +69,11 @@
                 <th>Facebook</th>
                 <th>Saldo</th>
                 <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="col-md-12 ">
               <tr *ngFor="let customer of customers">
                 <td>{{ customer.customer_id }}</td>
                 <td>{{ customer.name }}</td>

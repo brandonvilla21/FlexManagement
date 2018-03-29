@@ -1,3 +1,4 @@
+import { FileImportComponent } from './components/file-import/file-import.component';
 import { UtilitiesService } from './services/utilities.service';
 import { UtilitiesRoutingModule } from './utilities.routing';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +23,8 @@ import { HistoricComponent } from './components/historic/historic.component';
         BackupComponent,
         RestoreComponent,
         FileSelectDirective,
-        HistoricComponent
+        HistoricComponent,
+        FileImportComponent
     ],
     providers: [UtilitiesService],
 })

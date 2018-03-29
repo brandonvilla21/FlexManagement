@@ -1,3 +1,4 @@
+import { FileImportComponent } from './components/file-import/file-import.component';
 import { RestoreComponent } from './components/restore/restore.component';
 import { BackupComponent } from './components/backup/backup.component';
 import { HistoricComponent } from 'app/utilities/components/historic/historic.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
             { path: 'backup', component: BackupComponent },
             { path: 'restore', component: RestoreComponent },
             { path: 'historic', component: HistoricComponent },
+            { path: 'file-import', component: FileImportComponent },
         ]
     },
 ];

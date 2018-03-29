@@ -12,7 +12,7 @@ export class RestoreComponent implements OnInit {
   public endPoint: string;
   public uploader: FileUploader;
   public db = { username: '', password: '' };
-  public uploaderOptions = {url: '', headers: [], maxFileSize: 1000*1024*1024 }; // 1000 MB
+  public uploaderOptions = {url: '', headers: [], maxFileSize: 1000 * 1024 * 1024 }; // 1000 MB
   public message;
   public loading = false;
 
@@ -23,7 +23,7 @@ export class RestoreComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       if (response && status) {
         this.message = JSON.parse(response);
         this.message.status = status;
@@ -34,7 +34,7 @@ export class RestoreComponent implements OnInit {
 
   addCredentialsBeforeUpload(item) {
 
-    //Cleaning the message object
+    // Cleaning the message object
     this.message = {};
 
 

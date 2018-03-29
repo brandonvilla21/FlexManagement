@@ -119,7 +119,7 @@ export class SaleCreateComponent implements OnInit {
 
   private getSaleCount() {
     this.saleProductService.count()
-      .subscribe( res => this.saleProduct.sale_id = res[0].number_of_sale + 1 );
+      .subscribe( res => this.saleProduct.sale_id = res[0].number_of_sale);
   }
 
   showModalSearch(type: string, title: string) {
@@ -171,9 +171,9 @@ export class SaleCreateComponent implements OnInit {
           product_id: product.product_id ,
           saleExistence: product.saleExistence ,
         });
-  
+
         this.calculateCosts( product.sale_price * product.saleExistence )
-  
+
         this.productForm.product_id = '';
         this.productForm.description = '';
         this.productForm.brand = '';

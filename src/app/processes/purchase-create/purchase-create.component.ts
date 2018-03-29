@@ -93,7 +93,7 @@ export class PurchaseCreateComponent implements OnInit {
 
   private getPurchaseCount() {
     this.purchaseProductService.count()
-      .subscribe( res => this.purchaseProduct.purchase_id = res[0].number_of_purchase + 1 );
+      .subscribe( res => this.purchaseProduct.purchase_id = res[0].number_of_purchase );
   }
 
   showModalSearch(type: string, title: string) {

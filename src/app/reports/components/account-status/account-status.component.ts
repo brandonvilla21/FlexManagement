@@ -5,6 +5,7 @@ import { ReportsService } from './../../services/reports.service';
 import { Customer } from './../../../customer/customer.model';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { SearchModalComponent } from './../../../shared/search-modal/search-modal.component';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -88,6 +89,33 @@ export class AccountStatusComponent implements OnInit {
       \nContacto: ${this.customer.whatsapp}
       \nSaldo: $${this.customer.balance}`, 'Estado-de-cuenta.pdf', date );
   }
+
+  downloadCSV() {
+
+    const arraycitoPaCSV = this.tableData.map( el => {
+      return {
+        date: el.date,
+        reference: el.reference,
+        charge: el.charge,
+        payment: el.payment
+      }
+    })
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(arraycitoPaCSV[0]),
+      useBom: true
+    };
+
+    
+   
+     
+    new Angular2Csv(arraycitoPaCSV, 'Reporte de estado de cuenta de un cliente', options);
+
+  }
+
   getStatusAccount() {
     this.saleProductService.findByColumn( 'customer_id', this.customer.customer_id )
     .flatMap( sales => {

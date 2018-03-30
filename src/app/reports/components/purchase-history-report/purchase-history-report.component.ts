@@ -5,6 +5,7 @@ import { PaymentService } from './../../../processes/payment/services/payment.se
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Component, OnInit } from '@angular/core';
 import { ReportsService } from './../../services/reports.service';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 
 @Component({
@@ -86,6 +87,14 @@ export class PurchaseHistoryReportComponent implements OnInit {
       }
   }
 
+  downloadCSV() {
+    if (this.isValidForm())
+      switch (this.columnOption) {
+        case 'provider_id': this.generateProviderCSV(); break;
+        case 'all':     this.generateGeneralPurchasesCSV(); break;
+      }
+  }
+
 
   generateProviderPDF() {
     let columns = [ 'ID', 'FECHA', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
@@ -118,6 +127,21 @@ export class PurchaseHistoryReportComponent implements OnInit {
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE COMPRAS A UN PROVEEDOR EN UN PERÍODO', 
       fromDate, toDate, name, '', 'Historial de compras por proveedor.pdf', true);
+  }
+
+  generateProviderCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.purchasesProvider[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.purchasesProvider, 'Historial de compras por proveedor', options);
+
   }
 
 
@@ -154,6 +178,21 @@ export class PurchaseHistoryReportComponent implements OnInit {
     this.ng2PdfService.pdfTableWithDates(
       columns, rows, 'HISTORIAL DE COMPRAS GENERALES EN UN PERÍODO', 
       fromDate, toDate, name, '', 'Historial de compras generales.pdf', false);
+  }
+
+  generateGeneralPurchasesCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.purchasesAll[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.purchasesAll, 'Historial de compras generales', options);
+
   }
 
 

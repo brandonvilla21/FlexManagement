@@ -9,6 +9,7 @@ import { ReportsService } from './../../services/reports.service';
 import { SaleProductInterface } from './../../../processes/sale/models/sale-product.model';
 import { SaleDetailModalComponent } from './../../../processes/credit-payment/components/sale-detail-modal-component/sale-detail-modal.component';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-sale-history-report',
@@ -222,12 +223,22 @@ export class SaleHistoryReportComponent implements OnInit {
       return prevValue + currentValue.total;
     }, 0)
   }
+  
   download() {
     if (this.isValidForm())
       switch (this.columnOption) {
         case 'customer_id': this.generateCustomerPDF(); break;
         case 'employee_id': this.generateEmployeePDF(); break;
         case 'all':         this.generateGeneralSalesPDF(); break;
+      }
+  }
+
+  downloadCSV() {
+    if (this.isValidForm())
+      switch (this.columnOption) {
+        case 'customer_id': this.generateCustomerCSV(); break;
+        case 'employee_id': this.generateEmployeeCSV(); break;
+        case 'all':         this.generateGeneralSalesCSV(); break;
       }
   }
 
@@ -286,6 +297,21 @@ export class SaleHistoryReportComponent implements OnInit {
     false, this.chartOnPDF == 'yes' ? canvas : null);
   }
 
+  generateCustomerCSV(){
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.salesCustomer[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.salesCustomer, 'Historial de ventas a un cliente en un período', options);
+
+  }
+
 
   generateEmployeePDF() {
     let columns = [ 'ID', 'CLIENTE', 'FECHA', 'ESTADO', 'TIPO', 'SUBTOTAL', 'DESCUENTO', 'TOTAL'];
@@ -325,8 +351,23 @@ export class SaleHistoryReportComponent implements OnInit {
     this.setDPI(canvas, 240);
 
     this.ng2PdfService.pdfTableWithDates(
-      columns, rows, 'HISTORIAL DE VENTAS A UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
+      columns, rows, 'HISTORIAL DE VENTAS DE UN EMPLEADO EN UN PERÍODO', fromDate, toDate, employeeName, saleType, 'Historial de Ventas por empleado.pdf',
     false, this.chartOnPDF == 'yes' ? canvas : null);
+  }
+
+
+  generateEmployeeCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.salesEmployee[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.salesEmployee, 'Historial de ventas de un empleado en un período', options);
   }
   
 
@@ -373,6 +414,23 @@ export class SaleHistoryReportComponent implements OnInit {
     false, this.chartOnPDF == 'yes' ? canvas : null);
   
   }
+
+
+  generateGeneralSalesCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.salesAll[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.salesAll, 'Historial de ventas generales en un período', options);
+
+  }
+
 
   removeTypeRows(rows: any[][]){
     if(this.saleType != 'CRÉDITO/CONTADO') {

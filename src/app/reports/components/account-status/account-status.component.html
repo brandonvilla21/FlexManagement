@@ -93,7 +93,9 @@
       <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2">
-          <button (click)="download()" *ngIf="isDownloadable" class="btn btn-block btn-primary">Descargar</button>
+          <button (click)="download()" *ngIf="isDownloadable" class="btn btn-block btn-primary">Descargar PDF</button>
+          <button class="btn btn-block btn-success" *ngIf="isDownloadable" (click)="downloadCSV()"> Descargar CSV</button>
+          
         </div>
       </div>
     </div>

@@ -2,6 +2,8 @@ import { ReportsService } from './../../services/reports.service';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 import { Customer } from './../../../customer/customer.model';
 import { Component, OnInit } from '@angular/core';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
 declare var jsPDF: any; // Important
 
 @Component({
@@ -52,6 +54,20 @@ export class CustomerReportComponent implements OnInit {
     const date = 'Fecha: ' + new Date().toLocaleDateString();
 
     this.ng2PdfService.pdfTableDate( columns, rows, 'LISTA DE CLIENTES', 'Clientes.pdf', date );
+  }
+
+  downloadCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.customers[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.customers, 'Reporte de clientes', options);
   }
 
 }

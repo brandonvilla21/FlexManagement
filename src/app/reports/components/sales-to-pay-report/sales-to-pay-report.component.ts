@@ -1,6 +1,8 @@
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
 import { ReportsService } from './../../services/reports.service';
 import { Component, OnInit } from '@angular/core';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
 
 @Component({
   selector: 'app-sales-to-pay-report',
@@ -56,6 +58,20 @@ export class SalesToPayReportComponent implements OnInit {
     const date = 'Fecha: ' + new Date().toLocaleDateString();
     this.ng2PdfService.pdfTableDate( columns, rows, 'Ventas a crédito por pagar', 'ventas-por-pagar.pdf', date );
 
+  }
+
+  downloadCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.sales[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.sales, 'Reporte de ventas a crédito por pagar', options);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../employee.model';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-employees',
@@ -35,6 +36,20 @@ export class EmployeesComponent implements OnInit {
   // https://stackoverflow.com/questions/42761163/angular-2-debouncing-a-keyup-event
   onKeyUp( searchTextValue ) {
     console.log(searchTextValue);
+  }
+
+  downloadCSV() {
+    
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.employees[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.employees, 'Catálogo de empleados', options);
   }
 
 }

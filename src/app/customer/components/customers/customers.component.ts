@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../../services/customer/customer.service';
 import { Customer } from '../../customer.model';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-customer',
@@ -31,4 +32,21 @@ export class CustomersComponent implements OnInit {
         this.getCustomers();
       });
   }
+
+  downloadCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.customers[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.customers, 'Catálogo de clientes', options);
+  }
+
+
+
 }

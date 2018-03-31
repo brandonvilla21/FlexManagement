@@ -55,11 +55,13 @@
                 <td>{{ payment.payment_date | date}}</td>
                 <td>{{ payment.payment_amount }}</td>
                 <td>
-                  <a [routerLink]="['../show/', payment.payment_id]" class="btn  btn-outline-primary">Ver más</a>
+                  <a [routerLink]="['../show/', payment.payment_id]" class="btn  btn-outline-primary pull-right">Ver más</a>
                 </td>
               </tr>
             </tbody>
           </table>
+          <button type="button" class="btn btn-success pull-right" (click)="downloadCSV()">Descargar CSV</button>
+          
         </div>
       </div>
     </div>

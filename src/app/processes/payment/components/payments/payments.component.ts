@@ -2,6 +2,7 @@ import { PaymentInterface } from './../../models/payment.model';
 import { EmployeeService } from './../../../../employee/services/employee/employee.service';
 import { PaymentService } from './../../services/payment.service';
 import { Component, OnInit } from '@angular/core';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-payments',
@@ -27,6 +28,20 @@ export class PaymentsComponent implements OnInit {
         console.log(payments);
         this.payments = payments
       });
+  }
+
+  downloadCSV() {
+    
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.payments[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.payments, 'Proceso de abonos', options);
   }
 
 }

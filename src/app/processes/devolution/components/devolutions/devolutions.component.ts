@@ -1,3 +1,4 @@
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import { DevolutionInterface } from './../../models/devolution.model';
 import { EmployeeService } from './../../../../employee/services/employee/employee.service';
 import { DevolutionService } from './../../services/devolution.service';
@@ -25,6 +26,20 @@ export class DevolutionsComponent implements OnInit {
         console.log(devolutions);
         this.devolutions = devolutions
       });
+  }
+
+  downloadCSV() {
+    
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.devolutions[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.devolutions, 'Proceso de devoluciones', options);
   }
 
 }

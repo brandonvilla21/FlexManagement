@@ -57,11 +57,13 @@
                 <td>{{ devolution.total_returned }}</td>
                 <td>{{ devolution.concept }}</td>
                 <td>
-                  <a [routerLink]="['../show/', devolution.devolution_id]" class="btn  btn-outline-primary">Ver más</a>
+                  <a [routerLink]="['../show/', devolution.devolution_id]" class="btn btn-outline-primary pull-right">Ver más</a>
                 </td>
               </tr>
             </tbody>
           </table>
+          <button type="button" class="btn btn-success pull-right" (click)="downloadCSV()">Descargar CSV</button>
+          
         </div>
       </div>
     </div>

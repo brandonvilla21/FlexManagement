@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './../../../product/product.model';
 import { ReportsService } from './../../services/reports.service';
 import { Ng2PdfService } from './../../../shared/ng2-pdf/ng2-pdf.service';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 declare var jsPDF: any;
 
 @Component({
@@ -22,36 +23,53 @@ export class ProductListReportComponent implements OnInit {
 
   getTableData() {
     this.reportsService.getTabeData( 'product ')
-      .subscribe( res => this.products = res );
+      .subscribe( res => {
+        this.products = res;
+        console.log("this.products", this.products);
+      });
   }
 
-  download() {
+  downloadPDF() {
     
-        const columns = [ 'ID', 'Descripción', 'Marca', 'Sabor', 
-                          'Precio de Compra', 'Precio de Venta', 'Existencias'];
-        const rows = [];
-        let buyPrice = 0;
-        let salePrice = 0;
-        let existence = 0;
-        
-        this.products.forEach( product => {
-          rows.push([
-            product.product_id,
-            product.description || '',
-            product.brand || '',
-            product.flavor || '',
-            product.buy_price,
-            product.sale_price,
-            product.existence
-          ])
-          buyPrice += product.buy_price;
-          salePrice += product.sale_price;
-          existence += product.existence;
-        })
-        rows.push(['', '', '', '', '', '', '']);
-        rows.push(['', '', '', 'TOTAL', buyPrice, salePrice, existence]);
-        const date = 'Fecha: ' + new Date().toLocaleDateString();
-        this.ng2PdfService.pdfTableDate( columns, rows, 'LISTA DE PRODUCTOS', 'Productos.pdf', date );
-      }
+      const columns = [ 'ID', 'Descripción', 'Marca', 'Sabor', 
+                        'Precio de Compra', 'Precio de Venta', 'Existencias'];
+      const rows = [];
+      let buyPrice = 0;
+      let salePrice = 0;
+      let existence = 0;
+      
+      this.products.forEach( product => {
+        rows.push([
+          product.product_id,
+          product.description || '',
+          product.brand || '',
+          product.flavor || '',
+          product.buy_price,
+          product.sale_price,
+          product.existence
+        ])
+        buyPrice += product.buy_price;
+        salePrice += product.sale_price;
+        existence += product.existence;
+      })
+      rows.push(['', '', '', '', '', '', '']);
+      rows.push(['', '', '', 'TOTAL', buyPrice, salePrice, existence]);
+      const date = 'Fecha: ' + new Date().toLocaleDateString();
+      this.ng2PdfService.pdfTableDate( columns, rows, 'LISTA DE PRODUCTOS', 'Productos.pdf', date );
+  }
+
+  downloadCSV() {
+
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.products[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.products, 'Reporte de productos', options);
+  }
 
 }

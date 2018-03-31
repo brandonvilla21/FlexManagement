@@ -57,11 +57,13 @@
                 <td>{{ purchase.discount }}</td>
                 <td>{{ purchase.total }}</td>
                 <td>
-                  <a [routerLink]="['../purchase', purchase.purchase_id]" class="btn  btn-outline-primary">Ver más</a>
+                  <a [routerLink]="['../purchase', purchase.purchase_id]" class="btn  btn-outline-primary pull-right">Ver más</a>
                 </td>
               </tr>
             </tbody>
           </table>
+          <button type="button" class="btn btn-success pull-right" (click)="downloadCSV()">Descargar CSV</button>
+          
         </div>
       </div>
     </div>

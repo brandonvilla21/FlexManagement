@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './../../product.model';
 import { ProductService } from './../../services/product.service';
 import { NgForm } from '@angular/forms';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-product',
@@ -29,6 +30,20 @@ export class ProductsComponent implements OnInit {
       .subscribe(res => {
         this.getProducts();
       });
+  }
+
+  downloadCSV() {
+    
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      headers: Object.keys(this.products[0]),
+      useBom: true
+    };
+   
+     
+    new Angular2Csv(this.products, 'Catálogo de productos', options);
   }
 
 }

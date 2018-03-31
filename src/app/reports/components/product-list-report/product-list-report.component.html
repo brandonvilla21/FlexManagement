@@ -39,13 +39,15 @@
         </div>
       </div>
     
-      <div class="container">
-          <div class="col-md-11">
+      <div class="container" *ngIf="products">
+          <div class="col-md-12">
               <div class="text-right">
-                  <button class="btn btn-primary" (click)="download()"> Descargar </button>
+                  <button class="btn btn-primary" (click)="downloadPDF()"> Descargar PDF</button>
+                  <button class="btn btn-success" (click)="downloadCSV()"> Descargar CSV</button>
               </div>
           </div>
       </div>
+
   </div>
 
 </div>

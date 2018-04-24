@@ -38,4 +38,14 @@ export class FullLayoutComponent implements OnInit {
     return curtop;
     }
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  isVisible() {
+    const role = localStorage.getItem('role');
+    return role === 'admin';
+  }
 }

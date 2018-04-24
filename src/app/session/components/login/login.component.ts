@@ -33,7 +33,12 @@ export class LoginComponent implements OnInit {
       this.userService.login( this.user.email, this.user.password )
         .subscribe( res => {
           if (res.success) {
-            console.log(res)
+
+            // gg
+            if ( this.user.email === 'admin@admin.com' && this.user.password === '123qwe') {
+              localStorage.setItem('role', 'admin');
+            }
+            // gg
             localStorage.setItem('token', res.token);
             this.router.navigate(['/dashboard']);
           } else {

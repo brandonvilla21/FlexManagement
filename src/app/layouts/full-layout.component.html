@@ -147,7 +147,7 @@
                 </li>
             </ul>
         </li> -->
-        <li class="nav-item nav-dropdown" appNavDropdown>
+        <li *ngIf="isVisible()" class="nav-item nav-dropdown" appNavDropdown>
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Reportes</a>
           <ul class="nav-dropdown-items">
               <li class="nav-item">
@@ -176,7 +176,7 @@
               </li>
           </ul>
       </li>
-      <li class="nav-item nav-dropdown" appNavDropdown>
+      <li *ngIf="isVisible()" class="nav-item nav-dropdown" appNavDropdown>
         <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-list"></i>Utilidades</a>
         <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -202,13 +202,16 @@
             <li class="nav-item">
                 <a class="nav-link" (click)="scrollTo('movimiento-ventas')" routerLinkActive="active" href="http://localhost:4200/help#movimiento-ventas" style="padding-left: 2em;"><i class="icon-list"></i>Movimiento</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isVisible()" class="nav-item">
                 <a class="nav-link" (click)="scrollTo('reporte-ventas')" routerLinkActive="active" href="http://localhost:4200/help#reporte-ventas" style="padding-left: 2em;"><i class="icon-list"></i>Reporte</a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="isVisible()" class="nav-item">
                 <a class="nav-link" (click)="scrollTo('utilidad-respaldo')" routerLinkActive="active" href="http://localhost:4200/help#utilidad-respaldo" style="padding-left: 2em;"><i class="icon-list"></i>Utilería</a>
             </li>
         </ul>
+      </li>
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link" (click)="logout()" href="#"><i class="icon-user"></i>Cerrar sesión</a>
       </li>
       </ul>
     </nav>

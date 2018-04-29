@@ -35,11 +35,22 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-md-3 form-control-label">Sabor</label>
-                            <div class="col-md-9">
-                                <input type="text" [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control" placeholder="Sabor del producto...">
-                            </div>
+                          <label class="col-md-3 form-control-label">Sabor</label>
+                          <div class="col-md-9">
+                              <select [(ngModel)]="product.flavor" #flavor="ngModel" name="flavor" class="form-control">
+                                  <option value="VAINILLA">VAINILLA</option>
+                                  <option value="CHOCOLATE">CHOCOLATE</option>
+                                  <option value="FRESA">FRESA</option>
+                                  <option value="COOKIES AND CREAM">COOKIES AND CREAM</option>
+                                  <option value="CEREZA">CEREZA</option>
+                                  <option value="NUEZ">NUEZ</option>
+                                  <option value="PIÑA">PIÑA</option>
+                                  <option value="DURAZNO">DURAZNO</option>
+                                  <option value="OTRO">OTRO</option>
+                              </select>
+                          </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label">Fecha de caducidad</label>

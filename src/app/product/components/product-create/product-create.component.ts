@@ -12,7 +12,7 @@ export class ProductCreateComponent implements OnInit {
   public product: Product = {
     description: '',
     brand: 'BHN',
-    flavor: '',
+    flavor: 'VAINILLA',
     expiration_date: '',
     sale_price: 0.00,
     buy_price: 0.00,

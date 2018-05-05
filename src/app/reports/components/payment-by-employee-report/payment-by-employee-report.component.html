@@ -1,0 +1,93 @@
+<div>
+  <h2 class="text-center"> Reporte de abonos por empleado </h2>
+  
+  <div class="col-md-12">
+    <h3>Seleccionar empleado</h3>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group row">
+        <div class="col-md-12">
+          <button (click)="showModalSearch('employee', 'Seleccionar empleado')" type="button" name="searchEmployee" class="btn btn-outline-info btn-block">Buscar empleado</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label class="col-md-5 form-control-label">ID Empleado</label>
+        <div class="col-md-6">
+          <input [ngModel]="employee.employee_id" type="text" name="employee_id" class="form-control" required disabled>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Nombre</label>
+        <div class="col-md-9">
+          <input [ngModel]="employee.name + ' ' + employee.lastname" type="text" name="employee_name" class="form-control" required
+            disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<div *ngIf="payments.length > 0" class="animated fadeIn">
+    <div class="col-md-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <i class="fa fa-align-justify display-5"></i> Abonos por empleado
+              </div>
+              <div class="card-block table-responsive">
+                  <table class="table table-striped table-condensed">
+                    <thead>
+                      <tr>
+                        <th>ID Abono</th>
+                        <th>ID Venta</th>
+                        <!-- <th>ID Empleado</th>
+                        <th>Nombre del empleado</th> -->
+                        <th>Fecha de abono</th>
+                        <th>Cantidad del abono</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let payment of payments">
+                        <td>{{ payment.payment_id }}</td>
+                        <td>{{ payment.sale_id }}</td>
+                        <!-- <td>{{ payment.employee_id }}</td>
+                        <td>{{ payment.employee_fullname }}</td> -->
+                        <td>{{ payment.payment_date | date}}</td>
+                        <td>{{ payment.payment_amount }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="container" *ngIf="payments.length > 0">
+          <div class="col-md-12">
+            <div class="text-right">
+              <button class="btn btn-primary" (click)="downloadPDF()"> Descargar PDF</button>
+              <button class="btn btn-success" (click)="downloadCSV()"> Descargar CSV</button>
+            </div>
+          </div>
+      </div>
+  
+  </div>
+</div>
+
+<div class="container" *ngIf="payments.length == 0 && employee.employee_id">
+  <p>Este empleado no tiene abonos registrados.</p>
+</div>
+  
+  

@@ -7,6 +7,8 @@ import { ProductListReportComponent } from './components/product-list-report/pro
 import { SaleHistoryReportComponent } from './components/sale-history-report/sale-history-report.component';
 import { PurchaseHistoryReportComponent } from './components/purchase-history-report/purchase-history-report.component';
 import { MostSelledProductsComponent } from './components/most-selled-products/most-selled-products.component';
+import { PaymentByEmployeeReportComponent } from './components/payment-by-employee-report/payment-by-employee-report.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,6 +28,7 @@ const routes: Routes = [
             { path: 'purchase-history-report', component: PurchaseHistoryReportComponent },
             { path: 'account-status-report', component: AccountStatusComponent },
             { path: 'most-selled-products-report', component: MostSelledProductsComponent },
+            { path: 'payment-by-employee-report', component: PaymentByEmployeeReportComponent },
         ]
     },
 ];

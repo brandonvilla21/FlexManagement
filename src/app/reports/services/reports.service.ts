@@ -60,4 +60,11 @@ export class ReportsService {
       .catch( error => JSON.stringify(error));
   }
 
+  public getPaymentsByEmployee(id: number | string): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(`${this.endPoint}/getPaymentsByEmployee/${id}`, { headers: headers })
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
+  }
+
 }

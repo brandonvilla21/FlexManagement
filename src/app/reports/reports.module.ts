@@ -16,6 +16,7 @@ import { PurchaseHistoryReportComponent } from './components/purchase-history-re
 import { AccountStatusComponent } from './components/account-status/account-status.component';
 import { MostSelledProductsComponent } from './components/most-selled-products/most-selled-products.component';
 import { ChartsModule } from 'ng2-charts';
+import { PaymentByEmployeeReportComponent } from './components/payment-by-employee-report/payment-by-employee-report.component';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { ChartsModule } from 'ng2-charts';
         EmployeeReportComponent,
         PurchaseHistoryReportComponent,
         AccountStatusComponent,
-        MostSelledProductsComponent
+        MostSelledProductsComponent,
+        PaymentByEmployeeReportComponent
     ],
     providers: [ReportsService],
 })

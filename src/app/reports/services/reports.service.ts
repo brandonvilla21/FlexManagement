@@ -74,4 +74,11 @@ export class ReportsService {
       .catch( error => JSON.stringify(error));
   }
 
+  public getMostWantedFlavors(numberOfFlavors): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.endPoint}/getMostWantedFlavors`, { numberOfFlavors }, { headers: headers })
+      .map( res => res.json() || {})
+      .catch( error => JSON.stringify(error));
+  }
+
 }

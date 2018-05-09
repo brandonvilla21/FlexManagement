@@ -1,3 +1,55 @@
-<p>
-  flavors-report works!
-</p>
+<div class="animated fadeIn">
+  <div class="col-md-12">
+      <h2 class="text-center"> Sabores más vendidos </h2>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify display-5"></i> Sabores
+            </div>
+            <div class="card-block table-responsive">
+              <table class="table table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th> Sabor</th>
+                    <th> Productos vendidos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let flavor of flavors">
+                    <td>{{ flavor.name }}</td>
+                    <td>{{ flavor.products }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="container" *ngIf="flavors">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Número de sabores a incluir en el reporte</label>
+              <input type="number" name="numberOfFlavors" [(ngModel)]="numberOfFlavors" class="form-control" min="1" value="1" required>
+            </div>
+          </div>
+            
+
+          <div class="col-md-6">
+              <div class="text-right">
+                  <button class="btn btn-primary" (click)="refresh()"> Recargar reporte</button>
+                  <button class="btn btn-primary" (click)="downloadPDF()"> Descargar PDF</button>
+                  <button class="btn btn-success" (click)="downloadCSV()"> Descargar CSV</button>
+              </div>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+
+</div>
+

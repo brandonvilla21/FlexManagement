@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ReportsComponent } from './reports.component';
+import { MissingProductsComponent } from './components/missing-products/missing-products.component';
 
 const routes: Routes = [
     {
@@ -29,6 +30,7 @@ const routes: Routes = [
             { path: 'account-status-report', component: AccountStatusComponent },
             { path: 'most-selled-products-report', component: MostSelledProductsComponent },
             { path: 'payment-by-employee-report', component: PaymentByEmployeeReportComponent },
+            { path: 'missing-products', component: MissingProductsComponent },
         ]
     },
 ];

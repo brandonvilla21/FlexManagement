@@ -1,3 +1,4 @@
+import { FlavorsReportComponent } from './components/flavors-report/flavors-report.component';
 import { AccountStatusComponent } from './components/account-status/account-status.component';
 import { ProviderReportComponent } from './components/provider-report/provider-report.component';
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
             { path: 'most-selled-products-report', component: MostSelledProductsComponent },
             { path: 'payment-by-employee-report', component: PaymentByEmployeeReportComponent },
             { path: 'missing-products', component: MissingProductsComponent },
+            { path: 'most-wanted-flavors', component: FlavorsReportComponent },
         ]
     },
 ];

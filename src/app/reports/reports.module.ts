@@ -18,6 +18,7 @@ import { MostSelledProductsComponent } from './components/most-selled-products/m
 import { ChartsModule } from 'ng2-charts';
 import { PaymentByEmployeeReportComponent } from './components/payment-by-employee-report/payment-by-employee-report.component';
 import { MissingProductsComponent } from './components/missing-products/missing-products.component';
+import { FlavorsReportComponent } from './components/flavors-report/flavors-report.component';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { MissingProductsComponent } from './components/missing-products/missing-
         AccountStatusComponent,
         MostSelledProductsComponent,
         PaymentByEmployeeReportComponent,
-        MissingProductsComponent
+        MissingProductsComponent,
+        FlavorsReportComponent
     ],
     providers: [ReportsService],
 })
